@@ -147,19 +147,19 @@ class FunctionsApi
      *
      * Archive a function for a definition
      *
-     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $definition_id The ID of the custom workflow action definition. (required)
-     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
      * @param  string $function_type The type of function, accepted values are: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
+     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Automation\Actions\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($app_id, $definition_id, $function_id, $function_type, string $contentType = self::contentTypes['archive'][0])
+    public function archive($definition_id, $function_type, $function_id, $app_id, string $contentType = self::contentTypes['archive'][0])
     {
-        $this->archiveWithHttpInfo($app_id, $definition_id, $function_id, $function_type, $contentType);
+        $this->archiveWithHttpInfo($definition_id, $function_type, $function_id, $app_id, $contentType);
     }
 
     /**
@@ -167,19 +167,19 @@ class FunctionsApi
      *
      * Archive a function for a definition
      *
-     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $definition_id The ID of the custom workflow action definition. (required)
-     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
      * @param  string $function_type The type of function, accepted values are: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
+     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Automation\Actions\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($app_id, $definition_id, $function_id, $function_type, string $contentType = self::contentTypes['archive'][0])
+    public function archiveWithHttpInfo($definition_id, $function_type, $function_id, $app_id, string $contentType = self::contentTypes['archive'][0])
     {
-        $request = $this->archiveRequest($app_id, $definition_id, $function_id, $function_type, $contentType);
+        $request = $this->archiveRequest($definition_id, $function_type, $function_id, $app_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -227,18 +227,18 @@ class FunctionsApi
      *
      * Archive a function for a definition
      *
-     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $definition_id The ID of the custom workflow action definition. (required)
-     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
      * @param  string $function_type The type of function, accepted values are: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
+     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($app_id, $definition_id, $function_id, $function_type, string $contentType = self::contentTypes['archive'][0])
+    public function archiveAsync($definition_id, $function_type, $function_id, $app_id, string $contentType = self::contentTypes['archive'][0])
     {
-        return $this->archiveAsyncWithHttpInfo($app_id, $definition_id, $function_id, $function_type, $contentType)
+        return $this->archiveAsyncWithHttpInfo($definition_id, $function_type, $function_id, $app_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -251,19 +251,19 @@ class FunctionsApi
      *
      * Archive a function for a definition
      *
-     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $definition_id The ID of the custom workflow action definition. (required)
-     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
      * @param  string $function_type The type of function, accepted values are: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
+     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($app_id, $definition_id, $function_id, $function_type, string $contentType = self::contentTypes['archive'][0])
+    public function archiveAsyncWithHttpInfo($definition_id, $function_type, $function_id, $app_id, string $contentType = self::contentTypes['archive'][0])
     {
         $returnType = '';
-        $request = $this->archiveRequest($app_id, $definition_id, $function_id, $function_type, $contentType);
+        $request = $this->archiveRequest($definition_id, $function_type, $function_id, $app_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -291,29 +291,29 @@ class FunctionsApi
     /**
      * Create request for operation 'archive'
      *
-     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $definition_id The ID of the custom workflow action definition. (required)
-     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
      * @param  string $function_type The type of function, accepted values are: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
+     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveRequest($app_id, $definition_id, $function_id, $function_type, string $contentType = self::contentTypes['archive'][0])
+    public function archiveRequest($definition_id, $function_type, $function_id, $app_id, string $contentType = self::contentTypes['archive'][0])
     {
-
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling archive'
-            );
-        }
 
         // verify the required parameter 'definition_id' is set
         if ($definition_id === null || (is_array($definition_id) && count($definition_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $definition_id when calling archive'
+            );
+        }
+
+        // verify the required parameter 'function_type' is set
+        if ($function_type === null || (is_array($function_type) && count($function_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $function_type when calling archive'
             );
         }
 
@@ -324,10 +324,10 @@ class FunctionsApi
             );
         }
 
-        // verify the required parameter 'function_type' is set
-        if ($function_type === null || (is_array($function_type) && count($function_type) === 0)) {
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $function_type when calling archive'
+                'Missing the required parameter $app_id when calling archive'
             );
         }
 
@@ -342,18 +342,18 @@ class FunctionsApi
 
 
         // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
         if ($definition_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'definitionId' . '}',
                 ObjectSerializer::toPathValue($definition_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($function_type !== null) {
+            $resourcePath = str_replace(
+                '{' . 'functionType' . '}',
+                ObjectSerializer::toPathValue($function_type),
                 $resourcePath
             );
         }
@@ -366,10 +366,10 @@ class FunctionsApi
             );
         }
         // path params
-        if ($function_type !== null) {
+        if ($app_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'functionType' . '}',
-                ObjectSerializer::toPathValue($function_type),
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
                 $resourcePath
             );
         }
@@ -438,18 +438,18 @@ class FunctionsApi
      *
      * Delete a function for a definition
      *
-     * @param  int $app_id The ID of the app from which the function will be deleted. (required)
      * @param  string $definition_id The ID of the definition from which the function will be deleted. (required)
      * @param  string $function_type The type of function to delete, with accepted values: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  int $app_id The ID of the app from which the function will be deleted. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveByFunctionType'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Automation\Actions\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archiveByFunctionType($app_id, $definition_id, $function_type, string $contentType = self::contentTypes['archiveByFunctionType'][0])
+    public function archiveByFunctionType($definition_id, $function_type, $app_id, string $contentType = self::contentTypes['archiveByFunctionType'][0])
     {
-        $this->archiveByFunctionTypeWithHttpInfo($app_id, $definition_id, $function_type, $contentType);
+        $this->archiveByFunctionTypeWithHttpInfo($definition_id, $function_type, $app_id, $contentType);
     }
 
     /**
@@ -457,18 +457,18 @@ class FunctionsApi
      *
      * Delete a function for a definition
      *
-     * @param  int $app_id The ID of the app from which the function will be deleted. (required)
      * @param  string $definition_id The ID of the definition from which the function will be deleted. (required)
      * @param  string $function_type The type of function to delete, with accepted values: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  int $app_id The ID of the app from which the function will be deleted. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveByFunctionType'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Automation\Actions\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveByFunctionTypeWithHttpInfo($app_id, $definition_id, $function_type, string $contentType = self::contentTypes['archiveByFunctionType'][0])
+    public function archiveByFunctionTypeWithHttpInfo($definition_id, $function_type, $app_id, string $contentType = self::contentTypes['archiveByFunctionType'][0])
     {
-        $request = $this->archiveByFunctionTypeRequest($app_id, $definition_id, $function_type, $contentType);
+        $request = $this->archiveByFunctionTypeRequest($definition_id, $function_type, $app_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -516,17 +516,17 @@ class FunctionsApi
      *
      * Delete a function for a definition
      *
-     * @param  int $app_id The ID of the app from which the function will be deleted. (required)
      * @param  string $definition_id The ID of the definition from which the function will be deleted. (required)
      * @param  string $function_type The type of function to delete, with accepted values: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  int $app_id The ID of the app from which the function will be deleted. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveByFunctionType'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveByFunctionTypeAsync($app_id, $definition_id, $function_type, string $contentType = self::contentTypes['archiveByFunctionType'][0])
+    public function archiveByFunctionTypeAsync($definition_id, $function_type, $app_id, string $contentType = self::contentTypes['archiveByFunctionType'][0])
     {
-        return $this->archiveByFunctionTypeAsyncWithHttpInfo($app_id, $definition_id, $function_type, $contentType)
+        return $this->archiveByFunctionTypeAsyncWithHttpInfo($definition_id, $function_type, $app_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -539,18 +539,18 @@ class FunctionsApi
      *
      * Delete a function for a definition
      *
-     * @param  int $app_id The ID of the app from which the function will be deleted. (required)
      * @param  string $definition_id The ID of the definition from which the function will be deleted. (required)
      * @param  string $function_type The type of function to delete, with accepted values: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  int $app_id The ID of the app from which the function will be deleted. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveByFunctionType'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveByFunctionTypeAsyncWithHttpInfo($app_id, $definition_id, $function_type, string $contentType = self::contentTypes['archiveByFunctionType'][0])
+    public function archiveByFunctionTypeAsyncWithHttpInfo($definition_id, $function_type, $app_id, string $contentType = self::contentTypes['archiveByFunctionType'][0])
     {
         $returnType = '';
-        $request = $this->archiveByFunctionTypeRequest($app_id, $definition_id, $function_type, $contentType);
+        $request = $this->archiveByFunctionTypeRequest($definition_id, $function_type, $app_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -578,23 +578,16 @@ class FunctionsApi
     /**
      * Create request for operation 'archiveByFunctionType'
      *
-     * @param  int $app_id The ID of the app from which the function will be deleted. (required)
      * @param  string $definition_id The ID of the definition from which the function will be deleted. (required)
      * @param  string $function_type The type of function to delete, with accepted values: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  int $app_id The ID of the app from which the function will be deleted. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveByFunctionType'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveByFunctionTypeRequest($app_id, $definition_id, $function_type, string $contentType = self::contentTypes['archiveByFunctionType'][0])
+    public function archiveByFunctionTypeRequest($definition_id, $function_type, $app_id, string $contentType = self::contentTypes['archiveByFunctionType'][0])
     {
-
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling archiveByFunctionType'
-            );
-        }
 
         // verify the required parameter 'definition_id' is set
         if ($definition_id === null || (is_array($definition_id) && count($definition_id) === 0)) {
@@ -610,6 +603,13 @@ class FunctionsApi
             );
         }
 
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling archiveByFunctionType'
+            );
+        }
+
 
         $resourcePath = '/automation/v4/actions/{appId}/{definitionId}/functions/{functionType}';
         $formParams = [];
@@ -620,14 +620,6 @@ class FunctionsApi
 
 
 
-        // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
         // path params
         if ($definition_id !== null) {
             $resourcePath = str_replace(
@@ -641,6 +633,14 @@ class FunctionsApi
             $resourcePath = str_replace(
                 '{' . 'functionType' . '}',
                 ObjectSerializer::toPathValue($function_type),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
                 $resourcePath
             );
         }
@@ -709,10 +709,10 @@ class FunctionsApi
      *
      * Update a function for a definition
      *
-     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $definition_id The ID of the custom workflow action definition. (required)
-     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
      * @param  string $function_type The type of function, accepted values are: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
+     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $body body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrReplace'] to see the possible values for this operation
      *
@@ -720,9 +720,9 @@ class FunctionsApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Automation\Actions\Model\PublicActionFunctionIdentifier|\HubSpot\Client\Automation\Actions\Model\Error
      */
-    public function createOrReplace($app_id, $definition_id, $function_id, $function_type, $body, string $contentType = self::contentTypes['createOrReplace'][0])
+    public function createOrReplace($definition_id, $function_type, $function_id, $app_id, $body, string $contentType = self::contentTypes['createOrReplace'][0])
     {
-        list($response) = $this->createOrReplaceWithHttpInfo($app_id, $definition_id, $function_id, $function_type, $body, $contentType);
+        list($response) = $this->createOrReplaceWithHttpInfo($definition_id, $function_type, $function_id, $app_id, $body, $contentType);
         return $response;
     }
 
@@ -731,10 +731,10 @@ class FunctionsApi
      *
      * Update a function for a definition
      *
-     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $definition_id The ID of the custom workflow action definition. (required)
-     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
      * @param  string $function_type The type of function, accepted values are: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
+     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrReplace'] to see the possible values for this operation
      *
@@ -742,9 +742,9 @@ class FunctionsApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Automation\Actions\Model\PublicActionFunctionIdentifier|\HubSpot\Client\Automation\Actions\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createOrReplaceWithHttpInfo($app_id, $definition_id, $function_id, $function_type, $body, string $contentType = self::contentTypes['createOrReplace'][0])
+    public function createOrReplaceWithHttpInfo($definition_id, $function_type, $function_id, $app_id, $body, string $contentType = self::contentTypes['createOrReplace'][0])
     {
-        $request = $this->createOrReplaceRequest($app_id, $definition_id, $function_id, $function_type, $body, $contentType);
+        $request = $this->createOrReplaceRequest($definition_id, $function_type, $function_id, $app_id, $body, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -834,19 +834,19 @@ class FunctionsApi
      *
      * Update a function for a definition
      *
-     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $definition_id The ID of the custom workflow action definition. (required)
-     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
      * @param  string $function_type The type of function, accepted values are: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
+     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrReplace'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createOrReplaceAsync($app_id, $definition_id, $function_id, $function_type, $body, string $contentType = self::contentTypes['createOrReplace'][0])
+    public function createOrReplaceAsync($definition_id, $function_type, $function_id, $app_id, $body, string $contentType = self::contentTypes['createOrReplace'][0])
     {
-        return $this->createOrReplaceAsyncWithHttpInfo($app_id, $definition_id, $function_id, $function_type, $body, $contentType)
+        return $this->createOrReplaceAsyncWithHttpInfo($definition_id, $function_type, $function_id, $app_id, $body, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -859,20 +859,20 @@ class FunctionsApi
      *
      * Update a function for a definition
      *
-     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $definition_id The ID of the custom workflow action definition. (required)
-     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
      * @param  string $function_type The type of function, accepted values are: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
+     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrReplace'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createOrReplaceAsyncWithHttpInfo($app_id, $definition_id, $function_id, $function_type, $body, string $contentType = self::contentTypes['createOrReplace'][0])
+    public function createOrReplaceAsyncWithHttpInfo($definition_id, $function_type, $function_id, $app_id, $body, string $contentType = self::contentTypes['createOrReplace'][0])
     {
         $returnType = '\HubSpot\Client\Automation\Actions\Model\PublicActionFunctionIdentifier';
-        $request = $this->createOrReplaceRequest($app_id, $definition_id, $function_id, $function_type, $body, $contentType);
+        $request = $this->createOrReplaceRequest($definition_id, $function_type, $function_id, $app_id, $body, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -913,30 +913,30 @@ class FunctionsApi
     /**
      * Create request for operation 'createOrReplace'
      *
-     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $definition_id The ID of the custom workflow action definition. (required)
-     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
      * @param  string $function_type The type of function, accepted values are: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
+     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrReplace'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createOrReplaceRequest($app_id, $definition_id, $function_id, $function_type, $body, string $contentType = self::contentTypes['createOrReplace'][0])
+    public function createOrReplaceRequest($definition_id, $function_type, $function_id, $app_id, $body, string $contentType = self::contentTypes['createOrReplace'][0])
     {
-
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling createOrReplace'
-            );
-        }
 
         // verify the required parameter 'definition_id' is set
         if ($definition_id === null || (is_array($definition_id) && count($definition_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $definition_id when calling createOrReplace'
+            );
+        }
+
+        // verify the required parameter 'function_type' is set
+        if ($function_type === null || (is_array($function_type) && count($function_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $function_type when calling createOrReplace'
             );
         }
 
@@ -947,10 +947,10 @@ class FunctionsApi
             );
         }
 
-        // verify the required parameter 'function_type' is set
-        if ($function_type === null || (is_array($function_type) && count($function_type) === 0)) {
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $function_type when calling createOrReplace'
+                'Missing the required parameter $app_id when calling createOrReplace'
             );
         }
 
@@ -972,18 +972,18 @@ class FunctionsApi
 
 
         // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
         if ($definition_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'definitionId' . '}',
                 ObjectSerializer::toPathValue($definition_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($function_type !== null) {
+            $resourcePath = str_replace(
+                '{' . 'functionType' . '}',
+                ObjectSerializer::toPathValue($function_type),
                 $resourcePath
             );
         }
@@ -996,10 +996,10 @@ class FunctionsApi
             );
         }
         // path params
-        if ($function_type !== null) {
+        if ($app_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'functionType' . '}',
-                ObjectSerializer::toPathValue($function_type),
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
                 $resourcePath
             );
         }
@@ -1075,9 +1075,9 @@ class FunctionsApi
      *
      * Insert a function for a definition
      *
-     * @param  int $app_id The ID of the app to which the function will be added. (required)
      * @param  string $definition_id The ID of the definition to which the function will be added. (required)
      * @param  string $function_type The type of function to add, with accepted values: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  int $app_id The ID of the app to which the function will be added. (required)
      * @param  string $body body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrReplaceByFunctionType'] to see the possible values for this operation
      *
@@ -1085,9 +1085,9 @@ class FunctionsApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Automation\Actions\Model\PublicActionFunctionIdentifier|\HubSpot\Client\Automation\Actions\Model\Error
      */
-    public function createOrReplaceByFunctionType($app_id, $definition_id, $function_type, $body, string $contentType = self::contentTypes['createOrReplaceByFunctionType'][0])
+    public function createOrReplaceByFunctionType($definition_id, $function_type, $app_id, $body, string $contentType = self::contentTypes['createOrReplaceByFunctionType'][0])
     {
-        list($response) = $this->createOrReplaceByFunctionTypeWithHttpInfo($app_id, $definition_id, $function_type, $body, $contentType);
+        list($response) = $this->createOrReplaceByFunctionTypeWithHttpInfo($definition_id, $function_type, $app_id, $body, $contentType);
         return $response;
     }
 
@@ -1096,9 +1096,9 @@ class FunctionsApi
      *
      * Insert a function for a definition
      *
-     * @param  int $app_id The ID of the app to which the function will be added. (required)
      * @param  string $definition_id The ID of the definition to which the function will be added. (required)
      * @param  string $function_type The type of function to add, with accepted values: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  int $app_id The ID of the app to which the function will be added. (required)
      * @param  string $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrReplaceByFunctionType'] to see the possible values for this operation
      *
@@ -1106,9 +1106,9 @@ class FunctionsApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Automation\Actions\Model\PublicActionFunctionIdentifier|\HubSpot\Client\Automation\Actions\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createOrReplaceByFunctionTypeWithHttpInfo($app_id, $definition_id, $function_type, $body, string $contentType = self::contentTypes['createOrReplaceByFunctionType'][0])
+    public function createOrReplaceByFunctionTypeWithHttpInfo($definition_id, $function_type, $app_id, $body, string $contentType = self::contentTypes['createOrReplaceByFunctionType'][0])
     {
-        $request = $this->createOrReplaceByFunctionTypeRequest($app_id, $definition_id, $function_type, $body, $contentType);
+        $request = $this->createOrReplaceByFunctionTypeRequest($definition_id, $function_type, $app_id, $body, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1198,18 +1198,18 @@ class FunctionsApi
      *
      * Insert a function for a definition
      *
-     * @param  int $app_id The ID of the app to which the function will be added. (required)
      * @param  string $definition_id The ID of the definition to which the function will be added. (required)
      * @param  string $function_type The type of function to add, with accepted values: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  int $app_id The ID of the app to which the function will be added. (required)
      * @param  string $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrReplaceByFunctionType'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createOrReplaceByFunctionTypeAsync($app_id, $definition_id, $function_type, $body, string $contentType = self::contentTypes['createOrReplaceByFunctionType'][0])
+    public function createOrReplaceByFunctionTypeAsync($definition_id, $function_type, $app_id, $body, string $contentType = self::contentTypes['createOrReplaceByFunctionType'][0])
     {
-        return $this->createOrReplaceByFunctionTypeAsyncWithHttpInfo($app_id, $definition_id, $function_type, $body, $contentType)
+        return $this->createOrReplaceByFunctionTypeAsyncWithHttpInfo($definition_id, $function_type, $app_id, $body, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1222,19 +1222,19 @@ class FunctionsApi
      *
      * Insert a function for a definition
      *
-     * @param  int $app_id The ID of the app to which the function will be added. (required)
      * @param  string $definition_id The ID of the definition to which the function will be added. (required)
      * @param  string $function_type The type of function to add, with accepted values: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  int $app_id The ID of the app to which the function will be added. (required)
      * @param  string $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrReplaceByFunctionType'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createOrReplaceByFunctionTypeAsyncWithHttpInfo($app_id, $definition_id, $function_type, $body, string $contentType = self::contentTypes['createOrReplaceByFunctionType'][0])
+    public function createOrReplaceByFunctionTypeAsyncWithHttpInfo($definition_id, $function_type, $app_id, $body, string $contentType = self::contentTypes['createOrReplaceByFunctionType'][0])
     {
         $returnType = '\HubSpot\Client\Automation\Actions\Model\PublicActionFunctionIdentifier';
-        $request = $this->createOrReplaceByFunctionTypeRequest($app_id, $definition_id, $function_type, $body, $contentType);
+        $request = $this->createOrReplaceByFunctionTypeRequest($definition_id, $function_type, $app_id, $body, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1275,24 +1275,17 @@ class FunctionsApi
     /**
      * Create request for operation 'createOrReplaceByFunctionType'
      *
-     * @param  int $app_id The ID of the app to which the function will be added. (required)
      * @param  string $definition_id The ID of the definition to which the function will be added. (required)
      * @param  string $function_type The type of function to add, with accepted values: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  int $app_id The ID of the app to which the function will be added. (required)
      * @param  string $body (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrReplaceByFunctionType'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createOrReplaceByFunctionTypeRequest($app_id, $definition_id, $function_type, $body, string $contentType = self::contentTypes['createOrReplaceByFunctionType'][0])
+    public function createOrReplaceByFunctionTypeRequest($definition_id, $function_type, $app_id, $body, string $contentType = self::contentTypes['createOrReplaceByFunctionType'][0])
     {
-
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling createOrReplaceByFunctionType'
-            );
-        }
 
         // verify the required parameter 'definition_id' is set
         if ($definition_id === null || (is_array($definition_id) && count($definition_id) === 0)) {
@@ -1305,6 +1298,13 @@ class FunctionsApi
         if ($function_type === null || (is_array($function_type) && count($function_type) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $function_type when calling createOrReplaceByFunctionType'
+            );
+        }
+
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling createOrReplaceByFunctionType'
             );
         }
 
@@ -1326,14 +1326,6 @@ class FunctionsApi
 
 
         // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
         if ($definition_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'definitionId' . '}',
@@ -1346,6 +1338,14 @@ class FunctionsApi
             $resourcePath = str_replace(
                 '{' . 'functionType' . '}',
                 ObjectSerializer::toPathValue($function_type),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
                 $resourcePath
             );
         }
@@ -1421,18 +1421,18 @@ class FunctionsApi
      *
      * Retrieve functions by a type for a given definition
      *
-     * @param  int $app_id The ID of the app associated with the function. (required)
      * @param  string $definition_id The ID of the definition associated with the function. (required)
      * @param  string $function_type The type of function to retrieve, with accepted values: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  int $app_id The ID of the app associated with the function. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByFunctionType'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Automation\Actions\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Automation\Actions\Model\PublicActionFunction|\HubSpot\Client\Automation\Actions\Model\Error
      */
-    public function getByFunctionType($app_id, $definition_id, $function_type, string $contentType = self::contentTypes['getByFunctionType'][0])
+    public function getByFunctionType($definition_id, $function_type, $app_id, string $contentType = self::contentTypes['getByFunctionType'][0])
     {
-        list($response) = $this->getByFunctionTypeWithHttpInfo($app_id, $definition_id, $function_type, $contentType);
+        list($response) = $this->getByFunctionTypeWithHttpInfo($definition_id, $function_type, $app_id, $contentType);
         return $response;
     }
 
@@ -1441,18 +1441,18 @@ class FunctionsApi
      *
      * Retrieve functions by a type for a given definition
      *
-     * @param  int $app_id The ID of the app associated with the function. (required)
      * @param  string $definition_id The ID of the definition associated with the function. (required)
      * @param  string $function_type The type of function to retrieve, with accepted values: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  int $app_id The ID of the app associated with the function. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByFunctionType'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Automation\Actions\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Automation\Actions\Model\PublicActionFunction|\HubSpot\Client\Automation\Actions\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getByFunctionTypeWithHttpInfo($app_id, $definition_id, $function_type, string $contentType = self::contentTypes['getByFunctionType'][0])
+    public function getByFunctionTypeWithHttpInfo($definition_id, $function_type, $app_id, string $contentType = self::contentTypes['getByFunctionType'][0])
     {
-        $request = $this->getByFunctionTypeRequest($app_id, $definition_id, $function_type, $contentType);
+        $request = $this->getByFunctionTypeRequest($definition_id, $function_type, $app_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1542,17 +1542,17 @@ class FunctionsApi
      *
      * Retrieve functions by a type for a given definition
      *
-     * @param  int $app_id The ID of the app associated with the function. (required)
      * @param  string $definition_id The ID of the definition associated with the function. (required)
      * @param  string $function_type The type of function to retrieve, with accepted values: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  int $app_id The ID of the app associated with the function. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByFunctionType'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByFunctionTypeAsync($app_id, $definition_id, $function_type, string $contentType = self::contentTypes['getByFunctionType'][0])
+    public function getByFunctionTypeAsync($definition_id, $function_type, $app_id, string $contentType = self::contentTypes['getByFunctionType'][0])
     {
-        return $this->getByFunctionTypeAsyncWithHttpInfo($app_id, $definition_id, $function_type, $contentType)
+        return $this->getByFunctionTypeAsyncWithHttpInfo($definition_id, $function_type, $app_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1565,18 +1565,18 @@ class FunctionsApi
      *
      * Retrieve functions by a type for a given definition
      *
-     * @param  int $app_id The ID of the app associated with the function. (required)
      * @param  string $definition_id The ID of the definition associated with the function. (required)
      * @param  string $function_type The type of function to retrieve, with accepted values: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  int $app_id The ID of the app associated with the function. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByFunctionType'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByFunctionTypeAsyncWithHttpInfo($app_id, $definition_id, $function_type, string $contentType = self::contentTypes['getByFunctionType'][0])
+    public function getByFunctionTypeAsyncWithHttpInfo($definition_id, $function_type, $app_id, string $contentType = self::contentTypes['getByFunctionType'][0])
     {
         $returnType = '\HubSpot\Client\Automation\Actions\Model\PublicActionFunction';
-        $request = $this->getByFunctionTypeRequest($app_id, $definition_id, $function_type, $contentType);
+        $request = $this->getByFunctionTypeRequest($definition_id, $function_type, $app_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1617,23 +1617,16 @@ class FunctionsApi
     /**
      * Create request for operation 'getByFunctionType'
      *
-     * @param  int $app_id The ID of the app associated with the function. (required)
      * @param  string $definition_id The ID of the definition associated with the function. (required)
      * @param  string $function_type The type of function to retrieve, with accepted values: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  int $app_id The ID of the app associated with the function. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByFunctionType'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getByFunctionTypeRequest($app_id, $definition_id, $function_type, string $contentType = self::contentTypes['getByFunctionType'][0])
+    public function getByFunctionTypeRequest($definition_id, $function_type, $app_id, string $contentType = self::contentTypes['getByFunctionType'][0])
     {
-
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling getByFunctionType'
-            );
-        }
 
         // verify the required parameter 'definition_id' is set
         if ($definition_id === null || (is_array($definition_id) && count($definition_id) === 0)) {
@@ -1649,6 +1642,13 @@ class FunctionsApi
             );
         }
 
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling getByFunctionType'
+            );
+        }
+
 
         $resourcePath = '/automation/v4/actions/{appId}/{definitionId}/functions/{functionType}';
         $formParams = [];
@@ -1659,14 +1659,6 @@ class FunctionsApi
 
 
 
-        // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
         // path params
         if ($definition_id !== null) {
             $resourcePath = str_replace(
@@ -1680,6 +1672,14 @@ class FunctionsApi
             $resourcePath = str_replace(
                 '{' . 'functionType' . '}',
                 ObjectSerializer::toPathValue($function_type),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
                 $resourcePath
             );
         }
@@ -1748,19 +1748,19 @@ class FunctionsApi
      *
      * Retrieve a function from a given definition
      *
-     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $definition_id The ID of the custom workflow action definition. (required)
-     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
      * @param  string $function_type The type of function, accepted values are: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
+     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Automation\Actions\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Automation\Actions\Model\PublicActionFunction|\HubSpot\Client\Automation\Actions\Model\Error
      */
-    public function getById($app_id, $definition_id, $function_id, $function_type, string $contentType = self::contentTypes['getById'][0])
+    public function getById($definition_id, $function_type, $function_id, $app_id, string $contentType = self::contentTypes['getById'][0])
     {
-        list($response) = $this->getByIdWithHttpInfo($app_id, $definition_id, $function_id, $function_type, $contentType);
+        list($response) = $this->getByIdWithHttpInfo($definition_id, $function_type, $function_id, $app_id, $contentType);
         return $response;
     }
 
@@ -1769,19 +1769,19 @@ class FunctionsApi
      *
      * Retrieve a function from a given definition
      *
-     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $definition_id The ID of the custom workflow action definition. (required)
-     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
      * @param  string $function_type The type of function, accepted values are: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
+     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Automation\Actions\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Automation\Actions\Model\PublicActionFunction|\HubSpot\Client\Automation\Actions\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getByIdWithHttpInfo($app_id, $definition_id, $function_id, $function_type, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdWithHttpInfo($definition_id, $function_type, $function_id, $app_id, string $contentType = self::contentTypes['getById'][0])
     {
-        $request = $this->getByIdRequest($app_id, $definition_id, $function_id, $function_type, $contentType);
+        $request = $this->getByIdRequest($definition_id, $function_type, $function_id, $app_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1871,18 +1871,18 @@ class FunctionsApi
      *
      * Retrieve a function from a given definition
      *
-     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $definition_id The ID of the custom workflow action definition. (required)
-     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
      * @param  string $function_type The type of function, accepted values are: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
+     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsync($app_id, $definition_id, $function_id, $function_type, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdAsync($definition_id, $function_type, $function_id, $app_id, string $contentType = self::contentTypes['getById'][0])
     {
-        return $this->getByIdAsyncWithHttpInfo($app_id, $definition_id, $function_id, $function_type, $contentType)
+        return $this->getByIdAsyncWithHttpInfo($definition_id, $function_type, $function_id, $app_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1895,19 +1895,19 @@ class FunctionsApi
      *
      * Retrieve a function from a given definition
      *
-     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $definition_id The ID of the custom workflow action definition. (required)
-     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
      * @param  string $function_type The type of function, accepted values are: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
+     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsyncWithHttpInfo($app_id, $definition_id, $function_id, $function_type, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdAsyncWithHttpInfo($definition_id, $function_type, $function_id, $app_id, string $contentType = self::contentTypes['getById'][0])
     {
         $returnType = '\HubSpot\Client\Automation\Actions\Model\PublicActionFunction';
-        $request = $this->getByIdRequest($app_id, $definition_id, $function_id, $function_type, $contentType);
+        $request = $this->getByIdRequest($definition_id, $function_type, $function_id, $app_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1948,29 +1948,29 @@ class FunctionsApi
     /**
      * Create request for operation 'getById'
      *
-     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $definition_id The ID of the custom workflow action definition. (required)
-     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
      * @param  string $function_type The type of function, accepted values are: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS. (required)
+     * @param  string $function_id The ID of the specific function within the workflow action definition. (required)
+     * @param  int $app_id The ID of the application associated with the custom workflow action. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getByIdRequest($app_id, $definition_id, $function_id, $function_type, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdRequest($definition_id, $function_type, $function_id, $app_id, string $contentType = self::contentTypes['getById'][0])
     {
-
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling getById'
-            );
-        }
 
         // verify the required parameter 'definition_id' is set
         if ($definition_id === null || (is_array($definition_id) && count($definition_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $definition_id when calling getById'
+            );
+        }
+
+        // verify the required parameter 'function_type' is set
+        if ($function_type === null || (is_array($function_type) && count($function_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $function_type when calling getById'
             );
         }
 
@@ -1981,10 +1981,10 @@ class FunctionsApi
             );
         }
 
-        // verify the required parameter 'function_type' is set
-        if ($function_type === null || (is_array($function_type) && count($function_type) === 0)) {
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $function_type when calling getById'
+                'Missing the required parameter $app_id when calling getById'
             );
         }
 
@@ -1999,18 +1999,18 @@ class FunctionsApi
 
 
         // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
         if ($definition_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'definitionId' . '}',
                 ObjectSerializer::toPathValue($definition_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($function_type !== null) {
+            $resourcePath = str_replace(
+                '{' . 'functionType' . '}',
+                ObjectSerializer::toPathValue($function_type),
                 $resourcePath
             );
         }
@@ -2023,10 +2023,10 @@ class FunctionsApi
             );
         }
         // path params
-        if ($function_type !== null) {
+        if ($app_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'functionType' . '}',
-                ObjectSerializer::toPathValue($function_type),
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
                 $resourcePath
             );
         }
@@ -2095,17 +2095,17 @@ class FunctionsApi
      *
      * Retrieve functions for a given definition
      *
-     * @param  int $app_id The unique identifier for the app. (required)
      * @param  string $definition_id The unique identifier for the action definition. (required)
+     * @param  int $app_id The unique identifier for the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Automation\Actions\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Automation\Actions\Model\CollectionResponsePublicActionFunctionIdentifierNoPaging|\HubSpot\Client\Automation\Actions\Model\Error
      */
-    public function getPage($app_id, $definition_id, string $contentType = self::contentTypes['getPage'][0])
+    public function getPage($definition_id, $app_id, string $contentType = self::contentTypes['getPage'][0])
     {
-        list($response) = $this->getPageWithHttpInfo($app_id, $definition_id, $contentType);
+        list($response) = $this->getPageWithHttpInfo($definition_id, $app_id, $contentType);
         return $response;
     }
 
@@ -2114,17 +2114,17 @@ class FunctionsApi
      *
      * Retrieve functions for a given definition
      *
-     * @param  int $app_id The unique identifier for the app. (required)
      * @param  string $definition_id The unique identifier for the action definition. (required)
+     * @param  int $app_id The unique identifier for the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Automation\Actions\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Automation\Actions\Model\CollectionResponsePublicActionFunctionIdentifierNoPaging|\HubSpot\Client\Automation\Actions\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPageWithHttpInfo($app_id, $definition_id, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageWithHttpInfo($definition_id, $app_id, string $contentType = self::contentTypes['getPage'][0])
     {
-        $request = $this->getPageRequest($app_id, $definition_id, $contentType);
+        $request = $this->getPageRequest($definition_id, $app_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2214,16 +2214,16 @@ class FunctionsApi
      *
      * Retrieve functions for a given definition
      *
-     * @param  int $app_id The unique identifier for the app. (required)
      * @param  string $definition_id The unique identifier for the action definition. (required)
+     * @param  int $app_id The unique identifier for the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsync($app_id, $definition_id, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageAsync($definition_id, $app_id, string $contentType = self::contentTypes['getPage'][0])
     {
-        return $this->getPageAsyncWithHttpInfo($app_id, $definition_id, $contentType)
+        return $this->getPageAsyncWithHttpInfo($definition_id, $app_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2236,17 +2236,17 @@ class FunctionsApi
      *
      * Retrieve functions for a given definition
      *
-     * @param  int $app_id The unique identifier for the app. (required)
      * @param  string $definition_id The unique identifier for the action definition. (required)
+     * @param  int $app_id The unique identifier for the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPageAsyncWithHttpInfo($app_id, $definition_id, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageAsyncWithHttpInfo($definition_id, $app_id, string $contentType = self::contentTypes['getPage'][0])
     {
         $returnType = '\HubSpot\Client\Automation\Actions\Model\CollectionResponsePublicActionFunctionIdentifierNoPaging';
-        $request = $this->getPageRequest($app_id, $definition_id, $contentType);
+        $request = $this->getPageRequest($definition_id, $app_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2287,27 +2287,27 @@ class FunctionsApi
     /**
      * Create request for operation 'getPage'
      *
-     * @param  int $app_id The unique identifier for the app. (required)
      * @param  string $definition_id The unique identifier for the action definition. (required)
+     * @param  int $app_id The unique identifier for the app. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPageRequest($app_id, $definition_id, string $contentType = self::contentTypes['getPage'][0])
+    public function getPageRequest($definition_id, $app_id, string $contentType = self::contentTypes['getPage'][0])
     {
-
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling getPage'
-            );
-        }
 
         // verify the required parameter 'definition_id' is set
         if ($definition_id === null || (is_array($definition_id) && count($definition_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $definition_id when calling getPage'
+            );
+        }
+
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling getPage'
             );
         }
 
@@ -2322,18 +2322,18 @@ class FunctionsApi
 
 
         // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
         if ($definition_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'definitionId' . '}',
                 ObjectSerializer::toPathValue($definition_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
                 $resourcePath
             );
         }

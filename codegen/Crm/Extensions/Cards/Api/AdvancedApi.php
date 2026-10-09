@@ -73,7 +73,7 @@ class AdvancedApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'crmV3ExtensionsCardsDevAppIdViewsMigrate' => [
+        'migrateViews' => [
             'application/json',
         ],
     ];
@@ -125,40 +125,40 @@ class AdvancedApi
     }
 
     /**
-     * Operation crmV3ExtensionsCardsDevAppIdViewsMigrate
+     * Operation migrateViews
      *
      * Migrate Card In Views
      *
      * @param  int $app_id The id of the app containing the Legacy CRM Card (required)
      * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardMigrateViewsRequest $card_migrate_views_request card_migrate_views_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ExtensionsCardsDevAppIdViewsMigrate'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['migrateViews'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Cards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Extensions\Cards\Model\CardMigrateViewsResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error
      */
-    public function crmV3ExtensionsCardsDevAppIdViewsMigrate($app_id, $card_migrate_views_request, string $contentType = self::contentTypes['crmV3ExtensionsCardsDevAppIdViewsMigrate'][0])
+    public function migrateViews($app_id, $card_migrate_views_request, string $contentType = self::contentTypes['migrateViews'][0])
     {
-        list($response) = $this->crmV3ExtensionsCardsDevAppIdViewsMigrateWithHttpInfo($app_id, $card_migrate_views_request, $contentType);
+        list($response) = $this->migrateViewsWithHttpInfo($app_id, $card_migrate_views_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation crmV3ExtensionsCardsDevAppIdViewsMigrateWithHttpInfo
+     * Operation migrateViewsWithHttpInfo
      *
      * Migrate Card In Views
      *
      * @param  int $app_id The id of the app containing the Legacy CRM Card (required)
      * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardMigrateViewsRequest $card_migrate_views_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ExtensionsCardsDevAppIdViewsMigrate'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['migrateViews'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Cards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Extensions\Cards\Model\CardMigrateViewsResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function crmV3ExtensionsCardsDevAppIdViewsMigrateWithHttpInfo($app_id, $card_migrate_views_request, string $contentType = self::contentTypes['crmV3ExtensionsCardsDevAppIdViewsMigrate'][0])
+    public function migrateViewsWithHttpInfo($app_id, $card_migrate_views_request, string $contentType = self::contentTypes['migrateViews'][0])
     {
-        $request = $this->crmV3ExtensionsCardsDevAppIdViewsMigrateRequest($app_id, $card_migrate_views_request, $contentType);
+        $request = $this->migrateViewsRequest($app_id, $card_migrate_views_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -244,20 +244,20 @@ class AdvancedApi
     }
 
     /**
-     * Operation crmV3ExtensionsCardsDevAppIdViewsMigrateAsync
+     * Operation migrateViewsAsync
      *
      * Migrate Card In Views
      *
      * @param  int $app_id The id of the app containing the Legacy CRM Card (required)
      * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardMigrateViewsRequest $card_migrate_views_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ExtensionsCardsDevAppIdViewsMigrate'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['migrateViews'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ExtensionsCardsDevAppIdViewsMigrateAsync($app_id, $card_migrate_views_request, string $contentType = self::contentTypes['crmV3ExtensionsCardsDevAppIdViewsMigrate'][0])
+    public function migrateViewsAsync($app_id, $card_migrate_views_request, string $contentType = self::contentTypes['migrateViews'][0])
     {
-        return $this->crmV3ExtensionsCardsDevAppIdViewsMigrateAsyncWithHttpInfo($app_id, $card_migrate_views_request, $contentType)
+        return $this->migrateViewsAsyncWithHttpInfo($app_id, $card_migrate_views_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -266,21 +266,21 @@ class AdvancedApi
     }
 
     /**
-     * Operation crmV3ExtensionsCardsDevAppIdViewsMigrateAsyncWithHttpInfo
+     * Operation migrateViewsAsyncWithHttpInfo
      *
      * Migrate Card In Views
      *
      * @param  int $app_id The id of the app containing the Legacy CRM Card (required)
      * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardMigrateViewsRequest $card_migrate_views_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ExtensionsCardsDevAppIdViewsMigrate'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['migrateViews'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ExtensionsCardsDevAppIdViewsMigrateAsyncWithHttpInfo($app_id, $card_migrate_views_request, string $contentType = self::contentTypes['crmV3ExtensionsCardsDevAppIdViewsMigrate'][0])
+    public function migrateViewsAsyncWithHttpInfo($app_id, $card_migrate_views_request, string $contentType = self::contentTypes['migrateViews'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Extensions\Cards\Model\CardMigrateViewsResponse';
-        $request = $this->crmV3ExtensionsCardsDevAppIdViewsMigrateRequest($app_id, $card_migrate_views_request, $contentType);
+        $request = $this->migrateViewsRequest($app_id, $card_migrate_views_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -319,29 +319,29 @@ class AdvancedApi
     }
 
     /**
-     * Create request for operation 'crmV3ExtensionsCardsDevAppIdViewsMigrate'
+     * Create request for operation 'migrateViews'
      *
      * @param  int $app_id The id of the app containing the Legacy CRM Card (required)
      * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardMigrateViewsRequest $card_migrate_views_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ExtensionsCardsDevAppIdViewsMigrate'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['migrateViews'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function crmV3ExtensionsCardsDevAppIdViewsMigrateRequest($app_id, $card_migrate_views_request, string $contentType = self::contentTypes['crmV3ExtensionsCardsDevAppIdViewsMigrate'][0])
+    public function migrateViewsRequest($app_id, $card_migrate_views_request, string $contentType = self::contentTypes['migrateViews'][0])
     {
 
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling crmV3ExtensionsCardsDevAppIdViewsMigrate'
+                'Missing the required parameter $app_id when calling migrateViews'
             );
         }
 
         // verify the required parameter 'card_migrate_views_request' is set
         if ($card_migrate_views_request === null || (is_array($card_migrate_views_request) && count($card_migrate_views_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $card_migrate_views_request when calling crmV3ExtensionsCardsDevAppIdViewsMigrate'
+                'Missing the required parameter $card_migrate_views_request when calling migrateViews'
             );
         }
 

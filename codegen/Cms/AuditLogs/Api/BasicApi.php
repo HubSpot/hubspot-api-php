@@ -73,7 +73,7 @@ class BasicApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'cmsAuditLogsV3' => [
+        'getPage' => [
             'application/json',
         ],
     ];
@@ -125,48 +125,48 @@ class BasicApi
     }
 
     /**
-     * Operation cmsAuditLogsV3
+     * Operation getPage
      *
+     * @param  string[]|null $user_id user_id (optional)
+     * @param  string[]|null $event_type event_type (optional)
+     * @param  string[]|null $object_type object_type (optional)
+     * @param  string[]|null $object_id object_id (optional)
      * @param  string|null $after after (optional)
      * @param  string|null $before before (optional)
-     * @param  string[]|null $event_type event_type (optional)
      * @param  int|null $limit limit (optional)
-     * @param  string[]|null $object_id object_id (optional)
-     * @param  string[]|null $object_type object_type (optional)
      * @param  string[]|null $sort sort (optional)
-     * @param  string[]|null $user_id user_id (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsAuditLogsV3'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\AuditLogs\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\AuditLogs\Model\CollectionResponsePublicAuditLog|\HubSpot\Client\Cms\AuditLogs\Model\Error
      */
-    public function cmsAuditLogsV3($after = null, $before = null, $event_type = null, $limit = null, $object_id = null, $object_type = null, $sort = null, $user_id = null, string $contentType = self::contentTypes['cmsAuditLogsV3'][0])
+    public function getPage($user_id = null, $event_type = null, $object_type = null, $object_id = null, $after = null, $before = null, $limit = null, $sort = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        list($response) = $this->cmsAuditLogsV3WithHttpInfo($after, $before, $event_type, $limit, $object_id, $object_type, $sort, $user_id, $contentType);
+        list($response) = $this->getPageWithHttpInfo($user_id, $event_type, $object_type, $object_id, $after, $before, $limit, $sort, $contentType);
         return $response;
     }
 
     /**
-     * Operation cmsAuditLogsV3WithHttpInfo
+     * Operation getPageWithHttpInfo
      *
+     * @param  string[]|null $user_id (optional)
+     * @param  string[]|null $event_type (optional)
+     * @param  string[]|null $object_type (optional)
+     * @param  string[]|null $object_id (optional)
      * @param  string|null $after (optional)
      * @param  string|null $before (optional)
-     * @param  string[]|null $event_type (optional)
      * @param  int|null $limit (optional)
-     * @param  string[]|null $object_id (optional)
-     * @param  string[]|null $object_type (optional)
      * @param  string[]|null $sort (optional)
-     * @param  string[]|null $user_id (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsAuditLogsV3'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\AuditLogs\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\AuditLogs\Model\CollectionResponsePublicAuditLog|\HubSpot\Client\Cms\AuditLogs\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function cmsAuditLogsV3WithHttpInfo($after = null, $before = null, $event_type = null, $limit = null, $object_id = null, $object_type = null, $sort = null, $user_id = null, string $contentType = self::contentTypes['cmsAuditLogsV3'][0])
+    public function getPageWithHttpInfo($user_id = null, $event_type = null, $object_type = null, $object_id = null, $after = null, $before = null, $limit = null, $sort = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        $request = $this->cmsAuditLogsV3Request($after, $before, $event_type, $limit, $object_id, $object_type, $sort, $user_id, $contentType);
+        $request = $this->getPageRequest($user_id, $event_type, $object_type, $object_id, $after, $before, $limit, $sort, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -252,24 +252,24 @@ class BasicApi
     }
 
     /**
-     * Operation cmsAuditLogsV3Async
+     * Operation getPageAsync
      *
+     * @param  string[]|null $user_id (optional)
+     * @param  string[]|null $event_type (optional)
+     * @param  string[]|null $object_type (optional)
+     * @param  string[]|null $object_id (optional)
      * @param  string|null $after (optional)
      * @param  string|null $before (optional)
-     * @param  string[]|null $event_type (optional)
      * @param  int|null $limit (optional)
-     * @param  string[]|null $object_id (optional)
-     * @param  string[]|null $object_type (optional)
      * @param  string[]|null $sort (optional)
-     * @param  string[]|null $user_id (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsAuditLogsV3'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cmsAuditLogsV3Async($after = null, $before = null, $event_type = null, $limit = null, $object_id = null, $object_type = null, $sort = null, $user_id = null, string $contentType = self::contentTypes['cmsAuditLogsV3'][0])
+    public function getPageAsync($user_id = null, $event_type = null, $object_type = null, $object_id = null, $after = null, $before = null, $limit = null, $sort = null, string $contentType = self::contentTypes['getPage'][0])
     {
-        return $this->cmsAuditLogsV3AsyncWithHttpInfo($after, $before, $event_type, $limit, $object_id, $object_type, $sort, $user_id, $contentType)
+        return $this->getPageAsyncWithHttpInfo($user_id, $event_type, $object_type, $object_id, $after, $before, $limit, $sort, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -278,25 +278,25 @@ class BasicApi
     }
 
     /**
-     * Operation cmsAuditLogsV3AsyncWithHttpInfo
+     * Operation getPageAsyncWithHttpInfo
      *
+     * @param  string[]|null $user_id (optional)
+     * @param  string[]|null $event_type (optional)
+     * @param  string[]|null $object_type (optional)
+     * @param  string[]|null $object_id (optional)
      * @param  string|null $after (optional)
      * @param  string|null $before (optional)
-     * @param  string[]|null $event_type (optional)
      * @param  int|null $limit (optional)
-     * @param  string[]|null $object_id (optional)
-     * @param  string[]|null $object_type (optional)
      * @param  string[]|null $sort (optional)
-     * @param  string[]|null $user_id (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsAuditLogsV3'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cmsAuditLogsV3AsyncWithHttpInfo($after = null, $before = null, $event_type = null, $limit = null, $object_id = null, $object_type = null, $sort = null, $user_id = null, string $contentType = self::contentTypes['cmsAuditLogsV3'][0])
+    public function getPageAsyncWithHttpInfo($user_id = null, $event_type = null, $object_type = null, $object_id = null, $after = null, $before = null, $limit = null, $sort = null, string $contentType = self::contentTypes['getPage'][0])
     {
         $returnType = '\HubSpot\Client\Cms\AuditLogs\Model\CollectionResponsePublicAuditLog';
-        $request = $this->cmsAuditLogsV3Request($after, $before, $event_type, $limit, $object_id, $object_type, $sort, $user_id, $contentType);
+        $request = $this->getPageRequest($user_id, $event_type, $object_type, $object_id, $after, $before, $limit, $sort, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -335,22 +335,22 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'cmsAuditLogsV3'
+     * Create request for operation 'getPage'
      *
+     * @param  string[]|null $user_id (optional)
+     * @param  string[]|null $event_type (optional)
+     * @param  string[]|null $object_type (optional)
+     * @param  string[]|null $object_id (optional)
      * @param  string|null $after (optional)
      * @param  string|null $before (optional)
-     * @param  string[]|null $event_type (optional)
      * @param  int|null $limit (optional)
-     * @param  string[]|null $object_id (optional)
-     * @param  string[]|null $object_type (optional)
      * @param  string[]|null $sort (optional)
-     * @param  string[]|null $user_id (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsAuditLogsV3'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function cmsAuditLogsV3Request($after = null, $before = null, $event_type = null, $limit = null, $object_id = null, $object_type = null, $sort = null, $user_id = null, string $contentType = self::contentTypes['cmsAuditLogsV3'][0])
+    public function getPageRequest($user_id = null, $event_type = null, $object_type = null, $object_id = null, $after = null, $before = null, $limit = null, $sort = null, string $contentType = self::contentTypes['getPage'][0])
     {
 
 
@@ -371,6 +371,42 @@ class BasicApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $user_id,
+            'userId', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $event_type,
+            'eventType', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $object_type,
+            'objectType', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $object_id,
+            'objectId', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $after,
             'after', // param base name
             'string', // openApiType
@@ -389,15 +425,6 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $event_type,
-            'eventType', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $limit,
             'limit', // param base name
             'integer', // openApiType
@@ -407,35 +434,8 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $object_id,
-            'objectId', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $object_type,
-            'objectType', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sort,
             'sort', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $user_id,
-            'userId', // param base name
             'array', // openApiType
             'form', // style
             true, // explode

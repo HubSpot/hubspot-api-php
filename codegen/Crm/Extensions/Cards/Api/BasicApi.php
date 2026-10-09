@@ -144,17 +144,17 @@ class BasicApi
      *
      * Delete a card
      *
-     * @param  int $app_id The id of the app containing the Legacy CRM Card (required)
      * @param  string $card_id The ID of the card to delete. (required)
+     * @param  int $app_id The id of the app containing the Legacy CRM Card (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Cards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($app_id, $card_id, string $contentType = self::contentTypes['archive'][0])
+    public function archive($card_id, $app_id, string $contentType = self::contentTypes['archive'][0])
     {
-        $this->archiveWithHttpInfo($app_id, $card_id, $contentType);
+        $this->archiveWithHttpInfo($card_id, $app_id, $contentType);
     }
 
     /**
@@ -162,17 +162,17 @@ class BasicApi
      *
      * Delete a card
      *
-     * @param  int $app_id The id of the app containing the Legacy CRM Card (required)
      * @param  string $card_id The ID of the card to delete. (required)
+     * @param  int $app_id The id of the app containing the Legacy CRM Card (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Cards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($app_id, $card_id, string $contentType = self::contentTypes['archive'][0])
+    public function archiveWithHttpInfo($card_id, $app_id, string $contentType = self::contentTypes['archive'][0])
     {
-        $request = $this->archiveRequest($app_id, $card_id, $contentType);
+        $request = $this->archiveRequest($card_id, $app_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -220,16 +220,16 @@ class BasicApi
      *
      * Delete a card
      *
-     * @param  int $app_id The id of the app containing the Legacy CRM Card (required)
      * @param  string $card_id The ID of the card to delete. (required)
+     * @param  int $app_id The id of the app containing the Legacy CRM Card (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($app_id, $card_id, string $contentType = self::contentTypes['archive'][0])
+    public function archiveAsync($card_id, $app_id, string $contentType = self::contentTypes['archive'][0])
     {
-        return $this->archiveAsyncWithHttpInfo($app_id, $card_id, $contentType)
+        return $this->archiveAsyncWithHttpInfo($card_id, $app_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -242,17 +242,17 @@ class BasicApi
      *
      * Delete a card
      *
-     * @param  int $app_id The id of the app containing the Legacy CRM Card (required)
      * @param  string $card_id The ID of the card to delete. (required)
+     * @param  int $app_id The id of the app containing the Legacy CRM Card (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($app_id, $card_id, string $contentType = self::contentTypes['archive'][0])
+    public function archiveAsyncWithHttpInfo($card_id, $app_id, string $contentType = self::contentTypes['archive'][0])
     {
         $returnType = '';
-        $request = $this->archiveRequest($app_id, $card_id, $contentType);
+        $request = $this->archiveRequest($card_id, $app_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -280,27 +280,27 @@ class BasicApi
     /**
      * Create request for operation 'archive'
      *
-     * @param  int $app_id The id of the app containing the Legacy CRM Card (required)
      * @param  string $card_id The ID of the card to delete. (required)
+     * @param  int $app_id The id of the app containing the Legacy CRM Card (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveRequest($app_id, $card_id, string $contentType = self::contentTypes['archive'][0])
+    public function archiveRequest($card_id, $app_id, string $contentType = self::contentTypes['archive'][0])
     {
-
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling archive'
-            );
-        }
 
         // verify the required parameter 'card_id' is set
         if ($card_id === null || (is_array($card_id) && count($card_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $card_id when calling archive'
+            );
+        }
+
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling archive'
             );
         }
 
@@ -315,18 +315,18 @@ class BasicApi
 
 
         // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
         if ($card_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'cardId' . '}',
                 ObjectSerializer::toPathValue($card_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
                 $resourcePath
             );
         }
@@ -988,17 +988,17 @@ class BasicApi
      *
      * Get a card.
      *
-     * @param  int $app_id The id of the app containing the Legacy CRM Card. (required)
      * @param  string $card_id The id of the Legacy CRM Card (required)
+     * @param  int $app_id The id of the app containing the Legacy CRM Card. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Cards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error
      */
-    public function getById($app_id, $card_id, string $contentType = self::contentTypes['getById'][0])
+    public function getById($card_id, $app_id, string $contentType = self::contentTypes['getById'][0])
     {
-        list($response) = $this->getByIdWithHttpInfo($app_id, $card_id, $contentType);
+        list($response) = $this->getByIdWithHttpInfo($card_id, $app_id, $contentType);
         return $response;
     }
 
@@ -1007,17 +1007,17 @@ class BasicApi
      *
      * Get a card.
      *
-     * @param  int $app_id The id of the app containing the Legacy CRM Card. (required)
      * @param  string $card_id The id of the Legacy CRM Card (required)
+     * @param  int $app_id The id of the app containing the Legacy CRM Card. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Cards\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getByIdWithHttpInfo($app_id, $card_id, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdWithHttpInfo($card_id, $app_id, string $contentType = self::contentTypes['getById'][0])
     {
-        $request = $this->getByIdRequest($app_id, $card_id, $contentType);
+        $request = $this->getByIdRequest($card_id, $app_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1107,16 +1107,16 @@ class BasicApi
      *
      * Get a card.
      *
-     * @param  int $app_id The id of the app containing the Legacy CRM Card. (required)
      * @param  string $card_id The id of the Legacy CRM Card (required)
+     * @param  int $app_id The id of the app containing the Legacy CRM Card. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsync($app_id, $card_id, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdAsync($card_id, $app_id, string $contentType = self::contentTypes['getById'][0])
     {
-        return $this->getByIdAsyncWithHttpInfo($app_id, $card_id, $contentType)
+        return $this->getByIdAsyncWithHttpInfo($card_id, $app_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1129,17 +1129,17 @@ class BasicApi
      *
      * Get a card.
      *
-     * @param  int $app_id The id of the app containing the Legacy CRM Card. (required)
      * @param  string $card_id The id of the Legacy CRM Card (required)
+     * @param  int $app_id The id of the app containing the Legacy CRM Card. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsyncWithHttpInfo($app_id, $card_id, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdAsyncWithHttpInfo($card_id, $app_id, string $contentType = self::contentTypes['getById'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse';
-        $request = $this->getByIdRequest($app_id, $card_id, $contentType);
+        $request = $this->getByIdRequest($card_id, $app_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1180,27 +1180,27 @@ class BasicApi
     /**
      * Create request for operation 'getById'
      *
-     * @param  int $app_id The id of the app containing the Legacy CRM Card. (required)
      * @param  string $card_id The id of the Legacy CRM Card (required)
+     * @param  int $app_id The id of the app containing the Legacy CRM Card. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getByIdRequest($app_id, $card_id, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdRequest($card_id, $app_id, string $contentType = self::contentTypes['getById'][0])
     {
-
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling getById'
-            );
-        }
 
         // verify the required parameter 'card_id' is set
         if ($card_id === null || (is_array($card_id) && count($card_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $card_id when calling getById'
+            );
+        }
+
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling getById'
             );
         }
 
@@ -1215,18 +1215,18 @@ class BasicApi
 
 
         // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
         if ($card_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'cardId' . '}',
                 ObjectSerializer::toPathValue($card_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
                 $resourcePath
             );
         }
@@ -1557,8 +1557,8 @@ class BasicApi
      *
      * Update a card
      *
-     * @param  int $app_id The id of the app containing the Legacy CRM Card. (required)
      * @param  string $card_id The id of the app containing the Legacy CRM Card (required)
+     * @param  int $app_id The id of the app containing the Legacy CRM Card. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest $card_patch_request card_patch_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -1566,9 +1566,9 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error
      */
-    public function update($app_id, $card_id, $card_patch_request, string $contentType = self::contentTypes['update'][0])
+    public function update($card_id, $app_id, $card_patch_request, string $contentType = self::contentTypes['update'][0])
     {
-        list($response) = $this->updateWithHttpInfo($app_id, $card_id, $card_patch_request, $contentType);
+        list($response) = $this->updateWithHttpInfo($card_id, $app_id, $card_patch_request, $contentType);
         return $response;
     }
 
@@ -1577,8 +1577,8 @@ class BasicApi
      *
      * Update a card
      *
-     * @param  int $app_id The id of the app containing the Legacy CRM Card. (required)
      * @param  string $card_id The id of the app containing the Legacy CRM Card (required)
+     * @param  int $app_id The id of the app containing the Legacy CRM Card. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest $card_patch_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
@@ -1586,9 +1586,9 @@ class BasicApi
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse|\HubSpot\Client\Crm\Extensions\Cards\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWithHttpInfo($app_id, $card_id, $card_patch_request, string $contentType = self::contentTypes['update'][0])
+    public function updateWithHttpInfo($card_id, $app_id, $card_patch_request, string $contentType = self::contentTypes['update'][0])
     {
-        $request = $this->updateRequest($app_id, $card_id, $card_patch_request, $contentType);
+        $request = $this->updateRequest($card_id, $app_id, $card_patch_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1678,17 +1678,17 @@ class BasicApi
      *
      * Update a card
      *
-     * @param  int $app_id The id of the app containing the Legacy CRM Card. (required)
      * @param  string $card_id The id of the app containing the Legacy CRM Card (required)
+     * @param  int $app_id The id of the app containing the Legacy CRM Card. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest $card_patch_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsync($app_id, $card_id, $card_patch_request, string $contentType = self::contentTypes['update'][0])
+    public function updateAsync($card_id, $app_id, $card_patch_request, string $contentType = self::contentTypes['update'][0])
     {
-        return $this->updateAsyncWithHttpInfo($app_id, $card_id, $card_patch_request, $contentType)
+        return $this->updateAsyncWithHttpInfo($card_id, $app_id, $card_patch_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1701,18 +1701,18 @@ class BasicApi
      *
      * Update a card
      *
-     * @param  int $app_id The id of the app containing the Legacy CRM Card. (required)
      * @param  string $card_id The id of the app containing the Legacy CRM Card (required)
+     * @param  int $app_id The id of the app containing the Legacy CRM Card. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest $card_patch_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsyncWithHttpInfo($app_id, $card_id, $card_patch_request, string $contentType = self::contentTypes['update'][0])
+    public function updateAsyncWithHttpInfo($card_id, $app_id, $card_patch_request, string $contentType = self::contentTypes['update'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Extensions\Cards\Model\PublicCardResponse';
-        $request = $this->updateRequest($app_id, $card_id, $card_patch_request, $contentType);
+        $request = $this->updateRequest($card_id, $app_id, $card_patch_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1753,28 +1753,28 @@ class BasicApi
     /**
      * Create request for operation 'update'
      *
-     * @param  int $app_id The id of the app containing the Legacy CRM Card. (required)
      * @param  string $card_id The id of the app containing the Legacy CRM Card (required)
+     * @param  int $app_id The id of the app containing the Legacy CRM Card. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Cards\Model\CardPatchRequest $card_patch_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateRequest($app_id, $card_id, $card_patch_request, string $contentType = self::contentTypes['update'][0])
+    public function updateRequest($card_id, $app_id, $card_patch_request, string $contentType = self::contentTypes['update'][0])
     {
-
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling update'
-            );
-        }
 
         // verify the required parameter 'card_id' is set
         if ($card_id === null || (is_array($card_id) && count($card_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $card_id when calling update'
+            );
+        }
+
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling update'
             );
         }
 
@@ -1796,18 +1796,18 @@ class BasicApi
 
 
         // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-        // path params
         if ($card_id !== null) {
             $resourcePath = str_replace(
                 '{' . 'cardId' . '}',
                 ObjectSerializer::toPathValue($card_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
                 $resourcePath
             );
         }

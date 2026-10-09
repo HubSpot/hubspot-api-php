@@ -389,17 +389,17 @@ class BasicApi
      *
      * Delete an existing association for a specified object type.
      *
-     * @param  string $association_identifier Unique ID of the association to remove. (required)
      * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
+     * @param  string $association_identifier Unique ID of the association to remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveAssociation'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Schemas\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archiveAssociation($association_identifier, $object_type, string $contentType = self::contentTypes['archiveAssociation'][0])
+    public function archiveAssociation($object_type, $association_identifier, string $contentType = self::contentTypes['archiveAssociation'][0])
     {
-        $this->archiveAssociationWithHttpInfo($association_identifier, $object_type, $contentType);
+        $this->archiveAssociationWithHttpInfo($object_type, $association_identifier, $contentType);
     }
 
     /**
@@ -407,17 +407,17 @@ class BasicApi
      *
      * Delete an existing association for a specified object type.
      *
-     * @param  string $association_identifier Unique ID of the association to remove. (required)
      * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
+     * @param  string $association_identifier Unique ID of the association to remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveAssociation'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Schemas\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveAssociationWithHttpInfo($association_identifier, $object_type, string $contentType = self::contentTypes['archiveAssociation'][0])
+    public function archiveAssociationWithHttpInfo($object_type, $association_identifier, string $contentType = self::contentTypes['archiveAssociation'][0])
     {
-        $request = $this->archiveAssociationRequest($association_identifier, $object_type, $contentType);
+        $request = $this->archiveAssociationRequest($object_type, $association_identifier, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -465,16 +465,16 @@ class BasicApi
      *
      * Delete an existing association for a specified object type.
      *
-     * @param  string $association_identifier Unique ID of the association to remove. (required)
      * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
+     * @param  string $association_identifier Unique ID of the association to remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveAssociation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAssociationAsync($association_identifier, $object_type, string $contentType = self::contentTypes['archiveAssociation'][0])
+    public function archiveAssociationAsync($object_type, $association_identifier, string $contentType = self::contentTypes['archiveAssociation'][0])
     {
-        return $this->archiveAssociationAsyncWithHttpInfo($association_identifier, $object_type, $contentType)
+        return $this->archiveAssociationAsyncWithHttpInfo($object_type, $association_identifier, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -487,17 +487,17 @@ class BasicApi
      *
      * Delete an existing association for a specified object type.
      *
-     * @param  string $association_identifier Unique ID of the association to remove. (required)
      * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
+     * @param  string $association_identifier Unique ID of the association to remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveAssociation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAssociationAsyncWithHttpInfo($association_identifier, $object_type, string $contentType = self::contentTypes['archiveAssociation'][0])
+    public function archiveAssociationAsyncWithHttpInfo($object_type, $association_identifier, string $contentType = self::contentTypes['archiveAssociation'][0])
     {
         $returnType = '';
-        $request = $this->archiveAssociationRequest($association_identifier, $object_type, $contentType);
+        $request = $this->archiveAssociationRequest($object_type, $association_identifier, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -525,27 +525,27 @@ class BasicApi
     /**
      * Create request for operation 'archiveAssociation'
      *
-     * @param  string $association_identifier Unique ID of the association to remove. (required)
      * @param  string $object_type Fully qualified name or object type ID of your schema. (required)
+     * @param  string $association_identifier Unique ID of the association to remove. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveAssociation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveAssociationRequest($association_identifier, $object_type, string $contentType = self::contentTypes['archiveAssociation'][0])
+    public function archiveAssociationRequest($object_type, $association_identifier, string $contentType = self::contentTypes['archiveAssociation'][0])
     {
-
-        // verify the required parameter 'association_identifier' is set
-        if ($association_identifier === null || (is_array($association_identifier) && count($association_identifier) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $association_identifier when calling archiveAssociation'
-            );
-        }
 
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $object_type when calling archiveAssociation'
+            );
+        }
+
+        // verify the required parameter 'association_identifier' is set
+        if ($association_identifier === null || (is_array($association_identifier) && count($association_identifier) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $association_identifier when calling archiveAssociation'
             );
         }
 
@@ -560,18 +560,18 @@ class BasicApi
 
 
         // path params
-        if ($association_identifier !== null) {
-            $resourcePath = str_replace(
-                '{' . 'associationIdentifier' . '}',
-                ObjectSerializer::toPathValue($association_identifier),
-                $resourcePath
-            );
-        }
-        // path params
         if ($object_type !== null) {
             $resourcePath = str_replace(
                 '{' . 'objectType' . '}',
                 ObjectSerializer::toPathValue($object_type),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($association_identifier !== null) {
+            $resourcePath = str_replace(
+                '{' . 'associationIdentifier' . '}',
+                ObjectSerializer::toPathValue($association_identifier),
                 $resourcePath
             );
         }

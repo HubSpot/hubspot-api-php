@@ -73,7 +73,7 @@ class BasicApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'filesV3FilesFileIdDownload' => [
+        'download' => [
             'application/json',
         ],
     ];
@@ -125,34 +125,34 @@ class BasicApi
     }
 
     /**
-     * Operation filesV3FilesFileIdDownload
+     * Operation download
      *
      * @param  string $file_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['filesV3FilesFileIdDownload'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['download'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Files\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Files\Model\Error
      */
-    public function filesV3FilesFileIdDownload($file_id, string $contentType = self::contentTypes['filesV3FilesFileIdDownload'][0])
+    public function download($file_id, string $contentType = self::contentTypes['download'][0])
     {
-        list($response) = $this->filesV3FilesFileIdDownloadWithHttpInfo($file_id, $contentType);
+        list($response) = $this->downloadWithHttpInfo($file_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation filesV3FilesFileIdDownloadWithHttpInfo
+     * Operation downloadWithHttpInfo
      *
      * @param  string $file_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['filesV3FilesFileIdDownload'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['download'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Files\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function filesV3FilesFileIdDownloadWithHttpInfo($file_id, string $contentType = self::contentTypes['filesV3FilesFileIdDownload'][0])
+    public function downloadWithHttpInfo($file_id, string $contentType = self::contentTypes['download'][0])
     {
-        $request = $this->filesV3FilesFileIdDownloadRequest($file_id, $contentType);
+        $request = $this->downloadRequest($file_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -224,17 +224,17 @@ class BasicApi
     }
 
     /**
-     * Operation filesV3FilesFileIdDownloadAsync
+     * Operation downloadAsync
      *
      * @param  string $file_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['filesV3FilesFileIdDownload'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['download'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function filesV3FilesFileIdDownloadAsync($file_id, string $contentType = self::contentTypes['filesV3FilesFileIdDownload'][0])
+    public function downloadAsync($file_id, string $contentType = self::contentTypes['download'][0])
     {
-        return $this->filesV3FilesFileIdDownloadAsyncWithHttpInfo($file_id, $contentType)
+        return $this->downloadAsyncWithHttpInfo($file_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -243,18 +243,18 @@ class BasicApi
     }
 
     /**
-     * Operation filesV3FilesFileIdDownloadAsyncWithHttpInfo
+     * Operation downloadAsyncWithHttpInfo
      *
      * @param  string $file_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['filesV3FilesFileIdDownload'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['download'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function filesV3FilesFileIdDownloadAsyncWithHttpInfo($file_id, string $contentType = self::contentTypes['filesV3FilesFileIdDownload'][0])
+    public function downloadAsyncWithHttpInfo($file_id, string $contentType = self::contentTypes['download'][0])
     {
         $returnType = '\HubSpot\Client\Files\Model\Error';
-        $request = $this->filesV3FilesFileIdDownloadRequest($file_id, $contentType);
+        $request = $this->downloadRequest($file_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -293,25 +293,25 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'filesV3FilesFileIdDownload'
+     * Create request for operation 'download'
      *
      * @param  string $file_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['filesV3FilesFileIdDownload'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['download'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function filesV3FilesFileIdDownloadRequest($file_id, string $contentType = self::contentTypes['filesV3FilesFileIdDownload'][0])
+    public function downloadRequest($file_id, string $contentType = self::contentTypes['download'][0])
     {
 
         // verify the required parameter 'file_id' is set
         if ($file_id === null || (is_array($file_id) && count($file_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $file_id when calling filesV3FilesFileIdDownload'
+                'Missing the required parameter $file_id when calling download'
             );
         }
         if (!preg_match("/\\d+/", $file_id)) {
-            throw new \InvalidArgumentException("invalid value for \"file_id\" when calling BasicApi.filesV3FilesFileIdDownload, must conform to the pattern /\\d+/.");
+            throw new \InvalidArgumentException("invalid value for \"file_id\" when calling BasicApi.download, must conform to the pattern /\\d+/.");
         }
         
 

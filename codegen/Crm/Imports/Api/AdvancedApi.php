@@ -73,11 +73,11 @@ class AdvancedApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'crmV3Imports' => [
-            'multipart/form-data',
-        ],
-        'crmV3ImportsImportIdCancel' => [
+        'cancel' => [
             'application/json',
+        ],
+        'create' => [
+            'multipart/form-data',
         ],
     ];
 
@@ -128,319 +128,38 @@ class AdvancedApi
     }
 
     /**
-     * Operation crmV3Imports
-     *
-     * @param  \SplFileObject|null $files files (optional)
-     * @param  string|null $import_request import_request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3Imports'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Imports\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Imports\Model\PublicImportResponse|\HubSpot\Client\Crm\Imports\Model\Error
-     */
-    public function crmV3Imports($files = null, $import_request = null, string $contentType = self::contentTypes['crmV3Imports'][0])
-    {
-        list($response) = $this->crmV3ImportsWithHttpInfo($files, $import_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation crmV3ImportsWithHttpInfo
-     *
-     * @param  \SplFileObject|null $files (optional)
-     * @param  string|null $import_request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3Imports'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Imports\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Imports\Model\PublicImportResponse|\HubSpot\Client\Crm\Imports\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function crmV3ImportsWithHttpInfo($files = null, $import_request = null, string $contentType = self::contentTypes['crmV3Imports'][0])
-    {
-        $request = $this->crmV3ImportsRequest($files, $import_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Imports\Model\PublicImportResponse',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Imports\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Imports\Model\PublicImportResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Imports\Model\PublicImportResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Imports\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation crmV3ImportsAsync
-     *
-     * @param  \SplFileObject|null $files (optional)
-     * @param  string|null $import_request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3Imports'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ImportsAsync($files = null, $import_request = null, string $contentType = self::contentTypes['crmV3Imports'][0])
-    {
-        return $this->crmV3ImportsAsyncWithHttpInfo($files, $import_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation crmV3ImportsAsyncWithHttpInfo
-     *
-     * @param  \SplFileObject|null $files (optional)
-     * @param  string|null $import_request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3Imports'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ImportsAsyncWithHttpInfo($files = null, $import_request = null, string $contentType = self::contentTypes['crmV3Imports'][0])
-    {
-        $returnType = '\HubSpot\Client\Crm\Imports\Model\PublicImportResponse';
-        $request = $this->crmV3ImportsRequest($files, $import_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'crmV3Imports'
-     *
-     * @param  \SplFileObject|null $files (optional)
-     * @param  string|null $import_request (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3Imports'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function crmV3ImportsRequest($files = null, $import_request = null, string $contentType = self::contentTypes['crmV3Imports'][0])
-    {
-
-
-
-
-        $resourcePath = '/crm/v3/imports';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-        // form params
-        $formDataProcessor = new FormDataProcessor();
-
-        $formData = $formDataProcessor->prepare([
-            'files' => $files,
-            'import_request' => $import_request,
-        ]);
-
-        $formParams = $formDataProcessor->flatten($formData);
-        $multipart = $formDataProcessor->has_file;
-
-        $multipart = true;
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation crmV3ImportsImportIdCancel
+     * Operation cancel
      *
      * Cancel an active import
      *
      * @param  int $import_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ImportsImportIdCancel'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancel'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Imports\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Imports\Model\ActionResponse|\HubSpot\Client\Crm\Imports\Model\Error
      */
-    public function crmV3ImportsImportIdCancel($import_id, string $contentType = self::contentTypes['crmV3ImportsImportIdCancel'][0])
+    public function cancel($import_id, string $contentType = self::contentTypes['cancel'][0])
     {
-        list($response) = $this->crmV3ImportsImportIdCancelWithHttpInfo($import_id, $contentType);
+        list($response) = $this->cancelWithHttpInfo($import_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation crmV3ImportsImportIdCancelWithHttpInfo
+     * Operation cancelWithHttpInfo
      *
      * Cancel an active import
      *
      * @param  int $import_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ImportsImportIdCancel'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancel'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Imports\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Imports\Model\ActionResponse|\HubSpot\Client\Crm\Imports\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function crmV3ImportsImportIdCancelWithHttpInfo($import_id, string $contentType = self::contentTypes['crmV3ImportsImportIdCancel'][0])
+    public function cancelWithHttpInfo($import_id, string $contentType = self::contentTypes['cancel'][0])
     {
-        $request = $this->crmV3ImportsImportIdCancelRequest($import_id, $contentType);
+        $request = $this->cancelRequest($import_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -526,19 +245,19 @@ class AdvancedApi
     }
 
     /**
-     * Operation crmV3ImportsImportIdCancelAsync
+     * Operation cancelAsync
      *
      * Cancel an active import
      *
      * @param  int $import_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ImportsImportIdCancel'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancel'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ImportsImportIdCancelAsync($import_id, string $contentType = self::contentTypes['crmV3ImportsImportIdCancel'][0])
+    public function cancelAsync($import_id, string $contentType = self::contentTypes['cancel'][0])
     {
-        return $this->crmV3ImportsImportIdCancelAsyncWithHttpInfo($import_id, $contentType)
+        return $this->cancelAsyncWithHttpInfo($import_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -547,20 +266,20 @@ class AdvancedApi
     }
 
     /**
-     * Operation crmV3ImportsImportIdCancelAsyncWithHttpInfo
+     * Operation cancelAsyncWithHttpInfo
      *
      * Cancel an active import
      *
      * @param  int $import_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ImportsImportIdCancel'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancel'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ImportsImportIdCancelAsyncWithHttpInfo($import_id, string $contentType = self::contentTypes['crmV3ImportsImportIdCancel'][0])
+    public function cancelAsyncWithHttpInfo($import_id, string $contentType = self::contentTypes['cancel'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Imports\Model\ActionResponse';
-        $request = $this->crmV3ImportsImportIdCancelRequest($import_id, $contentType);
+        $request = $this->cancelRequest($import_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -599,21 +318,21 @@ class AdvancedApi
     }
 
     /**
-     * Create request for operation 'crmV3ImportsImportIdCancel'
+     * Create request for operation 'cancel'
      *
      * @param  int $import_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ImportsImportIdCancel'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cancel'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function crmV3ImportsImportIdCancelRequest($import_id, string $contentType = self::contentTypes['crmV3ImportsImportIdCancel'][0])
+    public function cancelRequest($import_id, string $contentType = self::contentTypes['cancel'][0])
     {
 
         // verify the required parameter 'import_id' is set
         if ($import_id === null || (is_array($import_id) && count($import_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $import_id when calling crmV3ImportsImportIdCancel'
+                'Missing the required parameter $import_id when calling cancel'
             );
         }
 
@@ -637,6 +356,287 @@ class AdvancedApi
         }
 
 
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation create
+     *
+     * @param  \SplFileObject|null $files files (optional)
+     * @param  string|null $import_request import_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Imports\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Imports\Model\PublicImportResponse|\HubSpot\Client\Crm\Imports\Model\Error
+     */
+    public function create($files = null, $import_request = null, string $contentType = self::contentTypes['create'][0])
+    {
+        list($response) = $this->createWithHttpInfo($files, $import_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createWithHttpInfo
+     *
+     * @param  \SplFileObject|null $files (optional)
+     * @param  string|null $import_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Imports\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Imports\Model\PublicImportResponse|\HubSpot\Client\Crm\Imports\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createWithHttpInfo($files = null, $import_request = null, string $contentType = self::contentTypes['create'][0])
+    {
+        $request = $this->createRequest($files, $import_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Imports\Model\PublicImportResponse',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Imports\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Crm\Imports\Model\PublicImportResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Imports\Model\PublicImportResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Imports\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createAsync
+     *
+     * @param  \SplFileObject|null $files (optional)
+     * @param  string|null $import_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAsync($files = null, $import_request = null, string $contentType = self::contentTypes['create'][0])
+    {
+        return $this->createAsyncWithHttpInfo($files, $import_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createAsyncWithHttpInfo
+     *
+     * @param  \SplFileObject|null $files (optional)
+     * @param  string|null $import_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createAsyncWithHttpInfo($files = null, $import_request = null, string $contentType = self::contentTypes['create'][0])
+    {
+        $returnType = '\HubSpot\Client\Crm\Imports\Model\PublicImportResponse';
+        $request = $this->createRequest($files, $import_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'create'
+     *
+     * @param  \SplFileObject|null $files (optional)
+     * @param  string|null $import_request (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createRequest($files = null, $import_request = null, string $contentType = self::contentTypes['create'][0])
+    {
+
+
+
+
+        $resourcePath = '/crm/v3/imports';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+        // form params
+        $formDataProcessor = new FormDataProcessor();
+
+        $formData = $formDataProcessor->prepare([
+            'files' => $files,
+            'importRequest' => $import_request,
+        ]);
+
+        $formParams = $formDataProcessor->flatten($formData);
+        $multipart = $formDataProcessor->has_file;
+
+        $multipart = true;
         $headers = $this->headerSelector->selectHeaders(
             ['application/json', '*/*', ],
             $contentType,

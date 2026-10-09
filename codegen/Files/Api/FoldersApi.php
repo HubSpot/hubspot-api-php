@@ -902,32 +902,32 @@ class FoldersApi
      *
      * Search folders
      *
+     * @param  string[]|null $properties Properties that should be included in the returned folders. (optional)
      * @param  string|null $after Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000.  Narrow your search down if you are reaching this limit. (optional)
      * @param  string|null $before Search folders updated before this timestamp. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $created_at Search folders by exact time of creation. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $created_at_gte Search folders by greater than or equal to time of creation. Can be used with createdAtLte to create a range. (optional)
-     * @param  \DateTime|null $created_at_lte Search folders by less than or equal to time of creation. Can be used with createdAtGte to create a range. (optional)
-     * @param  int|null $id_gte Search folders by greater than or equal to ID. Can be used with idLte to create a range. (optional)
-     * @param  int|null $id_lte Search folders by less than or equal to ID. Can be used with idGte to create a range. (optional)
-     * @param  int[]|null $ids Search folders by multiple IDs. Comma-separated list of folder IDs. (optional)
      * @param  int|null $limit Number of items to return. Default limit is 10, maximum limit is 100. (optional)
-     * @param  string|null $name Search for folders containing the specified name. (optional)
-     * @param  int[]|null $parent_folder_ids  (optional)
-     * @param  string|null $path Search folders by path. (optional)
-     * @param  string[]|null $properties Properties that should be included in the returned folders. (optional)
      * @param  string[]|null $sort Sort results by given property. For example -name sorts by name field descending, name sorts by name field ascending. (optional)
+     * @param  int[]|null $ids Search folders by multiple IDs. Comma-separated list of folder IDs. (optional)
+     * @param  int|null $id_lte Search folders by less than or equal to ID. Can be used with idGte to create a range. (optional)
+     * @param  int|null $id_gte Search folders by greater than or equal to ID. Can be used with idLte to create a range. (optional)
+     * @param  \DateTime|null $created_at Search folders by exact time of creation. Time must be epoch time in milliseconds. (optional)
+     * @param  \DateTime|null $created_at_lte Search folders by less than or equal to time of creation. Can be used with createdAtGte to create a range. (optional)
+     * @param  \DateTime|null $created_at_gte Search folders by greater than or equal to time of creation. Can be used with createdAtLte to create a range. (optional)
      * @param  \DateTime|null $updated_at Search folders by exact time of latest updated. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $updated_at_gte Search folders by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range. (optional)
      * @param  \DateTime|null $updated_at_lte Search folders by less than or equal to time of latest update. Can be used with updatedAtGte to create a range. (optional)
+     * @param  \DateTime|null $updated_at_gte Search folders by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range. (optional)
+     * @param  string|null $name Search for folders containing the specified name. (optional)
+     * @param  string|null $path Search folders by path. (optional)
+     * @param  int[]|null $parent_folder_ids  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Files\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Files\Model\CollectionResponseFolder|\HubSpot\Client\Files\Model\Error
      */
-    public function doSearch($after = null, $before = null, $created_at = null, $created_at_gte = null, $created_at_lte = null, $id_gte = null, $id_lte = null, $ids = null, $limit = null, $name = null, $parent_folder_ids = null, $path = null, $properties = null, $sort = null, $updated_at = null, $updated_at_gte = null, $updated_at_lte = null, string $contentType = self::contentTypes['doSearch'][0])
+    public function doSearch($properties = null, $after = null, $before = null, $limit = null, $sort = null, $ids = null, $id_lte = null, $id_gte = null, $created_at = null, $created_at_lte = null, $created_at_gte = null, $updated_at = null, $updated_at_lte = null, $updated_at_gte = null, $name = null, $path = null, $parent_folder_ids = null, string $contentType = self::contentTypes['doSearch'][0])
     {
-        list($response) = $this->doSearchWithHttpInfo($after, $before, $created_at, $created_at_gte, $created_at_lte, $id_gte, $id_lte, $ids, $limit, $name, $parent_folder_ids, $path, $properties, $sort, $updated_at, $updated_at_gte, $updated_at_lte, $contentType);
+        list($response) = $this->doSearchWithHttpInfo($properties, $after, $before, $limit, $sort, $ids, $id_lte, $id_gte, $created_at, $created_at_lte, $created_at_gte, $updated_at, $updated_at_lte, $updated_at_gte, $name, $path, $parent_folder_ids, $contentType);
         return $response;
     }
 
@@ -936,32 +936,32 @@ class FoldersApi
      *
      * Search folders
      *
+     * @param  string[]|null $properties Properties that should be included in the returned folders. (optional)
      * @param  string|null $after Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000.  Narrow your search down if you are reaching this limit. (optional)
      * @param  string|null $before Search folders updated before this timestamp. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $created_at Search folders by exact time of creation. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $created_at_gte Search folders by greater than or equal to time of creation. Can be used with createdAtLte to create a range. (optional)
-     * @param  \DateTime|null $created_at_lte Search folders by less than or equal to time of creation. Can be used with createdAtGte to create a range. (optional)
-     * @param  int|null $id_gte Search folders by greater than or equal to ID. Can be used with idLte to create a range. (optional)
-     * @param  int|null $id_lte Search folders by less than or equal to ID. Can be used with idGte to create a range. (optional)
-     * @param  int[]|null $ids Search folders by multiple IDs. Comma-separated list of folder IDs. (optional)
      * @param  int|null $limit Number of items to return. Default limit is 10, maximum limit is 100. (optional)
-     * @param  string|null $name Search for folders containing the specified name. (optional)
-     * @param  int[]|null $parent_folder_ids  (optional)
-     * @param  string|null $path Search folders by path. (optional)
-     * @param  string[]|null $properties Properties that should be included in the returned folders. (optional)
      * @param  string[]|null $sort Sort results by given property. For example -name sorts by name field descending, name sorts by name field ascending. (optional)
+     * @param  int[]|null $ids Search folders by multiple IDs. Comma-separated list of folder IDs. (optional)
+     * @param  int|null $id_lte Search folders by less than or equal to ID. Can be used with idGte to create a range. (optional)
+     * @param  int|null $id_gte Search folders by greater than or equal to ID. Can be used with idLte to create a range. (optional)
+     * @param  \DateTime|null $created_at Search folders by exact time of creation. Time must be epoch time in milliseconds. (optional)
+     * @param  \DateTime|null $created_at_lte Search folders by less than or equal to time of creation. Can be used with createdAtGte to create a range. (optional)
+     * @param  \DateTime|null $created_at_gte Search folders by greater than or equal to time of creation. Can be used with createdAtLte to create a range. (optional)
      * @param  \DateTime|null $updated_at Search folders by exact time of latest updated. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $updated_at_gte Search folders by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range. (optional)
      * @param  \DateTime|null $updated_at_lte Search folders by less than or equal to time of latest update. Can be used with updatedAtGte to create a range. (optional)
+     * @param  \DateTime|null $updated_at_gte Search folders by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range. (optional)
+     * @param  string|null $name Search for folders containing the specified name. (optional)
+     * @param  string|null $path Search folders by path. (optional)
+     * @param  int[]|null $parent_folder_ids  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Files\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Files\Model\CollectionResponseFolder|\HubSpot\Client\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function doSearchWithHttpInfo($after = null, $before = null, $created_at = null, $created_at_gte = null, $created_at_lte = null, $id_gte = null, $id_lte = null, $ids = null, $limit = null, $name = null, $parent_folder_ids = null, $path = null, $properties = null, $sort = null, $updated_at = null, $updated_at_gte = null, $updated_at_lte = null, string $contentType = self::contentTypes['doSearch'][0])
+    public function doSearchWithHttpInfo($properties = null, $after = null, $before = null, $limit = null, $sort = null, $ids = null, $id_lte = null, $id_gte = null, $created_at = null, $created_at_lte = null, $created_at_gte = null, $updated_at = null, $updated_at_lte = null, $updated_at_gte = null, $name = null, $path = null, $parent_folder_ids = null, string $contentType = self::contentTypes['doSearch'][0])
     {
-        $request = $this->doSearchRequest($after, $before, $created_at, $created_at_gte, $created_at_lte, $id_gte, $id_lte, $ids, $limit, $name, $parent_folder_ids, $path, $properties, $sort, $updated_at, $updated_at_gte, $updated_at_lte, $contentType);
+        $request = $this->doSearchRequest($properties, $after, $before, $limit, $sort, $ids, $id_lte, $id_gte, $created_at, $created_at_lte, $created_at_gte, $updated_at, $updated_at_lte, $updated_at_gte, $name, $path, $parent_folder_ids, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1051,31 +1051,31 @@ class FoldersApi
      *
      * Search folders
      *
+     * @param  string[]|null $properties Properties that should be included in the returned folders. (optional)
      * @param  string|null $after Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000.  Narrow your search down if you are reaching this limit. (optional)
      * @param  string|null $before Search folders updated before this timestamp. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $created_at Search folders by exact time of creation. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $created_at_gte Search folders by greater than or equal to time of creation. Can be used with createdAtLte to create a range. (optional)
-     * @param  \DateTime|null $created_at_lte Search folders by less than or equal to time of creation. Can be used with createdAtGte to create a range. (optional)
-     * @param  int|null $id_gte Search folders by greater than or equal to ID. Can be used with idLte to create a range. (optional)
-     * @param  int|null $id_lte Search folders by less than or equal to ID. Can be used with idGte to create a range. (optional)
-     * @param  int[]|null $ids Search folders by multiple IDs. Comma-separated list of folder IDs. (optional)
      * @param  int|null $limit Number of items to return. Default limit is 10, maximum limit is 100. (optional)
-     * @param  string|null $name Search for folders containing the specified name. (optional)
-     * @param  int[]|null $parent_folder_ids  (optional)
-     * @param  string|null $path Search folders by path. (optional)
-     * @param  string[]|null $properties Properties that should be included in the returned folders. (optional)
      * @param  string[]|null $sort Sort results by given property. For example -name sorts by name field descending, name sorts by name field ascending. (optional)
+     * @param  int[]|null $ids Search folders by multiple IDs. Comma-separated list of folder IDs. (optional)
+     * @param  int|null $id_lte Search folders by less than or equal to ID. Can be used with idGte to create a range. (optional)
+     * @param  int|null $id_gte Search folders by greater than or equal to ID. Can be used with idLte to create a range. (optional)
+     * @param  \DateTime|null $created_at Search folders by exact time of creation. Time must be epoch time in milliseconds. (optional)
+     * @param  \DateTime|null $created_at_lte Search folders by less than or equal to time of creation. Can be used with createdAtGte to create a range. (optional)
+     * @param  \DateTime|null $created_at_gte Search folders by greater than or equal to time of creation. Can be used with createdAtLte to create a range. (optional)
      * @param  \DateTime|null $updated_at Search folders by exact time of latest updated. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $updated_at_gte Search folders by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range. (optional)
      * @param  \DateTime|null $updated_at_lte Search folders by less than or equal to time of latest update. Can be used with updatedAtGte to create a range. (optional)
+     * @param  \DateTime|null $updated_at_gte Search folders by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range. (optional)
+     * @param  string|null $name Search for folders containing the specified name. (optional)
+     * @param  string|null $path Search folders by path. (optional)
+     * @param  int[]|null $parent_folder_ids  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function doSearchAsync($after = null, $before = null, $created_at = null, $created_at_gte = null, $created_at_lte = null, $id_gte = null, $id_lte = null, $ids = null, $limit = null, $name = null, $parent_folder_ids = null, $path = null, $properties = null, $sort = null, $updated_at = null, $updated_at_gte = null, $updated_at_lte = null, string $contentType = self::contentTypes['doSearch'][0])
+    public function doSearchAsync($properties = null, $after = null, $before = null, $limit = null, $sort = null, $ids = null, $id_lte = null, $id_gte = null, $created_at = null, $created_at_lte = null, $created_at_gte = null, $updated_at = null, $updated_at_lte = null, $updated_at_gte = null, $name = null, $path = null, $parent_folder_ids = null, string $contentType = self::contentTypes['doSearch'][0])
     {
-        return $this->doSearchAsyncWithHttpInfo($after, $before, $created_at, $created_at_gte, $created_at_lte, $id_gte, $id_lte, $ids, $limit, $name, $parent_folder_ids, $path, $properties, $sort, $updated_at, $updated_at_gte, $updated_at_lte, $contentType)
+        return $this->doSearchAsyncWithHttpInfo($properties, $after, $before, $limit, $sort, $ids, $id_lte, $id_gte, $created_at, $created_at_lte, $created_at_gte, $updated_at, $updated_at_lte, $updated_at_gte, $name, $path, $parent_folder_ids, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1088,32 +1088,32 @@ class FoldersApi
      *
      * Search folders
      *
+     * @param  string[]|null $properties Properties that should be included in the returned folders. (optional)
      * @param  string|null $after Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000.  Narrow your search down if you are reaching this limit. (optional)
      * @param  string|null $before Search folders updated before this timestamp. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $created_at Search folders by exact time of creation. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $created_at_gte Search folders by greater than or equal to time of creation. Can be used with createdAtLte to create a range. (optional)
-     * @param  \DateTime|null $created_at_lte Search folders by less than or equal to time of creation. Can be used with createdAtGte to create a range. (optional)
-     * @param  int|null $id_gte Search folders by greater than or equal to ID. Can be used with idLte to create a range. (optional)
-     * @param  int|null $id_lte Search folders by less than or equal to ID. Can be used with idGte to create a range. (optional)
-     * @param  int[]|null $ids Search folders by multiple IDs. Comma-separated list of folder IDs. (optional)
      * @param  int|null $limit Number of items to return. Default limit is 10, maximum limit is 100. (optional)
-     * @param  string|null $name Search for folders containing the specified name. (optional)
-     * @param  int[]|null $parent_folder_ids  (optional)
-     * @param  string|null $path Search folders by path. (optional)
-     * @param  string[]|null $properties Properties that should be included in the returned folders. (optional)
      * @param  string[]|null $sort Sort results by given property. For example -name sorts by name field descending, name sorts by name field ascending. (optional)
+     * @param  int[]|null $ids Search folders by multiple IDs. Comma-separated list of folder IDs. (optional)
+     * @param  int|null $id_lte Search folders by less than or equal to ID. Can be used with idGte to create a range. (optional)
+     * @param  int|null $id_gte Search folders by greater than or equal to ID. Can be used with idLte to create a range. (optional)
+     * @param  \DateTime|null $created_at Search folders by exact time of creation. Time must be epoch time in milliseconds. (optional)
+     * @param  \DateTime|null $created_at_lte Search folders by less than or equal to time of creation. Can be used with createdAtGte to create a range. (optional)
+     * @param  \DateTime|null $created_at_gte Search folders by greater than or equal to time of creation. Can be used with createdAtLte to create a range. (optional)
      * @param  \DateTime|null $updated_at Search folders by exact time of latest updated. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $updated_at_gte Search folders by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range. (optional)
      * @param  \DateTime|null $updated_at_lte Search folders by less than or equal to time of latest update. Can be used with updatedAtGte to create a range. (optional)
+     * @param  \DateTime|null $updated_at_gte Search folders by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range. (optional)
+     * @param  string|null $name Search for folders containing the specified name. (optional)
+     * @param  string|null $path Search folders by path. (optional)
+     * @param  int[]|null $parent_folder_ids  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function doSearchAsyncWithHttpInfo($after = null, $before = null, $created_at = null, $created_at_gte = null, $created_at_lte = null, $id_gte = null, $id_lte = null, $ids = null, $limit = null, $name = null, $parent_folder_ids = null, $path = null, $properties = null, $sort = null, $updated_at = null, $updated_at_gte = null, $updated_at_lte = null, string $contentType = self::contentTypes['doSearch'][0])
+    public function doSearchAsyncWithHttpInfo($properties = null, $after = null, $before = null, $limit = null, $sort = null, $ids = null, $id_lte = null, $id_gte = null, $created_at = null, $created_at_lte = null, $created_at_gte = null, $updated_at = null, $updated_at_lte = null, $updated_at_gte = null, $name = null, $path = null, $parent_folder_ids = null, string $contentType = self::contentTypes['doSearch'][0])
     {
         $returnType = '\HubSpot\Client\Files\Model\CollectionResponseFolder';
-        $request = $this->doSearchRequest($after, $before, $created_at, $created_at_gte, $created_at_lte, $id_gte, $id_lte, $ids, $limit, $name, $parent_folder_ids, $path, $properties, $sort, $updated_at, $updated_at_gte, $updated_at_lte, $contentType);
+        $request = $this->doSearchRequest($properties, $after, $before, $limit, $sort, $ids, $id_lte, $id_gte, $created_at, $created_at_lte, $created_at_gte, $updated_at, $updated_at_lte, $updated_at_gte, $name, $path, $parent_folder_ids, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1154,29 +1154,29 @@ class FoldersApi
     /**
      * Create request for operation 'doSearch'
      *
+     * @param  string[]|null $properties Properties that should be included in the returned folders. (optional)
      * @param  string|null $after Offset search results by this value. The default offset is 0 and the maximum offset of items for a given search is 10,000.  Narrow your search down if you are reaching this limit. (optional)
      * @param  string|null $before Search folders updated before this timestamp. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $created_at Search folders by exact time of creation. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $created_at_gte Search folders by greater than or equal to time of creation. Can be used with createdAtLte to create a range. (optional)
-     * @param  \DateTime|null $created_at_lte Search folders by less than or equal to time of creation. Can be used with createdAtGte to create a range. (optional)
-     * @param  int|null $id_gte Search folders by greater than or equal to ID. Can be used with idLte to create a range. (optional)
-     * @param  int|null $id_lte Search folders by less than or equal to ID. Can be used with idGte to create a range. (optional)
-     * @param  int[]|null $ids Search folders by multiple IDs. Comma-separated list of folder IDs. (optional)
      * @param  int|null $limit Number of items to return. Default limit is 10, maximum limit is 100. (optional)
-     * @param  string|null $name Search for folders containing the specified name. (optional)
-     * @param  int[]|null $parent_folder_ids  (optional)
-     * @param  string|null $path Search folders by path. (optional)
-     * @param  string[]|null $properties Properties that should be included in the returned folders. (optional)
      * @param  string[]|null $sort Sort results by given property. For example -name sorts by name field descending, name sorts by name field ascending. (optional)
+     * @param  int[]|null $ids Search folders by multiple IDs. Comma-separated list of folder IDs. (optional)
+     * @param  int|null $id_lte Search folders by less than or equal to ID. Can be used with idGte to create a range. (optional)
+     * @param  int|null $id_gte Search folders by greater than or equal to ID. Can be used with idLte to create a range. (optional)
+     * @param  \DateTime|null $created_at Search folders by exact time of creation. Time must be epoch time in milliseconds. (optional)
+     * @param  \DateTime|null $created_at_lte Search folders by less than or equal to time of creation. Can be used with createdAtGte to create a range. (optional)
+     * @param  \DateTime|null $created_at_gte Search folders by greater than or equal to time of creation. Can be used with createdAtLte to create a range. (optional)
      * @param  \DateTime|null $updated_at Search folders by exact time of latest updated. Time must be epoch time in milliseconds. (optional)
-     * @param  \DateTime|null $updated_at_gte Search folders by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range. (optional)
      * @param  \DateTime|null $updated_at_lte Search folders by less than or equal to time of latest update. Can be used with updatedAtGte to create a range. (optional)
+     * @param  \DateTime|null $updated_at_gte Search folders by greater than or equal to time of latest update. Can be used with updatedAtLte to create a range. (optional)
+     * @param  string|null $name Search for folders containing the specified name. (optional)
+     * @param  string|null $path Search folders by path. (optional)
+     * @param  int[]|null $parent_folder_ids  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function doSearchRequest($after = null, $before = null, $created_at = null, $created_at_gte = null, $created_at_lte = null, $id_gte = null, $id_lte = null, $ids = null, $limit = null, $name = null, $parent_folder_ids = null, $path = null, $properties = null, $sort = null, $updated_at = null, $updated_at_gte = null, $updated_at_lte = null, string $contentType = self::contentTypes['doSearch'][0])
+    public function doSearchRequest($properties = null, $after = null, $before = null, $limit = null, $sort = null, $ids = null, $id_lte = null, $id_gte = null, $created_at = null, $created_at_lte = null, $created_at_gte = null, $updated_at = null, $updated_at_lte = null, $updated_at_gte = null, $name = null, $path = null, $parent_folder_ids = null, string $contentType = self::contentTypes['doSearch'][0])
     {
 
 
@@ -1206,6 +1206,15 @@ class FoldersApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $properties,
+            'properties', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $after,
             'after', // param base name
             'string', // openApiType
@@ -1224,17 +1233,53 @@ class FoldersApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_at,
-            'createdAt', // param base name
-            'string', // openApiType
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $created_at_gte,
-            'createdAtGte', // param base name
+            $sort,
+            'sort', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $ids,
+            'ids', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $id_lte,
+            'idLte', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $id_gte,
+            'idGte', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $created_at,
+            'createdAt', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -1251,81 +1296,9 @@ class FoldersApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $id_gte,
-            'idGte', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $id_lte,
-            'idLte', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $ids,
-            'ids', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $name,
-            'name', // param base name
+            $created_at_gte,
+            'createdAtGte', // param base name
             'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $parent_folder_ids,
-            'parentFolderIds', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $path,
-            'path', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $properties,
-            'properties', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $sort,
-            'sort', // param base name
-            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1334,6 +1307,15 @@ class FoldersApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $updated_at,
             'updatedAt', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $updated_at_lte,
+            'updatedAtLte', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -1350,9 +1332,27 @@ class FoldersApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $updated_at_lte,
-            'updatedAtLte', // param base name
+            $name,
+            'name', // param base name
             'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $path,
+            'path', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $parent_folder_ids,
+            'parentFolderIds', // param base name
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required

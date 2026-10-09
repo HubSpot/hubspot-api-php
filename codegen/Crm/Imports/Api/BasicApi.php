@@ -73,13 +73,13 @@ class BasicApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'crmV3Imports' => [
+        'getById' => [
             'application/json',
         ],
-        'crmV3ImportsImportId' => [
+        'getErrors' => [
             'application/json',
         ],
-        'crmV3ImportsImportIdErrors' => [
+        'getImportsPage' => [
             'application/json',
         ],
     ];
@@ -131,326 +131,38 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3Imports
-     *
-     * @param  string|null $after after (optional)
-     * @param  int|null $limit limit (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3Imports'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Imports\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Imports\Model\CollectionResponsePublicImportResponseForwardPaging|\HubSpot\Client\Crm\Imports\Model\Error
-     */
-    public function crmV3Imports($after = null, $limit = null, string $contentType = self::contentTypes['crmV3Imports'][0])
-    {
-        list($response) = $this->crmV3ImportsWithHttpInfo($after, $limit, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation crmV3ImportsWithHttpInfo
-     *
-     * @param  string|null $after (optional)
-     * @param  int|null $limit (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3Imports'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Imports\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Imports\Model\CollectionResponsePublicImportResponseForwardPaging|\HubSpot\Client\Crm\Imports\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function crmV3ImportsWithHttpInfo($after = null, $limit = null, string $contentType = self::contentTypes['crmV3Imports'][0])
-    {
-        $request = $this->crmV3ImportsRequest($after, $limit, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Imports\Model\CollectionResponsePublicImportResponseForwardPaging',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Imports\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Imports\Model\CollectionResponsePublicImportResponseForwardPaging',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Imports\Model\CollectionResponsePublicImportResponseForwardPaging',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Imports\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation crmV3ImportsAsync
-     *
-     * @param  string|null $after (optional)
-     * @param  int|null $limit (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3Imports'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ImportsAsync($after = null, $limit = null, string $contentType = self::contentTypes['crmV3Imports'][0])
-    {
-        return $this->crmV3ImportsAsyncWithHttpInfo($after, $limit, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation crmV3ImportsAsyncWithHttpInfo
-     *
-     * @param  string|null $after (optional)
-     * @param  int|null $limit (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3Imports'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function crmV3ImportsAsyncWithHttpInfo($after = null, $limit = null, string $contentType = self::contentTypes['crmV3Imports'][0])
-    {
-        $returnType = '\HubSpot\Client\Crm\Imports\Model\CollectionResponsePublicImportResponseForwardPaging';
-        $request = $this->crmV3ImportsRequest($after, $limit, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'crmV3Imports'
-     *
-     * @param  string|null $after (optional)
-     * @param  int|null $limit (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3Imports'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function crmV3ImportsRequest($after = null, $limit = null, string $contentType = self::contentTypes['crmV3Imports'][0])
-    {
-
-
-
-
-        $resourcePath = '/crm/v3/imports';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation crmV3ImportsImportId
+     * Operation getById
      *
      * Get the information on any import
      *
      * @param  int $import_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ImportsImportId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Imports\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Imports\Model\PublicImportResponse|\HubSpot\Client\Crm\Imports\Model\Error
      */
-    public function crmV3ImportsImportId($import_id, string $contentType = self::contentTypes['crmV3ImportsImportId'][0])
+    public function getById($import_id, string $contentType = self::contentTypes['getById'][0])
     {
-        list($response) = $this->crmV3ImportsImportIdWithHttpInfo($import_id, $contentType);
+        list($response) = $this->getByIdWithHttpInfo($import_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation crmV3ImportsImportIdWithHttpInfo
+     * Operation getByIdWithHttpInfo
      *
      * Get the information on any import
      *
      * @param  int $import_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ImportsImportId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Imports\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Imports\Model\PublicImportResponse|\HubSpot\Client\Crm\Imports\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function crmV3ImportsImportIdWithHttpInfo($import_id, string $contentType = self::contentTypes['crmV3ImportsImportId'][0])
+    public function getByIdWithHttpInfo($import_id, string $contentType = self::contentTypes['getById'][0])
     {
-        $request = $this->crmV3ImportsImportIdRequest($import_id, $contentType);
+        $request = $this->getByIdRequest($import_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -536,19 +248,19 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ImportsImportIdAsync
+     * Operation getByIdAsync
      *
      * Get the information on any import
      *
      * @param  int $import_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ImportsImportId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ImportsImportIdAsync($import_id, string $contentType = self::contentTypes['crmV3ImportsImportId'][0])
+    public function getByIdAsync($import_id, string $contentType = self::contentTypes['getById'][0])
     {
-        return $this->crmV3ImportsImportIdAsyncWithHttpInfo($import_id, $contentType)
+        return $this->getByIdAsyncWithHttpInfo($import_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -557,20 +269,20 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ImportsImportIdAsyncWithHttpInfo
+     * Operation getByIdAsyncWithHttpInfo
      *
      * Get the information on any import
      *
      * @param  int $import_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ImportsImportId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ImportsImportIdAsyncWithHttpInfo($import_id, string $contentType = self::contentTypes['crmV3ImportsImportId'][0])
+    public function getByIdAsyncWithHttpInfo($import_id, string $contentType = self::contentTypes['getById'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Imports\Model\PublicImportResponse';
-        $request = $this->crmV3ImportsImportIdRequest($import_id, $contentType);
+        $request = $this->getByIdRequest($import_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -609,21 +321,21 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'crmV3ImportsImportId'
+     * Create request for operation 'getById'
      *
      * @param  int $import_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ImportsImportId'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function crmV3ImportsImportIdRequest($import_id, string $contentType = self::contentTypes['crmV3ImportsImportId'][0])
+    public function getByIdRequest($import_id, string $contentType = self::contentTypes['getById'][0])
     {
 
         // verify the required parameter 'import_id' is set
         if ($import_id === null || (is_array($import_id) && count($import_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $import_id when calling crmV3ImportsImportId'
+                'Missing the required parameter $import_id when calling getById'
             );
         }
 
@@ -705,46 +417,46 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ImportsImportIdErrors
+     * Operation getErrors
      *
      * Retrieve errors for a specific import
      *
      * @param  int $import_id  (required)
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
      * @param  bool|null $include_error_message  (optional)
      * @param  bool|null $include_row_data  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ImportsImportIdErrors'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getErrors'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Imports\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Imports\Model\CollectionResponsePublicImportErrorForwardPaging|\HubSpot\Client\Crm\Imports\Model\Error
      */
-    public function crmV3ImportsImportIdErrors($import_id, $after = null, $include_error_message = null, $include_row_data = null, $limit = null, string $contentType = self::contentTypes['crmV3ImportsImportIdErrors'][0])
+    public function getErrors($import_id, $after = null, $limit = null, $include_error_message = null, $include_row_data = null, string $contentType = self::contentTypes['getErrors'][0])
     {
-        list($response) = $this->crmV3ImportsImportIdErrorsWithHttpInfo($import_id, $after, $include_error_message, $include_row_data, $limit, $contentType);
+        list($response) = $this->getErrorsWithHttpInfo($import_id, $after, $limit, $include_error_message, $include_row_data, $contentType);
         return $response;
     }
 
     /**
-     * Operation crmV3ImportsImportIdErrorsWithHttpInfo
+     * Operation getErrorsWithHttpInfo
      *
      * Retrieve errors for a specific import
      *
      * @param  int $import_id  (required)
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
      * @param  bool|null $include_error_message  (optional)
      * @param  bool|null $include_row_data  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ImportsImportIdErrors'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getErrors'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Imports\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Imports\Model\CollectionResponsePublicImportErrorForwardPaging|\HubSpot\Client\Crm\Imports\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function crmV3ImportsImportIdErrorsWithHttpInfo($import_id, $after = null, $include_error_message = null, $include_row_data = null, $limit = null, string $contentType = self::contentTypes['crmV3ImportsImportIdErrors'][0])
+    public function getErrorsWithHttpInfo($import_id, $after = null, $limit = null, $include_error_message = null, $include_row_data = null, string $contentType = self::contentTypes['getErrors'][0])
     {
-        $request = $this->crmV3ImportsImportIdErrorsRequest($import_id, $after, $include_error_message, $include_row_data, $limit, $contentType);
+        $request = $this->getErrorsRequest($import_id, $after, $limit, $include_error_message, $include_row_data, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -830,23 +542,23 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ImportsImportIdErrorsAsync
+     * Operation getErrorsAsync
      *
      * Retrieve errors for a specific import
      *
      * @param  int $import_id  (required)
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
      * @param  bool|null $include_error_message  (optional)
      * @param  bool|null $include_row_data  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ImportsImportIdErrors'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getErrors'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ImportsImportIdErrorsAsync($import_id, $after = null, $include_error_message = null, $include_row_data = null, $limit = null, string $contentType = self::contentTypes['crmV3ImportsImportIdErrors'][0])
+    public function getErrorsAsync($import_id, $after = null, $limit = null, $include_error_message = null, $include_row_data = null, string $contentType = self::contentTypes['getErrors'][0])
     {
-        return $this->crmV3ImportsImportIdErrorsAsyncWithHttpInfo($import_id, $after, $include_error_message, $include_row_data, $limit, $contentType)
+        return $this->getErrorsAsyncWithHttpInfo($import_id, $after, $limit, $include_error_message, $include_row_data, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -855,24 +567,24 @@ class BasicApi
     }
 
     /**
-     * Operation crmV3ImportsImportIdErrorsAsyncWithHttpInfo
+     * Operation getErrorsAsyncWithHttpInfo
      *
      * Retrieve errors for a specific import
      *
      * @param  int $import_id  (required)
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
      * @param  bool|null $include_error_message  (optional)
      * @param  bool|null $include_row_data  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ImportsImportIdErrors'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getErrors'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ImportsImportIdErrorsAsyncWithHttpInfo($import_id, $after = null, $include_error_message = null, $include_row_data = null, $limit = null, string $contentType = self::contentTypes['crmV3ImportsImportIdErrors'][0])
+    public function getErrorsAsyncWithHttpInfo($import_id, $after = null, $limit = null, $include_error_message = null, $include_row_data = null, string $contentType = self::contentTypes['getErrors'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Imports\Model\CollectionResponsePublicImportErrorForwardPaging';
-        $request = $this->crmV3ImportsImportIdErrorsRequest($import_id, $after, $include_error_message, $include_row_data, $limit, $contentType);
+        $request = $this->getErrorsRequest($import_id, $after, $limit, $include_error_message, $include_row_data, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -911,25 +623,25 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'crmV3ImportsImportIdErrors'
+     * Create request for operation 'getErrors'
      *
      * @param  int $import_id  (required)
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
      * @param  bool|null $include_error_message  (optional)
      * @param  bool|null $include_row_data  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ImportsImportIdErrors'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getErrors'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function crmV3ImportsImportIdErrorsRequest($import_id, $after = null, $include_error_message = null, $include_row_data = null, $limit = null, string $contentType = self::contentTypes['crmV3ImportsImportIdErrors'][0])
+    public function getErrorsRequest($import_id, $after = null, $limit = null, $include_error_message = null, $include_row_data = null, string $contentType = self::contentTypes['getErrors'][0])
     {
 
         // verify the required parameter 'import_id' is set
         if ($import_id === null || (is_array($import_id) && count($import_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $import_id when calling crmV3ImportsImportIdErrors'
+                'Missing the required parameter $import_id when calling getErrors'
             );
         }
 
@@ -956,6 +668,15 @@ class BasicApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $include_error_message,
             'includeErrorMessage', // param base name
             'boolean', // openApiType
@@ -972,6 +693,293 @@ class BasicApi
             true, // explode
             false // required
         ) ?? []);
+
+
+        // path params
+        if ($import_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'importId' . '}',
+                ObjectSerializer::toPathValue($import_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getImportsPage
+     *
+     * @param  string|null $after after (optional)
+     * @param  int|null $limit limit (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImportsPage'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Imports\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Imports\Model\CollectionResponsePublicImportResponseForwardPaging|\HubSpot\Client\Crm\Imports\Model\Error
+     */
+    public function getImportsPage($after = null, $limit = null, string $contentType = self::contentTypes['getImportsPage'][0])
+    {
+        list($response) = $this->getImportsPageWithHttpInfo($after, $limit, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getImportsPageWithHttpInfo
+     *
+     * @param  string|null $after (optional)
+     * @param  int|null $limit (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImportsPage'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Imports\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Imports\Model\CollectionResponsePublicImportResponseForwardPaging|\HubSpot\Client\Crm\Imports\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getImportsPageWithHttpInfo($after = null, $limit = null, string $contentType = self::contentTypes['getImportsPage'][0])
+    {
+        $request = $this->getImportsPageRequest($after, $limit, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Imports\Model\CollectionResponsePublicImportResponseForwardPaging',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Imports\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Crm\Imports\Model\CollectionResponsePublicImportResponseForwardPaging',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Imports\Model\CollectionResponsePublicImportResponseForwardPaging',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Imports\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getImportsPageAsync
+     *
+     * @param  string|null $after (optional)
+     * @param  int|null $limit (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImportsPage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getImportsPageAsync($after = null, $limit = null, string $contentType = self::contentTypes['getImportsPage'][0])
+    {
+        return $this->getImportsPageAsyncWithHttpInfo($after, $limit, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getImportsPageAsyncWithHttpInfo
+     *
+     * @param  string|null $after (optional)
+     * @param  int|null $limit (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImportsPage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getImportsPageAsyncWithHttpInfo($after = null, $limit = null, string $contentType = self::contentTypes['getImportsPage'][0])
+    {
+        $returnType = '\HubSpot\Client\Crm\Imports\Model\CollectionResponsePublicImportResponseForwardPaging';
+        $request = $this->getImportsPageRequest($after, $limit, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getImportsPage'
+     *
+     * @param  string|null $after (optional)
+     * @param  int|null $limit (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getImportsPage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getImportsPageRequest($after = null, $limit = null, string $contentType = self::contentTypes['getImportsPage'][0])
+    {
+
+
+
+
+        $resourcePath = '/crm/v3/imports';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $after,
+            'after', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $limit,
@@ -983,14 +991,6 @@ class BasicApi
         ) ?? []);
 
 
-        // path params
-        if ($import_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'importId' . '}',
-                ObjectSerializer::toPathValue($import_id),
-                $resourcePath
-            );
-        }
 
 
         $headers = $this->headerSelector->selectHeaders(

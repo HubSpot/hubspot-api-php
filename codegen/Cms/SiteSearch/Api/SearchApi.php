@@ -73,7 +73,7 @@ class SearchApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'cmsSiteSearchV3Search' => [
+        'search' => [
             'application/json',
         ],
     ];
@@ -125,74 +125,74 @@ class SearchApi
     }
 
     /**
-     * Operation cmsSiteSearchV3Search
+     * Operation search
      *
      * Search your site
      *
-     * @param  bool|null $analytics  (optional)
+     * @param  string|null $q  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  int|null $offset  (optional)
+     * @param  string|null $language  (optional)
+     * @param  bool|null $match_prefix  (optional)
      * @param  bool|null $autocomplete  (optional)
+     * @param  float|null $popularity_boost  (optional)
      * @param  float|null $boost_limit  (optional)
      * @param  string|null $boost_recent  (optional)
-     * @param  string[]|null $domain  (optional)
-     * @param  int[]|null $group_id  (optional)
-     * @param  string|null $hubdb_query  (optional)
-     * @param  string|null $language  (optional)
-     * @param  string|null $length  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  bool|null $match_prefix  (optional)
-     * @param  int|null $offset  (optional)
-     * @param  string[]|null $path_prefix  (optional)
-     * @param  float|null $popularity_boost  (optional)
-     * @param  string[]|null $property  (optional)
-     * @param  string|null $q  (optional)
      * @param  int|null $table_id  (optional)
+     * @param  string|null $hubdb_query  (optional)
+     * @param  string[]|null $domain  (optional)
      * @param  string[]|null $type  (optional)
+     * @param  string[]|null $path_prefix  (optional)
+     * @param  string[]|null $property  (optional)
+     * @param  string|null $length  (optional)
+     * @param  int[]|null $group_id  (optional)
+     * @param  bool|null $analytics  (optional)
      * @param  string[]|null $types  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsSiteSearchV3Search'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['search'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\SiteSearch\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\SiteSearch\Model\PublicSearchResults|\HubSpot\Client\Cms\SiteSearch\Model\Error
      */
-    public function cmsSiteSearchV3Search($analytics = null, $autocomplete = null, $boost_limit = null, $boost_recent = null, $domain = null, $group_id = null, $hubdb_query = null, $language = null, $length = null, $limit = null, $match_prefix = null, $offset = null, $path_prefix = null, $popularity_boost = null, $property = null, $q = null, $table_id = null, $type = null, $types = null, string $contentType = self::contentTypes['cmsSiteSearchV3Search'][0])
+    public function search($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null, $analytics = null, $types = null, string $contentType = self::contentTypes['search'][0])
     {
-        list($response) = $this->cmsSiteSearchV3SearchWithHttpInfo($analytics, $autocomplete, $boost_limit, $boost_recent, $domain, $group_id, $hubdb_query, $language, $length, $limit, $match_prefix, $offset, $path_prefix, $popularity_boost, $property, $q, $table_id, $type, $types, $contentType);
+        list($response) = $this->searchWithHttpInfo($q, $limit, $offset, $language, $match_prefix, $autocomplete, $popularity_boost, $boost_limit, $boost_recent, $table_id, $hubdb_query, $domain, $type, $path_prefix, $property, $length, $group_id, $analytics, $types, $contentType);
         return $response;
     }
 
     /**
-     * Operation cmsSiteSearchV3SearchWithHttpInfo
+     * Operation searchWithHttpInfo
      *
      * Search your site
      *
-     * @param  bool|null $analytics  (optional)
+     * @param  string|null $q  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  int|null $offset  (optional)
+     * @param  string|null $language  (optional)
+     * @param  bool|null $match_prefix  (optional)
      * @param  bool|null $autocomplete  (optional)
+     * @param  float|null $popularity_boost  (optional)
      * @param  float|null $boost_limit  (optional)
      * @param  string|null $boost_recent  (optional)
-     * @param  string[]|null $domain  (optional)
-     * @param  int[]|null $group_id  (optional)
-     * @param  string|null $hubdb_query  (optional)
-     * @param  string|null $language  (optional)
-     * @param  string|null $length  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  bool|null $match_prefix  (optional)
-     * @param  int|null $offset  (optional)
-     * @param  string[]|null $path_prefix  (optional)
-     * @param  float|null $popularity_boost  (optional)
-     * @param  string[]|null $property  (optional)
-     * @param  string|null $q  (optional)
      * @param  int|null $table_id  (optional)
+     * @param  string|null $hubdb_query  (optional)
+     * @param  string[]|null $domain  (optional)
      * @param  string[]|null $type  (optional)
+     * @param  string[]|null $path_prefix  (optional)
+     * @param  string[]|null $property  (optional)
+     * @param  string|null $length  (optional)
+     * @param  int[]|null $group_id  (optional)
+     * @param  bool|null $analytics  (optional)
      * @param  string[]|null $types  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsSiteSearchV3Search'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['search'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\SiteSearch\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\SiteSearch\Model\PublicSearchResults|\HubSpot\Client\Cms\SiteSearch\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function cmsSiteSearchV3SearchWithHttpInfo($analytics = null, $autocomplete = null, $boost_limit = null, $boost_recent = null, $domain = null, $group_id = null, $hubdb_query = null, $language = null, $length = null, $limit = null, $match_prefix = null, $offset = null, $path_prefix = null, $popularity_boost = null, $property = null, $q = null, $table_id = null, $type = null, $types = null, string $contentType = self::contentTypes['cmsSiteSearchV3Search'][0])
+    public function searchWithHttpInfo($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null, $analytics = null, $types = null, string $contentType = self::contentTypes['search'][0])
     {
-        $request = $this->cmsSiteSearchV3SearchRequest($analytics, $autocomplete, $boost_limit, $boost_recent, $domain, $group_id, $hubdb_query, $language, $length, $limit, $match_prefix, $offset, $path_prefix, $popularity_boost, $property, $q, $table_id, $type, $types, $contentType);
+        $request = $this->searchRequest($q, $limit, $offset, $language, $match_prefix, $autocomplete, $popularity_boost, $boost_limit, $boost_recent, $table_id, $hubdb_query, $domain, $type, $path_prefix, $property, $length, $group_id, $analytics, $types, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -278,37 +278,37 @@ class SearchApi
     }
 
     /**
-     * Operation cmsSiteSearchV3SearchAsync
+     * Operation searchAsync
      *
      * Search your site
      *
-     * @param  bool|null $analytics  (optional)
+     * @param  string|null $q  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  int|null $offset  (optional)
+     * @param  string|null $language  (optional)
+     * @param  bool|null $match_prefix  (optional)
      * @param  bool|null $autocomplete  (optional)
+     * @param  float|null $popularity_boost  (optional)
      * @param  float|null $boost_limit  (optional)
      * @param  string|null $boost_recent  (optional)
-     * @param  string[]|null $domain  (optional)
-     * @param  int[]|null $group_id  (optional)
-     * @param  string|null $hubdb_query  (optional)
-     * @param  string|null $language  (optional)
-     * @param  string|null $length  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  bool|null $match_prefix  (optional)
-     * @param  int|null $offset  (optional)
-     * @param  string[]|null $path_prefix  (optional)
-     * @param  float|null $popularity_boost  (optional)
-     * @param  string[]|null $property  (optional)
-     * @param  string|null $q  (optional)
      * @param  int|null $table_id  (optional)
+     * @param  string|null $hubdb_query  (optional)
+     * @param  string[]|null $domain  (optional)
      * @param  string[]|null $type  (optional)
+     * @param  string[]|null $path_prefix  (optional)
+     * @param  string[]|null $property  (optional)
+     * @param  string|null $length  (optional)
+     * @param  int[]|null $group_id  (optional)
+     * @param  bool|null $analytics  (optional)
      * @param  string[]|null $types  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsSiteSearchV3Search'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['search'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cmsSiteSearchV3SearchAsync($analytics = null, $autocomplete = null, $boost_limit = null, $boost_recent = null, $domain = null, $group_id = null, $hubdb_query = null, $language = null, $length = null, $limit = null, $match_prefix = null, $offset = null, $path_prefix = null, $popularity_boost = null, $property = null, $q = null, $table_id = null, $type = null, $types = null, string $contentType = self::contentTypes['cmsSiteSearchV3Search'][0])
+    public function searchAsync($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null, $analytics = null, $types = null, string $contentType = self::contentTypes['search'][0])
     {
-        return $this->cmsSiteSearchV3SearchAsyncWithHttpInfo($analytics, $autocomplete, $boost_limit, $boost_recent, $domain, $group_id, $hubdb_query, $language, $length, $limit, $match_prefix, $offset, $path_prefix, $popularity_boost, $property, $q, $table_id, $type, $types, $contentType)
+        return $this->searchAsyncWithHttpInfo($q, $limit, $offset, $language, $match_prefix, $autocomplete, $popularity_boost, $boost_limit, $boost_recent, $table_id, $hubdb_query, $domain, $type, $path_prefix, $property, $length, $group_id, $analytics, $types, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -317,38 +317,38 @@ class SearchApi
     }
 
     /**
-     * Operation cmsSiteSearchV3SearchAsyncWithHttpInfo
+     * Operation searchAsyncWithHttpInfo
      *
      * Search your site
      *
-     * @param  bool|null $analytics  (optional)
+     * @param  string|null $q  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  int|null $offset  (optional)
+     * @param  string|null $language  (optional)
+     * @param  bool|null $match_prefix  (optional)
      * @param  bool|null $autocomplete  (optional)
+     * @param  float|null $popularity_boost  (optional)
      * @param  float|null $boost_limit  (optional)
      * @param  string|null $boost_recent  (optional)
-     * @param  string[]|null $domain  (optional)
-     * @param  int[]|null $group_id  (optional)
-     * @param  string|null $hubdb_query  (optional)
-     * @param  string|null $language  (optional)
-     * @param  string|null $length  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  bool|null $match_prefix  (optional)
-     * @param  int|null $offset  (optional)
-     * @param  string[]|null $path_prefix  (optional)
-     * @param  float|null $popularity_boost  (optional)
-     * @param  string[]|null $property  (optional)
-     * @param  string|null $q  (optional)
      * @param  int|null $table_id  (optional)
+     * @param  string|null $hubdb_query  (optional)
+     * @param  string[]|null $domain  (optional)
      * @param  string[]|null $type  (optional)
+     * @param  string[]|null $path_prefix  (optional)
+     * @param  string[]|null $property  (optional)
+     * @param  string|null $length  (optional)
+     * @param  int[]|null $group_id  (optional)
+     * @param  bool|null $analytics  (optional)
      * @param  string[]|null $types  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsSiteSearchV3Search'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['search'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function cmsSiteSearchV3SearchAsyncWithHttpInfo($analytics = null, $autocomplete = null, $boost_limit = null, $boost_recent = null, $domain = null, $group_id = null, $hubdb_query = null, $language = null, $length = null, $limit = null, $match_prefix = null, $offset = null, $path_prefix = null, $popularity_boost = null, $property = null, $q = null, $table_id = null, $type = null, $types = null, string $contentType = self::contentTypes['cmsSiteSearchV3Search'][0])
+    public function searchAsyncWithHttpInfo($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null, $analytics = null, $types = null, string $contentType = self::contentTypes['search'][0])
     {
         $returnType = '\HubSpot\Client\Cms\SiteSearch\Model\PublicSearchResults';
-        $request = $this->cmsSiteSearchV3SearchRequest($analytics, $autocomplete, $boost_limit, $boost_recent, $domain, $group_id, $hubdb_query, $language, $length, $limit, $match_prefix, $offset, $path_prefix, $popularity_boost, $property, $q, $table_id, $type, $types, $contentType);
+        $request = $this->searchRequest($q, $limit, $offset, $language, $match_prefix, $autocomplete, $popularity_boost, $boost_limit, $boost_recent, $table_id, $hubdb_query, $domain, $type, $path_prefix, $property, $length, $group_id, $analytics, $types, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -387,33 +387,33 @@ class SearchApi
     }
 
     /**
-     * Create request for operation 'cmsSiteSearchV3Search'
+     * Create request for operation 'search'
      *
-     * @param  bool|null $analytics  (optional)
+     * @param  string|null $q  (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  int|null $offset  (optional)
+     * @param  string|null $language  (optional)
+     * @param  bool|null $match_prefix  (optional)
      * @param  bool|null $autocomplete  (optional)
+     * @param  float|null $popularity_boost  (optional)
      * @param  float|null $boost_limit  (optional)
      * @param  string|null $boost_recent  (optional)
-     * @param  string[]|null $domain  (optional)
-     * @param  int[]|null $group_id  (optional)
-     * @param  string|null $hubdb_query  (optional)
-     * @param  string|null $language  (optional)
-     * @param  string|null $length  (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  bool|null $match_prefix  (optional)
-     * @param  int|null $offset  (optional)
-     * @param  string[]|null $path_prefix  (optional)
-     * @param  float|null $popularity_boost  (optional)
-     * @param  string[]|null $property  (optional)
-     * @param  string|null $q  (optional)
      * @param  int|null $table_id  (optional)
+     * @param  string|null $hubdb_query  (optional)
+     * @param  string[]|null $domain  (optional)
      * @param  string[]|null $type  (optional)
+     * @param  string[]|null $path_prefix  (optional)
+     * @param  string[]|null $property  (optional)
+     * @param  string|null $length  (optional)
+     * @param  int[]|null $group_id  (optional)
+     * @param  bool|null $analytics  (optional)
      * @param  string[]|null $types  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['cmsSiteSearchV3Search'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['search'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function cmsSiteSearchV3SearchRequest($analytics = null, $autocomplete = null, $boost_limit = null, $boost_recent = null, $domain = null, $group_id = null, $hubdb_query = null, $language = null, $length = null, $limit = null, $match_prefix = null, $offset = null, $path_prefix = null, $popularity_boost = null, $property = null, $q = null, $table_id = null, $type = null, $types = null, string $contentType = self::contentTypes['cmsSiteSearchV3Search'][0])
+    public function searchRequest($q = null, $limit = null, $offset = null, $language = null, $match_prefix = null, $autocomplete = null, $popularity_boost = null, $boost_limit = null, $boost_recent = null, $table_id = null, $hubdb_query = null, $domain = null, $type = null, $path_prefix = null, $property = null, $length = null, $group_id = null, $analytics = null, $types = null, string $contentType = self::contentTypes['search'][0])
     {
 
 
@@ -445,8 +445,44 @@ class SearchApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $analytics,
-            'analytics', // param base name
+            $q,
+            'q', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $language,
+            'language', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $match_prefix,
+            'matchPrefix', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -457,6 +493,15 @@ class SearchApi
             $autocomplete,
             'autocomplete', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $popularity_boost,
+            'popularityBoost', // param base name
+            'number', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -481,18 +526,9 @@ class SearchApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $domain,
-            'domain', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $group_id,
-            'groupId', // param base name
-            'array', // openApiType
+            $table_id,
+            'tableId', // param base name
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -508,45 +544,18 @@ class SearchApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $language,
-            'language', // param base name
-            'string', // openApiType
+            $domain,
+            'domain', // param base name
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $length,
-            'length', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $match_prefix,
-            'matchPrefix', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $offset,
-            'offset', // param base name
-            'integer', // openApiType
+            $type,
+            'type', // param base name
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -562,15 +571,6 @@ class SearchApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $popularity_boost,
-            'popularityBoost', // param base name
-            'number', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $property,
             'property', // param base name
             'array', // openApiType
@@ -580,8 +580,8 @@ class SearchApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $q,
-            'q', // param base name
+            $length,
+            'length', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -589,18 +589,18 @@ class SearchApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $table_id,
-            'tableId', // param base name
-            'integer', // openApiType
+            $group_id,
+            'groupId', // param base name
+            'array', // openApiType
             'form', // style
             true, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $type,
-            'type', // param base name
-            'array', // openApiType
+            $analytics,
+            'analytics', // param base name
+            'boolean', // openApiType
             'form', // style
             true, // explode
             false // required

@@ -73,7 +73,7 @@ class SearchApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'crmV3ListsSearch' => [
+        'doSearch' => [
             'application/json',
         ],
     ];
@@ -125,38 +125,38 @@ class SearchApi
     }
 
     /**
-     * Operation crmV3ListsSearch
+     * Operation doSearch
      *
      * Search Lists
      *
      * @param  \HubSpot\Client\Crm\Lists\Model\ListSearchRequest $list_search_request list_search_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsSearch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Lists\Model\ListSearchResponse|\HubSpot\Client\Crm\Lists\Model\Error
      */
-    public function crmV3ListsSearch($list_search_request, string $contentType = self::contentTypes['crmV3ListsSearch'][0])
+    public function doSearch($list_search_request, string $contentType = self::contentTypes['doSearch'][0])
     {
-        list($response) = $this->crmV3ListsSearchWithHttpInfo($list_search_request, $contentType);
+        list($response) = $this->doSearchWithHttpInfo($list_search_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation crmV3ListsSearchWithHttpInfo
+     * Operation doSearchWithHttpInfo
      *
      * Search Lists
      *
      * @param  \HubSpot\Client\Crm\Lists\Model\ListSearchRequest $list_search_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsSearch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Lists\Model\ListSearchResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function crmV3ListsSearchWithHttpInfo($list_search_request, string $contentType = self::contentTypes['crmV3ListsSearch'][0])
+    public function doSearchWithHttpInfo($list_search_request, string $contentType = self::contentTypes['doSearch'][0])
     {
-        $request = $this->crmV3ListsSearchRequest($list_search_request, $contentType);
+        $request = $this->doSearchRequest($list_search_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -242,19 +242,19 @@ class SearchApi
     }
 
     /**
-     * Operation crmV3ListsSearchAsync
+     * Operation doSearchAsync
      *
      * Search Lists
      *
      * @param  \HubSpot\Client\Crm\Lists\Model\ListSearchRequest $list_search_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsSearch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ListsSearchAsync($list_search_request, string $contentType = self::contentTypes['crmV3ListsSearch'][0])
+    public function doSearchAsync($list_search_request, string $contentType = self::contentTypes['doSearch'][0])
     {
-        return $this->crmV3ListsSearchAsyncWithHttpInfo($list_search_request, $contentType)
+        return $this->doSearchAsyncWithHttpInfo($list_search_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -263,20 +263,20 @@ class SearchApi
     }
 
     /**
-     * Operation crmV3ListsSearchAsyncWithHttpInfo
+     * Operation doSearchAsyncWithHttpInfo
      *
      * Search Lists
      *
      * @param  \HubSpot\Client\Crm\Lists\Model\ListSearchRequest $list_search_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsSearch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function crmV3ListsSearchAsyncWithHttpInfo($list_search_request, string $contentType = self::contentTypes['crmV3ListsSearch'][0])
+    public function doSearchAsyncWithHttpInfo($list_search_request, string $contentType = self::contentTypes['doSearch'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Lists\Model\ListSearchResponse';
-        $request = $this->crmV3ListsSearchRequest($list_search_request, $contentType);
+        $request = $this->doSearchRequest($list_search_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -315,21 +315,21 @@ class SearchApi
     }
 
     /**
-     * Create request for operation 'crmV3ListsSearch'
+     * Create request for operation 'doSearch'
      *
      * @param  \HubSpot\Client\Crm\Lists\Model\ListSearchRequest $list_search_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['crmV3ListsSearch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['doSearch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function crmV3ListsSearchRequest($list_search_request, string $contentType = self::contentTypes['crmV3ListsSearch'][0])
+    public function doSearchRequest($list_search_request, string $contentType = self::contentTypes['doSearch'][0])
     {
 
         // verify the required parameter 'list_search_request' is set
         if ($list_search_request === null || (is_array($list_search_request) && count($list_search_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $list_search_request when calling crmV3ListsSearch'
+                'Missing the required parameter $list_search_request when calling doSearch'
             );
         }
 

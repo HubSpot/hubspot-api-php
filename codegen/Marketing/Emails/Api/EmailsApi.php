@@ -1363,21 +1363,21 @@ class EmailsApi
      * Get the details of a specified marketing email
      *
      * @param  string $email_id The marketing email ID. (required)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  string[]|null $included_properties  (optional)
      * @param  bool|null $include_stats Include statistics with email (optional)
      * @param  bool|null $marketing_campaign_names  (optional)
-     * @param  bool|null $variant_stats  (optional)
      * @param  bool|null $workflow_names  (optional)
+     * @param  string[]|null $included_properties  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  bool|null $variant_stats  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Emails\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Marketing\Emails\Model\PublicEmail|\HubSpot\Client\Marketing\Emails\Model\Error
      */
-    public function getById($email_id, $archived = null, $included_properties = null, $include_stats = null, $marketing_campaign_names = null, $variant_stats = null, $workflow_names = null, string $contentType = self::contentTypes['getById'][0])
+    public function getById($email_id, $include_stats = null, $marketing_campaign_names = null, $workflow_names = null, $included_properties = null, $archived = null, $variant_stats = null, string $contentType = self::contentTypes['getById'][0])
     {
-        list($response) = $this->getByIdWithHttpInfo($email_id, $archived, $included_properties, $include_stats, $marketing_campaign_names, $variant_stats, $workflow_names, $contentType);
+        list($response) = $this->getByIdWithHttpInfo($email_id, $include_stats, $marketing_campaign_names, $workflow_names, $included_properties, $archived, $variant_stats, $contentType);
         return $response;
     }
 
@@ -1387,21 +1387,21 @@ class EmailsApi
      * Get the details of a specified marketing email
      *
      * @param  string $email_id The marketing email ID. (required)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  string[]|null $included_properties  (optional)
      * @param  bool|null $include_stats Include statistics with email (optional)
      * @param  bool|null $marketing_campaign_names  (optional)
-     * @param  bool|null $variant_stats  (optional)
      * @param  bool|null $workflow_names  (optional)
+     * @param  string[]|null $included_properties  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  bool|null $variant_stats  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Marketing\Emails\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Marketing\Emails\Model\PublicEmail|\HubSpot\Client\Marketing\Emails\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getByIdWithHttpInfo($email_id, $archived = null, $included_properties = null, $include_stats = null, $marketing_campaign_names = null, $variant_stats = null, $workflow_names = null, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdWithHttpInfo($email_id, $include_stats = null, $marketing_campaign_names = null, $workflow_names = null, $included_properties = null, $archived = null, $variant_stats = null, string $contentType = self::contentTypes['getById'][0])
     {
-        $request = $this->getByIdRequest($email_id, $archived, $included_properties, $include_stats, $marketing_campaign_names, $variant_stats, $workflow_names, $contentType);
+        $request = $this->getByIdRequest($email_id, $include_stats, $marketing_campaign_names, $workflow_names, $included_properties, $archived, $variant_stats, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1492,20 +1492,20 @@ class EmailsApi
      * Get the details of a specified marketing email
      *
      * @param  string $email_id The marketing email ID. (required)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  string[]|null $included_properties  (optional)
      * @param  bool|null $include_stats Include statistics with email (optional)
      * @param  bool|null $marketing_campaign_names  (optional)
-     * @param  bool|null $variant_stats  (optional)
      * @param  bool|null $workflow_names  (optional)
+     * @param  string[]|null $included_properties  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  bool|null $variant_stats  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsync($email_id, $archived = null, $included_properties = null, $include_stats = null, $marketing_campaign_names = null, $variant_stats = null, $workflow_names = null, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdAsync($email_id, $include_stats = null, $marketing_campaign_names = null, $workflow_names = null, $included_properties = null, $archived = null, $variant_stats = null, string $contentType = self::contentTypes['getById'][0])
     {
-        return $this->getByIdAsyncWithHttpInfo($email_id, $archived, $included_properties, $include_stats, $marketing_campaign_names, $variant_stats, $workflow_names, $contentType)
+        return $this->getByIdAsyncWithHttpInfo($email_id, $include_stats, $marketing_campaign_names, $workflow_names, $included_properties, $archived, $variant_stats, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1519,21 +1519,21 @@ class EmailsApi
      * Get the details of a specified marketing email
      *
      * @param  string $email_id The marketing email ID. (required)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  string[]|null $included_properties  (optional)
      * @param  bool|null $include_stats Include statistics with email (optional)
      * @param  bool|null $marketing_campaign_names  (optional)
-     * @param  bool|null $variant_stats  (optional)
      * @param  bool|null $workflow_names  (optional)
+     * @param  string[]|null $included_properties  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  bool|null $variant_stats  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByIdAsyncWithHttpInfo($email_id, $archived = null, $included_properties = null, $include_stats = null, $marketing_campaign_names = null, $variant_stats = null, $workflow_names = null, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdAsyncWithHttpInfo($email_id, $include_stats = null, $marketing_campaign_names = null, $workflow_names = null, $included_properties = null, $archived = null, $variant_stats = null, string $contentType = self::contentTypes['getById'][0])
     {
         $returnType = '\HubSpot\Client\Marketing\Emails\Model\PublicEmail';
-        $request = $this->getByIdRequest($email_id, $archived, $included_properties, $include_stats, $marketing_campaign_names, $variant_stats, $workflow_names, $contentType);
+        $request = $this->getByIdRequest($email_id, $include_stats, $marketing_campaign_names, $workflow_names, $included_properties, $archived, $variant_stats, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1575,18 +1575,18 @@ class EmailsApi
      * Create request for operation 'getById'
      *
      * @param  string $email_id The marketing email ID. (required)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  string[]|null $included_properties  (optional)
      * @param  bool|null $include_stats Include statistics with email (optional)
      * @param  bool|null $marketing_campaign_names  (optional)
-     * @param  bool|null $variant_stats  (optional)
      * @param  bool|null $workflow_names  (optional)
+     * @param  string[]|null $included_properties  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  bool|null $variant_stats  (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getByIdRequest($email_id, $archived = null, $included_properties = null, $include_stats = null, $marketing_campaign_names = null, $variant_stats = null, $workflow_names = null, string $contentType = self::contentTypes['getById'][0])
+    public function getByIdRequest($email_id, $include_stats = null, $marketing_campaign_names = null, $workflow_names = null, $included_properties = null, $archived = null, $variant_stats = null, string $contentType = self::contentTypes['getById'][0])
     {
 
         // verify the required parameter 'email_id' is set
@@ -1612,24 +1612,6 @@ class EmailsApi
 
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $included_properties,
-            'includedProperties', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $include_stats,
             'includeStats', // param base name
             'boolean', // openApiType
@@ -1648,8 +1630,8 @@ class EmailsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $variant_stats,
-            'variantStats', // param base name
+            $workflow_names,
+            'workflowNames', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -1657,8 +1639,26 @@ class EmailsApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $workflow_names,
-            'workflowNames', // param base name
+            $included_properties,
+            'includedProperties', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $archived,
+            'archived', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $variant_stats,
+            'variantStats', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
