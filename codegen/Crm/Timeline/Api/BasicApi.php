@@ -73,10 +73,10 @@ class BasicApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'archive' => [
+        'archiveTemplate' => [
             'application/json',
         ],
-        'archive_0' => [
+        'archiveToken' => [
             'application/json',
         ],
         'create' => [
@@ -85,16 +85,16 @@ class BasicApi
         'getAll' => [
             'application/json',
         ],
-        'getById' => [
+        'getEventById' => [
             'application/json',
         ],
-        'getById_0' => [
+        'getTemplateById' => [
             'application/json',
         ],
-        'update' => [
+        'updateTemplate' => [
             'application/json',
         ],
-        'update_0' => [
+        'updateToken' => [
             'application/json',
         ],
     ];
@@ -146,41 +146,41 @@ class BasicApi
     }
 
     /**
-     * Operation archive
+     * Operation archiveTemplate
      *
      * Delete an event template
      *
      * @param  string $event_template_id  (required)
      * @param  int $app_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveTemplate'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      * @deprecated
      */
-    public function archive($event_template_id, $app_id, string $contentType = self::contentTypes['archive'][0])
+    public function archiveTemplate($event_template_id, $app_id, string $contentType = self::contentTypes['archiveTemplate'][0])
     {
-        $this->archiveWithHttpInfo($event_template_id, $app_id, $contentType);
+        $this->archiveTemplateWithHttpInfo($event_template_id, $app_id, $contentType);
     }
 
     /**
-     * Operation archiveWithHttpInfo
+     * Operation archiveTemplateWithHttpInfo
      *
      * Delete an event template
      *
      * @param  string $event_template_id  (required)
      * @param  int $app_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveTemplate'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
-    public function archiveWithHttpInfo($event_template_id, $app_id, string $contentType = self::contentTypes['archive'][0])
+    public function archiveTemplateWithHttpInfo($event_template_id, $app_id, string $contentType = self::contentTypes['archiveTemplate'][0])
     {
-        $request = $this->archiveRequest($event_template_id, $app_id, $contentType);
+        $request = $this->archiveTemplateRequest($event_template_id, $app_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -224,21 +224,21 @@ class BasicApi
     }
 
     /**
-     * Operation archiveAsync
+     * Operation archiveTemplateAsync
      *
      * Delete an event template
      *
      * @param  string $event_template_id  (required)
      * @param  int $app_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveTemplate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function archiveAsync($event_template_id, $app_id, string $contentType = self::contentTypes['archive'][0])
+    public function archiveTemplateAsync($event_template_id, $app_id, string $contentType = self::contentTypes['archiveTemplate'][0])
     {
-        return $this->archiveAsyncWithHttpInfo($event_template_id, $app_id, $contentType)
+        return $this->archiveTemplateAsyncWithHttpInfo($event_template_id, $app_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -247,22 +247,22 @@ class BasicApi
     }
 
     /**
-     * Operation archiveAsyncWithHttpInfo
+     * Operation archiveTemplateAsyncWithHttpInfo
      *
      * Delete an event template
      *
      * @param  string $event_template_id  (required)
      * @param  int $app_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveTemplate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function archiveAsyncWithHttpInfo($event_template_id, $app_id, string $contentType = self::contentTypes['archive'][0])
+    public function archiveTemplateAsyncWithHttpInfo($event_template_id, $app_id, string $contentType = self::contentTypes['archiveTemplate'][0])
     {
         $returnType = '';
-        $request = $this->archiveRequest($event_template_id, $app_id, $contentType);
+        $request = $this->archiveTemplateRequest($event_template_id, $app_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -288,30 +288,30 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'archive'
+     * Create request for operation 'archiveTemplate'
      *
      * @param  string $event_template_id  (required)
      * @param  int $app_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveTemplate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      * @deprecated
      */
-    public function archiveRequest($event_template_id, $app_id, string $contentType = self::contentTypes['archive'][0])
+    public function archiveTemplateRequest($event_template_id, $app_id, string $contentType = self::contentTypes['archiveTemplate'][0])
     {
 
         // verify the required parameter 'event_template_id' is set
         if ($event_template_id === null || (is_array($event_template_id) && count($event_template_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $event_template_id when calling archive'
+                'Missing the required parameter $event_template_id when calling archiveTemplate'
             );
         }
 
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling archive'
+                'Missing the required parameter $app_id when calling archiveTemplate'
             );
         }
 
@@ -402,43 +402,43 @@ class BasicApi
     }
 
     /**
-     * Operation archive_0
+     * Operation archiveToken
      *
      * Delete a template token
      *
      * @param  string $event_template_id  (required)
      * @param  string $token_name  (required)
      * @param  int $app_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveToken'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      * @deprecated
      */
-    public function archive_0($event_template_id, $token_name, $app_id, string $contentType = self::contentTypes['archive_0'][0])
+    public function archiveToken($event_template_id, $token_name, $app_id, string $contentType = self::contentTypes['archiveToken'][0])
     {
-        $this->archive_0WithHttpInfo($event_template_id, $token_name, $app_id, $contentType);
+        $this->archiveTokenWithHttpInfo($event_template_id, $token_name, $app_id, $contentType);
     }
 
     /**
-     * Operation archive_0WithHttpInfo
+     * Operation archiveTokenWithHttpInfo
      *
      * Delete a template token
      *
      * @param  string $event_template_id  (required)
      * @param  string $token_name  (required)
      * @param  int $app_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveToken'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
-    public function archive_0WithHttpInfo($event_template_id, $token_name, $app_id, string $contentType = self::contentTypes['archive_0'][0])
+    public function archiveTokenWithHttpInfo($event_template_id, $token_name, $app_id, string $contentType = self::contentTypes['archiveToken'][0])
     {
-        $request = $this->archive_0Request($event_template_id, $token_name, $app_id, $contentType);
+        $request = $this->archiveTokenRequest($event_template_id, $token_name, $app_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -482,22 +482,22 @@ class BasicApi
     }
 
     /**
-     * Operation archive_0Async
+     * Operation archiveTokenAsync
      *
      * Delete a template token
      *
      * @param  string $event_template_id  (required)
      * @param  string $token_name  (required)
      * @param  int $app_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function archive_0Async($event_template_id, $token_name, $app_id, string $contentType = self::contentTypes['archive_0'][0])
+    public function archiveTokenAsync($event_template_id, $token_name, $app_id, string $contentType = self::contentTypes['archiveToken'][0])
     {
-        return $this->archive_0AsyncWithHttpInfo($event_template_id, $token_name, $app_id, $contentType)
+        return $this->archiveTokenAsyncWithHttpInfo($event_template_id, $token_name, $app_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -506,23 +506,23 @@ class BasicApi
     }
 
     /**
-     * Operation archive_0AsyncWithHttpInfo
+     * Operation archiveTokenAsyncWithHttpInfo
      *
      * Delete a template token
      *
      * @param  string $event_template_id  (required)
      * @param  string $token_name  (required)
      * @param  int $app_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function archive_0AsyncWithHttpInfo($event_template_id, $token_name, $app_id, string $contentType = self::contentTypes['archive_0'][0])
+    public function archiveTokenAsyncWithHttpInfo($event_template_id, $token_name, $app_id, string $contentType = self::contentTypes['archiveToken'][0])
     {
         $returnType = '';
-        $request = $this->archive_0Request($event_template_id, $token_name, $app_id, $contentType);
+        $request = $this->archiveTokenRequest($event_template_id, $token_name, $app_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -548,38 +548,38 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'archive_0'
+     * Create request for operation 'archiveToken'
      *
      * @param  string $event_template_id  (required)
      * @param  string $token_name  (required)
      * @param  int $app_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      * @deprecated
      */
-    public function archive_0Request($event_template_id, $token_name, $app_id, string $contentType = self::contentTypes['archive_0'][0])
+    public function archiveTokenRequest($event_template_id, $token_name, $app_id, string $contentType = self::contentTypes['archiveToken'][0])
     {
 
         // verify the required parameter 'event_template_id' is set
         if ($event_template_id === null || (is_array($event_template_id) && count($event_template_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $event_template_id when calling archive_0'
+                'Missing the required parameter $event_template_id when calling archiveToken'
             );
         }
 
         // verify the required parameter 'token_name' is set
         if ($token_name === null || (is_array($token_name) && count($token_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $token_name when calling archive_0'
+                'Missing the required parameter $token_name when calling archiveToken'
             );
         }
 
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling archive_0'
+                'Missing the required parameter $app_id when calling archiveToken'
             );
         }
 
@@ -1281,42 +1281,42 @@ class BasicApi
     }
 
     /**
-     * Operation getById
+     * Operation getEventById
      *
      * Get an event instance
      *
      * @param  string $event_template_id  (required)
      * @param  string $event_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEventById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventResponse|\HubSpot\Client\Crm\Timeline\Model\Error
      * @deprecated
      */
-    public function getById($event_template_id, $event_id, string $contentType = self::contentTypes['getById'][0])
+    public function getEventById($event_template_id, $event_id, string $contentType = self::contentTypes['getEventById'][0])
     {
-        list($response) = $this->getByIdWithHttpInfo($event_template_id, $event_id, $contentType);
+        list($response) = $this->getEventByIdWithHttpInfo($event_template_id, $event_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation getByIdWithHttpInfo
+     * Operation getEventByIdWithHttpInfo
      *
      * Get an event instance
      *
      * @param  string $event_template_id  (required)
      * @param  string $event_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEventById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Timeline\Model\TimelineEventResponse|\HubSpot\Client\Crm\Timeline\Model\Error, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
-    public function getByIdWithHttpInfo($event_template_id, $event_id, string $contentType = self::contentTypes['getById'][0])
+    public function getEventByIdWithHttpInfo($event_template_id, $event_id, string $contentType = self::contentTypes['getEventById'][0])
     {
-        $request = $this->getByIdRequest($event_template_id, $event_id, $contentType);
+        $request = $this->getEventByIdRequest($event_template_id, $event_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1402,21 +1402,21 @@ class BasicApi
     }
 
     /**
-     * Operation getByIdAsync
+     * Operation getEventByIdAsync
      *
      * Get an event instance
      *
      * @param  string $event_template_id  (required)
      * @param  string $event_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEventById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function getByIdAsync($event_template_id, $event_id, string $contentType = self::contentTypes['getById'][0])
+    public function getEventByIdAsync($event_template_id, $event_id, string $contentType = self::contentTypes['getEventById'][0])
     {
-        return $this->getByIdAsyncWithHttpInfo($event_template_id, $event_id, $contentType)
+        return $this->getEventByIdAsyncWithHttpInfo($event_template_id, $event_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1425,22 +1425,22 @@ class BasicApi
     }
 
     /**
-     * Operation getByIdAsyncWithHttpInfo
+     * Operation getEventByIdAsyncWithHttpInfo
      *
      * Get an event instance
      *
      * @param  string $event_template_id  (required)
      * @param  string $event_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEventById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function getByIdAsyncWithHttpInfo($event_template_id, $event_id, string $contentType = self::contentTypes['getById'][0])
+    public function getEventByIdAsyncWithHttpInfo($event_template_id, $event_id, string $contentType = self::contentTypes['getEventById'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Timeline\Model\TimelineEventResponse';
-        $request = $this->getByIdRequest($event_template_id, $event_id, $contentType);
+        $request = $this->getEventByIdRequest($event_template_id, $event_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1479,30 +1479,30 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'getById'
+     * Create request for operation 'getEventById'
      *
      * @param  string $event_template_id  (required)
      * @param  string $event_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getEventById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      * @deprecated
      */
-    public function getByIdRequest($event_template_id, $event_id, string $contentType = self::contentTypes['getById'][0])
+    public function getEventByIdRequest($event_template_id, $event_id, string $contentType = self::contentTypes['getEventById'][0])
     {
 
         // verify the required parameter 'event_template_id' is set
         if ($event_template_id === null || (is_array($event_template_id) && count($event_template_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $event_template_id when calling getById'
+                'Missing the required parameter $event_template_id when calling getEventById'
             );
         }
 
         // verify the required parameter 'event_id' is set
         if ($event_id === null || (is_array($event_id) && count($event_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $event_id when calling getById'
+                'Missing the required parameter $event_id when calling getEventById'
             );
         }
 
@@ -1592,42 +1592,42 @@ class BasicApi
     }
 
     /**
-     * Operation getById_0
+     * Operation getTemplateById
      *
      * Get an event template
      *
      * @param  string $event_template_id  (required)
      * @param  int $app_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTemplateById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplate|\HubSpot\Client\Crm\Timeline\Model\Error
      * @deprecated
      */
-    public function getById_0($event_template_id, $app_id, string $contentType = self::contentTypes['getById_0'][0])
+    public function getTemplateById($event_template_id, $app_id, string $contentType = self::contentTypes['getTemplateById'][0])
     {
-        list($response) = $this->getById_0WithHttpInfo($event_template_id, $app_id, $contentType);
+        list($response) = $this->getTemplateByIdWithHttpInfo($event_template_id, $app_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation getById_0WithHttpInfo
+     * Operation getTemplateByIdWithHttpInfo
      *
      * Get an event template
      *
      * @param  string $event_template_id  (required)
      * @param  int $app_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTemplateById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplate|\HubSpot\Client\Crm\Timeline\Model\Error, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
-    public function getById_0WithHttpInfo($event_template_id, $app_id, string $contentType = self::contentTypes['getById_0'][0])
+    public function getTemplateByIdWithHttpInfo($event_template_id, $app_id, string $contentType = self::contentTypes['getTemplateById'][0])
     {
-        $request = $this->getById_0Request($event_template_id, $app_id, $contentType);
+        $request = $this->getTemplateByIdRequest($event_template_id, $app_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1713,21 +1713,21 @@ class BasicApi
     }
 
     /**
-     * Operation getById_0Async
+     * Operation getTemplateByIdAsync
      *
      * Get an event template
      *
      * @param  string $event_template_id  (required)
      * @param  int $app_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTemplateById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function getById_0Async($event_template_id, $app_id, string $contentType = self::contentTypes['getById_0'][0])
+    public function getTemplateByIdAsync($event_template_id, $app_id, string $contentType = self::contentTypes['getTemplateById'][0])
     {
-        return $this->getById_0AsyncWithHttpInfo($event_template_id, $app_id, $contentType)
+        return $this->getTemplateByIdAsyncWithHttpInfo($event_template_id, $app_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1736,22 +1736,22 @@ class BasicApi
     }
 
     /**
-     * Operation getById_0AsyncWithHttpInfo
+     * Operation getTemplateByIdAsyncWithHttpInfo
      *
      * Get an event template
      *
      * @param  string $event_template_id  (required)
      * @param  int $app_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTemplateById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function getById_0AsyncWithHttpInfo($event_template_id, $app_id, string $contentType = self::contentTypes['getById_0'][0])
+    public function getTemplateByIdAsyncWithHttpInfo($event_template_id, $app_id, string $contentType = self::contentTypes['getTemplateById'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplate';
-        $request = $this->getById_0Request($event_template_id, $app_id, $contentType);
+        $request = $this->getTemplateByIdRequest($event_template_id, $app_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1790,30 +1790,30 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'getById_0'
+     * Create request for operation 'getTemplateById'
      *
      * @param  string $event_template_id  (required)
      * @param  int $app_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getTemplateById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      * @deprecated
      */
-    public function getById_0Request($event_template_id, $app_id, string $contentType = self::contentTypes['getById_0'][0])
+    public function getTemplateByIdRequest($event_template_id, $app_id, string $contentType = self::contentTypes['getTemplateById'][0])
     {
 
         // verify the required parameter 'event_template_id' is set
         if ($event_template_id === null || (is_array($event_template_id) && count($event_template_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $event_template_id when calling getById_0'
+                'Missing the required parameter $event_template_id when calling getTemplateById'
             );
         }
 
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling getById_0'
+                'Missing the required parameter $app_id when calling getTemplateById'
             );
         }
 
@@ -1904,44 +1904,44 @@ class BasicApi
     }
 
     /**
-     * Operation update
+     * Operation updateTemplate
      *
      * Update an event template
      *
      * @param  string $event_template_id  (required)
      * @param  int $app_id  (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateUpdateRequest $timeline_event_template_update_request timeline_event_template_update_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTemplate'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplate|\HubSpot\Client\Crm\Timeline\Model\Error
      * @deprecated
      */
-    public function update($event_template_id, $app_id, $timeline_event_template_update_request, string $contentType = self::contentTypes['update'][0])
+    public function updateTemplate($event_template_id, $app_id, $timeline_event_template_update_request, string $contentType = self::contentTypes['updateTemplate'][0])
     {
-        list($response) = $this->updateWithHttpInfo($event_template_id, $app_id, $timeline_event_template_update_request, $contentType);
+        list($response) = $this->updateTemplateWithHttpInfo($event_template_id, $app_id, $timeline_event_template_update_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation updateWithHttpInfo
+     * Operation updateTemplateWithHttpInfo
      *
      * Update an event template
      *
      * @param  string $event_template_id  (required)
      * @param  int $app_id  (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateUpdateRequest $timeline_event_template_update_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTemplate'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplate|\HubSpot\Client\Crm\Timeline\Model\Error, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
-    public function updateWithHttpInfo($event_template_id, $app_id, $timeline_event_template_update_request, string $contentType = self::contentTypes['update'][0])
+    public function updateTemplateWithHttpInfo($event_template_id, $app_id, $timeline_event_template_update_request, string $contentType = self::contentTypes['updateTemplate'][0])
     {
-        $request = $this->updateRequest($event_template_id, $app_id, $timeline_event_template_update_request, $contentType);
+        $request = $this->updateTemplateRequest($event_template_id, $app_id, $timeline_event_template_update_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2027,22 +2027,22 @@ class BasicApi
     }
 
     /**
-     * Operation updateAsync
+     * Operation updateTemplateAsync
      *
      * Update an event template
      *
      * @param  string $event_template_id  (required)
      * @param  int $app_id  (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateUpdateRequest $timeline_event_template_update_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTemplate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function updateAsync($event_template_id, $app_id, $timeline_event_template_update_request, string $contentType = self::contentTypes['update'][0])
+    public function updateTemplateAsync($event_template_id, $app_id, $timeline_event_template_update_request, string $contentType = self::contentTypes['updateTemplate'][0])
     {
-        return $this->updateAsyncWithHttpInfo($event_template_id, $app_id, $timeline_event_template_update_request, $contentType)
+        return $this->updateTemplateAsyncWithHttpInfo($event_template_id, $app_id, $timeline_event_template_update_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2051,23 +2051,23 @@ class BasicApi
     }
 
     /**
-     * Operation updateAsyncWithHttpInfo
+     * Operation updateTemplateAsyncWithHttpInfo
      *
      * Update an event template
      *
      * @param  string $event_template_id  (required)
      * @param  int $app_id  (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateUpdateRequest $timeline_event_template_update_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTemplate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function updateAsyncWithHttpInfo($event_template_id, $app_id, $timeline_event_template_update_request, string $contentType = self::contentTypes['update'][0])
+    public function updateTemplateAsyncWithHttpInfo($event_template_id, $app_id, $timeline_event_template_update_request, string $contentType = self::contentTypes['updateTemplate'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplate';
-        $request = $this->updateRequest($event_template_id, $app_id, $timeline_event_template_update_request, $contentType);
+        $request = $this->updateTemplateRequest($event_template_id, $app_id, $timeline_event_template_update_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2106,38 +2106,38 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'update'
+     * Create request for operation 'updateTemplate'
      *
      * @param  string $event_template_id  (required)
      * @param  int $app_id  (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateUpdateRequest $timeline_event_template_update_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateTemplate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      * @deprecated
      */
-    public function updateRequest($event_template_id, $app_id, $timeline_event_template_update_request, string $contentType = self::contentTypes['update'][0])
+    public function updateTemplateRequest($event_template_id, $app_id, $timeline_event_template_update_request, string $contentType = self::contentTypes['updateTemplate'][0])
     {
 
         // verify the required parameter 'event_template_id' is set
         if ($event_template_id === null || (is_array($event_template_id) && count($event_template_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $event_template_id when calling update'
+                'Missing the required parameter $event_template_id when calling updateTemplate'
             );
         }
 
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling update'
+                'Missing the required parameter $app_id when calling updateTemplate'
             );
         }
 
         // verify the required parameter 'timeline_event_template_update_request' is set
         if ($timeline_event_template_update_request === null || (is_array($timeline_event_template_update_request) && count($timeline_event_template_update_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $timeline_event_template_update_request when calling update'
+                'Missing the required parameter $timeline_event_template_update_request when calling updateTemplate'
             );
         }
 
@@ -2235,7 +2235,7 @@ class BasicApi
     }
 
     /**
-     * Operation update_0
+     * Operation updateToken
      *
      * Update a template token
      *
@@ -2243,21 +2243,21 @@ class BasicApi
      * @param  string $token_name  (required)
      * @param  int $app_id  (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenUpdateRequest $timeline_event_template_token_update_request timeline_event_template_token_update_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateToken'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken|\HubSpot\Client\Crm\Timeline\Model\Error
      * @deprecated
      */
-    public function update_0($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request, string $contentType = self::contentTypes['update_0'][0])
+    public function updateToken($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request, string $contentType = self::contentTypes['updateToken'][0])
     {
-        list($response) = $this->update_0WithHttpInfo($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request, $contentType);
+        list($response) = $this->updateTokenWithHttpInfo($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation update_0WithHttpInfo
+     * Operation updateTokenWithHttpInfo
      *
      * Update a template token
      *
@@ -2265,16 +2265,16 @@ class BasicApi
      * @param  string $token_name  (required)
      * @param  int $app_id  (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenUpdateRequest $timeline_event_template_token_update_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateToken'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken|\HubSpot\Client\Crm\Timeline\Model\Error, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
-    public function update_0WithHttpInfo($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request, string $contentType = self::contentTypes['update_0'][0])
+    public function updateTokenWithHttpInfo($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request, string $contentType = self::contentTypes['updateToken'][0])
     {
-        $request = $this->update_0Request($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request, $contentType);
+        $request = $this->updateTokenRequest($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2360,7 +2360,7 @@ class BasicApi
     }
 
     /**
-     * Operation update_0Async
+     * Operation updateTokenAsync
      *
      * Update a template token
      *
@@ -2368,15 +2368,15 @@ class BasicApi
      * @param  string $token_name  (required)
      * @param  int $app_id  (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenUpdateRequest $timeline_event_template_token_update_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function update_0Async($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request, string $contentType = self::contentTypes['update_0'][0])
+    public function updateTokenAsync($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request, string $contentType = self::contentTypes['updateToken'][0])
     {
-        return $this->update_0AsyncWithHttpInfo($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request, $contentType)
+        return $this->updateTokenAsyncWithHttpInfo($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2385,7 +2385,7 @@ class BasicApi
     }
 
     /**
-     * Operation update_0AsyncWithHttpInfo
+     * Operation updateTokenAsyncWithHttpInfo
      *
      * Update a template token
      *
@@ -2393,16 +2393,16 @@ class BasicApi
      * @param  string $token_name  (required)
      * @param  int $app_id  (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenUpdateRequest $timeline_event_template_token_update_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function update_0AsyncWithHttpInfo($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request, string $contentType = self::contentTypes['update_0'][0])
+    public function updateTokenAsyncWithHttpInfo($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request, string $contentType = self::contentTypes['updateToken'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken';
-        $request = $this->update_0Request($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request, $contentType);
+        $request = $this->updateTokenRequest($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2441,46 +2441,46 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'update_0'
+     * Create request for operation 'updateToken'
      *
      * @param  string $event_template_id  (required)
      * @param  string $token_name  (required)
      * @param  int $app_id  (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateTokenUpdateRequest $timeline_event_template_token_update_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      * @deprecated
      */
-    public function update_0Request($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request, string $contentType = self::contentTypes['update_0'][0])
+    public function updateTokenRequest($event_template_id, $token_name, $app_id, $timeline_event_template_token_update_request, string $contentType = self::contentTypes['updateToken'][0])
     {
 
         // verify the required parameter 'event_template_id' is set
         if ($event_template_id === null || (is_array($event_template_id) && count($event_template_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $event_template_id when calling update_0'
+                'Missing the required parameter $event_template_id when calling updateToken'
             );
         }
 
         // verify the required parameter 'token_name' is set
         if ($token_name === null || (is_array($token_name) && count($token_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $token_name when calling update_0'
+                'Missing the required parameter $token_name when calling updateToken'
             );
         }
 
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling update_0'
+                'Missing the required parameter $app_id when calling updateToken'
             );
         }
 
         // verify the required parameter 'timeline_event_template_token_update_request' is set
         if ($timeline_event_template_token_update_request === null || (is_array($timeline_event_template_token_update_request) && count($timeline_event_template_token_update_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $timeline_event_template_token_update_request when calling update_0'
+                'Missing the required parameter $timeline_event_template_token_update_request when calling updateToken'
             );
         }
 
