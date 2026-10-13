@@ -73,19 +73,19 @@ class AdvancedApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'getPreviousVersion' => [
+        'getLandingPagePreviousVersion' => [
             'application/json',
         ],
-        'getPreviousVersions' => [
+        'getLandingPagePreviousVersions' => [
+            'application/json',
+        ],
+        'restoreLandingPagePreviousVersionToDraft' => [
             'application/json',
         ],
         'restorePreviousLandingPageVersion' => [
             'application/json',
         ],
         'restorePreviousSitePageVersion' => [
-            'application/json',
-        ],
-        'restorePreviousVersionToDraft' => [
             'application/json',
         ],
     ];
@@ -137,40 +137,40 @@ class AdvancedApi
     }
 
     /**
-     * Operation getPreviousVersion
+     * Operation getLandingPagePreviousVersion
      *
      * Retrieve a previous version of a landing page
      *
      * @param  string $object_id The ID of the landing page. (required)
      * @param  string $revision_id The ID of the specific version to retrieve. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersion'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLandingPagePreviousVersion'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Pages\Model\PageVersion|\HubSpot\Client\Cms\Pages\Model\Error
      */
-    public function getPreviousVersion($object_id, $revision_id, string $contentType = self::contentTypes['getPreviousVersion'][0])
+    public function getLandingPagePreviousVersion($object_id, $revision_id, string $contentType = self::contentTypes['getLandingPagePreviousVersion'][0])
     {
-        list($response) = $this->getPreviousVersionWithHttpInfo($object_id, $revision_id, $contentType);
+        list($response) = $this->getLandingPagePreviousVersionWithHttpInfo($object_id, $revision_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation getPreviousVersionWithHttpInfo
+     * Operation getLandingPagePreviousVersionWithHttpInfo
      *
      * Retrieve a previous version of a landing page
      *
      * @param  string $object_id The ID of the landing page. (required)
      * @param  string $revision_id The ID of the specific version to retrieve. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersion'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLandingPagePreviousVersion'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Pages\Model\PageVersion|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPreviousVersionWithHttpInfo($object_id, $revision_id, string $contentType = self::contentTypes['getPreviousVersion'][0])
+    public function getLandingPagePreviousVersionWithHttpInfo($object_id, $revision_id, string $contentType = self::contentTypes['getLandingPagePreviousVersion'][0])
     {
-        $request = $this->getPreviousVersionRequest($object_id, $revision_id, $contentType);
+        $request = $this->getLandingPagePreviousVersionRequest($object_id, $revision_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -256,20 +256,20 @@ class AdvancedApi
     }
 
     /**
-     * Operation getPreviousVersionAsync
+     * Operation getLandingPagePreviousVersionAsync
      *
      * Retrieve a previous version of a landing page
      *
      * @param  string $object_id The ID of the landing page. (required)
      * @param  string $revision_id The ID of the specific version to retrieve. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersion'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLandingPagePreviousVersion'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPreviousVersionAsync($object_id, $revision_id, string $contentType = self::contentTypes['getPreviousVersion'][0])
+    public function getLandingPagePreviousVersionAsync($object_id, $revision_id, string $contentType = self::contentTypes['getLandingPagePreviousVersion'][0])
     {
-        return $this->getPreviousVersionAsyncWithHttpInfo($object_id, $revision_id, $contentType)
+        return $this->getLandingPagePreviousVersionAsyncWithHttpInfo($object_id, $revision_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -278,21 +278,21 @@ class AdvancedApi
     }
 
     /**
-     * Operation getPreviousVersionAsyncWithHttpInfo
+     * Operation getLandingPagePreviousVersionAsyncWithHttpInfo
      *
      * Retrieve a previous version of a landing page
      *
      * @param  string $object_id The ID of the landing page. (required)
      * @param  string $revision_id The ID of the specific version to retrieve. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersion'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLandingPagePreviousVersion'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPreviousVersionAsyncWithHttpInfo($object_id, $revision_id, string $contentType = self::contentTypes['getPreviousVersion'][0])
+    public function getLandingPagePreviousVersionAsyncWithHttpInfo($object_id, $revision_id, string $contentType = self::contentTypes['getLandingPagePreviousVersion'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Pages\Model\PageVersion';
-        $request = $this->getPreviousVersionRequest($object_id, $revision_id, $contentType);
+        $request = $this->getLandingPagePreviousVersionRequest($object_id, $revision_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -331,29 +331,29 @@ class AdvancedApi
     }
 
     /**
-     * Create request for operation 'getPreviousVersion'
+     * Create request for operation 'getLandingPagePreviousVersion'
      *
      * @param  string $object_id The ID of the landing page. (required)
      * @param  string $revision_id The ID of the specific version to retrieve. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersion'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLandingPagePreviousVersion'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPreviousVersionRequest($object_id, $revision_id, string $contentType = self::contentTypes['getPreviousVersion'][0])
+    public function getLandingPagePreviousVersionRequest($object_id, $revision_id, string $contentType = self::contentTypes['getLandingPagePreviousVersion'][0])
     {
 
         // verify the required parameter 'object_id' is set
         if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_id when calling getPreviousVersion'
+                'Missing the required parameter $object_id when calling getLandingPagePreviousVersion'
             );
         }
 
         // verify the required parameter 'revision_id' is set
         if ($revision_id === null || (is_array($revision_id) && count($revision_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $revision_id when calling getPreviousVersion'
+                'Missing the required parameter $revision_id when calling getLandingPagePreviousVersion'
             );
         }
 
@@ -443,7 +443,7 @@ class AdvancedApi
     }
 
     /**
-     * Operation getPreviousVersions
+     * Operation getLandingPagePreviousVersions
      *
      * Retrieve all previous versions of a landing page
      *
@@ -451,20 +451,20 @@ class AdvancedApi
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before The cursor token value to retrieve the set of results before the current page. (optional)
      * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersions'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLandingPagePreviousVersions'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Pages\Model\CollectionResponseWithTotalPageVersion|\HubSpot\Client\Cms\Pages\Model\Error
      */
-    public function getPreviousVersions($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getPreviousVersions'][0])
+    public function getLandingPagePreviousVersions($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getLandingPagePreviousVersions'][0])
     {
-        list($response) = $this->getPreviousVersionsWithHttpInfo($object_id, $after, $before, $limit, $contentType);
+        list($response) = $this->getLandingPagePreviousVersionsWithHttpInfo($object_id, $after, $before, $limit, $contentType);
         return $response;
     }
 
     /**
-     * Operation getPreviousVersionsWithHttpInfo
+     * Operation getLandingPagePreviousVersionsWithHttpInfo
      *
      * Retrieve all previous versions of a landing page
      *
@@ -472,15 +472,15 @@ class AdvancedApi
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before The cursor token value to retrieve the set of results before the current page. (optional)
      * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersions'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLandingPagePreviousVersions'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Pages\Model\CollectionResponseWithTotalPageVersion|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPreviousVersionsWithHttpInfo($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getPreviousVersions'][0])
+    public function getLandingPagePreviousVersionsWithHttpInfo($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getLandingPagePreviousVersions'][0])
     {
-        $request = $this->getPreviousVersionsRequest($object_id, $after, $before, $limit, $contentType);
+        $request = $this->getLandingPagePreviousVersionsRequest($object_id, $after, $before, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -566,7 +566,7 @@ class AdvancedApi
     }
 
     /**
-     * Operation getPreviousVersionsAsync
+     * Operation getLandingPagePreviousVersionsAsync
      *
      * Retrieve all previous versions of a landing page
      *
@@ -574,14 +574,14 @@ class AdvancedApi
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before The cursor token value to retrieve the set of results before the current page. (optional)
      * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersions'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLandingPagePreviousVersions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPreviousVersionsAsync($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getPreviousVersions'][0])
+    public function getLandingPagePreviousVersionsAsync($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getLandingPagePreviousVersions'][0])
     {
-        return $this->getPreviousVersionsAsyncWithHttpInfo($object_id, $after, $before, $limit, $contentType)
+        return $this->getLandingPagePreviousVersionsAsyncWithHttpInfo($object_id, $after, $before, $limit, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -590,7 +590,7 @@ class AdvancedApi
     }
 
     /**
-     * Operation getPreviousVersionsAsyncWithHttpInfo
+     * Operation getLandingPagePreviousVersionsAsyncWithHttpInfo
      *
      * Retrieve all previous versions of a landing page
      *
@@ -598,15 +598,15 @@ class AdvancedApi
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before The cursor token value to retrieve the set of results before the current page. (optional)
      * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersions'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLandingPagePreviousVersions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPreviousVersionsAsyncWithHttpInfo($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getPreviousVersions'][0])
+    public function getLandingPagePreviousVersionsAsyncWithHttpInfo($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getLandingPagePreviousVersions'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Pages\Model\CollectionResponseWithTotalPageVersion';
-        $request = $this->getPreviousVersionsRequest($object_id, $after, $before, $limit, $contentType);
+        $request = $this->getLandingPagePreviousVersionsRequest($object_id, $after, $before, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -645,24 +645,24 @@ class AdvancedApi
     }
 
     /**
-     * Create request for operation 'getPreviousVersions'
+     * Create request for operation 'getLandingPagePreviousVersions'
      *
      * @param  string $object_id The landing page ID. (required)
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before The cursor token value to retrieve the set of results before the current page. (optional)
      * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersions'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getLandingPagePreviousVersions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPreviousVersionsRequest($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getPreviousVersions'][0])
+    public function getLandingPagePreviousVersionsRequest($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getLandingPagePreviousVersions'][0])
     {
 
         // verify the required parameter 'object_id' is set
         if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_id when calling getPreviousVersions'
+                'Missing the required parameter $object_id when calling getLandingPagePreviousVersions'
             );
         }
 
@@ -767,6 +767,312 @@ class AdvancedApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation restoreLandingPagePreviousVersionToDraft
+     *
+     * Restore a previous version of a landing page
+     *
+     * @param  string $object_id The ID of the landing page. (required)
+     * @param  int $revision_id The ID of the specific version to set as the draft. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreLandingPagePreviousVersionToDraft'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\Pages\Model\Page|\HubSpot\Client\Cms\Pages\Model\Error
+     */
+    public function restoreLandingPagePreviousVersionToDraft($object_id, $revision_id, string $contentType = self::contentTypes['restoreLandingPagePreviousVersionToDraft'][0])
+    {
+        list($response) = $this->restoreLandingPagePreviousVersionToDraftWithHttpInfo($object_id, $revision_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation restoreLandingPagePreviousVersionToDraftWithHttpInfo
+     *
+     * Restore a previous version of a landing page
+     *
+     * @param  string $object_id The ID of the landing page. (required)
+     * @param  int $revision_id The ID of the specific version to set as the draft. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreLandingPagePreviousVersionToDraft'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Pages\Model\Page|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function restoreLandingPagePreviousVersionToDraftWithHttpInfo($object_id, $revision_id, string $contentType = self::contentTypes['restoreLandingPagePreviousVersionToDraft'][0])
+    {
+        $request = $this->restoreLandingPagePreviousVersionToDraftRequest($object_id, $revision_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Pages\Model\Page',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Pages\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Cms\Pages\Model\Page',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Pages\Model\Page',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Pages\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation restoreLandingPagePreviousVersionToDraftAsync
+     *
+     * Restore a previous version of a landing page
+     *
+     * @param  string $object_id The ID of the landing page. (required)
+     * @param  int $revision_id The ID of the specific version to set as the draft. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreLandingPagePreviousVersionToDraft'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function restoreLandingPagePreviousVersionToDraftAsync($object_id, $revision_id, string $contentType = self::contentTypes['restoreLandingPagePreviousVersionToDraft'][0])
+    {
+        return $this->restoreLandingPagePreviousVersionToDraftAsyncWithHttpInfo($object_id, $revision_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation restoreLandingPagePreviousVersionToDraftAsyncWithHttpInfo
+     *
+     * Restore a previous version of a landing page
+     *
+     * @param  string $object_id The ID of the landing page. (required)
+     * @param  int $revision_id The ID of the specific version to set as the draft. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreLandingPagePreviousVersionToDraft'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function restoreLandingPagePreviousVersionToDraftAsyncWithHttpInfo($object_id, $revision_id, string $contentType = self::contentTypes['restoreLandingPagePreviousVersionToDraft'][0])
+    {
+        $returnType = '\HubSpot\Client\Cms\Pages\Model\Page';
+        $request = $this->restoreLandingPagePreviousVersionToDraftRequest($object_id, $revision_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'restoreLandingPagePreviousVersionToDraft'
+     *
+     * @param  string $object_id The ID of the landing page. (required)
+     * @param  int $revision_id The ID of the specific version to set as the draft. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreLandingPagePreviousVersionToDraft'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function restoreLandingPagePreviousVersionToDraftRequest($object_id, $revision_id, string $contentType = self::contentTypes['restoreLandingPagePreviousVersionToDraft'][0])
+    {
+
+        // verify the required parameter 'object_id' is set
+        if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $object_id when calling restoreLandingPagePreviousVersionToDraft'
+            );
+        }
+
+        // verify the required parameter 'revision_id' is set
+        if ($revision_id === null || (is_array($revision_id) && count($revision_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $revision_id when calling restoreLandingPagePreviousVersionToDraft'
+            );
+        }
+
+
+        $resourcePath = '/cms/v3/pages/landing-pages/{objectId}/revisions/{revisionId}/restore-to-draft';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($object_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'objectId' . '}',
+                ObjectSerializer::toPathValue($object_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($revision_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'revisionId' . '}',
+                ObjectSerializer::toPathValue($revision_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -1302,312 +1608,6 @@ class AdvancedApi
 
 
         $resourcePath = '/cms/v3/pages/site-pages/{objectId}/revisions/{revisionId}/restore';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($object_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'objectId' . '}',
-                ObjectSerializer::toPathValue($object_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($revision_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'revisionId' . '}',
-                ObjectSerializer::toPathValue($revision_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation restorePreviousVersionToDraft
-     *
-     * Restore a previous version of a landing page
-     *
-     * @param  string $object_id The ID of the landing page. (required)
-     * @param  int $revision_id The ID of the specific version to set as the draft. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restorePreviousVersionToDraft'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Pages\Model\Page|\HubSpot\Client\Cms\Pages\Model\Error
-     */
-    public function restorePreviousVersionToDraft($object_id, $revision_id, string $contentType = self::contentTypes['restorePreviousVersionToDraft'][0])
-    {
-        list($response) = $this->restorePreviousVersionToDraftWithHttpInfo($object_id, $revision_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation restorePreviousVersionToDraftWithHttpInfo
-     *
-     * Restore a previous version of a landing page
-     *
-     * @param  string $object_id The ID of the landing page. (required)
-     * @param  int $revision_id The ID of the specific version to set as the draft. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restorePreviousVersionToDraft'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Pages\Model\Page|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function restorePreviousVersionToDraftWithHttpInfo($object_id, $revision_id, string $contentType = self::contentTypes['restorePreviousVersionToDraft'][0])
-    {
-        $request = $this->restorePreviousVersionToDraftRequest($object_id, $revision_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Pages\Model\Page',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Pages\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Cms\Pages\Model\Page',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Pages\Model\Page',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Pages\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation restorePreviousVersionToDraftAsync
-     *
-     * Restore a previous version of a landing page
-     *
-     * @param  string $object_id The ID of the landing page. (required)
-     * @param  int $revision_id The ID of the specific version to set as the draft. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restorePreviousVersionToDraft'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function restorePreviousVersionToDraftAsync($object_id, $revision_id, string $contentType = self::contentTypes['restorePreviousVersionToDraft'][0])
-    {
-        return $this->restorePreviousVersionToDraftAsyncWithHttpInfo($object_id, $revision_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation restorePreviousVersionToDraftAsyncWithHttpInfo
-     *
-     * Restore a previous version of a landing page
-     *
-     * @param  string $object_id The ID of the landing page. (required)
-     * @param  int $revision_id The ID of the specific version to set as the draft. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restorePreviousVersionToDraft'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function restorePreviousVersionToDraftAsyncWithHttpInfo($object_id, $revision_id, string $contentType = self::contentTypes['restorePreviousVersionToDraft'][0])
-    {
-        $returnType = '\HubSpot\Client\Cms\Pages\Model\Page';
-        $request = $this->restorePreviousVersionToDraftRequest($object_id, $revision_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'restorePreviousVersionToDraft'
-     *
-     * @param  string $object_id The ID of the landing page. (required)
-     * @param  int $revision_id The ID of the specific version to set as the draft. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restorePreviousVersionToDraft'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function restorePreviousVersionToDraftRequest($object_id, $revision_id, string $contentType = self::contentTypes['restorePreviousVersionToDraft'][0])
-    {
-
-        // verify the required parameter 'object_id' is set
-        if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $object_id when calling restorePreviousVersionToDraft'
-            );
-        }
-
-        // verify the required parameter 'revision_id' is set
-        if ($revision_id === null || (is_array($revision_id) && count($revision_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $revision_id when calling restorePreviousVersionToDraft'
-            );
-        }
-
-
-        $resourcePath = '/cms/v3/pages/landing-pages/{objectId}/revisions/{revisionId}/restore-to-draft';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

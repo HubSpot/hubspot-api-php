@@ -97,6 +97,9 @@ class TablesApi
         'getDraftTableDetailsById' => [
             'application/json',
         ],
+        'getDraftTableRows' => [
+            'application/json',
+        ],
         'getTableDetails' => [
             'application/json',
         ],
@@ -104,9 +107,6 @@ class TablesApi
             'multipart/form-data',
         ],
         'publishDraftTable' => [
-            'application/json',
-        ],
-        'readDraftTableRows' => [
             'application/json',
         ],
         'removeTableVersion' => [
@@ -2815,6 +2815,382 @@ class TablesApi
     }
 
     /**
+     * Operation getDraftTableRows
+     *
+     * Get rows from draft table
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  string[]|null $sort  (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string[]|null $properties  (optional)
+     * @param  int|null $offset  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error
+     */
+    public function getDraftTableRows($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['getDraftTableRows'][0])
+    {
+        list($response) = $this->getDraftTableRowsWithHttpInfo($table_id_or_name, $sort, $after, $limit, $properties, $offset, $archived, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getDraftTableRowsWithHttpInfo
+     *
+     * Get rows from draft table
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  string[]|null $sort  (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string[]|null $properties  (optional)
+     * @param  int|null $offset  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getDraftTableRowsWithHttpInfo($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['getDraftTableRows'][0])
+    {
+        $request = $this->getDraftTableRowsRequest($table_id_or_name, $sort, $after, $limit, $properties, $offset, $archived, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getDraftTableRowsAsync
+     *
+     * Get rows from draft table
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  string[]|null $sort  (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string[]|null $properties  (optional)
+     * @param  int|null $offset  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getDraftTableRowsAsync($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['getDraftTableRows'][0])
+    {
+        return $this->getDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $sort, $after, $limit, $properties, $offset, $archived, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getDraftTableRowsAsyncWithHttpInfo
+     *
+     * Get rows from draft table
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  string[]|null $sort  (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string[]|null $properties  (optional)
+     * @param  int|null $offset  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['getDraftTableRows'][0])
+    {
+        $returnType = '\HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3';
+        $request = $this->getDraftTableRowsRequest($table_id_or_name, $sort, $after, $limit, $properties, $offset, $archived, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getDraftTableRows'
+     *
+     * @param  string $table_id_or_name  (required)
+     * @param  string[]|null $sort  (optional)
+     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
+     * @param  int|null $limit The maximum number of results to display per page. (optional)
+     * @param  string[]|null $properties  (optional)
+     * @param  int|null $offset  (optional)
+     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getDraftTableRows'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getDraftTableRowsRequest($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['getDraftTableRows'][0])
+    {
+
+        // verify the required parameter 'table_id_or_name' is set
+        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $table_id_or_name when calling getDraftTableRows'
+            );
+        }
+
+
+
+
+
+
+
+
+        $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort,
+            'sort', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $after,
+            'after', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $properties,
+            'properties', // param base name
+            'array', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $archived,
+            'archived', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($table_id_or_name !== null) {
+            $resourcePath = str_replace(
+                '{' . 'tableIdOrName' . '}',
+                ObjectSerializer::toPathValue($table_id_or_name),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getTableDetails
      *
      * Get details of a published table
@@ -3749,382 +4125,6 @@ class TablesApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation readDraftTableRows
-     *
-     * Get rows from draft table
-     *
-     * @param  string $table_id_or_name  (required)
-     * @param  string[]|null $sort  (optional)
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string[]|null $properties  (optional)
-     * @param  int|null $offset  (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readDraftTableRows'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error
-     */
-    public function readDraftTableRows($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['readDraftTableRows'][0])
-    {
-        list($response) = $this->readDraftTableRowsWithHttpInfo($table_id_or_name, $sort, $after, $limit, $properties, $offset, $archived, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation readDraftTableRowsWithHttpInfo
-     *
-     * Get rows from draft table
-     *
-     * @param  string $table_id_or_name  (required)
-     * @param  string[]|null $sort  (optional)
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string[]|null $properties  (optional)
-     * @param  int|null $offset  (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readDraftTableRows'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Hubdb\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3|\HubSpot\Client\Cms\Hubdb\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function readDraftTableRowsWithHttpInfo($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['readDraftTableRows'][0])
-    {
-        $request = $this->readDraftTableRowsRequest($table_id_or_name, $sort, $after, $limit, $properties, $offset, $archived, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Hubdb\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation readDraftTableRowsAsync
-     *
-     * Get rows from draft table
-     *
-     * @param  string $table_id_or_name  (required)
-     * @param  string[]|null $sort  (optional)
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string[]|null $properties  (optional)
-     * @param  int|null $offset  (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readDraftTableRows'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function readDraftTableRowsAsync($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['readDraftTableRows'][0])
-    {
-        return $this->readDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $sort, $after, $limit, $properties, $offset, $archived, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation readDraftTableRowsAsyncWithHttpInfo
-     *
-     * Get rows from draft table
-     *
-     * @param  string $table_id_or_name  (required)
-     * @param  string[]|null $sort  (optional)
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string[]|null $properties  (optional)
-     * @param  int|null $offset  (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readDraftTableRows'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function readDraftTableRowsAsyncWithHttpInfo($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['readDraftTableRows'][0])
-    {
-        $returnType = '\HubSpot\Client\Cms\Hubdb\Model\UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3';
-        $request = $this->readDraftTableRowsRequest($table_id_or_name, $sort, $after, $limit, $properties, $offset, $archived, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'readDraftTableRows'
-     *
-     * @param  string $table_id_or_name  (required)
-     * @param  string[]|null $sort  (optional)
-     * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
-     * @param  int|null $limit The maximum number of results to display per page. (optional)
-     * @param  string[]|null $properties  (optional)
-     * @param  int|null $offset  (optional)
-     * @param  bool|null $archived Whether to return only results that have been archived. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readDraftTableRows'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function readDraftTableRowsRequest($table_id_or_name, $sort = null, $after = null, $limit = null, $properties = null, $offset = null, $archived = null, string $contentType = self::contentTypes['readDraftTableRows'][0])
-    {
-
-        // verify the required parameter 'table_id_or_name' is set
-        if ($table_id_or_name === null || (is_array($table_id_or_name) && count($table_id_or_name) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $table_id_or_name when calling readDraftTableRows'
-            );
-        }
-
-
-
-
-
-
-
-
-        $resourcePath = '/cms/v3/hubdb/tables/{tableIdOrName}/rows/draft';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $sort,
-            'sort', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $after,
-            'after', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $limit,
-            'limit', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $properties,
-            'properties', // param base name
-            'array', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $offset,
-            'offset', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-        // path params
-        if ($table_id_or_name !== null) {
-            $resourcePath = str_replace(
-                '{' . 'tableIdOrName' . '}',
-                ObjectSerializer::toPathValue($table_id_or_name),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

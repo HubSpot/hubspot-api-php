@@ -79,10 +79,10 @@ class BasicApi
         'archiveToken' => [
             'application/json',
         ],
-        'create' => [
+        'createTemplate' => [
             'application/json',
         ],
-        'getAll' => [
+        'getAllTemplates' => [
             'application/json',
         ],
         'getEventById' => [
@@ -678,42 +678,42 @@ class BasicApi
     }
 
     /**
-     * Operation create
+     * Operation createTemplate
      *
      * Create an event template
      *
      * @param  int $app_id  (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateCreateRequest $timeline_event_template_create_request timeline_event_template_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTemplate'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplate|\HubSpot\Client\Crm\Timeline\Model\Error
      * @deprecated
      */
-    public function create($app_id, $timeline_event_template_create_request, string $contentType = self::contentTypes['create'][0])
+    public function createTemplate($app_id, $timeline_event_template_create_request, string $contentType = self::contentTypes['createTemplate'][0])
     {
-        list($response) = $this->createWithHttpInfo($app_id, $timeline_event_template_create_request, $contentType);
+        list($response) = $this->createTemplateWithHttpInfo($app_id, $timeline_event_template_create_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation createWithHttpInfo
+     * Operation createTemplateWithHttpInfo
      *
      * Create an event template
      *
      * @param  int $app_id  (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateCreateRequest $timeline_event_template_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTemplate'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplate|\HubSpot\Client\Crm\Timeline\Model\Error, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
-    public function createWithHttpInfo($app_id, $timeline_event_template_create_request, string $contentType = self::contentTypes['create'][0])
+    public function createTemplateWithHttpInfo($app_id, $timeline_event_template_create_request, string $contentType = self::contentTypes['createTemplate'][0])
     {
-        $request = $this->createRequest($app_id, $timeline_event_template_create_request, $contentType);
+        $request = $this->createTemplateRequest($app_id, $timeline_event_template_create_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -799,21 +799,21 @@ class BasicApi
     }
 
     /**
-     * Operation createAsync
+     * Operation createTemplateAsync
      *
      * Create an event template
      *
      * @param  int $app_id  (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateCreateRequest $timeline_event_template_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTemplate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function createAsync($app_id, $timeline_event_template_create_request, string $contentType = self::contentTypes['create'][0])
+    public function createTemplateAsync($app_id, $timeline_event_template_create_request, string $contentType = self::contentTypes['createTemplate'][0])
     {
-        return $this->createAsyncWithHttpInfo($app_id, $timeline_event_template_create_request, $contentType)
+        return $this->createTemplateAsyncWithHttpInfo($app_id, $timeline_event_template_create_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -822,22 +822,22 @@ class BasicApi
     }
 
     /**
-     * Operation createAsyncWithHttpInfo
+     * Operation createTemplateAsyncWithHttpInfo
      *
      * Create an event template
      *
      * @param  int $app_id  (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateCreateRequest $timeline_event_template_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTemplate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function createAsyncWithHttpInfo($app_id, $timeline_event_template_create_request, string $contentType = self::contentTypes['create'][0])
+    public function createTemplateAsyncWithHttpInfo($app_id, $timeline_event_template_create_request, string $contentType = self::contentTypes['createTemplate'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplate';
-        $request = $this->createRequest($app_id, $timeline_event_template_create_request, $contentType);
+        $request = $this->createTemplateRequest($app_id, $timeline_event_template_create_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -876,30 +876,30 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'create'
+     * Create request for operation 'createTemplate'
      *
      * @param  int $app_id  (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateCreateRequest $timeline_event_template_create_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createTemplate'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      * @deprecated
      */
-    public function createRequest($app_id, $timeline_event_template_create_request, string $contentType = self::contentTypes['create'][0])
+    public function createTemplateRequest($app_id, $timeline_event_template_create_request, string $contentType = self::contentTypes['createTemplate'][0])
     {
 
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling create'
+                'Missing the required parameter $app_id when calling createTemplate'
             );
         }
 
         // verify the required parameter 'timeline_event_template_create_request' is set
         if ($timeline_event_template_create_request === null || (is_array($timeline_event_template_create_request) && count($timeline_event_template_create_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $timeline_event_template_create_request when calling create'
+                'Missing the required parameter $timeline_event_template_create_request when calling createTemplate'
             );
         }
 
@@ -989,40 +989,40 @@ class BasicApi
     }
 
     /**
-     * Operation getAll
+     * Operation getAllTemplates
      *
      * Get all event templates
      *
      * @param  int $app_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllTemplates'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Timeline\Model\CollectionResponseTimelineEventTemplateNoPaging|\HubSpot\Client\Crm\Timeline\Model\Error
      * @deprecated
      */
-    public function getAll($app_id, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllTemplates($app_id, string $contentType = self::contentTypes['getAllTemplates'][0])
     {
-        list($response) = $this->getAllWithHttpInfo($app_id, $contentType);
+        list($response) = $this->getAllTemplatesWithHttpInfo($app_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation getAllWithHttpInfo
+     * Operation getAllTemplatesWithHttpInfo
      *
      * Get all event templates
      *
      * @param  int $app_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllTemplates'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Timeline\Model\CollectionResponseTimelineEventTemplateNoPaging|\HubSpot\Client\Crm\Timeline\Model\Error, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
-    public function getAllWithHttpInfo($app_id, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllTemplatesWithHttpInfo($app_id, string $contentType = self::contentTypes['getAllTemplates'][0])
     {
-        $request = $this->getAllRequest($app_id, $contentType);
+        $request = $this->getAllTemplatesRequest($app_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1108,20 +1108,20 @@ class BasicApi
     }
 
     /**
-     * Operation getAllAsync
+     * Operation getAllTemplatesAsync
      *
      * Get all event templates
      *
      * @param  int $app_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllTemplates'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function getAllAsync($app_id, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllTemplatesAsync($app_id, string $contentType = self::contentTypes['getAllTemplates'][0])
     {
-        return $this->getAllAsyncWithHttpInfo($app_id, $contentType)
+        return $this->getAllTemplatesAsyncWithHttpInfo($app_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1130,21 +1130,21 @@ class BasicApi
     }
 
     /**
-     * Operation getAllAsyncWithHttpInfo
+     * Operation getAllTemplatesAsyncWithHttpInfo
      *
      * Get all event templates
      *
      * @param  int $app_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllTemplates'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function getAllAsyncWithHttpInfo($app_id, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllTemplatesAsyncWithHttpInfo($app_id, string $contentType = self::contentTypes['getAllTemplates'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Timeline\Model\CollectionResponseTimelineEventTemplateNoPaging';
-        $request = $this->getAllRequest($app_id, $contentType);
+        $request = $this->getAllTemplatesRequest($app_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1183,22 +1183,22 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'getAll'
+     * Create request for operation 'getAllTemplates'
      *
      * @param  int $app_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllTemplates'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      * @deprecated
      */
-    public function getAllRequest($app_id, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllTemplatesRequest($app_id, string $contentType = self::contentTypes['getAllTemplates'][0])
     {
 
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling getAll'
+                'Missing the required parameter $app_id when calling getAllTemplates'
             );
         }
 

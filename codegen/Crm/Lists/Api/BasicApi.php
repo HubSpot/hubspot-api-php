@@ -118,13 +118,10 @@ class BasicApi
         'getSizeAndEditsHistory' => [
             'application/json',
         ],
-        'move' => [
+        'moveFolder' => [
             'application/json',
         ],
         'moveList' => [
-            'application/json',
-        ],
-        'remove' => [
             'application/json',
         ],
         'removeAll' => [
@@ -133,10 +130,13 @@ class BasicApi
         'removeFolder' => [
             'application/json',
         ],
+        'removeList' => [
+            'application/json',
+        ],
         'removeMembers' => [
             'application/json',
         ],
-        'rename' => [
+        'renameFolder' => [
             'application/json',
         ],
         'restore' => [
@@ -4611,40 +4611,40 @@ class BasicApi
     }
 
     /**
-     * Operation move
+     * Operation moveFolder
      *
      * Moves a folder
      *
      * @param  string $folder_id The ID of the folder to move (required)
      * @param  string $new_parent_folder_id The ID for the target parent folder. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['move'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveFolder'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error
      */
-    public function move($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['move'][0])
+    public function moveFolder($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['moveFolder'][0])
     {
-        list($response) = $this->moveWithHttpInfo($folder_id, $new_parent_folder_id, $contentType);
+        list($response) = $this->moveFolderWithHttpInfo($folder_id, $new_parent_folder_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation moveWithHttpInfo
+     * Operation moveFolderWithHttpInfo
      *
      * Moves a folder
      *
      * @param  string $folder_id The ID of the folder to move (required)
      * @param  string $new_parent_folder_id The ID for the target parent folder. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['move'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveFolder'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function moveWithHttpInfo($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['move'][0])
+    public function moveFolderWithHttpInfo($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['moveFolder'][0])
     {
-        $request = $this->moveRequest($folder_id, $new_parent_folder_id, $contentType);
+        $request = $this->moveFolderRequest($folder_id, $new_parent_folder_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4730,20 +4730,20 @@ class BasicApi
     }
 
     /**
-     * Operation moveAsync
+     * Operation moveFolderAsync
      *
      * Moves a folder
      *
      * @param  string $folder_id The ID of the folder to move (required)
      * @param  string $new_parent_folder_id The ID for the target parent folder. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['move'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function moveAsync($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['move'][0])
+    public function moveFolderAsync($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['moveFolder'][0])
     {
-        return $this->moveAsyncWithHttpInfo($folder_id, $new_parent_folder_id, $contentType)
+        return $this->moveFolderAsyncWithHttpInfo($folder_id, $new_parent_folder_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4752,21 +4752,21 @@ class BasicApi
     }
 
     /**
-     * Operation moveAsyncWithHttpInfo
+     * Operation moveFolderAsyncWithHttpInfo
      *
      * Moves a folder
      *
      * @param  string $folder_id The ID of the folder to move (required)
      * @param  string $new_parent_folder_id The ID for the target parent folder. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['move'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function moveAsyncWithHttpInfo($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['move'][0])
+    public function moveFolderAsyncWithHttpInfo($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['moveFolder'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse';
-        $request = $this->moveRequest($folder_id, $new_parent_folder_id, $contentType);
+        $request = $this->moveFolderRequest($folder_id, $new_parent_folder_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4805,29 +4805,29 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'move'
+     * Create request for operation 'moveFolder'
      *
      * @param  string $folder_id The ID of the folder to move (required)
      * @param  string $new_parent_folder_id The ID for the target parent folder. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['move'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function moveRequest($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['move'][0])
+    public function moveFolderRequest($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['moveFolder'][0])
     {
 
         // verify the required parameter 'folder_id' is set
         if ($folder_id === null || (is_array($folder_id) && count($folder_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $folder_id when calling move'
+                'Missing the required parameter $folder_id when calling moveFolder'
             );
         }
 
         // verify the required parameter 'new_parent_folder_id' is set
         if ($new_parent_folder_id === null || (is_array($new_parent_folder_id) && count($new_parent_folder_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $new_parent_folder_id when calling move'
+                'Missing the required parameter $new_parent_folder_id when calling moveFolder'
             );
         }
 
@@ -5139,236 +5139,6 @@ class BasicApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation remove
-     *
-     * Delete a List
-     *
-     * @param  string $list_id The **ILS ID** of the list to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function remove($list_id, string $contentType = self::contentTypes['remove'][0])
-    {
-        $this->removeWithHttpInfo($list_id, $contentType);
-    }
-
-    /**
-     * Operation removeWithHttpInfo
-     *
-     * Delete a List
-     *
-     * @param  string $list_id The **ILS ID** of the list to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function removeWithHttpInfo($list_id, string $contentType = self::contentTypes['remove'][0])
-    {
-        $request = $this->removeRequest($list_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation removeAsync
-     *
-     * Delete a List
-     *
-     * @param  string $list_id The **ILS ID** of the list to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function removeAsync($list_id, string $contentType = self::contentTypes['remove'][0])
-    {
-        return $this->removeAsyncWithHttpInfo($list_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation removeAsyncWithHttpInfo
-     *
-     * Delete a List
-     *
-     * @param  string $list_id The **ILS ID** of the list to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function removeAsyncWithHttpInfo($list_id, string $contentType = self::contentTypes['remove'][0])
-    {
-        $returnType = '';
-        $request = $this->removeRequest($list_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'remove'
-     *
-     * @param  string $list_id The **ILS ID** of the list to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function removeRequest($list_id, string $contentType = self::contentTypes['remove'][0])
-    {
-
-        // verify the required parameter 'list_id' is set
-        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $list_id when calling remove'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/lists/{listId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($list_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'listId' . '}',
-                ObjectSerializer::toPathValue($list_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'DELETE',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -5836,6 +5606,236 @@ class BasicApi
     }
 
     /**
+     * Operation removeList
+     *
+     * Delete a List
+     *
+     * @param  string $list_id The **ILS ID** of the list to delete. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeList'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function removeList($list_id, string $contentType = self::contentTypes['removeList'][0])
+    {
+        $this->removeListWithHttpInfo($list_id, $contentType);
+    }
+
+    /**
+     * Operation removeListWithHttpInfo
+     *
+     * Delete a List
+     *
+     * @param  string $list_id The **ILS ID** of the list to delete. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeList'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function removeListWithHttpInfo($list_id, string $contentType = self::contentTypes['removeList'][0])
+    {
+        $request = $this->removeListRequest($list_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation removeListAsync
+     *
+     * Delete a List
+     *
+     * @param  string $list_id The **ILS ID** of the list to delete. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeListAsync($list_id, string $contentType = self::contentTypes['removeList'][0])
+    {
+        return $this->removeListAsyncWithHttpInfo($list_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation removeListAsyncWithHttpInfo
+     *
+     * Delete a List
+     *
+     * @param  string $list_id The **ILS ID** of the list to delete. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeListAsyncWithHttpInfo($list_id, string $contentType = self::contentTypes['removeList'][0])
+    {
+        $returnType = '';
+        $request = $this->removeListRequest($list_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'removeList'
+     *
+     * @param  string $list_id The **ILS ID** of the list to delete. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function removeListRequest($list_id, string $contentType = self::contentTypes['removeList'][0])
+    {
+
+        // verify the required parameter 'list_id' is set
+        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_id when calling removeList'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/lists/{listId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($list_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'listId' . '}',
+                ObjectSerializer::toPathValue($list_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation removeMembers
      *
      * Remove Records from a List
@@ -6141,40 +6141,40 @@ class BasicApi
     }
 
     /**
-     * Operation rename
+     * Operation renameFolder
      *
      * Rename a folder
      *
      * @param  string $folder_id The ID of the folder to rename (required)
      * @param  string|null $new_folder_name The new name of the folder. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rename'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['renameFolder'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error
      */
-    public function rename($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['rename'][0])
+    public function renameFolder($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['renameFolder'][0])
     {
-        list($response) = $this->renameWithHttpInfo($folder_id, $new_folder_name, $contentType);
+        list($response) = $this->renameFolderWithHttpInfo($folder_id, $new_folder_name, $contentType);
         return $response;
     }
 
     /**
-     * Operation renameWithHttpInfo
+     * Operation renameFolderWithHttpInfo
      *
      * Rename a folder
      *
      * @param  string $folder_id The ID of the folder to rename (required)
      * @param  string|null $new_folder_name The new name of the folder. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rename'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['renameFolder'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function renameWithHttpInfo($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['rename'][0])
+    public function renameFolderWithHttpInfo($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['renameFolder'][0])
     {
-        $request = $this->renameRequest($folder_id, $new_folder_name, $contentType);
+        $request = $this->renameFolderRequest($folder_id, $new_folder_name, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6260,20 +6260,20 @@ class BasicApi
     }
 
     /**
-     * Operation renameAsync
+     * Operation renameFolderAsync
      *
      * Rename a folder
      *
      * @param  string $folder_id The ID of the folder to rename (required)
      * @param  string|null $new_folder_name The new name of the folder. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rename'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['renameFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function renameAsync($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['rename'][0])
+    public function renameFolderAsync($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['renameFolder'][0])
     {
-        return $this->renameAsyncWithHttpInfo($folder_id, $new_folder_name, $contentType)
+        return $this->renameFolderAsyncWithHttpInfo($folder_id, $new_folder_name, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6282,21 +6282,21 @@ class BasicApi
     }
 
     /**
-     * Operation renameAsyncWithHttpInfo
+     * Operation renameFolderAsyncWithHttpInfo
      *
      * Rename a folder
      *
      * @param  string $folder_id The ID of the folder to rename (required)
      * @param  string|null $new_folder_name The new name of the folder. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rename'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['renameFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function renameAsyncWithHttpInfo($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['rename'][0])
+    public function renameFolderAsyncWithHttpInfo($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['renameFolder'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse';
-        $request = $this->renameRequest($folder_id, $new_folder_name, $contentType);
+        $request = $this->renameFolderRequest($folder_id, $new_folder_name, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6335,22 +6335,22 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'rename'
+     * Create request for operation 'renameFolder'
      *
      * @param  string $folder_id The ID of the folder to rename (required)
      * @param  string|null $new_folder_name The new name of the folder. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rename'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['renameFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function renameRequest($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['rename'][0])
+    public function renameFolderRequest($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['renameFolder'][0])
     {
 
         // verify the required parameter 'folder_id' is set
         if ($folder_id === null || (is_array($folder_id) && count($folder_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $folder_id when calling rename'
+                'Missing the required parameter $folder_id when calling renameFolder'
             );
         }
 

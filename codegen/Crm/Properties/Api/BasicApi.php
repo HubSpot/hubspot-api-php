@@ -73,19 +73,19 @@ class BasicApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'archive' => [
+        'archiveGroup' => [
             'application/json',
         ],
-        'create' => [
+        'createGroup' => [
             'application/json',
         ],
-        'getAll' => [
+        'getAllGroups' => [
             'application/json',
         ],
-        'getByName' => [
+        'getGroupByName' => [
             'application/json',
         ],
-        'update' => [
+        'updateGroup' => [
             'application/json',
         ],
     ];
@@ -137,39 +137,39 @@ class BasicApi
     }
 
     /**
-     * Operation archive
+     * Operation archiveGroup
      *
      * Archive a property group
      *
      * @param  string $object_type  (required)
      * @param  string $group_name  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveGroup'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($object_type, $group_name, string $contentType = self::contentTypes['archive'][0])
+    public function archiveGroup($object_type, $group_name, string $contentType = self::contentTypes['archiveGroup'][0])
     {
-        $this->archiveWithHttpInfo($object_type, $group_name, $contentType);
+        $this->archiveGroupWithHttpInfo($object_type, $group_name, $contentType);
     }
 
     /**
-     * Operation archiveWithHttpInfo
+     * Operation archiveGroupWithHttpInfo
      *
      * Archive a property group
      *
      * @param  string $object_type  (required)
      * @param  string $group_name  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveGroup'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($object_type, $group_name, string $contentType = self::contentTypes['archive'][0])
+    public function archiveGroupWithHttpInfo($object_type, $group_name, string $contentType = self::contentTypes['archiveGroup'][0])
     {
-        $request = $this->archiveRequest($object_type, $group_name, $contentType);
+        $request = $this->archiveGroupRequest($object_type, $group_name, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -213,20 +213,20 @@ class BasicApi
     }
 
     /**
-     * Operation archiveAsync
+     * Operation archiveGroupAsync
      *
      * Archive a property group
      *
      * @param  string $object_type  (required)
      * @param  string $group_name  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($object_type, $group_name, string $contentType = self::contentTypes['archive'][0])
+    public function archiveGroupAsync($object_type, $group_name, string $contentType = self::contentTypes['archiveGroup'][0])
     {
-        return $this->archiveAsyncWithHttpInfo($object_type, $group_name, $contentType)
+        return $this->archiveGroupAsyncWithHttpInfo($object_type, $group_name, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -235,21 +235,21 @@ class BasicApi
     }
 
     /**
-     * Operation archiveAsyncWithHttpInfo
+     * Operation archiveGroupAsyncWithHttpInfo
      *
      * Archive a property group
      *
      * @param  string $object_type  (required)
      * @param  string $group_name  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($object_type, $group_name, string $contentType = self::contentTypes['archive'][0])
+    public function archiveGroupAsyncWithHttpInfo($object_type, $group_name, string $contentType = self::contentTypes['archiveGroup'][0])
     {
         $returnType = '';
-        $request = $this->archiveRequest($object_type, $group_name, $contentType);
+        $request = $this->archiveGroupRequest($object_type, $group_name, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -275,29 +275,29 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'archive'
+     * Create request for operation 'archiveGroup'
      *
      * @param  string $object_type  (required)
      * @param  string $group_name  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveRequest($object_type, $group_name, string $contentType = self::contentTypes['archive'][0])
+    public function archiveGroupRequest($object_type, $group_name, string $contentType = self::contentTypes['archiveGroup'][0])
     {
 
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling archive'
+                'Missing the required parameter $object_type when calling archiveGroup'
             );
         }
 
         // verify the required parameter 'group_name' is set
         if ($group_name === null || (is_array($group_name) && count($group_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $group_name when calling archive'
+                'Missing the required parameter $group_name when calling archiveGroup'
             );
         }
 
@@ -387,40 +387,40 @@ class BasicApi
     }
 
     /**
-     * Operation create
+     * Operation createGroup
      *
      * Create a property group
      *
      * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Properties\Model\PropertyGroupCreate $property_group_create property_group_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createGroup'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Properties\Model\PropertyGroup|\HubSpot\Client\Crm\Properties\Model\Error
      */
-    public function create($object_type, $property_group_create, string $contentType = self::contentTypes['create'][0])
+    public function createGroup($object_type, $property_group_create, string $contentType = self::contentTypes['createGroup'][0])
     {
-        list($response) = $this->createWithHttpInfo($object_type, $property_group_create, $contentType);
+        list($response) = $this->createGroupWithHttpInfo($object_type, $property_group_create, $contentType);
         return $response;
     }
 
     /**
-     * Operation createWithHttpInfo
+     * Operation createGroupWithHttpInfo
      *
      * Create a property group
      *
      * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Properties\Model\PropertyGroupCreate $property_group_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createGroup'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Properties\Model\PropertyGroup|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($object_type, $property_group_create, string $contentType = self::contentTypes['create'][0])
+    public function createGroupWithHttpInfo($object_type, $property_group_create, string $contentType = self::contentTypes['createGroup'][0])
     {
-        $request = $this->createRequest($object_type, $property_group_create, $contentType);
+        $request = $this->createGroupRequest($object_type, $property_group_create, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -506,20 +506,20 @@ class BasicApi
     }
 
     /**
-     * Operation createAsync
+     * Operation createGroupAsync
      *
      * Create a property group
      *
      * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Properties\Model\PropertyGroupCreate $property_group_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($object_type, $property_group_create, string $contentType = self::contentTypes['create'][0])
+    public function createGroupAsync($object_type, $property_group_create, string $contentType = self::contentTypes['createGroup'][0])
     {
-        return $this->createAsyncWithHttpInfo($object_type, $property_group_create, $contentType)
+        return $this->createGroupAsyncWithHttpInfo($object_type, $property_group_create, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -528,21 +528,21 @@ class BasicApi
     }
 
     /**
-     * Operation createAsyncWithHttpInfo
+     * Operation createGroupAsyncWithHttpInfo
      *
      * Create a property group
      *
      * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Properties\Model\PropertyGroupCreate $property_group_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($object_type, $property_group_create, string $contentType = self::contentTypes['create'][0])
+    public function createGroupAsyncWithHttpInfo($object_type, $property_group_create, string $contentType = self::contentTypes['createGroup'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Properties\Model\PropertyGroup';
-        $request = $this->createRequest($object_type, $property_group_create, $contentType);
+        $request = $this->createGroupRequest($object_type, $property_group_create, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -581,29 +581,29 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'create'
+     * Create request for operation 'createGroup'
      *
      * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Properties\Model\PropertyGroupCreate $property_group_create (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createRequest($object_type, $property_group_create, string $contentType = self::contentTypes['create'][0])
+    public function createGroupRequest($object_type, $property_group_create, string $contentType = self::contentTypes['createGroup'][0])
     {
 
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling create'
+                'Missing the required parameter $object_type when calling createGroup'
             );
         }
 
         // verify the required parameter 'property_group_create' is set
         if ($property_group_create === null || (is_array($property_group_create) && count($property_group_create) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $property_group_create when calling create'
+                'Missing the required parameter $property_group_create when calling createGroup'
             );
         }
 
@@ -692,40 +692,40 @@ class BasicApi
     }
 
     /**
-     * Operation getAll
+     * Operation getAllGroups
      *
      * Read all property groups
      *
      * @param  string $object_type  (required)
      * @param  string|null $locale  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllGroups'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyGroupNoPaging|\HubSpot\Client\Crm\Properties\Model\Error
      */
-    public function getAll($object_type, $locale = null, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllGroups($object_type, $locale = null, string $contentType = self::contentTypes['getAllGroups'][0])
     {
-        list($response) = $this->getAllWithHttpInfo($object_type, $locale, $contentType);
+        list($response) = $this->getAllGroupsWithHttpInfo($object_type, $locale, $contentType);
         return $response;
     }
 
     /**
-     * Operation getAllWithHttpInfo
+     * Operation getAllGroupsWithHttpInfo
      *
      * Read all property groups
      *
      * @param  string $object_type  (required)
      * @param  string|null $locale  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllGroups'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyGroupNoPaging|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAllWithHttpInfo($object_type, $locale = null, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllGroupsWithHttpInfo($object_type, $locale = null, string $contentType = self::contentTypes['getAllGroups'][0])
     {
-        $request = $this->getAllRequest($object_type, $locale, $contentType);
+        $request = $this->getAllGroupsRequest($object_type, $locale, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -811,20 +811,20 @@ class BasicApi
     }
 
     /**
-     * Operation getAllAsync
+     * Operation getAllGroupsAsync
      *
      * Read all property groups
      *
      * @param  string $object_type  (required)
      * @param  string|null $locale  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllGroups'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsync($object_type, $locale = null, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllGroupsAsync($object_type, $locale = null, string $contentType = self::contentTypes['getAllGroups'][0])
     {
-        return $this->getAllAsyncWithHttpInfo($object_type, $locale, $contentType)
+        return $this->getAllGroupsAsyncWithHttpInfo($object_type, $locale, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -833,21 +833,21 @@ class BasicApi
     }
 
     /**
-     * Operation getAllAsyncWithHttpInfo
+     * Operation getAllGroupsAsyncWithHttpInfo
      *
      * Read all property groups
      *
      * @param  string $object_type  (required)
      * @param  string|null $locale  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllGroups'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsyncWithHttpInfo($object_type, $locale = null, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllGroupsAsyncWithHttpInfo($object_type, $locale = null, string $contentType = self::contentTypes['getAllGroups'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Properties\Model\CollectionResponsePropertyGroupNoPaging';
-        $request = $this->getAllRequest($object_type, $locale, $contentType);
+        $request = $this->getAllGroupsRequest($object_type, $locale, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -886,22 +886,22 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'getAll'
+     * Create request for operation 'getAllGroups'
      *
      * @param  string $object_type  (required)
      * @param  string|null $locale  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllGroups'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAllRequest($object_type, $locale = null, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllGroupsRequest($object_type, $locale = null, string $contentType = self::contentTypes['getAllGroups'][0])
     {
 
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling getAll'
+                'Missing the required parameter $object_type when calling getAllGroups'
             );
         }
 
@@ -993,42 +993,42 @@ class BasicApi
     }
 
     /**
-     * Operation getByName
+     * Operation getGroupByName
      *
      * Read a property group
      *
      * @param  string $object_type  (required)
      * @param  string $group_name  (required)
      * @param  string|null $locale  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByName'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupByName'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Properties\Model\PropertyGroup|\HubSpot\Client\Crm\Properties\Model\Error
      */
-    public function getByName($object_type, $group_name, $locale = null, string $contentType = self::contentTypes['getByName'][0])
+    public function getGroupByName($object_type, $group_name, $locale = null, string $contentType = self::contentTypes['getGroupByName'][0])
     {
-        list($response) = $this->getByNameWithHttpInfo($object_type, $group_name, $locale, $contentType);
+        list($response) = $this->getGroupByNameWithHttpInfo($object_type, $group_name, $locale, $contentType);
         return $response;
     }
 
     /**
-     * Operation getByNameWithHttpInfo
+     * Operation getGroupByNameWithHttpInfo
      *
      * Read a property group
      *
      * @param  string $object_type  (required)
      * @param  string $group_name  (required)
      * @param  string|null $locale  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByName'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupByName'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Properties\Model\PropertyGroup|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getByNameWithHttpInfo($object_type, $group_name, $locale = null, string $contentType = self::contentTypes['getByName'][0])
+    public function getGroupByNameWithHttpInfo($object_type, $group_name, $locale = null, string $contentType = self::contentTypes['getGroupByName'][0])
     {
-        $request = $this->getByNameRequest($object_type, $group_name, $locale, $contentType);
+        $request = $this->getGroupByNameRequest($object_type, $group_name, $locale, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1114,21 +1114,21 @@ class BasicApi
     }
 
     /**
-     * Operation getByNameAsync
+     * Operation getGroupByNameAsync
      *
      * Read a property group
      *
      * @param  string $object_type  (required)
      * @param  string $group_name  (required)
      * @param  string|null $locale  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByName'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupByName'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByNameAsync($object_type, $group_name, $locale = null, string $contentType = self::contentTypes['getByName'][0])
+    public function getGroupByNameAsync($object_type, $group_name, $locale = null, string $contentType = self::contentTypes['getGroupByName'][0])
     {
-        return $this->getByNameAsyncWithHttpInfo($object_type, $group_name, $locale, $contentType)
+        return $this->getGroupByNameAsyncWithHttpInfo($object_type, $group_name, $locale, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1137,22 +1137,22 @@ class BasicApi
     }
 
     /**
-     * Operation getByNameAsyncWithHttpInfo
+     * Operation getGroupByNameAsyncWithHttpInfo
      *
      * Read a property group
      *
      * @param  string $object_type  (required)
      * @param  string $group_name  (required)
      * @param  string|null $locale  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByName'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupByName'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getByNameAsyncWithHttpInfo($object_type, $group_name, $locale = null, string $contentType = self::contentTypes['getByName'][0])
+    public function getGroupByNameAsyncWithHttpInfo($object_type, $group_name, $locale = null, string $contentType = self::contentTypes['getGroupByName'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Properties\Model\PropertyGroup';
-        $request = $this->getByNameRequest($object_type, $group_name, $locale, $contentType);
+        $request = $this->getGroupByNameRequest($object_type, $group_name, $locale, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1191,30 +1191,30 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'getByName'
+     * Create request for operation 'getGroupByName'
      *
      * @param  string $object_type  (required)
      * @param  string $group_name  (required)
      * @param  string|null $locale  (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getByName'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getGroupByName'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getByNameRequest($object_type, $group_name, $locale = null, string $contentType = self::contentTypes['getByName'][0])
+    public function getGroupByNameRequest($object_type, $group_name, $locale = null, string $contentType = self::contentTypes['getGroupByName'][0])
     {
 
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling getByName'
+                'Missing the required parameter $object_type when calling getGroupByName'
             );
         }
 
         // verify the required parameter 'group_name' is set
         if ($group_name === null || (is_array($group_name) && count($group_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $group_name when calling getByName'
+                'Missing the required parameter $group_name when calling getGroupByName'
             );
         }
 
@@ -1314,42 +1314,42 @@ class BasicApi
     }
 
     /**
-     * Operation update
+     * Operation updateGroup
      *
      * Update a property group
      *
      * @param  string $object_type  (required)
      * @param  string $group_name  (required)
      * @param  \HubSpot\Client\Crm\Properties\Model\PropertyGroupUpdate $property_group_update property_group_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGroup'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Properties\Model\PropertyGroup|\HubSpot\Client\Crm\Properties\Model\Error
      */
-    public function update($object_type, $group_name, $property_group_update, string $contentType = self::contentTypes['update'][0])
+    public function updateGroup($object_type, $group_name, $property_group_update, string $contentType = self::contentTypes['updateGroup'][0])
     {
-        list($response) = $this->updateWithHttpInfo($object_type, $group_name, $property_group_update, $contentType);
+        list($response) = $this->updateGroupWithHttpInfo($object_type, $group_name, $property_group_update, $contentType);
         return $response;
     }
 
     /**
-     * Operation updateWithHttpInfo
+     * Operation updateGroupWithHttpInfo
      *
      * Update a property group
      *
      * @param  string $object_type  (required)
      * @param  string $group_name  (required)
      * @param  \HubSpot\Client\Crm\Properties\Model\PropertyGroupUpdate $property_group_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGroup'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Properties\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Properties\Model\PropertyGroup|\HubSpot\Client\Crm\Properties\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWithHttpInfo($object_type, $group_name, $property_group_update, string $contentType = self::contentTypes['update'][0])
+    public function updateGroupWithHttpInfo($object_type, $group_name, $property_group_update, string $contentType = self::contentTypes['updateGroup'][0])
     {
-        $request = $this->updateRequest($object_type, $group_name, $property_group_update, $contentType);
+        $request = $this->updateGroupRequest($object_type, $group_name, $property_group_update, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1435,21 +1435,21 @@ class BasicApi
     }
 
     /**
-     * Operation updateAsync
+     * Operation updateGroupAsync
      *
      * Update a property group
      *
      * @param  string $object_type  (required)
      * @param  string $group_name  (required)
      * @param  \HubSpot\Client\Crm\Properties\Model\PropertyGroupUpdate $property_group_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsync($object_type, $group_name, $property_group_update, string $contentType = self::contentTypes['update'][0])
+    public function updateGroupAsync($object_type, $group_name, $property_group_update, string $contentType = self::contentTypes['updateGroup'][0])
     {
-        return $this->updateAsyncWithHttpInfo($object_type, $group_name, $property_group_update, $contentType)
+        return $this->updateGroupAsyncWithHttpInfo($object_type, $group_name, $property_group_update, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1458,22 +1458,22 @@ class BasicApi
     }
 
     /**
-     * Operation updateAsyncWithHttpInfo
+     * Operation updateGroupAsyncWithHttpInfo
      *
      * Update a property group
      *
      * @param  string $object_type  (required)
      * @param  string $group_name  (required)
      * @param  \HubSpot\Client\Crm\Properties\Model\PropertyGroupUpdate $property_group_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsyncWithHttpInfo($object_type, $group_name, $property_group_update, string $contentType = self::contentTypes['update'][0])
+    public function updateGroupAsyncWithHttpInfo($object_type, $group_name, $property_group_update, string $contentType = self::contentTypes['updateGroup'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Properties\Model\PropertyGroup';
-        $request = $this->updateRequest($object_type, $group_name, $property_group_update, $contentType);
+        $request = $this->updateGroupRequest($object_type, $group_name, $property_group_update, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1512,37 +1512,37 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'update'
+     * Create request for operation 'updateGroup'
      *
      * @param  string $object_type  (required)
      * @param  string $group_name  (required)
      * @param  \HubSpot\Client\Crm\Properties\Model\PropertyGroupUpdate $property_group_update (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateRequest($object_type, $group_name, $property_group_update, string $contentType = self::contentTypes['update'][0])
+    public function updateGroupRequest($object_type, $group_name, $property_group_update, string $contentType = self::contentTypes['updateGroup'][0])
     {
 
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling update'
+                'Missing the required parameter $object_type when calling updateGroup'
             );
         }
 
         // verify the required parameter 'group_name' is set
         if ($group_name === null || (is_array($group_name) && count($group_name) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $group_name when calling update'
+                'Missing the required parameter $group_name when calling updateGroup'
             );
         }
 
         // verify the required parameter 'property_group_update' is set
         if ($property_group_update === null || (is_array($property_group_update) && count($property_group_update) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $property_group_update when calling update'
+                'Missing the required parameter $property_group_update when calling updateGroup'
             );
         }
 
