@@ -73,37 +73,37 @@ class BatchApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'archiveBatch' => [
-            'application/json',
-        ],
-        'archiveBatch_0' => [
-            'application/json',
-        ],
         'archiveFolders' => [
             'application/json',
         ],
-        'createBatch' => [
+        'archiveLandingPagesBatch' => [
             'application/json',
         ],
-        'createBatch_0' => [
+        'archiveSitePagesBatch' => [
             'application/json',
         ],
         'createFolders' => [
             'application/json',
         ],
-        'readBatch' => [
+        'createLandingPagesBatch' => [
             'application/json',
         ],
-        'readBatch_0' => [
+        'createSitePagesBatch' => [
             'application/json',
         ],
-        'updateBatch' => [
+        'readLandingPagesBatch' => [
             'application/json',
         ],
-        'updateBatch_0' => [
+        'readSitePagesBatch' => [
             'application/json',
         ],
         'updateFolders' => [
+            'application/json',
+        ],
+        'updateLandingPagesBatch' => [
+            'application/json',
+        ],
+        'updateSitePagesBatch' => [
             'application/json',
         ],
     ];
@@ -152,464 +152,6 @@ class BatchApi
     public function getConfig()
     {
         return $this->config;
-    }
-
-    /**
-     * Operation archiveBatch
-     *
-     * Delete landing pages
-     *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string batch_input_string (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveBatch'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function archiveBatch($batch_input_string, string $contentType = self::contentTypes['archiveBatch'][0])
-    {
-        $this->archiveBatchWithHttpInfo($batch_input_string, $contentType);
-    }
-
-    /**
-     * Operation archiveBatchWithHttpInfo
-     *
-     * Delete landing pages
-     *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveBatch'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function archiveBatchWithHttpInfo($batch_input_string, string $contentType = self::contentTypes['archiveBatch'][0])
-    {
-        $request = $this->archiveBatchRequest($batch_input_string, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Pages\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation archiveBatchAsync
-     *
-     * Delete landing pages
-     *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveBatch'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function archiveBatchAsync($batch_input_string, string $contentType = self::contentTypes['archiveBatch'][0])
-    {
-        return $this->archiveBatchAsyncWithHttpInfo($batch_input_string, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation archiveBatchAsyncWithHttpInfo
-     *
-     * Delete landing pages
-     *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveBatch'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function archiveBatchAsyncWithHttpInfo($batch_input_string, string $contentType = self::contentTypes['archiveBatch'][0])
-    {
-        $returnType = '';
-        $request = $this->archiveBatchRequest($batch_input_string, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'archiveBatch'
-     *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveBatch'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function archiveBatchRequest($batch_input_string, string $contentType = self::contentTypes['archiveBatch'][0])
-    {
-
-        // verify the required parameter 'batch_input_string' is set
-        if ($batch_input_string === null || (is_array($batch_input_string) && count($batch_input_string) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_string when calling archiveBatch'
-            );
-        }
-
-
-        $resourcePath = '/cms/v3/pages/landing-pages/batch/archive';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($batch_input_string)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_string), JSON_THROW_ON_ERROR);
-            } else {
-                $httpBody = $batch_input_string;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation archiveBatch_0
-     *
-     * Delete website pages
-     *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string batch_input_string (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveBatch_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function archiveBatch_0($batch_input_string, string $contentType = self::contentTypes['archiveBatch_0'][0])
-    {
-        $this->archiveBatch_0WithHttpInfo($batch_input_string, $contentType);
-    }
-
-    /**
-     * Operation archiveBatch_0WithHttpInfo
-     *
-     * Delete website pages
-     *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveBatch_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function archiveBatch_0WithHttpInfo($batch_input_string, string $contentType = self::contentTypes['archiveBatch_0'][0])
-    {
-        $request = $this->archiveBatch_0Request($batch_input_string, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Pages\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation archiveBatch_0Async
-     *
-     * Delete website pages
-     *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveBatch_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function archiveBatch_0Async($batch_input_string, string $contentType = self::contentTypes['archiveBatch_0'][0])
-    {
-        return $this->archiveBatch_0AsyncWithHttpInfo($batch_input_string, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation archiveBatch_0AsyncWithHttpInfo
-     *
-     * Delete website pages
-     *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveBatch_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function archiveBatch_0AsyncWithHttpInfo($batch_input_string, string $contentType = self::contentTypes['archiveBatch_0'][0])
-    {
-        $returnType = '';
-        $request = $this->archiveBatch_0Request($batch_input_string, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'archiveBatch_0'
-     *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveBatch_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function archiveBatch_0Request($batch_input_string, string $contentType = self::contentTypes['archiveBatch_0'][0])
-    {
-
-        // verify the required parameter 'batch_input_string' is set
-        if ($batch_input_string === null || (is_array($batch_input_string) && count($batch_input_string) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_string when calling archiveBatch_0'
-            );
-        }
-
-
-        $resourcePath = '/cms/v3/pages/site-pages/batch/archive';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($batch_input_string)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_string), JSON_THROW_ON_ERROR);
-            } else {
-                $httpBody = $batch_input_string;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
     }
 
     /**
@@ -842,38 +384,37 @@ class BatchApi
     }
 
     /**
-     * Operation createBatch
+     * Operation archiveLandingPagesBatch
      *
-     * Create landing pages
+     * Delete landing pages
      *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputPage $batch_input_page batch_input_page (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBatch'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveLandingPagesBatch'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Pages\Model\BatchResponsePage|\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors|\HubSpot\Client\Cms\Pages\Model\Error
+     * @return void
      */
-    public function createBatch($batch_input_page, string $contentType = self::contentTypes['createBatch'][0])
+    public function archiveLandingPagesBatch($batch_input_string, string $contentType = self::contentTypes['archiveLandingPagesBatch'][0])
     {
-        list($response) = $this->createBatchWithHttpInfo($batch_input_page, $contentType);
-        return $response;
+        $this->archiveLandingPagesBatchWithHttpInfo($batch_input_string, $contentType);
     }
 
     /**
-     * Operation createBatchWithHttpInfo
+     * Operation archiveLandingPagesBatchWithHttpInfo
      *
-     * Create landing pages
+     * Delete landing pages
      *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputPage $batch_input_page (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBatch'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveLandingPagesBatch'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Pages\Model\BatchResponsePage|\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createBatchWithHttpInfo($batch_input_page, string $contentType = self::contentTypes['createBatch'][0])
+    public function archiveLandingPagesBatchWithHttpInfo($batch_input_string, string $contentType = self::contentTypes['archiveLandingPagesBatch'][0])
     {
-        $request = $this->createBatchRequest($batch_input_page, $contentType);
+        $request = $this->archiveLandingPagesBatchRequest($batch_input_string, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -898,65 +439,9 @@ class BatchApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
-                case 201:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
-                        $request,
-                        $response,
-                    );
-                case 207:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Pages\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
-                $request,
-                $response,
-            );
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 207:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -973,19 +458,19 @@ class BatchApi
     }
 
     /**
-     * Operation createBatchAsync
+     * Operation archiveLandingPagesBatchAsync
      *
-     * Create landing pages
+     * Delete landing pages
      *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputPage $batch_input_page (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBatch'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveLandingPagesBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createBatchAsync($batch_input_page, string $contentType = self::contentTypes['createBatch'][0])
+    public function archiveLandingPagesBatchAsync($batch_input_string, string $contentType = self::contentTypes['archiveLandingPagesBatch'][0])
     {
-        return $this->createBatchAsyncWithHttpInfo($batch_input_page, $contentType)
+        return $this->archiveLandingPagesBatchAsyncWithHttpInfo($batch_input_string, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -994,39 +479,26 @@ class BatchApi
     }
 
     /**
-     * Operation createBatchAsyncWithHttpInfo
+     * Operation archiveLandingPagesBatchAsyncWithHttpInfo
      *
-     * Create landing pages
+     * Delete landing pages
      *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputPage $batch_input_page (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBatch'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveLandingPagesBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createBatchAsyncWithHttpInfo($batch_input_page, string $contentType = self::contentTypes['createBatch'][0])
+    public function archiveLandingPagesBatchAsyncWithHttpInfo($batch_input_string, string $contentType = self::contentTypes['archiveLandingPagesBatch'][0])
     {
-        $returnType = '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage';
-        $request = $this->createBatchRequest($batch_input_page, $contentType);
+        $returnType = '';
+        $request = $this->archiveLandingPagesBatchRequest($batch_input_string, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
@@ -1046,26 +518,26 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'createBatch'
+     * Create request for operation 'archiveLandingPagesBatch'
      *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputPage $batch_input_page (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBatch'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveLandingPagesBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createBatchRequest($batch_input_page, string $contentType = self::contentTypes['createBatch'][0])
+    public function archiveLandingPagesBatchRequest($batch_input_string, string $contentType = self::contentTypes['archiveLandingPagesBatch'][0])
     {
 
-        // verify the required parameter 'batch_input_page' is set
-        if ($batch_input_page === null || (is_array($batch_input_page) && count($batch_input_page) === 0)) {
+        // verify the required parameter 'batch_input_string' is set
+        if ($batch_input_string === null || (is_array($batch_input_string) && count($batch_input_string) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_page when calling createBatch'
+                'Missing the required parameter $batch_input_string when calling archiveLandingPagesBatch'
             );
         }
 
 
-        $resourcePath = '/cms/v3/pages/landing-pages/batch/create';
+        $resourcePath = '/cms/v3/pages/landing-pages/batch/archive';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1077,18 +549,18 @@ class BatchApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
+            ['*/*', ],
             $contentType,
             $multipart
         );
 
         // for model (json/xml)
-        if (isset($batch_input_page)) {
+        if (isset($batch_input_string)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_page), JSON_THROW_ON_ERROR);
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_string), JSON_THROW_ON_ERROR);
             } else {
-                $httpBody = $batch_input_page;
+                $httpBody = $batch_input_string;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1141,38 +613,37 @@ class BatchApi
     }
 
     /**
-     * Operation createBatch_0
+     * Operation archiveSitePagesBatch
      *
-     * Create website pages
+     * Delete website pages
      *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputPage $batch_input_page batch_input_page (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBatch_0'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveSitePagesBatch'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Pages\Model\BatchResponsePage|\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors|\HubSpot\Client\Cms\Pages\Model\Error
+     * @return void
      */
-    public function createBatch_0($batch_input_page, string $contentType = self::contentTypes['createBatch_0'][0])
+    public function archiveSitePagesBatch($batch_input_string, string $contentType = self::contentTypes['archiveSitePagesBatch'][0])
     {
-        list($response) = $this->createBatch_0WithHttpInfo($batch_input_page, $contentType);
-        return $response;
+        $this->archiveSitePagesBatchWithHttpInfo($batch_input_string, $contentType);
     }
 
     /**
-     * Operation createBatch_0WithHttpInfo
+     * Operation archiveSitePagesBatchWithHttpInfo
      *
-     * Create website pages
+     * Delete website pages
      *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputPage $batch_input_page (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBatch_0'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveSitePagesBatch'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Pages\Model\BatchResponsePage|\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createBatch_0WithHttpInfo($batch_input_page, string $contentType = self::contentTypes['createBatch_0'][0])
+    public function archiveSitePagesBatchWithHttpInfo($batch_input_string, string $contentType = self::contentTypes['archiveSitePagesBatch'][0])
     {
-        $request = $this->createBatch_0Request($batch_input_page, $contentType);
+        $request = $this->archiveSitePagesBatchRequest($batch_input_string, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1197,65 +668,9 @@ class BatchApi
             $statusCode = $response->getStatusCode();
 
 
-            switch($statusCode) {
-                case 201:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
-                        $request,
-                        $response,
-                    );
-                case 207:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Pages\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
-                $request,
-                $response,
-            );
+            return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 201:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 207:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1272,19 +687,19 @@ class BatchApi
     }
 
     /**
-     * Operation createBatch_0Async
+     * Operation archiveSitePagesBatchAsync
      *
-     * Create website pages
+     * Delete website pages
      *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputPage $batch_input_page (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBatch_0'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveSitePagesBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createBatch_0Async($batch_input_page, string $contentType = self::contentTypes['createBatch_0'][0])
+    public function archiveSitePagesBatchAsync($batch_input_string, string $contentType = self::contentTypes['archiveSitePagesBatch'][0])
     {
-        return $this->createBatch_0AsyncWithHttpInfo($batch_input_page, $contentType)
+        return $this->archiveSitePagesBatchAsyncWithHttpInfo($batch_input_string, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1293,39 +708,26 @@ class BatchApi
     }
 
     /**
-     * Operation createBatch_0AsyncWithHttpInfo
+     * Operation archiveSitePagesBatchAsyncWithHttpInfo
      *
-     * Create website pages
+     * Delete website pages
      *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputPage $batch_input_page (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBatch_0'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveSitePagesBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createBatch_0AsyncWithHttpInfo($batch_input_page, string $contentType = self::contentTypes['createBatch_0'][0])
+    public function archiveSitePagesBatchAsyncWithHttpInfo($batch_input_string, string $contentType = self::contentTypes['archiveSitePagesBatch'][0])
     {
-        $returnType = '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage';
-        $request = $this->createBatch_0Request($batch_input_page, $contentType);
+        $returnType = '';
+        $request = $this->archiveSitePagesBatchRequest($batch_input_string, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
                 },
                 function ($exception) {
                     $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
@@ -1345,26 +747,26 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'createBatch_0'
+     * Create request for operation 'archiveSitePagesBatch'
      *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputPage $batch_input_page (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createBatch_0'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveSitePagesBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createBatch_0Request($batch_input_page, string $contentType = self::contentTypes['createBatch_0'][0])
+    public function archiveSitePagesBatchRequest($batch_input_string, string $contentType = self::contentTypes['archiveSitePagesBatch'][0])
     {
 
-        // verify the required parameter 'batch_input_page' is set
-        if ($batch_input_page === null || (is_array($batch_input_page) && count($batch_input_page) === 0)) {
+        // verify the required parameter 'batch_input_string' is set
+        if ($batch_input_string === null || (is_array($batch_input_string) && count($batch_input_string) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_page when calling createBatch_0'
+                'Missing the required parameter $batch_input_string when calling archiveSitePagesBatch'
             );
         }
 
 
-        $resourcePath = '/cms/v3/pages/site-pages/batch/create';
+        $resourcePath = '/cms/v3/pages/site-pages/batch/archive';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1376,18 +778,18 @@ class BatchApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
+            ['*/*', ],
             $contentType,
             $multipart
         );
 
         // for model (json/xml)
-        if (isset($batch_input_page)) {
+        if (isset($batch_input_string)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_page), JSON_THROW_ON_ERROR);
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_string), JSON_THROW_ON_ERROR);
             } else {
-                $httpBody = $batch_input_page;
+                $httpBody = $batch_input_string;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1739,40 +1141,638 @@ class BatchApi
     }
 
     /**
-     * Operation readBatch
+     * Operation createLandingPagesBatch
      *
-     * Retrieve landing pages
+     * Create landing pages
      *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string batch_input_string (required)
-     * @param  bool|null $archived Specifies whether to return deleted Landing Pages. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readBatch'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputPage $batch_input_page batch_input_page (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLandingPagesBatch'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Pages\Model\BatchResponsePage|\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors|\HubSpot\Client\Cms\Pages\Model\Error
      */
-    public function readBatch($batch_input_string, $archived = null, string $contentType = self::contentTypes['readBatch'][0])
+    public function createLandingPagesBatch($batch_input_page, string $contentType = self::contentTypes['createLandingPagesBatch'][0])
     {
-        list($response) = $this->readBatchWithHttpInfo($batch_input_string, $archived, $contentType);
+        list($response) = $this->createLandingPagesBatchWithHttpInfo($batch_input_page, $contentType);
         return $response;
     }
 
     /**
-     * Operation readBatchWithHttpInfo
+     * Operation createLandingPagesBatchWithHttpInfo
      *
-     * Retrieve landing pages
+     * Create landing pages
      *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
-     * @param  bool|null $archived Specifies whether to return deleted Landing Pages. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readBatch'] to see the possible values for this operation
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputPage $batch_input_page (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLandingPagesBatch'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Pages\Model\BatchResponsePage|\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function readBatchWithHttpInfo($batch_input_string, $archived = null, string $contentType = self::contentTypes['readBatch'][0])
+    public function createLandingPagesBatchWithHttpInfo($batch_input_page, string $contentType = self::contentTypes['createLandingPagesBatch'][0])
     {
-        $request = $this->readBatchRequest($batch_input_string, $archived, $contentType);
+        $request = $this->createLandingPagesBatchRequest($batch_input_page, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Pages\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Pages\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createLandingPagesBatchAsync
+     *
+     * Create landing pages
+     *
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputPage $batch_input_page (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLandingPagesBatch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createLandingPagesBatchAsync($batch_input_page, string $contentType = self::contentTypes['createLandingPagesBatch'][0])
+    {
+        return $this->createLandingPagesBatchAsyncWithHttpInfo($batch_input_page, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createLandingPagesBatchAsyncWithHttpInfo
+     *
+     * Create landing pages
+     *
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputPage $batch_input_page (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLandingPagesBatch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createLandingPagesBatchAsyncWithHttpInfo($batch_input_page, string $contentType = self::contentTypes['createLandingPagesBatch'][0])
+    {
+        $returnType = '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage';
+        $request = $this->createLandingPagesBatchRequest($batch_input_page, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createLandingPagesBatch'
+     *
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputPage $batch_input_page (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLandingPagesBatch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createLandingPagesBatchRequest($batch_input_page, string $contentType = self::contentTypes['createLandingPagesBatch'][0])
+    {
+
+        // verify the required parameter 'batch_input_page' is set
+        if ($batch_input_page === null || (is_array($batch_input_page) && count($batch_input_page) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_page when calling createLandingPagesBatch'
+            );
+        }
+
+
+        $resourcePath = '/cms/v3/pages/landing-pages/batch/create';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($batch_input_page)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_page), JSON_THROW_ON_ERROR);
+            } else {
+                $httpBody = $batch_input_page;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createSitePagesBatch
+     *
+     * Create website pages
+     *
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputPage $batch_input_page batch_input_page (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSitePagesBatch'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\Pages\Model\BatchResponsePage|\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors|\HubSpot\Client\Cms\Pages\Model\Error
+     */
+    public function createSitePagesBatch($batch_input_page, string $contentType = self::contentTypes['createSitePagesBatch'][0])
+    {
+        list($response) = $this->createSitePagesBatchWithHttpInfo($batch_input_page, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createSitePagesBatchWithHttpInfo
+     *
+     * Create website pages
+     *
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputPage $batch_input_page (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSitePagesBatch'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Pages\Model\BatchResponsePage|\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createSitePagesBatchWithHttpInfo($batch_input_page, string $contentType = self::contentTypes['createSitePagesBatch'][0])
+    {
+        $request = $this->createSitePagesBatchRequest($batch_input_page, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Pages\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Pages\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createSitePagesBatchAsync
+     *
+     * Create website pages
+     *
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputPage $batch_input_page (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSitePagesBatch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createSitePagesBatchAsync($batch_input_page, string $contentType = self::contentTypes['createSitePagesBatch'][0])
+    {
+        return $this->createSitePagesBatchAsyncWithHttpInfo($batch_input_page, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createSitePagesBatchAsyncWithHttpInfo
+     *
+     * Create website pages
+     *
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputPage $batch_input_page (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSitePagesBatch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createSitePagesBatchAsyncWithHttpInfo($batch_input_page, string $contentType = self::contentTypes['createSitePagesBatch'][0])
+    {
+        $returnType = '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage';
+        $request = $this->createSitePagesBatchRequest($batch_input_page, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createSitePagesBatch'
+     *
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputPage $batch_input_page (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSitePagesBatch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createSitePagesBatchRequest($batch_input_page, string $contentType = self::contentTypes['createSitePagesBatch'][0])
+    {
+
+        // verify the required parameter 'batch_input_page' is set
+        if ($batch_input_page === null || (is_array($batch_input_page) && count($batch_input_page) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_page when calling createSitePagesBatch'
+            );
+        }
+
+
+        $resourcePath = '/cms/v3/pages/site-pages/batch/create';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($batch_input_page)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_page), JSON_THROW_ON_ERROR);
+            } else {
+                $httpBody = $batch_input_page;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation readLandingPagesBatch
+     *
+     * Retrieve landing pages
+     *
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string batch_input_string (required)
+     * @param  bool|null $archived Specifies whether to return deleted Landing Pages. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readLandingPagesBatch'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\Pages\Model\BatchResponsePage|\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors|\HubSpot\Client\Cms\Pages\Model\Error
+     */
+    public function readLandingPagesBatch($batch_input_string, $archived = null, string $contentType = self::contentTypes['readLandingPagesBatch'][0])
+    {
+        list($response) = $this->readLandingPagesBatchWithHttpInfo($batch_input_string, $archived, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation readLandingPagesBatchWithHttpInfo
+     *
+     * Retrieve landing pages
+     *
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
+     * @param  bool|null $archived Specifies whether to return deleted Landing Pages. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readLandingPagesBatch'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Pages\Model\BatchResponsePage|\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function readLandingPagesBatchWithHttpInfo($batch_input_string, $archived = null, string $contentType = self::contentTypes['readLandingPagesBatch'][0])
+    {
+        $request = $this->readLandingPagesBatchRequest($batch_input_string, $archived, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1872,20 +1872,20 @@ class BatchApi
     }
 
     /**
-     * Operation readBatchAsync
+     * Operation readLandingPagesBatchAsync
      *
      * Retrieve landing pages
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
      * @param  bool|null $archived Specifies whether to return deleted Landing Pages. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readBatch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readLandingPagesBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function readBatchAsync($batch_input_string, $archived = null, string $contentType = self::contentTypes['readBatch'][0])
+    public function readLandingPagesBatchAsync($batch_input_string, $archived = null, string $contentType = self::contentTypes['readLandingPagesBatch'][0])
     {
-        return $this->readBatchAsyncWithHttpInfo($batch_input_string, $archived, $contentType)
+        return $this->readLandingPagesBatchAsyncWithHttpInfo($batch_input_string, $archived, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1894,21 +1894,21 @@ class BatchApi
     }
 
     /**
-     * Operation readBatchAsyncWithHttpInfo
+     * Operation readLandingPagesBatchAsyncWithHttpInfo
      *
      * Retrieve landing pages
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
      * @param  bool|null $archived Specifies whether to return deleted Landing Pages. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readBatch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readLandingPagesBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function readBatchAsyncWithHttpInfo($batch_input_string, $archived = null, string $contentType = self::contentTypes['readBatch'][0])
+    public function readLandingPagesBatchAsyncWithHttpInfo($batch_input_string, $archived = null, string $contentType = self::contentTypes['readLandingPagesBatch'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage';
-        $request = $this->readBatchRequest($batch_input_string, $archived, $contentType);
+        $request = $this->readLandingPagesBatchRequest($batch_input_string, $archived, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1947,22 +1947,22 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'readBatch'
+     * Create request for operation 'readLandingPagesBatch'
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
      * @param  bool|null $archived Specifies whether to return deleted Landing Pages. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readBatch'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readLandingPagesBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function readBatchRequest($batch_input_string, $archived = null, string $contentType = self::contentTypes['readBatch'][0])
+    public function readLandingPagesBatchRequest($batch_input_string, $archived = null, string $contentType = self::contentTypes['readLandingPagesBatch'][0])
     {
 
         // verify the required parameter 'batch_input_string' is set
         if ($batch_input_string === null || (is_array($batch_input_string) && count($batch_input_string) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_string when calling readBatch'
+                'Missing the required parameter $batch_input_string when calling readLandingPagesBatch'
             );
         }
 
@@ -2053,40 +2053,40 @@ class BatchApi
     }
 
     /**
-     * Operation readBatch_0
+     * Operation readSitePagesBatch
      *
      * Retrieve website pages
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string batch_input_string (required)
      * @param  bool|null $archived Specifies whether to return deleted Site Pages. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readBatch_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readSitePagesBatch'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Pages\Model\BatchResponsePage|\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors|\HubSpot\Client\Cms\Pages\Model\Error
      */
-    public function readBatch_0($batch_input_string, $archived = null, string $contentType = self::contentTypes['readBatch_0'][0])
+    public function readSitePagesBatch($batch_input_string, $archived = null, string $contentType = self::contentTypes['readSitePagesBatch'][0])
     {
-        list($response) = $this->readBatch_0WithHttpInfo($batch_input_string, $archived, $contentType);
+        list($response) = $this->readSitePagesBatchWithHttpInfo($batch_input_string, $archived, $contentType);
         return $response;
     }
 
     /**
-     * Operation readBatch_0WithHttpInfo
+     * Operation readSitePagesBatchWithHttpInfo
      *
      * Retrieve website pages
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
      * @param  bool|null $archived Specifies whether to return deleted Site Pages. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readBatch_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readSitePagesBatch'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Pages\Model\BatchResponsePage|\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function readBatch_0WithHttpInfo($batch_input_string, $archived = null, string $contentType = self::contentTypes['readBatch_0'][0])
+    public function readSitePagesBatchWithHttpInfo($batch_input_string, $archived = null, string $contentType = self::contentTypes['readSitePagesBatch'][0])
     {
-        $request = $this->readBatch_0Request($batch_input_string, $archived, $contentType);
+        $request = $this->readSitePagesBatchRequest($batch_input_string, $archived, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2186,20 +2186,20 @@ class BatchApi
     }
 
     /**
-     * Operation readBatch_0Async
+     * Operation readSitePagesBatchAsync
      *
      * Retrieve website pages
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
      * @param  bool|null $archived Specifies whether to return deleted Site Pages. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readBatch_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readSitePagesBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function readBatch_0Async($batch_input_string, $archived = null, string $contentType = self::contentTypes['readBatch_0'][0])
+    public function readSitePagesBatchAsync($batch_input_string, $archived = null, string $contentType = self::contentTypes['readSitePagesBatch'][0])
     {
-        return $this->readBatch_0AsyncWithHttpInfo($batch_input_string, $archived, $contentType)
+        return $this->readSitePagesBatchAsyncWithHttpInfo($batch_input_string, $archived, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2208,21 +2208,21 @@ class BatchApi
     }
 
     /**
-     * Operation readBatch_0AsyncWithHttpInfo
+     * Operation readSitePagesBatchAsyncWithHttpInfo
      *
      * Retrieve website pages
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
      * @param  bool|null $archived Specifies whether to return deleted Site Pages. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readBatch_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readSitePagesBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function readBatch_0AsyncWithHttpInfo($batch_input_string, $archived = null, string $contentType = self::contentTypes['readBatch_0'][0])
+    public function readSitePagesBatchAsyncWithHttpInfo($batch_input_string, $archived = null, string $contentType = self::contentTypes['readSitePagesBatch'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage';
-        $request = $this->readBatch_0Request($batch_input_string, $archived, $contentType);
+        $request = $this->readSitePagesBatchRequest($batch_input_string, $archived, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2261,22 +2261,22 @@ class BatchApi
     }
 
     /**
-     * Create request for operation 'readBatch_0'
+     * Create request for operation 'readSitePagesBatch'
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputString $batch_input_string (required)
      * @param  bool|null $archived Specifies whether to return deleted Site Pages. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readBatch_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readSitePagesBatch'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function readBatch_0Request($batch_input_string, $archived = null, string $contentType = self::contentTypes['readBatch_0'][0])
+    public function readSitePagesBatchRequest($batch_input_string, $archived = null, string $contentType = self::contentTypes['readSitePagesBatch'][0])
     {
 
         // verify the required parameter 'batch_input_string' is set
         if ($batch_input_string === null || (is_array($batch_input_string) && count($batch_input_string) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_string when calling readBatch_0'
+                'Missing the required parameter $batch_input_string when calling readSitePagesBatch'
             );
         }
 
@@ -2315,634 +2315,6 @@ class BatchApi
                 $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_string), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $batch_input_string;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation updateBatch
-     *
-     * Update landing pages
-     *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputJsonNode $batch_input_json_node batch_input_json_node (required)
-     * @param  bool|null $archived Specifies whether to update deleted Landing Pages. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBatch'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Pages\Model\BatchResponsePage|\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors|\HubSpot\Client\Cms\Pages\Model\Error
-     */
-    public function updateBatch($batch_input_json_node, $archived = null, string $contentType = self::contentTypes['updateBatch'][0])
-    {
-        list($response) = $this->updateBatchWithHttpInfo($batch_input_json_node, $archived, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation updateBatchWithHttpInfo
-     *
-     * Update landing pages
-     *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputJsonNode $batch_input_json_node (required)
-     * @param  bool|null $archived Specifies whether to update deleted Landing Pages. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBatch'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Pages\Model\BatchResponsePage|\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function updateBatchWithHttpInfo($batch_input_json_node, $archived = null, string $contentType = self::contentTypes['updateBatch'][0])
-    {
-        $request = $this->updateBatchRequest($batch_input_json_node, $archived, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
-                        $request,
-                        $response,
-                    );
-                case 207:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Pages\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 207:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Pages\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation updateBatchAsync
-     *
-     * Update landing pages
-     *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputJsonNode $batch_input_json_node (required)
-     * @param  bool|null $archived Specifies whether to update deleted Landing Pages. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBatch'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function updateBatchAsync($batch_input_json_node, $archived = null, string $contentType = self::contentTypes['updateBatch'][0])
-    {
-        return $this->updateBatchAsyncWithHttpInfo($batch_input_json_node, $archived, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation updateBatchAsyncWithHttpInfo
-     *
-     * Update landing pages
-     *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputJsonNode $batch_input_json_node (required)
-     * @param  bool|null $archived Specifies whether to update deleted Landing Pages. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBatch'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function updateBatchAsyncWithHttpInfo($batch_input_json_node, $archived = null, string $contentType = self::contentTypes['updateBatch'][0])
-    {
-        $returnType = '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage';
-        $request = $this->updateBatchRequest($batch_input_json_node, $archived, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'updateBatch'
-     *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputJsonNode $batch_input_json_node (required)
-     * @param  bool|null $archived Specifies whether to update deleted Landing Pages. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBatch'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function updateBatchRequest($batch_input_json_node, $archived = null, string $contentType = self::contentTypes['updateBatch'][0])
-    {
-
-        // verify the required parameter 'batch_input_json_node' is set
-        if ($batch_input_json_node === null || (is_array($batch_input_json_node) && count($batch_input_json_node) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_json_node when calling updateBatch'
-            );
-        }
-
-
-
-        $resourcePath = '/cms/v3/pages/landing-pages/batch/update';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($batch_input_json_node)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_json_node), JSON_THROW_ON_ERROR);
-            } else {
-                $httpBody = $batch_input_json_node;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation updateBatch_0
-     *
-     * Update website pages
-     *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputJsonNode $batch_input_json_node batch_input_json_node (required)
-     * @param  bool|null $archived Specifies whether to update deleted Site Pages. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBatch_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Cms\Pages\Model\BatchResponsePage|\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors|\HubSpot\Client\Cms\Pages\Model\Error
-     */
-    public function updateBatch_0($batch_input_json_node, $archived = null, string $contentType = self::contentTypes['updateBatch_0'][0])
-    {
-        list($response) = $this->updateBatch_0WithHttpInfo($batch_input_json_node, $archived, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation updateBatch_0WithHttpInfo
-     *
-     * Update website pages
-     *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputJsonNode $batch_input_json_node (required)
-     * @param  bool|null $archived Specifies whether to update deleted Site Pages. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBatch_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Cms\Pages\Model\BatchResponsePage|\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function updateBatch_0WithHttpInfo($batch_input_json_node, $archived = null, string $contentType = self::contentTypes['updateBatch_0'][0])
-    {
-        $request = $this->updateBatch_0Request($batch_input_json_node, $archived, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
-                        $request,
-                        $response,
-                    );
-                case 207:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Cms\Pages\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 207:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Cms\Pages\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation updateBatch_0Async
-     *
-     * Update website pages
-     *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputJsonNode $batch_input_json_node (required)
-     * @param  bool|null $archived Specifies whether to update deleted Site Pages. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBatch_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function updateBatch_0Async($batch_input_json_node, $archived = null, string $contentType = self::contentTypes['updateBatch_0'][0])
-    {
-        return $this->updateBatch_0AsyncWithHttpInfo($batch_input_json_node, $archived, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation updateBatch_0AsyncWithHttpInfo
-     *
-     * Update website pages
-     *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputJsonNode $batch_input_json_node (required)
-     * @param  bool|null $archived Specifies whether to update deleted Site Pages. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBatch_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function updateBatch_0AsyncWithHttpInfo($batch_input_json_node, $archived = null, string $contentType = self::contentTypes['updateBatch_0'][0])
-    {
-        $returnType = '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage';
-        $request = $this->updateBatch_0Request($batch_input_json_node, $archived, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'updateBatch_0'
-     *
-     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputJsonNode $batch_input_json_node (required)
-     * @param  bool|null $archived Specifies whether to update deleted Site Pages. Defaults to &#x60;false&#x60;. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateBatch_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function updateBatch_0Request($batch_input_json_node, $archived = null, string $contentType = self::contentTypes['updateBatch_0'][0])
-    {
-
-        // verify the required parameter 'batch_input_json_node' is set
-        if ($batch_input_json_node === null || (is_array($batch_input_json_node) && count($batch_input_json_node) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $batch_input_json_node when calling updateBatch_0'
-            );
-        }
-
-
-
-        $resourcePath = '/cms/v3/pages/site-pages/batch/update';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $archived,
-            'archived', // param base name
-            'boolean', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($batch_input_json_node)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_json_node), JSON_THROW_ON_ERROR);
-            } else {
-                $httpBody = $batch_input_json_node;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -3225,6 +2597,634 @@ class BatchApi
 
 
         $resourcePath = '/cms/v3/pages/landing-pages/folders/batch/update';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $archived,
+            'archived', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($batch_input_json_node)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_json_node), JSON_THROW_ON_ERROR);
+            } else {
+                $httpBody = $batch_input_json_node;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateLandingPagesBatch
+     *
+     * Update landing pages
+     *
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputJsonNode $batch_input_json_node batch_input_json_node (required)
+     * @param  bool|null $archived Specifies whether to update deleted Landing Pages. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLandingPagesBatch'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\Pages\Model\BatchResponsePage|\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors|\HubSpot\Client\Cms\Pages\Model\Error
+     */
+    public function updateLandingPagesBatch($batch_input_json_node, $archived = null, string $contentType = self::contentTypes['updateLandingPagesBatch'][0])
+    {
+        list($response) = $this->updateLandingPagesBatchWithHttpInfo($batch_input_json_node, $archived, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateLandingPagesBatchWithHttpInfo
+     *
+     * Update landing pages
+     *
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputJsonNode $batch_input_json_node (required)
+     * @param  bool|null $archived Specifies whether to update deleted Landing Pages. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLandingPagesBatch'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Pages\Model\BatchResponsePage|\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateLandingPagesBatchWithHttpInfo($batch_input_json_node, $archived = null, string $contentType = self::contentTypes['updateLandingPagesBatch'][0])
+    {
+        $request = $this->updateLandingPagesBatchRequest($batch_input_json_node, $archived, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Pages\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Pages\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateLandingPagesBatchAsync
+     *
+     * Update landing pages
+     *
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputJsonNode $batch_input_json_node (required)
+     * @param  bool|null $archived Specifies whether to update deleted Landing Pages. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLandingPagesBatch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateLandingPagesBatchAsync($batch_input_json_node, $archived = null, string $contentType = self::contentTypes['updateLandingPagesBatch'][0])
+    {
+        return $this->updateLandingPagesBatchAsyncWithHttpInfo($batch_input_json_node, $archived, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateLandingPagesBatchAsyncWithHttpInfo
+     *
+     * Update landing pages
+     *
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputJsonNode $batch_input_json_node (required)
+     * @param  bool|null $archived Specifies whether to update deleted Landing Pages. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLandingPagesBatch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateLandingPagesBatchAsyncWithHttpInfo($batch_input_json_node, $archived = null, string $contentType = self::contentTypes['updateLandingPagesBatch'][0])
+    {
+        $returnType = '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage';
+        $request = $this->updateLandingPagesBatchRequest($batch_input_json_node, $archived, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateLandingPagesBatch'
+     *
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputJsonNode $batch_input_json_node (required)
+     * @param  bool|null $archived Specifies whether to update deleted Landing Pages. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLandingPagesBatch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateLandingPagesBatchRequest($batch_input_json_node, $archived = null, string $contentType = self::contentTypes['updateLandingPagesBatch'][0])
+    {
+
+        // verify the required parameter 'batch_input_json_node' is set
+        if ($batch_input_json_node === null || (is_array($batch_input_json_node) && count($batch_input_json_node) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_json_node when calling updateLandingPagesBatch'
+            );
+        }
+
+
+
+        $resourcePath = '/cms/v3/pages/landing-pages/batch/update';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $archived,
+            'archived', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($batch_input_json_node)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($batch_input_json_node), JSON_THROW_ON_ERROR);
+            } else {
+                $httpBody = $batch_input_json_node;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateSitePagesBatch
+     *
+     * Update website pages
+     *
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputJsonNode $batch_input_json_node batch_input_json_node (required)
+     * @param  bool|null $archived Specifies whether to update deleted Site Pages. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSitePagesBatch'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Cms\Pages\Model\BatchResponsePage|\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors|\HubSpot\Client\Cms\Pages\Model\Error
+     */
+    public function updateSitePagesBatch($batch_input_json_node, $archived = null, string $contentType = self::contentTypes['updateSitePagesBatch'][0])
+    {
+        list($response) = $this->updateSitePagesBatchWithHttpInfo($batch_input_json_node, $archived, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateSitePagesBatchWithHttpInfo
+     *
+     * Update website pages
+     *
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputJsonNode $batch_input_json_node (required)
+     * @param  bool|null $archived Specifies whether to update deleted Site Pages. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSitePagesBatch'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Cms\Pages\Model\BatchResponsePage|\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateSitePagesBatchWithHttpInfo($batch_input_json_node, $archived = null, string $contentType = self::contentTypes['updateSitePagesBatch'][0])
+    {
+        $request = $this->updateSitePagesBatchRequest($batch_input_json_node, $archived, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
+                        $request,
+                        $response,
+                    );
+                case 207:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Cms\Pages\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 207:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Pages\Model\BatchResponsePageWithErrors',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Cms\Pages\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateSitePagesBatchAsync
+     *
+     * Update website pages
+     *
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputJsonNode $batch_input_json_node (required)
+     * @param  bool|null $archived Specifies whether to update deleted Site Pages. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSitePagesBatch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateSitePagesBatchAsync($batch_input_json_node, $archived = null, string $contentType = self::contentTypes['updateSitePagesBatch'][0])
+    {
+        return $this->updateSitePagesBatchAsyncWithHttpInfo($batch_input_json_node, $archived, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateSitePagesBatchAsyncWithHttpInfo
+     *
+     * Update website pages
+     *
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputJsonNode $batch_input_json_node (required)
+     * @param  bool|null $archived Specifies whether to update deleted Site Pages. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSitePagesBatch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateSitePagesBatchAsyncWithHttpInfo($batch_input_json_node, $archived = null, string $contentType = self::contentTypes['updateSitePagesBatch'][0])
+    {
+        $returnType = '\HubSpot\Client\Cms\Pages\Model\BatchResponsePage';
+        $request = $this->updateSitePagesBatchRequest($batch_input_json_node, $archived, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateSitePagesBatch'
+     *
+     * @param  \HubSpot\Client\Cms\Pages\Model\BatchInputJsonNode $batch_input_json_node (required)
+     * @param  bool|null $archived Specifies whether to update deleted Site Pages. Defaults to &#x60;false&#x60;. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSitePagesBatch'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateSitePagesBatchRequest($batch_input_json_node, $archived = null, string $contentType = self::contentTypes['updateSitePagesBatch'][0])
+    {
+
+        // verify the required parameter 'batch_input_json_node' is set
+        if ($batch_input_json_node === null || (is_array($batch_input_json_node) && count($batch_input_json_node) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $batch_input_json_node when calling updateSitePagesBatch'
+            );
+        }
+
+
+
+        $resourcePath = '/cms/v3/pages/site-pages/batch/update';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

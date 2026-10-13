@@ -73,22 +73,22 @@ class ABTestsApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'createABTestVariation' => [
+        'createLandingPageABTestVariation' => [
             'application/json',
         ],
-        'createABTestVariation_0' => [
+        'createSitePageABTestVariation' => [
             'application/json',
         ],
-        'endActiveABTest' => [
+        'endActiveLandingPageABTest' => [
             'application/json',
         ],
-        'endActiveABTest_0' => [
+        'endActiveSitePageABTest' => [
             'application/json',
         ],
-        'rerunPreviousABTest' => [
+        'rerunPreviousLandingPageABTest' => [
             'application/json',
         ],
-        'rerunPreviousABTest_0' => [
+        'rerunPreviousSitePageABTest' => [
             'application/json',
         ],
     ];
@@ -140,38 +140,38 @@ class ABTestsApi
     }
 
     /**
-     * Operation createABTestVariation
+     * Operation createLandingPageABTestVariation
      *
      * Create a new A/B test variation
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestCreateRequestVNext $ab_test_create_request_v_next ab_test_create_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createABTestVariation'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLandingPageABTestVariation'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Pages\Model\Page|\HubSpot\Client\Cms\Pages\Model\Error
      */
-    public function createABTestVariation($ab_test_create_request_v_next, string $contentType = self::contentTypes['createABTestVariation'][0])
+    public function createLandingPageABTestVariation($ab_test_create_request_v_next, string $contentType = self::contentTypes['createLandingPageABTestVariation'][0])
     {
-        list($response) = $this->createABTestVariationWithHttpInfo($ab_test_create_request_v_next, $contentType);
+        list($response) = $this->createLandingPageABTestVariationWithHttpInfo($ab_test_create_request_v_next, $contentType);
         return $response;
     }
 
     /**
-     * Operation createABTestVariationWithHttpInfo
+     * Operation createLandingPageABTestVariationWithHttpInfo
      *
      * Create a new A/B test variation
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestCreateRequestVNext $ab_test_create_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createABTestVariation'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLandingPageABTestVariation'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Pages\Model\Page|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createABTestVariationWithHttpInfo($ab_test_create_request_v_next, string $contentType = self::contentTypes['createABTestVariation'][0])
+    public function createLandingPageABTestVariationWithHttpInfo($ab_test_create_request_v_next, string $contentType = self::contentTypes['createLandingPageABTestVariation'][0])
     {
-        $request = $this->createABTestVariationRequest($ab_test_create_request_v_next, $contentType);
+        $request = $this->createLandingPageABTestVariationRequest($ab_test_create_request_v_next, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -257,19 +257,19 @@ class ABTestsApi
     }
 
     /**
-     * Operation createABTestVariationAsync
+     * Operation createLandingPageABTestVariationAsync
      *
      * Create a new A/B test variation
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestCreateRequestVNext $ab_test_create_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createABTestVariation'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLandingPageABTestVariation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createABTestVariationAsync($ab_test_create_request_v_next, string $contentType = self::contentTypes['createABTestVariation'][0])
+    public function createLandingPageABTestVariationAsync($ab_test_create_request_v_next, string $contentType = self::contentTypes['createLandingPageABTestVariation'][0])
     {
-        return $this->createABTestVariationAsyncWithHttpInfo($ab_test_create_request_v_next, $contentType)
+        return $this->createLandingPageABTestVariationAsyncWithHttpInfo($ab_test_create_request_v_next, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -278,20 +278,20 @@ class ABTestsApi
     }
 
     /**
-     * Operation createABTestVariationAsyncWithHttpInfo
+     * Operation createLandingPageABTestVariationAsyncWithHttpInfo
      *
      * Create a new A/B test variation
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestCreateRequestVNext $ab_test_create_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createABTestVariation'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLandingPageABTestVariation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createABTestVariationAsyncWithHttpInfo($ab_test_create_request_v_next, string $contentType = self::contentTypes['createABTestVariation'][0])
+    public function createLandingPageABTestVariationAsyncWithHttpInfo($ab_test_create_request_v_next, string $contentType = self::contentTypes['createLandingPageABTestVariation'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Pages\Model\Page';
-        $request = $this->createABTestVariationRequest($ab_test_create_request_v_next, $contentType);
+        $request = $this->createLandingPageABTestVariationRequest($ab_test_create_request_v_next, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -330,21 +330,21 @@ class ABTestsApi
     }
 
     /**
-     * Create request for operation 'createABTestVariation'
+     * Create request for operation 'createLandingPageABTestVariation'
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestCreateRequestVNext $ab_test_create_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createABTestVariation'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLandingPageABTestVariation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createABTestVariationRequest($ab_test_create_request_v_next, string $contentType = self::contentTypes['createABTestVariation'][0])
+    public function createLandingPageABTestVariationRequest($ab_test_create_request_v_next, string $contentType = self::contentTypes['createLandingPageABTestVariation'][0])
     {
 
         // verify the required parameter 'ab_test_create_request_v_next' is set
         if ($ab_test_create_request_v_next === null || (is_array($ab_test_create_request_v_next) && count($ab_test_create_request_v_next) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $ab_test_create_request_v_next when calling createABTestVariation'
+                'Missing the required parameter $ab_test_create_request_v_next when calling createLandingPageABTestVariation'
             );
         }
 
@@ -425,38 +425,38 @@ class ABTestsApi
     }
 
     /**
-     * Operation createABTestVariation_0
+     * Operation createSitePageABTestVariation
      *
      * Create a new A/B test variation
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestCreateRequestVNext $ab_test_create_request_v_next ab_test_create_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createABTestVariation_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSitePageABTestVariation'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Pages\Model\Page|\HubSpot\Client\Cms\Pages\Model\Error
      */
-    public function createABTestVariation_0($ab_test_create_request_v_next, string $contentType = self::contentTypes['createABTestVariation_0'][0])
+    public function createSitePageABTestVariation($ab_test_create_request_v_next, string $contentType = self::contentTypes['createSitePageABTestVariation'][0])
     {
-        list($response) = $this->createABTestVariation_0WithHttpInfo($ab_test_create_request_v_next, $contentType);
+        list($response) = $this->createSitePageABTestVariationWithHttpInfo($ab_test_create_request_v_next, $contentType);
         return $response;
     }
 
     /**
-     * Operation createABTestVariation_0WithHttpInfo
+     * Operation createSitePageABTestVariationWithHttpInfo
      *
      * Create a new A/B test variation
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestCreateRequestVNext $ab_test_create_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createABTestVariation_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSitePageABTestVariation'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Pages\Model\Page|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createABTestVariation_0WithHttpInfo($ab_test_create_request_v_next, string $contentType = self::contentTypes['createABTestVariation_0'][0])
+    public function createSitePageABTestVariationWithHttpInfo($ab_test_create_request_v_next, string $contentType = self::contentTypes['createSitePageABTestVariation'][0])
     {
-        $request = $this->createABTestVariation_0Request($ab_test_create_request_v_next, $contentType);
+        $request = $this->createSitePageABTestVariationRequest($ab_test_create_request_v_next, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -542,19 +542,19 @@ class ABTestsApi
     }
 
     /**
-     * Operation createABTestVariation_0Async
+     * Operation createSitePageABTestVariationAsync
      *
      * Create a new A/B test variation
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestCreateRequestVNext $ab_test_create_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createABTestVariation_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSitePageABTestVariation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createABTestVariation_0Async($ab_test_create_request_v_next, string $contentType = self::contentTypes['createABTestVariation_0'][0])
+    public function createSitePageABTestVariationAsync($ab_test_create_request_v_next, string $contentType = self::contentTypes['createSitePageABTestVariation'][0])
     {
-        return $this->createABTestVariation_0AsyncWithHttpInfo($ab_test_create_request_v_next, $contentType)
+        return $this->createSitePageABTestVariationAsyncWithHttpInfo($ab_test_create_request_v_next, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -563,20 +563,20 @@ class ABTestsApi
     }
 
     /**
-     * Operation createABTestVariation_0AsyncWithHttpInfo
+     * Operation createSitePageABTestVariationAsyncWithHttpInfo
      *
      * Create a new A/B test variation
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestCreateRequestVNext $ab_test_create_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createABTestVariation_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSitePageABTestVariation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createABTestVariation_0AsyncWithHttpInfo($ab_test_create_request_v_next, string $contentType = self::contentTypes['createABTestVariation_0'][0])
+    public function createSitePageABTestVariationAsyncWithHttpInfo($ab_test_create_request_v_next, string $contentType = self::contentTypes['createSitePageABTestVariation'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Pages\Model\Page';
-        $request = $this->createABTestVariation_0Request($ab_test_create_request_v_next, $contentType);
+        $request = $this->createSitePageABTestVariationRequest($ab_test_create_request_v_next, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -615,21 +615,21 @@ class ABTestsApi
     }
 
     /**
-     * Create request for operation 'createABTestVariation_0'
+     * Create request for operation 'createSitePageABTestVariation'
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestCreateRequestVNext $ab_test_create_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createABTestVariation_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSitePageABTestVariation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createABTestVariation_0Request($ab_test_create_request_v_next, string $contentType = self::contentTypes['createABTestVariation_0'][0])
+    public function createSitePageABTestVariationRequest($ab_test_create_request_v_next, string $contentType = self::contentTypes['createSitePageABTestVariation'][0])
     {
 
         // verify the required parameter 'ab_test_create_request_v_next' is set
         if ($ab_test_create_request_v_next === null || (is_array($ab_test_create_request_v_next) && count($ab_test_create_request_v_next) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $ab_test_create_request_v_next when calling createABTestVariation_0'
+                'Missing the required parameter $ab_test_create_request_v_next when calling createSitePageABTestVariation'
             );
         }
 
@@ -710,37 +710,37 @@ class ABTestsApi
     }
 
     /**
-     * Operation endActiveABTest
+     * Operation endActiveLandingPageABTest
      *
      * End an active A/B test
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestEndRequestVNext $ab_test_end_request_v_next ab_test_end_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['endActiveABTest'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['endActiveLandingPageABTest'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function endActiveABTest($ab_test_end_request_v_next, string $contentType = self::contentTypes['endActiveABTest'][0])
+    public function endActiveLandingPageABTest($ab_test_end_request_v_next, string $contentType = self::contentTypes['endActiveLandingPageABTest'][0])
     {
-        $this->endActiveABTestWithHttpInfo($ab_test_end_request_v_next, $contentType);
+        $this->endActiveLandingPageABTestWithHttpInfo($ab_test_end_request_v_next, $contentType);
     }
 
     /**
-     * Operation endActiveABTestWithHttpInfo
+     * Operation endActiveLandingPageABTestWithHttpInfo
      *
      * End an active A/B test
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestEndRequestVNext $ab_test_end_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['endActiveABTest'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['endActiveLandingPageABTest'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function endActiveABTestWithHttpInfo($ab_test_end_request_v_next, string $contentType = self::contentTypes['endActiveABTest'][0])
+    public function endActiveLandingPageABTestWithHttpInfo($ab_test_end_request_v_next, string $contentType = self::contentTypes['endActiveLandingPageABTest'][0])
     {
-        $request = $this->endActiveABTestRequest($ab_test_end_request_v_next, $contentType);
+        $request = $this->endActiveLandingPageABTestRequest($ab_test_end_request_v_next, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -784,19 +784,19 @@ class ABTestsApi
     }
 
     /**
-     * Operation endActiveABTestAsync
+     * Operation endActiveLandingPageABTestAsync
      *
      * End an active A/B test
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestEndRequestVNext $ab_test_end_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['endActiveABTest'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['endActiveLandingPageABTest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function endActiveABTestAsync($ab_test_end_request_v_next, string $contentType = self::contentTypes['endActiveABTest'][0])
+    public function endActiveLandingPageABTestAsync($ab_test_end_request_v_next, string $contentType = self::contentTypes['endActiveLandingPageABTest'][0])
     {
-        return $this->endActiveABTestAsyncWithHttpInfo($ab_test_end_request_v_next, $contentType)
+        return $this->endActiveLandingPageABTestAsyncWithHttpInfo($ab_test_end_request_v_next, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -805,20 +805,20 @@ class ABTestsApi
     }
 
     /**
-     * Operation endActiveABTestAsyncWithHttpInfo
+     * Operation endActiveLandingPageABTestAsyncWithHttpInfo
      *
      * End an active A/B test
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestEndRequestVNext $ab_test_end_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['endActiveABTest'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['endActiveLandingPageABTest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function endActiveABTestAsyncWithHttpInfo($ab_test_end_request_v_next, string $contentType = self::contentTypes['endActiveABTest'][0])
+    public function endActiveLandingPageABTestAsyncWithHttpInfo($ab_test_end_request_v_next, string $contentType = self::contentTypes['endActiveLandingPageABTest'][0])
     {
         $returnType = '';
-        $request = $this->endActiveABTestRequest($ab_test_end_request_v_next, $contentType);
+        $request = $this->endActiveLandingPageABTestRequest($ab_test_end_request_v_next, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -844,21 +844,21 @@ class ABTestsApi
     }
 
     /**
-     * Create request for operation 'endActiveABTest'
+     * Create request for operation 'endActiveLandingPageABTest'
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestEndRequestVNext $ab_test_end_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['endActiveABTest'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['endActiveLandingPageABTest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function endActiveABTestRequest($ab_test_end_request_v_next, string $contentType = self::contentTypes['endActiveABTest'][0])
+    public function endActiveLandingPageABTestRequest($ab_test_end_request_v_next, string $contentType = self::contentTypes['endActiveLandingPageABTest'][0])
     {
 
         // verify the required parameter 'ab_test_end_request_v_next' is set
         if ($ab_test_end_request_v_next === null || (is_array($ab_test_end_request_v_next) && count($ab_test_end_request_v_next) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $ab_test_end_request_v_next when calling endActiveABTest'
+                'Missing the required parameter $ab_test_end_request_v_next when calling endActiveLandingPageABTest'
             );
         }
 
@@ -939,37 +939,37 @@ class ABTestsApi
     }
 
     /**
-     * Operation endActiveABTest_0
+     * Operation endActiveSitePageABTest
      *
      * End an active A/B test
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestEndRequestVNext $ab_test_end_request_v_next ab_test_end_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['endActiveABTest_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['endActiveSitePageABTest'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function endActiveABTest_0($ab_test_end_request_v_next, string $contentType = self::contentTypes['endActiveABTest_0'][0])
+    public function endActiveSitePageABTest($ab_test_end_request_v_next, string $contentType = self::contentTypes['endActiveSitePageABTest'][0])
     {
-        $this->endActiveABTest_0WithHttpInfo($ab_test_end_request_v_next, $contentType);
+        $this->endActiveSitePageABTestWithHttpInfo($ab_test_end_request_v_next, $contentType);
     }
 
     /**
-     * Operation endActiveABTest_0WithHttpInfo
+     * Operation endActiveSitePageABTestWithHttpInfo
      *
      * End an active A/B test
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestEndRequestVNext $ab_test_end_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['endActiveABTest_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['endActiveSitePageABTest'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function endActiveABTest_0WithHttpInfo($ab_test_end_request_v_next, string $contentType = self::contentTypes['endActiveABTest_0'][0])
+    public function endActiveSitePageABTestWithHttpInfo($ab_test_end_request_v_next, string $contentType = self::contentTypes['endActiveSitePageABTest'][0])
     {
-        $request = $this->endActiveABTest_0Request($ab_test_end_request_v_next, $contentType);
+        $request = $this->endActiveSitePageABTestRequest($ab_test_end_request_v_next, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1013,19 +1013,19 @@ class ABTestsApi
     }
 
     /**
-     * Operation endActiveABTest_0Async
+     * Operation endActiveSitePageABTestAsync
      *
      * End an active A/B test
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestEndRequestVNext $ab_test_end_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['endActiveABTest_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['endActiveSitePageABTest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function endActiveABTest_0Async($ab_test_end_request_v_next, string $contentType = self::contentTypes['endActiveABTest_0'][0])
+    public function endActiveSitePageABTestAsync($ab_test_end_request_v_next, string $contentType = self::contentTypes['endActiveSitePageABTest'][0])
     {
-        return $this->endActiveABTest_0AsyncWithHttpInfo($ab_test_end_request_v_next, $contentType)
+        return $this->endActiveSitePageABTestAsyncWithHttpInfo($ab_test_end_request_v_next, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1034,20 +1034,20 @@ class ABTestsApi
     }
 
     /**
-     * Operation endActiveABTest_0AsyncWithHttpInfo
+     * Operation endActiveSitePageABTestAsyncWithHttpInfo
      *
      * End an active A/B test
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestEndRequestVNext $ab_test_end_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['endActiveABTest_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['endActiveSitePageABTest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function endActiveABTest_0AsyncWithHttpInfo($ab_test_end_request_v_next, string $contentType = self::contentTypes['endActiveABTest_0'][0])
+    public function endActiveSitePageABTestAsyncWithHttpInfo($ab_test_end_request_v_next, string $contentType = self::contentTypes['endActiveSitePageABTest'][0])
     {
         $returnType = '';
-        $request = $this->endActiveABTest_0Request($ab_test_end_request_v_next, $contentType);
+        $request = $this->endActiveSitePageABTestRequest($ab_test_end_request_v_next, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1073,21 +1073,21 @@ class ABTestsApi
     }
 
     /**
-     * Create request for operation 'endActiveABTest_0'
+     * Create request for operation 'endActiveSitePageABTest'
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestEndRequestVNext $ab_test_end_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['endActiveABTest_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['endActiveSitePageABTest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function endActiveABTest_0Request($ab_test_end_request_v_next, string $contentType = self::contentTypes['endActiveABTest_0'][0])
+    public function endActiveSitePageABTestRequest($ab_test_end_request_v_next, string $contentType = self::contentTypes['endActiveSitePageABTest'][0])
     {
 
         // verify the required parameter 'ab_test_end_request_v_next' is set
         if ($ab_test_end_request_v_next === null || (is_array($ab_test_end_request_v_next) && count($ab_test_end_request_v_next) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $ab_test_end_request_v_next when calling endActiveABTest_0'
+                'Missing the required parameter $ab_test_end_request_v_next when calling endActiveSitePageABTest'
             );
         }
 
@@ -1168,37 +1168,37 @@ class ABTestsApi
     }
 
     /**
-     * Operation rerunPreviousABTest
+     * Operation rerunPreviousLandingPageABTest
      *
      * Rerun a previous A/B test
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestRerunRequestVNext $ab_test_rerun_request_v_next ab_test_rerun_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rerunPreviousABTest'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rerunPreviousLandingPageABTest'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function rerunPreviousABTest($ab_test_rerun_request_v_next, string $contentType = self::contentTypes['rerunPreviousABTest'][0])
+    public function rerunPreviousLandingPageABTest($ab_test_rerun_request_v_next, string $contentType = self::contentTypes['rerunPreviousLandingPageABTest'][0])
     {
-        $this->rerunPreviousABTestWithHttpInfo($ab_test_rerun_request_v_next, $contentType);
+        $this->rerunPreviousLandingPageABTestWithHttpInfo($ab_test_rerun_request_v_next, $contentType);
     }
 
     /**
-     * Operation rerunPreviousABTestWithHttpInfo
+     * Operation rerunPreviousLandingPageABTestWithHttpInfo
      *
      * Rerun a previous A/B test
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestRerunRequestVNext $ab_test_rerun_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rerunPreviousABTest'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rerunPreviousLandingPageABTest'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function rerunPreviousABTestWithHttpInfo($ab_test_rerun_request_v_next, string $contentType = self::contentTypes['rerunPreviousABTest'][0])
+    public function rerunPreviousLandingPageABTestWithHttpInfo($ab_test_rerun_request_v_next, string $contentType = self::contentTypes['rerunPreviousLandingPageABTest'][0])
     {
-        $request = $this->rerunPreviousABTestRequest($ab_test_rerun_request_v_next, $contentType);
+        $request = $this->rerunPreviousLandingPageABTestRequest($ab_test_rerun_request_v_next, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1242,19 +1242,19 @@ class ABTestsApi
     }
 
     /**
-     * Operation rerunPreviousABTestAsync
+     * Operation rerunPreviousLandingPageABTestAsync
      *
      * Rerun a previous A/B test
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestRerunRequestVNext $ab_test_rerun_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rerunPreviousABTest'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rerunPreviousLandingPageABTest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function rerunPreviousABTestAsync($ab_test_rerun_request_v_next, string $contentType = self::contentTypes['rerunPreviousABTest'][0])
+    public function rerunPreviousLandingPageABTestAsync($ab_test_rerun_request_v_next, string $contentType = self::contentTypes['rerunPreviousLandingPageABTest'][0])
     {
-        return $this->rerunPreviousABTestAsyncWithHttpInfo($ab_test_rerun_request_v_next, $contentType)
+        return $this->rerunPreviousLandingPageABTestAsyncWithHttpInfo($ab_test_rerun_request_v_next, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1263,20 +1263,20 @@ class ABTestsApi
     }
 
     /**
-     * Operation rerunPreviousABTestAsyncWithHttpInfo
+     * Operation rerunPreviousLandingPageABTestAsyncWithHttpInfo
      *
      * Rerun a previous A/B test
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestRerunRequestVNext $ab_test_rerun_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rerunPreviousABTest'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rerunPreviousLandingPageABTest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function rerunPreviousABTestAsyncWithHttpInfo($ab_test_rerun_request_v_next, string $contentType = self::contentTypes['rerunPreviousABTest'][0])
+    public function rerunPreviousLandingPageABTestAsyncWithHttpInfo($ab_test_rerun_request_v_next, string $contentType = self::contentTypes['rerunPreviousLandingPageABTest'][0])
     {
         $returnType = '';
-        $request = $this->rerunPreviousABTestRequest($ab_test_rerun_request_v_next, $contentType);
+        $request = $this->rerunPreviousLandingPageABTestRequest($ab_test_rerun_request_v_next, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1302,21 +1302,21 @@ class ABTestsApi
     }
 
     /**
-     * Create request for operation 'rerunPreviousABTest'
+     * Create request for operation 'rerunPreviousLandingPageABTest'
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestRerunRequestVNext $ab_test_rerun_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rerunPreviousABTest'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rerunPreviousLandingPageABTest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function rerunPreviousABTestRequest($ab_test_rerun_request_v_next, string $contentType = self::contentTypes['rerunPreviousABTest'][0])
+    public function rerunPreviousLandingPageABTestRequest($ab_test_rerun_request_v_next, string $contentType = self::contentTypes['rerunPreviousLandingPageABTest'][0])
     {
 
         // verify the required parameter 'ab_test_rerun_request_v_next' is set
         if ($ab_test_rerun_request_v_next === null || (is_array($ab_test_rerun_request_v_next) && count($ab_test_rerun_request_v_next) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $ab_test_rerun_request_v_next when calling rerunPreviousABTest'
+                'Missing the required parameter $ab_test_rerun_request_v_next when calling rerunPreviousLandingPageABTest'
             );
         }
 
@@ -1397,37 +1397,37 @@ class ABTestsApi
     }
 
     /**
-     * Operation rerunPreviousABTest_0
+     * Operation rerunPreviousSitePageABTest
      *
      * Rerun a previous A/B test
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestRerunRequestVNext $ab_test_rerun_request_v_next ab_test_rerun_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rerunPreviousABTest_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rerunPreviousSitePageABTest'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function rerunPreviousABTest_0($ab_test_rerun_request_v_next, string $contentType = self::contentTypes['rerunPreviousABTest_0'][0])
+    public function rerunPreviousSitePageABTest($ab_test_rerun_request_v_next, string $contentType = self::contentTypes['rerunPreviousSitePageABTest'][0])
     {
-        $this->rerunPreviousABTest_0WithHttpInfo($ab_test_rerun_request_v_next, $contentType);
+        $this->rerunPreviousSitePageABTestWithHttpInfo($ab_test_rerun_request_v_next, $contentType);
     }
 
     /**
-     * Operation rerunPreviousABTest_0WithHttpInfo
+     * Operation rerunPreviousSitePageABTestWithHttpInfo
      *
      * Rerun a previous A/B test
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestRerunRequestVNext $ab_test_rerun_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rerunPreviousABTest_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rerunPreviousSitePageABTest'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function rerunPreviousABTest_0WithHttpInfo($ab_test_rerun_request_v_next, string $contentType = self::contentTypes['rerunPreviousABTest_0'][0])
+    public function rerunPreviousSitePageABTestWithHttpInfo($ab_test_rerun_request_v_next, string $contentType = self::contentTypes['rerunPreviousSitePageABTest'][0])
     {
-        $request = $this->rerunPreviousABTest_0Request($ab_test_rerun_request_v_next, $contentType);
+        $request = $this->rerunPreviousSitePageABTestRequest($ab_test_rerun_request_v_next, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1471,19 +1471,19 @@ class ABTestsApi
     }
 
     /**
-     * Operation rerunPreviousABTest_0Async
+     * Operation rerunPreviousSitePageABTestAsync
      *
      * Rerun a previous A/B test
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestRerunRequestVNext $ab_test_rerun_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rerunPreviousABTest_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rerunPreviousSitePageABTest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function rerunPreviousABTest_0Async($ab_test_rerun_request_v_next, string $contentType = self::contentTypes['rerunPreviousABTest_0'][0])
+    public function rerunPreviousSitePageABTestAsync($ab_test_rerun_request_v_next, string $contentType = self::contentTypes['rerunPreviousSitePageABTest'][0])
     {
-        return $this->rerunPreviousABTest_0AsyncWithHttpInfo($ab_test_rerun_request_v_next, $contentType)
+        return $this->rerunPreviousSitePageABTestAsyncWithHttpInfo($ab_test_rerun_request_v_next, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1492,20 +1492,20 @@ class ABTestsApi
     }
 
     /**
-     * Operation rerunPreviousABTest_0AsyncWithHttpInfo
+     * Operation rerunPreviousSitePageABTestAsyncWithHttpInfo
      *
      * Rerun a previous A/B test
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestRerunRequestVNext $ab_test_rerun_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rerunPreviousABTest_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rerunPreviousSitePageABTest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function rerunPreviousABTest_0AsyncWithHttpInfo($ab_test_rerun_request_v_next, string $contentType = self::contentTypes['rerunPreviousABTest_0'][0])
+    public function rerunPreviousSitePageABTestAsyncWithHttpInfo($ab_test_rerun_request_v_next, string $contentType = self::contentTypes['rerunPreviousSitePageABTest'][0])
     {
         $returnType = '';
-        $request = $this->rerunPreviousABTest_0Request($ab_test_rerun_request_v_next, $contentType);
+        $request = $this->rerunPreviousSitePageABTestRequest($ab_test_rerun_request_v_next, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1531,21 +1531,21 @@ class ABTestsApi
     }
 
     /**
-     * Create request for operation 'rerunPreviousABTest_0'
+     * Create request for operation 'rerunPreviousSitePageABTest'
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AbTestRerunRequestVNext $ab_test_rerun_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rerunPreviousABTest_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rerunPreviousSitePageABTest'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function rerunPreviousABTest_0Request($ab_test_rerun_request_v_next, string $contentType = self::contentTypes['rerunPreviousABTest_0'][0])
+    public function rerunPreviousSitePageABTestRequest($ab_test_rerun_request_v_next, string $contentType = self::contentTypes['rerunPreviousSitePageABTest'][0])
     {
 
         // verify the required parameter 'ab_test_rerun_request_v_next' is set
         if ($ab_test_rerun_request_v_next === null || (is_array($ab_test_rerun_request_v_next) && count($ab_test_rerun_request_v_next) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $ab_test_rerun_request_v_next when calling rerunPreviousABTest_0'
+                'Missing the required parameter $ab_test_rerun_request_v_next when calling rerunPreviousSitePageABTest'
             );
         }
 

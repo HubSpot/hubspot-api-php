@@ -73,31 +73,31 @@ class MultiLanguageApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'attachToLangGroup' => [
+        'attachLandingPageToLangGroup' => [
             'application/json',
         ],
-        'attachToLangGroup_0' => [
+        'attachSitePageToLangGroup' => [
             'application/json',
         ],
-        'createLangVariation' => [
+        'createLandingPageLangVariation' => [
             'application/json',
         ],
-        'createLangVariation_0' => [
+        'createSitePageLangVariation' => [
             'application/json',
         ],
-        'detachFromLangGroup' => [
+        'detachLandingPageFromLangGroup' => [
             'application/json',
         ],
-        'detachFromLangGroup_0' => [
+        'detachSitePageFromLangGroup' => [
             'application/json',
         ],
         'setLangPrimary' => [
             'application/json',
         ],
-        'updateLangs' => [
+        'updateLandingPageLangs' => [
             'application/json',
         ],
-        'updateLangs_0' => [
+        'updateSitePageLangs' => [
             'application/json',
         ],
     ];
@@ -149,38 +149,38 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation attachToLangGroup
+     * Operation attachLandingPageToLangGroup
      *
      * Add a landing page to a multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next attach_to_lang_primary_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachToLangGroup'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachLandingPageToLangGroup'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Pages\Model\Error
      */
-    public function attachToLangGroup($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachToLangGroup'][0])
+    public function attachLandingPageToLangGroup($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachLandingPageToLangGroup'][0])
     {
-        list($response) = $this->attachToLangGroupWithHttpInfo($attach_to_lang_primary_request_v_next, $contentType);
+        list($response) = $this->attachLandingPageToLangGroupWithHttpInfo($attach_to_lang_primary_request_v_next, $contentType);
         return $response;
     }
 
     /**
-     * Operation attachToLangGroupWithHttpInfo
+     * Operation attachLandingPageToLangGroupWithHttpInfo
      *
      * Add a landing page to a multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachToLangGroup'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachLandingPageToLangGroup'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function attachToLangGroupWithHttpInfo($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachToLangGroup'][0])
+    public function attachLandingPageToLangGroupWithHttpInfo($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachLandingPageToLangGroup'][0])
     {
-        $request = $this->attachToLangGroupRequest($attach_to_lang_primary_request_v_next, $contentType);
+        $request = $this->attachLandingPageToLangGroupRequest($attach_to_lang_primary_request_v_next, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -252,19 +252,19 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation attachToLangGroupAsync
+     * Operation attachLandingPageToLangGroupAsync
      *
      * Add a landing page to a multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachToLangGroup'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachLandingPageToLangGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function attachToLangGroupAsync($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachToLangGroup'][0])
+    public function attachLandingPageToLangGroupAsync($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachLandingPageToLangGroup'][0])
     {
-        return $this->attachToLangGroupAsyncWithHttpInfo($attach_to_lang_primary_request_v_next, $contentType)
+        return $this->attachLandingPageToLangGroupAsyncWithHttpInfo($attach_to_lang_primary_request_v_next, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -273,20 +273,20 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation attachToLangGroupAsyncWithHttpInfo
+     * Operation attachLandingPageToLangGroupAsyncWithHttpInfo
      *
      * Add a landing page to a multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachToLangGroup'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachLandingPageToLangGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function attachToLangGroupAsyncWithHttpInfo($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachToLangGroup'][0])
+    public function attachLandingPageToLangGroupAsyncWithHttpInfo($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachLandingPageToLangGroup'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Pages\Model\Error';
-        $request = $this->attachToLangGroupRequest($attach_to_lang_primary_request_v_next, $contentType);
+        $request = $this->attachLandingPageToLangGroupRequest($attach_to_lang_primary_request_v_next, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -325,21 +325,21 @@ class MultiLanguageApi
     }
 
     /**
-     * Create request for operation 'attachToLangGroup'
+     * Create request for operation 'attachLandingPageToLangGroup'
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachToLangGroup'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachLandingPageToLangGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function attachToLangGroupRequest($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachToLangGroup'][0])
+    public function attachLandingPageToLangGroupRequest($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachLandingPageToLangGroup'][0])
     {
 
         // verify the required parameter 'attach_to_lang_primary_request_v_next' is set
         if ($attach_to_lang_primary_request_v_next === null || (is_array($attach_to_lang_primary_request_v_next) && count($attach_to_lang_primary_request_v_next) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $attach_to_lang_primary_request_v_next when calling attachToLangGroup'
+                'Missing the required parameter $attach_to_lang_primary_request_v_next when calling attachLandingPageToLangGroup'
             );
         }
 
@@ -420,38 +420,38 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation attachToLangGroup_0
+     * Operation attachSitePageToLangGroup
      *
      * Add a website page to a multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next attach_to_lang_primary_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachToLangGroup_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachSitePageToLangGroup'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Pages\Model\Error
      */
-    public function attachToLangGroup_0($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachToLangGroup_0'][0])
+    public function attachSitePageToLangGroup($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachSitePageToLangGroup'][0])
     {
-        list($response) = $this->attachToLangGroup_0WithHttpInfo($attach_to_lang_primary_request_v_next, $contentType);
+        list($response) = $this->attachSitePageToLangGroupWithHttpInfo($attach_to_lang_primary_request_v_next, $contentType);
         return $response;
     }
 
     /**
-     * Operation attachToLangGroup_0WithHttpInfo
+     * Operation attachSitePageToLangGroupWithHttpInfo
      *
      * Add a website page to a multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachToLangGroup_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachSitePageToLangGroup'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function attachToLangGroup_0WithHttpInfo($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachToLangGroup_0'][0])
+    public function attachSitePageToLangGroupWithHttpInfo($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachSitePageToLangGroup'][0])
     {
-        $request = $this->attachToLangGroup_0Request($attach_to_lang_primary_request_v_next, $contentType);
+        $request = $this->attachSitePageToLangGroupRequest($attach_to_lang_primary_request_v_next, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -523,19 +523,19 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation attachToLangGroup_0Async
+     * Operation attachSitePageToLangGroupAsync
      *
      * Add a website page to a multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachToLangGroup_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachSitePageToLangGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function attachToLangGroup_0Async($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachToLangGroup_0'][0])
+    public function attachSitePageToLangGroupAsync($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachSitePageToLangGroup'][0])
     {
-        return $this->attachToLangGroup_0AsyncWithHttpInfo($attach_to_lang_primary_request_v_next, $contentType)
+        return $this->attachSitePageToLangGroupAsyncWithHttpInfo($attach_to_lang_primary_request_v_next, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -544,20 +544,20 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation attachToLangGroup_0AsyncWithHttpInfo
+     * Operation attachSitePageToLangGroupAsyncWithHttpInfo
      *
      * Add a website page to a multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachToLangGroup_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachSitePageToLangGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function attachToLangGroup_0AsyncWithHttpInfo($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachToLangGroup_0'][0])
+    public function attachSitePageToLangGroupAsyncWithHttpInfo($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachSitePageToLangGroup'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Pages\Model\Error';
-        $request = $this->attachToLangGroup_0Request($attach_to_lang_primary_request_v_next, $contentType);
+        $request = $this->attachSitePageToLangGroupRequest($attach_to_lang_primary_request_v_next, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -596,21 +596,21 @@ class MultiLanguageApi
     }
 
     /**
-     * Create request for operation 'attachToLangGroup_0'
+     * Create request for operation 'attachSitePageToLangGroup'
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\AttachToLangPrimaryRequestVNext $attach_to_lang_primary_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachToLangGroup_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['attachSitePageToLangGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function attachToLangGroup_0Request($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachToLangGroup_0'][0])
+    public function attachSitePageToLangGroupRequest($attach_to_lang_primary_request_v_next, string $contentType = self::contentTypes['attachSitePageToLangGroup'][0])
     {
 
         // verify the required parameter 'attach_to_lang_primary_request_v_next' is set
         if ($attach_to_lang_primary_request_v_next === null || (is_array($attach_to_lang_primary_request_v_next) && count($attach_to_lang_primary_request_v_next) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $attach_to_lang_primary_request_v_next when calling attachToLangGroup_0'
+                'Missing the required parameter $attach_to_lang_primary_request_v_next when calling attachSitePageToLangGroup'
             );
         }
 
@@ -691,38 +691,38 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation createLangVariation
+     * Operation createLandingPageLangVariation
      *
      * Create a new language variation
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\ContentLanguageCloneRequestVNext $content_language_clone_request_v_next content_language_clone_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLangVariation'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLandingPageLangVariation'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Pages\Model\Page|\HubSpot\Client\Cms\Pages\Model\Error
      */
-    public function createLangVariation($content_language_clone_request_v_next, string $contentType = self::contentTypes['createLangVariation'][0])
+    public function createLandingPageLangVariation($content_language_clone_request_v_next, string $contentType = self::contentTypes['createLandingPageLangVariation'][0])
     {
-        list($response) = $this->createLangVariationWithHttpInfo($content_language_clone_request_v_next, $contentType);
+        list($response) = $this->createLandingPageLangVariationWithHttpInfo($content_language_clone_request_v_next, $contentType);
         return $response;
     }
 
     /**
-     * Operation createLangVariationWithHttpInfo
+     * Operation createLandingPageLangVariationWithHttpInfo
      *
      * Create a new language variation
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\ContentLanguageCloneRequestVNext $content_language_clone_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLangVariation'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLandingPageLangVariation'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Pages\Model\Page|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createLangVariationWithHttpInfo($content_language_clone_request_v_next, string $contentType = self::contentTypes['createLangVariation'][0])
+    public function createLandingPageLangVariationWithHttpInfo($content_language_clone_request_v_next, string $contentType = self::contentTypes['createLandingPageLangVariation'][0])
     {
-        $request = $this->createLangVariationRequest($content_language_clone_request_v_next, $contentType);
+        $request = $this->createLandingPageLangVariationRequest($content_language_clone_request_v_next, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -808,19 +808,19 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation createLangVariationAsync
+     * Operation createLandingPageLangVariationAsync
      *
      * Create a new language variation
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\ContentLanguageCloneRequestVNext $content_language_clone_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLangVariation'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLandingPageLangVariation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createLangVariationAsync($content_language_clone_request_v_next, string $contentType = self::contentTypes['createLangVariation'][0])
+    public function createLandingPageLangVariationAsync($content_language_clone_request_v_next, string $contentType = self::contentTypes['createLandingPageLangVariation'][0])
     {
-        return $this->createLangVariationAsyncWithHttpInfo($content_language_clone_request_v_next, $contentType)
+        return $this->createLandingPageLangVariationAsyncWithHttpInfo($content_language_clone_request_v_next, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -829,20 +829,20 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation createLangVariationAsyncWithHttpInfo
+     * Operation createLandingPageLangVariationAsyncWithHttpInfo
      *
      * Create a new language variation
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\ContentLanguageCloneRequestVNext $content_language_clone_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLangVariation'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLandingPageLangVariation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createLangVariationAsyncWithHttpInfo($content_language_clone_request_v_next, string $contentType = self::contentTypes['createLangVariation'][0])
+    public function createLandingPageLangVariationAsyncWithHttpInfo($content_language_clone_request_v_next, string $contentType = self::contentTypes['createLandingPageLangVariation'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Pages\Model\Page';
-        $request = $this->createLangVariationRequest($content_language_clone_request_v_next, $contentType);
+        $request = $this->createLandingPageLangVariationRequest($content_language_clone_request_v_next, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -881,21 +881,21 @@ class MultiLanguageApi
     }
 
     /**
-     * Create request for operation 'createLangVariation'
+     * Create request for operation 'createLandingPageLangVariation'
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\ContentLanguageCloneRequestVNext $content_language_clone_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLangVariation'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLandingPageLangVariation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createLangVariationRequest($content_language_clone_request_v_next, string $contentType = self::contentTypes['createLangVariation'][0])
+    public function createLandingPageLangVariationRequest($content_language_clone_request_v_next, string $contentType = self::contentTypes['createLandingPageLangVariation'][0])
     {
 
         // verify the required parameter 'content_language_clone_request_v_next' is set
         if ($content_language_clone_request_v_next === null || (is_array($content_language_clone_request_v_next) && count($content_language_clone_request_v_next) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $content_language_clone_request_v_next when calling createLangVariation'
+                'Missing the required parameter $content_language_clone_request_v_next when calling createLandingPageLangVariation'
             );
         }
 
@@ -976,38 +976,38 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation createLangVariation_0
+     * Operation createSitePageLangVariation
      *
      * Create a new language variation
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\ContentLanguageCloneRequestVNext $content_language_clone_request_v_next content_language_clone_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLangVariation_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSitePageLangVariation'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Pages\Model\Page|\HubSpot\Client\Cms\Pages\Model\Error
      */
-    public function createLangVariation_0($content_language_clone_request_v_next, string $contentType = self::contentTypes['createLangVariation_0'][0])
+    public function createSitePageLangVariation($content_language_clone_request_v_next, string $contentType = self::contentTypes['createSitePageLangVariation'][0])
     {
-        list($response) = $this->createLangVariation_0WithHttpInfo($content_language_clone_request_v_next, $contentType);
+        list($response) = $this->createSitePageLangVariationWithHttpInfo($content_language_clone_request_v_next, $contentType);
         return $response;
     }
 
     /**
-     * Operation createLangVariation_0WithHttpInfo
+     * Operation createSitePageLangVariationWithHttpInfo
      *
      * Create a new language variation
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\ContentLanguageCloneRequestVNext $content_language_clone_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLangVariation_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSitePageLangVariation'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Pages\Model\Page|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createLangVariation_0WithHttpInfo($content_language_clone_request_v_next, string $contentType = self::contentTypes['createLangVariation_0'][0])
+    public function createSitePageLangVariationWithHttpInfo($content_language_clone_request_v_next, string $contentType = self::contentTypes['createSitePageLangVariation'][0])
     {
-        $request = $this->createLangVariation_0Request($content_language_clone_request_v_next, $contentType);
+        $request = $this->createSitePageLangVariationRequest($content_language_clone_request_v_next, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1093,19 +1093,19 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation createLangVariation_0Async
+     * Operation createSitePageLangVariationAsync
      *
      * Create a new language variation
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\ContentLanguageCloneRequestVNext $content_language_clone_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLangVariation_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSitePageLangVariation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createLangVariation_0Async($content_language_clone_request_v_next, string $contentType = self::contentTypes['createLangVariation_0'][0])
+    public function createSitePageLangVariationAsync($content_language_clone_request_v_next, string $contentType = self::contentTypes['createSitePageLangVariation'][0])
     {
-        return $this->createLangVariation_0AsyncWithHttpInfo($content_language_clone_request_v_next, $contentType)
+        return $this->createSitePageLangVariationAsyncWithHttpInfo($content_language_clone_request_v_next, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1114,20 +1114,20 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation createLangVariation_0AsyncWithHttpInfo
+     * Operation createSitePageLangVariationAsyncWithHttpInfo
      *
      * Create a new language variation
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\ContentLanguageCloneRequestVNext $content_language_clone_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLangVariation_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSitePageLangVariation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createLangVariation_0AsyncWithHttpInfo($content_language_clone_request_v_next, string $contentType = self::contentTypes['createLangVariation_0'][0])
+    public function createSitePageLangVariationAsyncWithHttpInfo($content_language_clone_request_v_next, string $contentType = self::contentTypes['createSitePageLangVariation'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Pages\Model\Page';
-        $request = $this->createLangVariation_0Request($content_language_clone_request_v_next, $contentType);
+        $request = $this->createSitePageLangVariationRequest($content_language_clone_request_v_next, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1166,21 +1166,21 @@ class MultiLanguageApi
     }
 
     /**
-     * Create request for operation 'createLangVariation_0'
+     * Create request for operation 'createSitePageLangVariation'
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\ContentLanguageCloneRequestVNext $content_language_clone_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createLangVariation_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSitePageLangVariation'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createLangVariation_0Request($content_language_clone_request_v_next, string $contentType = self::contentTypes['createLangVariation_0'][0])
+    public function createSitePageLangVariationRequest($content_language_clone_request_v_next, string $contentType = self::contentTypes['createSitePageLangVariation'][0])
     {
 
         // verify the required parameter 'content_language_clone_request_v_next' is set
         if ($content_language_clone_request_v_next === null || (is_array($content_language_clone_request_v_next) && count($content_language_clone_request_v_next) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $content_language_clone_request_v_next when calling createLangVariation_0'
+                'Missing the required parameter $content_language_clone_request_v_next when calling createSitePageLangVariation'
             );
         }
 
@@ -1261,38 +1261,38 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation detachFromLangGroup
+     * Operation detachLandingPageFromLangGroup
      *
      * Remove a landing page from a multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next detach_from_lang_group_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachFromLangGroup'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachLandingPageFromLangGroup'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Pages\Model\Error
      */
-    public function detachFromLangGroup($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachFromLangGroup'][0])
+    public function detachLandingPageFromLangGroup($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachLandingPageFromLangGroup'][0])
     {
-        list($response) = $this->detachFromLangGroupWithHttpInfo($detach_from_lang_group_request_v_next, $contentType);
+        list($response) = $this->detachLandingPageFromLangGroupWithHttpInfo($detach_from_lang_group_request_v_next, $contentType);
         return $response;
     }
 
     /**
-     * Operation detachFromLangGroupWithHttpInfo
+     * Operation detachLandingPageFromLangGroupWithHttpInfo
      *
      * Remove a landing page from a multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachFromLangGroup'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachLandingPageFromLangGroup'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function detachFromLangGroupWithHttpInfo($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachFromLangGroup'][0])
+    public function detachLandingPageFromLangGroupWithHttpInfo($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachLandingPageFromLangGroup'][0])
     {
-        $request = $this->detachFromLangGroupRequest($detach_from_lang_group_request_v_next, $contentType);
+        $request = $this->detachLandingPageFromLangGroupRequest($detach_from_lang_group_request_v_next, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1364,19 +1364,19 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation detachFromLangGroupAsync
+     * Operation detachLandingPageFromLangGroupAsync
      *
      * Remove a landing page from a multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachFromLangGroup'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachLandingPageFromLangGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function detachFromLangGroupAsync($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachFromLangGroup'][0])
+    public function detachLandingPageFromLangGroupAsync($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachLandingPageFromLangGroup'][0])
     {
-        return $this->detachFromLangGroupAsyncWithHttpInfo($detach_from_lang_group_request_v_next, $contentType)
+        return $this->detachLandingPageFromLangGroupAsyncWithHttpInfo($detach_from_lang_group_request_v_next, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1385,20 +1385,20 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation detachFromLangGroupAsyncWithHttpInfo
+     * Operation detachLandingPageFromLangGroupAsyncWithHttpInfo
      *
      * Remove a landing page from a multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachFromLangGroup'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachLandingPageFromLangGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function detachFromLangGroupAsyncWithHttpInfo($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachFromLangGroup'][0])
+    public function detachLandingPageFromLangGroupAsyncWithHttpInfo($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachLandingPageFromLangGroup'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Pages\Model\Error';
-        $request = $this->detachFromLangGroupRequest($detach_from_lang_group_request_v_next, $contentType);
+        $request = $this->detachLandingPageFromLangGroupRequest($detach_from_lang_group_request_v_next, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1437,21 +1437,21 @@ class MultiLanguageApi
     }
 
     /**
-     * Create request for operation 'detachFromLangGroup'
+     * Create request for operation 'detachLandingPageFromLangGroup'
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachFromLangGroup'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachLandingPageFromLangGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function detachFromLangGroupRequest($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachFromLangGroup'][0])
+    public function detachLandingPageFromLangGroupRequest($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachLandingPageFromLangGroup'][0])
     {
 
         // verify the required parameter 'detach_from_lang_group_request_v_next' is set
         if ($detach_from_lang_group_request_v_next === null || (is_array($detach_from_lang_group_request_v_next) && count($detach_from_lang_group_request_v_next) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $detach_from_lang_group_request_v_next when calling detachFromLangGroup'
+                'Missing the required parameter $detach_from_lang_group_request_v_next when calling detachLandingPageFromLangGroup'
             );
         }
 
@@ -1532,38 +1532,38 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation detachFromLangGroup_0
+     * Operation detachSitePageFromLangGroup
      *
      * Remove a website page from a multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next detach_from_lang_group_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachFromLangGroup_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachSitePageFromLangGroup'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Pages\Model\Error
      */
-    public function detachFromLangGroup_0($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachFromLangGroup_0'][0])
+    public function detachSitePageFromLangGroup($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachSitePageFromLangGroup'][0])
     {
-        list($response) = $this->detachFromLangGroup_0WithHttpInfo($detach_from_lang_group_request_v_next, $contentType);
+        list($response) = $this->detachSitePageFromLangGroupWithHttpInfo($detach_from_lang_group_request_v_next, $contentType);
         return $response;
     }
 
     /**
-     * Operation detachFromLangGroup_0WithHttpInfo
+     * Operation detachSitePageFromLangGroupWithHttpInfo
      *
      * Remove a website page from a multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachFromLangGroup_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachSitePageFromLangGroup'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function detachFromLangGroup_0WithHttpInfo($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachFromLangGroup_0'][0])
+    public function detachSitePageFromLangGroupWithHttpInfo($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachSitePageFromLangGroup'][0])
     {
-        $request = $this->detachFromLangGroup_0Request($detach_from_lang_group_request_v_next, $contentType);
+        $request = $this->detachSitePageFromLangGroupRequest($detach_from_lang_group_request_v_next, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1635,19 +1635,19 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation detachFromLangGroup_0Async
+     * Operation detachSitePageFromLangGroupAsync
      *
      * Remove a website page from a multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachFromLangGroup_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachSitePageFromLangGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function detachFromLangGroup_0Async($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachFromLangGroup_0'][0])
+    public function detachSitePageFromLangGroupAsync($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachSitePageFromLangGroup'][0])
     {
-        return $this->detachFromLangGroup_0AsyncWithHttpInfo($detach_from_lang_group_request_v_next, $contentType)
+        return $this->detachSitePageFromLangGroupAsyncWithHttpInfo($detach_from_lang_group_request_v_next, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1656,20 +1656,20 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation detachFromLangGroup_0AsyncWithHttpInfo
+     * Operation detachSitePageFromLangGroupAsyncWithHttpInfo
      *
      * Remove a website page from a multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachFromLangGroup_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachSitePageFromLangGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function detachFromLangGroup_0AsyncWithHttpInfo($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachFromLangGroup_0'][0])
+    public function detachSitePageFromLangGroupAsyncWithHttpInfo($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachSitePageFromLangGroup'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Pages\Model\Error';
-        $request = $this->detachFromLangGroup_0Request($detach_from_lang_group_request_v_next, $contentType);
+        $request = $this->detachSitePageFromLangGroupRequest($detach_from_lang_group_request_v_next, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1708,21 +1708,21 @@ class MultiLanguageApi
     }
 
     /**
-     * Create request for operation 'detachFromLangGroup_0'
+     * Create request for operation 'detachSitePageFromLangGroup'
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\DetachFromLangGroupRequestVNext $detach_from_lang_group_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachFromLangGroup_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['detachSitePageFromLangGroup'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function detachFromLangGroup_0Request($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachFromLangGroup_0'][0])
+    public function detachSitePageFromLangGroupRequest($detach_from_lang_group_request_v_next, string $contentType = self::contentTypes['detachSitePageFromLangGroup'][0])
     {
 
         // verify the required parameter 'detach_from_lang_group_request_v_next' is set
         if ($detach_from_lang_group_request_v_next === null || (is_array($detach_from_lang_group_request_v_next) && count($detach_from_lang_group_request_v_next) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $detach_from_lang_group_request_v_next when calling detachFromLangGroup_0'
+                'Missing the required parameter $detach_from_lang_group_request_v_next when calling detachSitePageFromLangGroup'
             );
         }
 
@@ -2032,38 +2032,38 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation updateLangs
+     * Operation updateLandingPageLangs
      *
      * Update languages of multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next update_languages_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLangs'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLandingPageLangs'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Pages\Model\Error
      */
-    public function updateLangs($update_languages_request_v_next, string $contentType = self::contentTypes['updateLangs'][0])
+    public function updateLandingPageLangs($update_languages_request_v_next, string $contentType = self::contentTypes['updateLandingPageLangs'][0])
     {
-        list($response) = $this->updateLangsWithHttpInfo($update_languages_request_v_next, $contentType);
+        list($response) = $this->updateLandingPageLangsWithHttpInfo($update_languages_request_v_next, $contentType);
         return $response;
     }
 
     /**
-     * Operation updateLangsWithHttpInfo
+     * Operation updateLandingPageLangsWithHttpInfo
      *
      * Update languages of multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLangs'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLandingPageLangs'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateLangsWithHttpInfo($update_languages_request_v_next, string $contentType = self::contentTypes['updateLangs'][0])
+    public function updateLandingPageLangsWithHttpInfo($update_languages_request_v_next, string $contentType = self::contentTypes['updateLandingPageLangs'][0])
     {
-        $request = $this->updateLangsRequest($update_languages_request_v_next, $contentType);
+        $request = $this->updateLandingPageLangsRequest($update_languages_request_v_next, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2135,19 +2135,19 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation updateLangsAsync
+     * Operation updateLandingPageLangsAsync
      *
      * Update languages of multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLangs'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLandingPageLangs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateLangsAsync($update_languages_request_v_next, string $contentType = self::contentTypes['updateLangs'][0])
+    public function updateLandingPageLangsAsync($update_languages_request_v_next, string $contentType = self::contentTypes['updateLandingPageLangs'][0])
     {
-        return $this->updateLangsAsyncWithHttpInfo($update_languages_request_v_next, $contentType)
+        return $this->updateLandingPageLangsAsyncWithHttpInfo($update_languages_request_v_next, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2156,20 +2156,20 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation updateLangsAsyncWithHttpInfo
+     * Operation updateLandingPageLangsAsyncWithHttpInfo
      *
      * Update languages of multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLangs'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLandingPageLangs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateLangsAsyncWithHttpInfo($update_languages_request_v_next, string $contentType = self::contentTypes['updateLangs'][0])
+    public function updateLandingPageLangsAsyncWithHttpInfo($update_languages_request_v_next, string $contentType = self::contentTypes['updateLandingPageLangs'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Pages\Model\Error';
-        $request = $this->updateLangsRequest($update_languages_request_v_next, $contentType);
+        $request = $this->updateLandingPageLangsRequest($update_languages_request_v_next, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2208,21 +2208,21 @@ class MultiLanguageApi
     }
 
     /**
-     * Create request for operation 'updateLangs'
+     * Create request for operation 'updateLandingPageLangs'
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLangs'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLandingPageLangs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateLangsRequest($update_languages_request_v_next, string $contentType = self::contentTypes['updateLangs'][0])
+    public function updateLandingPageLangsRequest($update_languages_request_v_next, string $contentType = self::contentTypes['updateLandingPageLangs'][0])
     {
 
         // verify the required parameter 'update_languages_request_v_next' is set
         if ($update_languages_request_v_next === null || (is_array($update_languages_request_v_next) && count($update_languages_request_v_next) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_languages_request_v_next when calling updateLangs'
+                'Missing the required parameter $update_languages_request_v_next when calling updateLandingPageLangs'
             );
         }
 
@@ -2303,38 +2303,38 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation updateLangs_0
+     * Operation updateSitePageLangs
      *
      * Update languages of multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next update_languages_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLangs_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSitePageLangs'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Pages\Model\Error
      */
-    public function updateLangs_0($update_languages_request_v_next, string $contentType = self::contentTypes['updateLangs_0'][0])
+    public function updateSitePageLangs($update_languages_request_v_next, string $contentType = self::contentTypes['updateSitePageLangs'][0])
     {
-        list($response) = $this->updateLangs_0WithHttpInfo($update_languages_request_v_next, $contentType);
+        list($response) = $this->updateSitePageLangsWithHttpInfo($update_languages_request_v_next, $contentType);
         return $response;
     }
 
     /**
-     * Operation updateLangs_0WithHttpInfo
+     * Operation updateSitePageLangsWithHttpInfo
      *
      * Update languages of multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLangs_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSitePageLangs'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateLangs_0WithHttpInfo($update_languages_request_v_next, string $contentType = self::contentTypes['updateLangs_0'][0])
+    public function updateSitePageLangsWithHttpInfo($update_languages_request_v_next, string $contentType = self::contentTypes['updateSitePageLangs'][0])
     {
-        $request = $this->updateLangs_0Request($update_languages_request_v_next, $contentType);
+        $request = $this->updateSitePageLangsRequest($update_languages_request_v_next, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2406,19 +2406,19 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation updateLangs_0Async
+     * Operation updateSitePageLangsAsync
      *
      * Update languages of multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLangs_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSitePageLangs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateLangs_0Async($update_languages_request_v_next, string $contentType = self::contentTypes['updateLangs_0'][0])
+    public function updateSitePageLangsAsync($update_languages_request_v_next, string $contentType = self::contentTypes['updateSitePageLangs'][0])
     {
-        return $this->updateLangs_0AsyncWithHttpInfo($update_languages_request_v_next, $contentType)
+        return $this->updateSitePageLangsAsyncWithHttpInfo($update_languages_request_v_next, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2427,20 +2427,20 @@ class MultiLanguageApi
     }
 
     /**
-     * Operation updateLangs_0AsyncWithHttpInfo
+     * Operation updateSitePageLangsAsyncWithHttpInfo
      *
      * Update languages of multi-language group
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLangs_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSitePageLangs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateLangs_0AsyncWithHttpInfo($update_languages_request_v_next, string $contentType = self::contentTypes['updateLangs_0'][0])
+    public function updateSitePageLangsAsyncWithHttpInfo($update_languages_request_v_next, string $contentType = self::contentTypes['updateSitePageLangs'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Pages\Model\Error';
-        $request = $this->updateLangs_0Request($update_languages_request_v_next, $contentType);
+        $request = $this->updateSitePageLangsRequest($update_languages_request_v_next, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2479,21 +2479,21 @@ class MultiLanguageApi
     }
 
     /**
-     * Create request for operation 'updateLangs_0'
+     * Create request for operation 'updateSitePageLangs'
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\UpdateLanguagesRequestVNext $update_languages_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateLangs_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSitePageLangs'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateLangs_0Request($update_languages_request_v_next, string $contentType = self::contentTypes['updateLangs_0'][0])
+    public function updateSitePageLangsRequest($update_languages_request_v_next, string $contentType = self::contentTypes['updateSitePageLangs'][0])
     {
 
         // verify the required parameter 'update_languages_request_v_next' is set
         if ($update_languages_request_v_next === null || (is_array($update_languages_request_v_next) && count($update_languages_request_v_next) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $update_languages_request_v_next when calling updateLangs_0'
+                'Missing the required parameter $update_languages_request_v_next when calling updateSitePageLangs'
             );
         }
 

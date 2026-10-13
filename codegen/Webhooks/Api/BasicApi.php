@@ -85,10 +85,10 @@ class BasicApi
         'create' => [
             'application/json',
         ],
-        'getAll' => [
+        'getAllSettings' => [
             'application/json',
         ],
-        'getAll_0' => [
+        'getAllSubscriptions' => [
             'application/json',
         ],
         'getById' => [
@@ -1240,38 +1240,38 @@ class BasicApi
     }
 
     /**
-     * Operation getAll
+     * Operation getAllSettings
      *
      * Read webhook settings
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllSettings'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Webhooks\Model\SettingsResponse|\HubSpot\Client\Webhooks\Model\Error
      */
-    public function getAll($app_id, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllSettings($app_id, string $contentType = self::contentTypes['getAllSettings'][0])
     {
-        list($response) = $this->getAllWithHttpInfo($app_id, $contentType);
+        list($response) = $this->getAllSettingsWithHttpInfo($app_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation getAllWithHttpInfo
+     * Operation getAllSettingsWithHttpInfo
      *
      * Read webhook settings
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllSettings'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Webhooks\Model\SettingsResponse|\HubSpot\Client\Webhooks\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAllWithHttpInfo($app_id, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllSettingsWithHttpInfo($app_id, string $contentType = self::contentTypes['getAllSettings'][0])
     {
-        $request = $this->getAllRequest($app_id, $contentType);
+        $request = $this->getAllSettingsRequest($app_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1357,19 +1357,19 @@ class BasicApi
     }
 
     /**
-     * Operation getAllAsync
+     * Operation getAllSettingsAsync
      *
      * Read webhook settings
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsync($app_id, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllSettingsAsync($app_id, string $contentType = self::contentTypes['getAllSettings'][0])
     {
-        return $this->getAllAsyncWithHttpInfo($app_id, $contentType)
+        return $this->getAllSettingsAsyncWithHttpInfo($app_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1378,20 +1378,20 @@ class BasicApi
     }
 
     /**
-     * Operation getAllAsyncWithHttpInfo
+     * Operation getAllSettingsAsyncWithHttpInfo
      *
      * Read webhook settings
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsyncWithHttpInfo($app_id, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllSettingsAsyncWithHttpInfo($app_id, string $contentType = self::contentTypes['getAllSettings'][0])
     {
         $returnType = '\HubSpot\Client\Webhooks\Model\SettingsResponse';
-        $request = $this->getAllRequest($app_id, $contentType);
+        $request = $this->getAllSettingsRequest($app_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1430,21 +1430,21 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'getAll'
+     * Create request for operation 'getAllSettings'
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAllRequest($app_id, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllSettingsRequest($app_id, string $contentType = self::contentTypes['getAllSettings'][0])
     {
 
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling getAll'
+                'Missing the required parameter $app_id when calling getAllSettings'
             );
         }
 
@@ -1527,38 +1527,38 @@ class BasicApi
     }
 
     /**
-     * Operation getAll_0
+     * Operation getAllSubscriptions
      *
      * Read event subscriptions
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllSubscriptions'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Webhooks\Model\SubscriptionListResponse|\HubSpot\Client\Webhooks\Model\Error
      */
-    public function getAll_0($app_id, string $contentType = self::contentTypes['getAll_0'][0])
+    public function getAllSubscriptions($app_id, string $contentType = self::contentTypes['getAllSubscriptions'][0])
     {
-        list($response) = $this->getAll_0WithHttpInfo($app_id, $contentType);
+        list($response) = $this->getAllSubscriptionsWithHttpInfo($app_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation getAll_0WithHttpInfo
+     * Operation getAllSubscriptionsWithHttpInfo
      *
      * Read event subscriptions
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllSubscriptions'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Webhooks\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Webhooks\Model\SubscriptionListResponse|\HubSpot\Client\Webhooks\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAll_0WithHttpInfo($app_id, string $contentType = self::contentTypes['getAll_0'][0])
+    public function getAllSubscriptionsWithHttpInfo($app_id, string $contentType = self::contentTypes['getAllSubscriptions'][0])
     {
-        $request = $this->getAll_0Request($app_id, $contentType);
+        $request = $this->getAllSubscriptionsRequest($app_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1644,19 +1644,19 @@ class BasicApi
     }
 
     /**
-     * Operation getAll_0Async
+     * Operation getAllSubscriptionsAsync
      *
      * Read event subscriptions
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllSubscriptions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAll_0Async($app_id, string $contentType = self::contentTypes['getAll_0'][0])
+    public function getAllSubscriptionsAsync($app_id, string $contentType = self::contentTypes['getAllSubscriptions'][0])
     {
-        return $this->getAll_0AsyncWithHttpInfo($app_id, $contentType)
+        return $this->getAllSubscriptionsAsyncWithHttpInfo($app_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1665,20 +1665,20 @@ class BasicApi
     }
 
     /**
-     * Operation getAll_0AsyncWithHttpInfo
+     * Operation getAllSubscriptionsAsyncWithHttpInfo
      *
      * Read event subscriptions
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllSubscriptions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAll_0AsyncWithHttpInfo($app_id, string $contentType = self::contentTypes['getAll_0'][0])
+    public function getAllSubscriptionsAsyncWithHttpInfo($app_id, string $contentType = self::contentTypes['getAllSubscriptions'][0])
     {
         $returnType = '\HubSpot\Client\Webhooks\Model\SubscriptionListResponse';
-        $request = $this->getAll_0Request($app_id, $contentType);
+        $request = $this->getAllSubscriptionsRequest($app_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1717,21 +1717,21 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'getAll_0'
+     * Create request for operation 'getAllSubscriptions'
      *
      * @param  int $app_id The ID of the target app. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllSubscriptions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAll_0Request($app_id, string $contentType = self::contentTypes['getAll_0'][0])
+    public function getAllSubscriptionsRequest($app_id, string $contentType = self::contentTypes['getAllSubscriptions'][0])
     {
 
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling getAll_0'
+                'Missing the required parameter $app_id when calling getAllSubscriptions'
             );
         }
 

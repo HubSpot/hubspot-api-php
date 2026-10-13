@@ -54,9 +54,9 @@ class GeneratedApiClientTest extends TestCase
 
                 try {
                     if ($async) {
-                        $api->getAllAsync(123)->wait();
+                        $api->getAllSettingsAsync(123)->wait();
                     } else {
-                        $api->getAll(123);
+                        $api->getAllSettings(123);
                     }
                     $this->fail('Expected ApiException');
                 } catch (\HubSpot\Client\Webhooks\ApiException $error) {

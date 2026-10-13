@@ -73,16 +73,16 @@ class BasicApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'create' => [
+        'createChannelConnectionSettings' => [
             'application/json',
         ],
-        'create_0' => [
+        'createRecordingSettings' => [
             'application/json',
         ],
-        'create_1' => [
+        'createSettings' => [
             'application/json',
         ],
-        'get' => [
+        'getChannelConnectionSettings' => [
             'application/json',
         ],
         'getForCurrentUser' => [
@@ -91,25 +91,25 @@ class BasicApi
         'getPage' => [
             'application/json',
         ],
-        'get_0' => [
+        'getRecordingSettings' => [
             'application/json',
         ],
-        'get_1' => [
+        'getSettings' => [
             'application/json',
         ],
-        'remove' => [
+        'removeChannelConnectionSettings' => [
             'application/json',
         ],
-        'remove_0' => [
+        'removeSettings' => [
             'application/json',
         ],
-        'update' => [
+        'updateChannelConnectionSettings' => [
             'application/json',
         ],
-        'update_0' => [
+        'updateRecordingSettings' => [
             'application/json',
         ],
-        'update_1' => [
+        'updateSettings' => [
             'application/json',
         ],
     ];
@@ -161,346 +161,40 @@ class BasicApi
     }
 
     /**
-     * Operation create
-     *
-     * Create new calling extension settings for a specific app.
-     *
-     * @param  int $app_id The unique identifier for the app for which new calling extension settings are being created. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request settings_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
-     */
-    public function create($app_id, $settings_request, string $contentType = self::contentTypes['create'][0])
-    {
-        list($response) = $this->createWithHttpInfo($app_id, $settings_request, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation createWithHttpInfo
-     *
-     * Create new calling extension settings for a specific app.
-     *
-     * @param  int $app_id The unique identifier for the app for which new calling extension settings are being created. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function createWithHttpInfo($app_id, $settings_request, string $contentType = self::contentTypes['create'][0])
-    {
-        $request = $this->createRequest($app_id, $settings_request, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Extensions\Calling\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Extensions\Calling\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation createAsync
-     *
-     * Create new calling extension settings for a specific app.
-     *
-     * @param  int $app_id The unique identifier for the app for which new calling extension settings are being created. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createAsync($app_id, $settings_request, string $contentType = self::contentTypes['create'][0])
-    {
-        return $this->createAsyncWithHttpInfo($app_id, $settings_request, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation createAsyncWithHttpInfo
-     *
-     * Create new calling extension settings for a specific app.
-     *
-     * @param  int $app_id The unique identifier for the app for which new calling extension settings are being created. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createAsyncWithHttpInfo($app_id, $settings_request, string $contentType = self::contentTypes['create'][0])
-    {
-        $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse';
-        $request = $this->createRequest($app_id, $settings_request, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'create'
-     *
-     * @param  int $app_id The unique identifier for the app for which new calling extension settings are being created. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function createRequest($app_id, $settings_request, string $contentType = self::contentTypes['create'][0])
-    {
-
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling create'
-            );
-        }
-
-        // verify the required parameter 'settings_request' is set
-        if ($settings_request === null || (is_array($settings_request) && count($settings_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $settings_request when calling create'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/extensions/calling/{appId}/settings';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (isset($settings_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($settings_request), JSON_THROW_ON_ERROR);
-            } else {
-                $httpBody = $settings_request;
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation create_0
+     * Operation createChannelConnectionSettings
      *
      * Create new channel connection settings for a specific app.
      *
      * @param  int $app_id The unique identifier for the app for which new channel connection settings are to be created. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsRequest $channel_connection_settings_request channel_connection_settings_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createChannelConnectionSettings'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
      */
-    public function create_0($app_id, $channel_connection_settings_request, string $contentType = self::contentTypes['create_0'][0])
+    public function createChannelConnectionSettings($app_id, $channel_connection_settings_request, string $contentType = self::contentTypes['createChannelConnectionSettings'][0])
     {
-        list($response) = $this->create_0WithHttpInfo($app_id, $channel_connection_settings_request, $contentType);
+        list($response) = $this->createChannelConnectionSettingsWithHttpInfo($app_id, $channel_connection_settings_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation create_0WithHttpInfo
+     * Operation createChannelConnectionSettingsWithHttpInfo
      *
      * Create new channel connection settings for a specific app.
      *
      * @param  int $app_id The unique identifier for the app for which new channel connection settings are to be created. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsRequest $channel_connection_settings_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createChannelConnectionSettings'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function create_0WithHttpInfo($app_id, $channel_connection_settings_request, string $contentType = self::contentTypes['create_0'][0])
+    public function createChannelConnectionSettingsWithHttpInfo($app_id, $channel_connection_settings_request, string $contentType = self::contentTypes['createChannelConnectionSettings'][0])
     {
-        $request = $this->create_0Request($app_id, $channel_connection_settings_request, $contentType);
+        $request = $this->createChannelConnectionSettingsRequest($app_id, $channel_connection_settings_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -586,20 +280,20 @@ class BasicApi
     }
 
     /**
-     * Operation create_0Async
+     * Operation createChannelConnectionSettingsAsync
      *
      * Create new channel connection settings for a specific app.
      *
      * @param  int $app_id The unique identifier for the app for which new channel connection settings are to be created. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsRequest $channel_connection_settings_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createChannelConnectionSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function create_0Async($app_id, $channel_connection_settings_request, string $contentType = self::contentTypes['create_0'][0])
+    public function createChannelConnectionSettingsAsync($app_id, $channel_connection_settings_request, string $contentType = self::contentTypes['createChannelConnectionSettings'][0])
     {
-        return $this->create_0AsyncWithHttpInfo($app_id, $channel_connection_settings_request, $contentType)
+        return $this->createChannelConnectionSettingsAsyncWithHttpInfo($app_id, $channel_connection_settings_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -608,21 +302,21 @@ class BasicApi
     }
 
     /**
-     * Operation create_0AsyncWithHttpInfo
+     * Operation createChannelConnectionSettingsAsyncWithHttpInfo
      *
      * Create new channel connection settings for a specific app.
      *
      * @param  int $app_id The unique identifier for the app for which new channel connection settings are to be created. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsRequest $channel_connection_settings_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createChannelConnectionSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function create_0AsyncWithHttpInfo($app_id, $channel_connection_settings_request, string $contentType = self::contentTypes['create_0'][0])
+    public function createChannelConnectionSettingsAsyncWithHttpInfo($app_id, $channel_connection_settings_request, string $contentType = self::contentTypes['createChannelConnectionSettings'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse';
-        $request = $this->create_0Request($app_id, $channel_connection_settings_request, $contentType);
+        $request = $this->createChannelConnectionSettingsRequest($app_id, $channel_connection_settings_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -661,29 +355,29 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'create_0'
+     * Create request for operation 'createChannelConnectionSettings'
      *
      * @param  int $app_id The unique identifier for the app for which new channel connection settings are to be created. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsRequest $channel_connection_settings_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createChannelConnectionSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function create_0Request($app_id, $channel_connection_settings_request, string $contentType = self::contentTypes['create_0'][0])
+    public function createChannelConnectionSettingsRequest($app_id, $channel_connection_settings_request, string $contentType = self::contentTypes['createChannelConnectionSettings'][0])
     {
 
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling create_0'
+                'Missing the required parameter $app_id when calling createChannelConnectionSettings'
             );
         }
 
         // verify the required parameter 'channel_connection_settings_request' is set
         if ($channel_connection_settings_request === null || (is_array($channel_connection_settings_request) && count($channel_connection_settings_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $channel_connection_settings_request when calling create_0'
+                'Missing the required parameter $channel_connection_settings_request when calling createChannelConnectionSettings'
             );
         }
 
@@ -773,40 +467,40 @@ class BasicApi
     }
 
     /**
-     * Operation create_1
+     * Operation createRecordingSettings
      *
      * Create recording settings for an app.
      *
      * @param  int $app_id The unique identifier for the app for which new recording settings are being created. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsRequest $recording_settings_request recording_settings_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create_1'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRecordingSettings'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
      */
-    public function create_1($app_id, $recording_settings_request, string $contentType = self::contentTypes['create_1'][0])
+    public function createRecordingSettings($app_id, $recording_settings_request, string $contentType = self::contentTypes['createRecordingSettings'][0])
     {
-        list($response) = $this->create_1WithHttpInfo($app_id, $recording_settings_request, $contentType);
+        list($response) = $this->createRecordingSettingsWithHttpInfo($app_id, $recording_settings_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation create_1WithHttpInfo
+     * Operation createRecordingSettingsWithHttpInfo
      *
      * Create recording settings for an app.
      *
      * @param  int $app_id The unique identifier for the app for which new recording settings are being created. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsRequest $recording_settings_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create_1'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRecordingSettings'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function create_1WithHttpInfo($app_id, $recording_settings_request, string $contentType = self::contentTypes['create_1'][0])
+    public function createRecordingSettingsWithHttpInfo($app_id, $recording_settings_request, string $contentType = self::contentTypes['createRecordingSettings'][0])
     {
-        $request = $this->create_1Request($app_id, $recording_settings_request, $contentType);
+        $request = $this->createRecordingSettingsRequest($app_id, $recording_settings_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -892,20 +586,20 @@ class BasicApi
     }
 
     /**
-     * Operation create_1Async
+     * Operation createRecordingSettingsAsync
      *
      * Create recording settings for an app.
      *
      * @param  int $app_id The unique identifier for the app for which new recording settings are being created. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsRequest $recording_settings_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create_1'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRecordingSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function create_1Async($app_id, $recording_settings_request, string $contentType = self::contentTypes['create_1'][0])
+    public function createRecordingSettingsAsync($app_id, $recording_settings_request, string $contentType = self::contentTypes['createRecordingSettings'][0])
     {
-        return $this->create_1AsyncWithHttpInfo($app_id, $recording_settings_request, $contentType)
+        return $this->createRecordingSettingsAsyncWithHttpInfo($app_id, $recording_settings_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -914,21 +608,21 @@ class BasicApi
     }
 
     /**
-     * Operation create_1AsyncWithHttpInfo
+     * Operation createRecordingSettingsAsyncWithHttpInfo
      *
      * Create recording settings for an app.
      *
      * @param  int $app_id The unique identifier for the app for which new recording settings are being created. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsRequest $recording_settings_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create_1'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRecordingSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function create_1AsyncWithHttpInfo($app_id, $recording_settings_request, string $contentType = self::contentTypes['create_1'][0])
+    public function createRecordingSettingsAsyncWithHttpInfo($app_id, $recording_settings_request, string $contentType = self::contentTypes['createRecordingSettings'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse';
-        $request = $this->create_1Request($app_id, $recording_settings_request, $contentType);
+        $request = $this->createRecordingSettingsRequest($app_id, $recording_settings_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -967,29 +661,29 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'create_1'
+     * Create request for operation 'createRecordingSettings'
      *
      * @param  int $app_id The unique identifier for the app for which new recording settings are being created. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsRequest $recording_settings_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create_1'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createRecordingSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function create_1Request($app_id, $recording_settings_request, string $contentType = self::contentTypes['create_1'][0])
+    public function createRecordingSettingsRequest($app_id, $recording_settings_request, string $contentType = self::contentTypes['createRecordingSettings'][0])
     {
 
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling create_1'
+                'Missing the required parameter $app_id when calling createRecordingSettings'
             );
         }
 
         // verify the required parameter 'recording_settings_request' is set
         if ($recording_settings_request === null || (is_array($recording_settings_request) && count($recording_settings_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $recording_settings_request when calling create_1'
+                'Missing the required parameter $recording_settings_request when calling createRecordingSettings'
             );
         }
 
@@ -1079,38 +773,40 @@ class BasicApi
     }
 
     /**
-     * Operation get
+     * Operation createSettings
      *
-     * Retrieve the calling extension settings for a specific app.
+     * Create new calling extension settings for a specific app.
      *
-     * @param  int $app_id The unique identifier for the app whose calling extension settings are being retrieved. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
+     * @param  int $app_id The unique identifier for the app for which new calling extension settings are being created. (required)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request settings_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSettings'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
      */
-    public function get($app_id, string $contentType = self::contentTypes['get'][0])
+    public function createSettings($app_id, $settings_request, string $contentType = self::contentTypes['createSettings'][0])
     {
-        list($response) = $this->getWithHttpInfo($app_id, $contentType);
+        list($response) = $this->createSettingsWithHttpInfo($app_id, $settings_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation getWithHttpInfo
+     * Operation createSettingsWithHttpInfo
      *
-     * Retrieve the calling extension settings for a specific app.
+     * Create new calling extension settings for a specific app.
      *
-     * @param  int $app_id The unique identifier for the app whose calling extension settings are being retrieved. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
+     * @param  int $app_id The unique identifier for the app for which new calling extension settings are being created. (required)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSettings'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getWithHttpInfo($app_id, string $contentType = self::contentTypes['get'][0])
+    public function createSettingsWithHttpInfo($app_id, $settings_request, string $contentType = self::contentTypes['createSettings'][0])
     {
-        $request = $this->getRequest($app_id, $contentType);
+        $request = $this->createSettingsRequest($app_id, $settings_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1196,19 +892,20 @@ class BasicApi
     }
 
     /**
-     * Operation getAsync
+     * Operation createSettingsAsync
      *
-     * Retrieve the calling extension settings for a specific app.
+     * Create new calling extension settings for a specific app.
      *
-     * @param  int $app_id The unique identifier for the app whose calling extension settings are being retrieved. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
+     * @param  int $app_id The unique identifier for the app for which new calling extension settings are being created. (required)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAsync($app_id, string $contentType = self::contentTypes['get'][0])
+    public function createSettingsAsync($app_id, $settings_request, string $contentType = self::contentTypes['createSettings'][0])
     {
-        return $this->getAsyncWithHttpInfo($app_id, $contentType)
+        return $this->createSettingsAsyncWithHttpInfo($app_id, $settings_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1217,20 +914,21 @@ class BasicApi
     }
 
     /**
-     * Operation getAsyncWithHttpInfo
+     * Operation createSettingsAsyncWithHttpInfo
      *
-     * Retrieve the calling extension settings for a specific app.
+     * Create new calling extension settings for a specific app.
      *
-     * @param  int $app_id The unique identifier for the app whose calling extension settings are being retrieved. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
+     * @param  int $app_id The unique identifier for the app for which new calling extension settings are being created. (required)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAsyncWithHttpInfo($app_id, string $contentType = self::contentTypes['get'][0])
+    public function createSettingsAsyncWithHttpInfo($app_id, $settings_request, string $contentType = self::contentTypes['createSettings'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse';
-        $request = $this->getRequest($app_id, $contentType);
+        $request = $this->createSettingsRequest($app_id, $settings_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1269,26 +967,328 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'get'
+     * Create request for operation 'createSettings'
      *
-     * @param  int $app_id The unique identifier for the app whose calling extension settings are being retrieved. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get'] to see the possible values for this operation
+     * @param  int $app_id The unique identifier for the app for which new calling extension settings are being created. (required)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsRequest $settings_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getRequest($app_id, string $contentType = self::contentTypes['get'][0])
+    public function createSettingsRequest($app_id, $settings_request, string $contentType = self::contentTypes['createSettings'][0])
     {
 
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling get'
+                'Missing the required parameter $app_id when calling createSettings'
+            );
+        }
+
+        // verify the required parameter 'settings_request' is set
+        if ($settings_request === null || (is_array($settings_request) && count($settings_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $settings_request when calling createSettings'
             );
         }
 
 
         $resourcePath = '/crm/v3/extensions/calling/{appId}/settings';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($settings_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($settings_request), JSON_THROW_ON_ERROR);
+            } else {
+                $httpBody = $settings_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getChannelConnectionSettings
+     *
+     * Retrieve the channel connection settings for a specific app.
+     *
+     * @param  int $app_id The unique identifier for the app whose channel connection settings are to be retrieved. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getChannelConnectionSettings'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
+     */
+    public function getChannelConnectionSettings($app_id, string $contentType = self::contentTypes['getChannelConnectionSettings'][0])
+    {
+        list($response) = $this->getChannelConnectionSettingsWithHttpInfo($app_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getChannelConnectionSettingsWithHttpInfo
+     *
+     * Retrieve the channel connection settings for a specific app.
+     *
+     * @param  int $app_id The unique identifier for the app whose channel connection settings are to be retrieved. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getChannelConnectionSettings'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getChannelConnectionSettingsWithHttpInfo($app_id, string $contentType = self::contentTypes['getChannelConnectionSettings'][0])
+    {
+        $request = $this->getChannelConnectionSettingsRequest($app_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Extensions\Calling\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Extensions\Calling\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getChannelConnectionSettingsAsync
+     *
+     * Retrieve the channel connection settings for a specific app.
+     *
+     * @param  int $app_id The unique identifier for the app whose channel connection settings are to be retrieved. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getChannelConnectionSettings'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getChannelConnectionSettingsAsync($app_id, string $contentType = self::contentTypes['getChannelConnectionSettings'][0])
+    {
+        return $this->getChannelConnectionSettingsAsyncWithHttpInfo($app_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getChannelConnectionSettingsAsyncWithHttpInfo
+     *
+     * Retrieve the channel connection settings for a specific app.
+     *
+     * @param  int $app_id The unique identifier for the app whose channel connection settings are to be retrieved. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getChannelConnectionSettings'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getChannelConnectionSettingsAsyncWithHttpInfo($app_id, string $contentType = self::contentTypes['getChannelConnectionSettings'][0])
+    {
+        $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse';
+        $request = $this->getChannelConnectionSettingsRequest($app_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getChannelConnectionSettings'
+     *
+     * @param  int $app_id The unique identifier for the app whose channel connection settings are to be retrieved. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getChannelConnectionSettings'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getChannelConnectionSettingsRequest($app_id, string $contentType = self::contentTypes['getChannelConnectionSettings'][0])
+    {
+
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling getChannelConnectionSettings'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/extensions/calling/{appId}/settings/channel-connection';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1897,325 +1897,38 @@ class BasicApi
     }
 
     /**
-     * Operation get_0
-     *
-     * Retrieve the channel connection settings for a specific app.
-     *
-     * @param  int $app_id The unique identifier for the app whose channel connection settings are to be retrieved. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
-     */
-    public function get_0($app_id, string $contentType = self::contentTypes['get_0'][0])
-    {
-        list($response) = $this->get_0WithHttpInfo($app_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation get_0WithHttpInfo
-     *
-     * Retrieve the channel connection settings for a specific app.
-     *
-     * @param  int $app_id The unique identifier for the app whose channel connection settings are to be retrieved. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function get_0WithHttpInfo($app_id, string $contentType = self::contentTypes['get_0'][0])
-    {
-        $request = $this->get_0Request($app_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Extensions\Calling\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Extensions\Calling\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation get_0Async
-     *
-     * Retrieve the channel connection settings for a specific app.
-     *
-     * @param  int $app_id The unique identifier for the app whose channel connection settings are to be retrieved. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function get_0Async($app_id, string $contentType = self::contentTypes['get_0'][0])
-    {
-        return $this->get_0AsyncWithHttpInfo($app_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation get_0AsyncWithHttpInfo
-     *
-     * Retrieve the channel connection settings for a specific app.
-     *
-     * @param  int $app_id The unique identifier for the app whose channel connection settings are to be retrieved. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function get_0AsyncWithHttpInfo($app_id, string $contentType = self::contentTypes['get_0'][0])
-    {
-        $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse';
-        $request = $this->get_0Request($app_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'get_0'
-     *
-     * @param  int $app_id The unique identifier for the app whose channel connection settings are to be retrieved. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function get_0Request($app_id, string $contentType = self::contentTypes['get_0'][0])
-    {
-
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling get_0'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/extensions/calling/{appId}/settings/channel-connection';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation get_1
+     * Operation getRecordingSettings
      *
      * Retrieve recording settings for an app.
      *
      * @param  int $app_id The unique identifier for the app whose recording settings are being retrieved. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get_1'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecordingSettings'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
      */
-    public function get_1($app_id, string $contentType = self::contentTypes['get_1'][0])
+    public function getRecordingSettings($app_id, string $contentType = self::contentTypes['getRecordingSettings'][0])
     {
-        list($response) = $this->get_1WithHttpInfo($app_id, $contentType);
+        list($response) = $this->getRecordingSettingsWithHttpInfo($app_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation get_1WithHttpInfo
+     * Operation getRecordingSettingsWithHttpInfo
      *
      * Retrieve recording settings for an app.
      *
      * @param  int $app_id The unique identifier for the app whose recording settings are being retrieved. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get_1'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecordingSettings'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function get_1WithHttpInfo($app_id, string $contentType = self::contentTypes['get_1'][0])
+    public function getRecordingSettingsWithHttpInfo($app_id, string $contentType = self::contentTypes['getRecordingSettings'][0])
     {
-        $request = $this->get_1Request($app_id, $contentType);
+        $request = $this->getRecordingSettingsRequest($app_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2301,19 +2014,19 @@ class BasicApi
     }
 
     /**
-     * Operation get_1Async
+     * Operation getRecordingSettingsAsync
      *
      * Retrieve recording settings for an app.
      *
      * @param  int $app_id The unique identifier for the app whose recording settings are being retrieved. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get_1'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecordingSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function get_1Async($app_id, string $contentType = self::contentTypes['get_1'][0])
+    public function getRecordingSettingsAsync($app_id, string $contentType = self::contentTypes['getRecordingSettings'][0])
     {
-        return $this->get_1AsyncWithHttpInfo($app_id, $contentType)
+        return $this->getRecordingSettingsAsyncWithHttpInfo($app_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2322,20 +2035,20 @@ class BasicApi
     }
 
     /**
-     * Operation get_1AsyncWithHttpInfo
+     * Operation getRecordingSettingsAsyncWithHttpInfo
      *
      * Retrieve recording settings for an app.
      *
      * @param  int $app_id The unique identifier for the app whose recording settings are being retrieved. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get_1'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecordingSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function get_1AsyncWithHttpInfo($app_id, string $contentType = self::contentTypes['get_1'][0])
+    public function getRecordingSettingsAsyncWithHttpInfo($app_id, string $contentType = self::contentTypes['getRecordingSettings'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse';
-        $request = $this->get_1Request($app_id, $contentType);
+        $request = $this->getRecordingSettingsRequest($app_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2374,21 +2087,21 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'get_1'
+     * Create request for operation 'getRecordingSettings'
      *
      * @param  int $app_id The unique identifier for the app whose recording settings are being retrieved. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['get_1'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getRecordingSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function get_1Request($app_id, string $contentType = self::contentTypes['get_1'][0])
+    public function getRecordingSettingsRequest($app_id, string $contentType = self::contentTypes['getRecordingSettings'][0])
     {
 
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling get_1'
+                'Missing the required parameter $app_id when calling getRecordingSettings'
             );
         }
 
@@ -2471,502 +2184,38 @@ class BasicApi
     }
 
     /**
-     * Operation remove
+     * Operation getSettings
      *
-     * Delete the calling extension settings for a specific app.
+     * Retrieve the calling extension settings for a specific app.
      *
-     * @param  int $app_id The unique identifier for the app whose calling extension settings are being deleted. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function remove($app_id, string $contentType = self::contentTypes['remove'][0])
-    {
-        $this->removeWithHttpInfo($app_id, $contentType);
-    }
-
-    /**
-     * Operation removeWithHttpInfo
-     *
-     * Delete the calling extension settings for a specific app.
-     *
-     * @param  int $app_id The unique identifier for the app whose calling extension settings are being deleted. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function removeWithHttpInfo($app_id, string $contentType = self::contentTypes['remove'][0])
-    {
-        $request = $this->removeRequest($app_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Extensions\Calling\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation removeAsync
-     *
-     * Delete the calling extension settings for a specific app.
-     *
-     * @param  int $app_id The unique identifier for the app whose calling extension settings are being deleted. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function removeAsync($app_id, string $contentType = self::contentTypes['remove'][0])
-    {
-        return $this->removeAsyncWithHttpInfo($app_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation removeAsyncWithHttpInfo
-     *
-     * Delete the calling extension settings for a specific app.
-     *
-     * @param  int $app_id The unique identifier for the app whose calling extension settings are being deleted. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function removeAsyncWithHttpInfo($app_id, string $contentType = self::contentTypes['remove'][0])
-    {
-        $returnType = '';
-        $request = $this->removeRequest($app_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'remove'
-     *
-     * @param  int $app_id The unique identifier for the app whose calling extension settings are being deleted. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function removeRequest($app_id, string $contentType = self::contentTypes['remove'][0])
-    {
-
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling remove'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/extensions/calling/{appId}/settings';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'DELETE',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation remove_0
-     *
-     * Remove the channel connection settings for a specific app.
-     *
-     * @param  int $app_id The unique identifier for the app whose channel connection settings are to be deleted. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function remove_0($app_id, string $contentType = self::contentTypes['remove_0'][0])
-    {
-        $this->remove_0WithHttpInfo($app_id, $contentType);
-    }
-
-    /**
-     * Operation remove_0WithHttpInfo
-     *
-     * Remove the channel connection settings for a specific app.
-     *
-     * @param  int $app_id The unique identifier for the app whose channel connection settings are to be deleted. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove_0'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function remove_0WithHttpInfo($app_id, string $contentType = self::contentTypes['remove_0'][0])
-    {
-        $request = $this->remove_0Request($app_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Extensions\Calling\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation remove_0Async
-     *
-     * Remove the channel connection settings for a specific app.
-     *
-     * @param  int $app_id The unique identifier for the app whose channel connection settings are to be deleted. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function remove_0Async($app_id, string $contentType = self::contentTypes['remove_0'][0])
-    {
-        return $this->remove_0AsyncWithHttpInfo($app_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation remove_0AsyncWithHttpInfo
-     *
-     * Remove the channel connection settings for a specific app.
-     *
-     * @param  int $app_id The unique identifier for the app whose channel connection settings are to be deleted. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function remove_0AsyncWithHttpInfo($app_id, string $contentType = self::contentTypes['remove_0'][0])
-    {
-        $returnType = '';
-        $request = $this->remove_0Request($app_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'remove_0'
-     *
-     * @param  int $app_id The unique identifier for the app whose channel connection settings are to be deleted. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove_0'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function remove_0Request($app_id, string $contentType = self::contentTypes['remove_0'][0])
-    {
-
-        // verify the required parameter 'app_id' is set
-        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling remove_0'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/extensions/calling/{appId}/settings/channel-connection';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($app_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'appId' . '}',
-                ObjectSerializer::toPathValue($app_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
-        if ($apiKey !== null) {
-            $queryParams['hapikey'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'DELETE',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation update
-     *
-     * Update the calling extension settings for a specific app.
-     *
-     * @param  int $app_id The unique identifier for the app whose calling extension settings are being updated. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request settings_patch_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     * @param  int $app_id The unique identifier for the app whose calling extension settings are being retrieved. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSettings'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
      */
-    public function update($app_id, $settings_patch_request, string $contentType = self::contentTypes['update'][0])
+    public function getSettings($app_id, string $contentType = self::contentTypes['getSettings'][0])
     {
-        list($response) = $this->updateWithHttpInfo($app_id, $settings_patch_request, $contentType);
+        list($response) = $this->getSettingsWithHttpInfo($app_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation updateWithHttpInfo
+     * Operation getSettingsWithHttpInfo
      *
-     * Update the calling extension settings for a specific app.
+     * Retrieve the calling extension settings for a specific app.
      *
-     * @param  int $app_id The unique identifier for the app whose calling extension settings are being updated. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     * @param  int $app_id The unique identifier for the app whose calling extension settings are being retrieved. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSettings'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWithHttpInfo($app_id, $settings_patch_request, string $contentType = self::contentTypes['update'][0])
+    public function getSettingsWithHttpInfo($app_id, string $contentType = self::contentTypes['getSettings'][0])
     {
-        $request = $this->updateRequest($app_id, $settings_patch_request, $contentType);
+        $request = $this->getSettingsRequest($app_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3052,20 +2301,19 @@ class BasicApi
     }
 
     /**
-     * Operation updateAsync
+     * Operation getSettingsAsync
      *
-     * Update the calling extension settings for a specific app.
+     * Retrieve the calling extension settings for a specific app.
      *
-     * @param  int $app_id The unique identifier for the app whose calling extension settings are being updated. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     * @param  int $app_id The unique identifier for the app whose calling extension settings are being retrieved. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsync($app_id, $settings_patch_request, string $contentType = self::contentTypes['update'][0])
+    public function getSettingsAsync($app_id, string $contentType = self::contentTypes['getSettings'][0])
     {
-        return $this->updateAsyncWithHttpInfo($app_id, $settings_patch_request, $contentType)
+        return $this->getSettingsAsyncWithHttpInfo($app_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3074,21 +2322,20 @@ class BasicApi
     }
 
     /**
-     * Operation updateAsyncWithHttpInfo
+     * Operation getSettingsAsyncWithHttpInfo
      *
-     * Update the calling extension settings for a specific app.
+     * Retrieve the calling extension settings for a specific app.
      *
-     * @param  int $app_id The unique identifier for the app whose calling extension settings are being updated. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     * @param  int $app_id The unique identifier for the app whose calling extension settings are being retrieved. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsyncWithHttpInfo($app_id, $settings_patch_request, string $contentType = self::contentTypes['update'][0])
+    public function getSettingsAsyncWithHttpInfo($app_id, string $contentType = self::contentTypes['getSettings'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse';
-        $request = $this->updateRequest($app_id, $settings_patch_request, $contentType);
+        $request = $this->getSettingsRequest($app_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3127,29 +2374,21 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'update'
+     * Create request for operation 'getSettings'
      *
-     * @param  int $app_id The unique identifier for the app whose calling extension settings are being updated. (required)
-     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     * @param  int $app_id The unique identifier for the app whose calling extension settings are being retrieved. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateRequest($app_id, $settings_patch_request, string $contentType = self::contentTypes['update'][0])
+    public function getSettingsRequest($app_id, string $contentType = self::contentTypes['getSettings'][0])
     {
 
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling update'
-            );
-        }
-
-        // verify the required parameter 'settings_patch_request' is set
-        if ($settings_patch_request === null || (is_array($settings_patch_request) && count($settings_patch_request) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $settings_patch_request when calling update'
+                'Missing the required parameter $app_id when calling getSettings'
             );
         }
 
@@ -3180,14 +2419,7 @@ class BasicApi
         );
 
         // for model (json/xml)
-        if (isset($settings_patch_request)) {
-            if (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the body
-                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($settings_patch_request), JSON_THROW_ON_ERROR);
-            } else {
-                $httpBody = $settings_patch_request;
-            }
-        } elseif (count($formParams) > 0) {
+        if (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
@@ -3231,7 +2463,7 @@ class BasicApi
         $operationHost = $this->config->getHost();
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
-            'PATCH',
+            'GET',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -3239,40 +2471,502 @@ class BasicApi
     }
 
     /**
-     * Operation update_0
+     * Operation removeChannelConnectionSettings
+     *
+     * Remove the channel connection settings for a specific app.
+     *
+     * @param  int $app_id The unique identifier for the app whose channel connection settings are to be deleted. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeChannelConnectionSettings'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function removeChannelConnectionSettings($app_id, string $contentType = self::contentTypes['removeChannelConnectionSettings'][0])
+    {
+        $this->removeChannelConnectionSettingsWithHttpInfo($app_id, $contentType);
+    }
+
+    /**
+     * Operation removeChannelConnectionSettingsWithHttpInfo
+     *
+     * Remove the channel connection settings for a specific app.
+     *
+     * @param  int $app_id The unique identifier for the app whose channel connection settings are to be deleted. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeChannelConnectionSettings'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function removeChannelConnectionSettingsWithHttpInfo($app_id, string $contentType = self::contentTypes['removeChannelConnectionSettings'][0])
+    {
+        $request = $this->removeChannelConnectionSettingsRequest($app_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Extensions\Calling\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation removeChannelConnectionSettingsAsync
+     *
+     * Remove the channel connection settings for a specific app.
+     *
+     * @param  int $app_id The unique identifier for the app whose channel connection settings are to be deleted. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeChannelConnectionSettings'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeChannelConnectionSettingsAsync($app_id, string $contentType = self::contentTypes['removeChannelConnectionSettings'][0])
+    {
+        return $this->removeChannelConnectionSettingsAsyncWithHttpInfo($app_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation removeChannelConnectionSettingsAsyncWithHttpInfo
+     *
+     * Remove the channel connection settings for a specific app.
+     *
+     * @param  int $app_id The unique identifier for the app whose channel connection settings are to be deleted. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeChannelConnectionSettings'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeChannelConnectionSettingsAsyncWithHttpInfo($app_id, string $contentType = self::contentTypes['removeChannelConnectionSettings'][0])
+    {
+        $returnType = '';
+        $request = $this->removeChannelConnectionSettingsRequest($app_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'removeChannelConnectionSettings'
+     *
+     * @param  int $app_id The unique identifier for the app whose channel connection settings are to be deleted. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeChannelConnectionSettings'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function removeChannelConnectionSettingsRequest($app_id, string $contentType = self::contentTypes['removeChannelConnectionSettings'][0])
+    {
+
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling removeChannelConnectionSettings'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/extensions/calling/{appId}/settings/channel-connection';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation removeSettings
+     *
+     * Delete the calling extension settings for a specific app.
+     *
+     * @param  int $app_id The unique identifier for the app whose calling extension settings are being deleted. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeSettings'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function removeSettings($app_id, string $contentType = self::contentTypes['removeSettings'][0])
+    {
+        $this->removeSettingsWithHttpInfo($app_id, $contentType);
+    }
+
+    /**
+     * Operation removeSettingsWithHttpInfo
+     *
+     * Delete the calling extension settings for a specific app.
+     *
+     * @param  int $app_id The unique identifier for the app whose calling extension settings are being deleted. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeSettings'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function removeSettingsWithHttpInfo($app_id, string $contentType = self::contentTypes['removeSettings'][0])
+    {
+        $request = $this->removeSettingsRequest($app_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Extensions\Calling\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation removeSettingsAsync
+     *
+     * Delete the calling extension settings for a specific app.
+     *
+     * @param  int $app_id The unique identifier for the app whose calling extension settings are being deleted. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeSettings'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeSettingsAsync($app_id, string $contentType = self::contentTypes['removeSettings'][0])
+    {
+        return $this->removeSettingsAsyncWithHttpInfo($app_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation removeSettingsAsyncWithHttpInfo
+     *
+     * Delete the calling extension settings for a specific app.
+     *
+     * @param  int $app_id The unique identifier for the app whose calling extension settings are being deleted. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeSettings'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeSettingsAsyncWithHttpInfo($app_id, string $contentType = self::contentTypes['removeSettings'][0])
+    {
+        $returnType = '';
+        $request = $this->removeSettingsRequest($app_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'removeSettings'
+     *
+     * @param  int $app_id The unique identifier for the app whose calling extension settings are being deleted. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeSettings'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function removeSettingsRequest($app_id, string $contentType = self::contentTypes['removeSettings'][0])
+    {
+
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling removeSettings'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/extensions/calling/{appId}/settings';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateChannelConnectionSettings
      *
      * Update the channel connection settings for a specific app.
      *
      * @param  int $app_id The unique identifier for the app whose channel connection settings are to be updated. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsPatchRequest $channel_connection_settings_patch_request channel_connection_settings_patch_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateChannelConnectionSettings'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
      */
-    public function update_0($app_id, $channel_connection_settings_patch_request, string $contentType = self::contentTypes['update_0'][0])
+    public function updateChannelConnectionSettings($app_id, $channel_connection_settings_patch_request, string $contentType = self::contentTypes['updateChannelConnectionSettings'][0])
     {
-        list($response) = $this->update_0WithHttpInfo($app_id, $channel_connection_settings_patch_request, $contentType);
+        list($response) = $this->updateChannelConnectionSettingsWithHttpInfo($app_id, $channel_connection_settings_patch_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation update_0WithHttpInfo
+     * Operation updateChannelConnectionSettingsWithHttpInfo
      *
      * Update the channel connection settings for a specific app.
      *
      * @param  int $app_id The unique identifier for the app whose channel connection settings are to be updated. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsPatchRequest $channel_connection_settings_patch_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateChannelConnectionSettings'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function update_0WithHttpInfo($app_id, $channel_connection_settings_patch_request, string $contentType = self::contentTypes['update_0'][0])
+    public function updateChannelConnectionSettingsWithHttpInfo($app_id, $channel_connection_settings_patch_request, string $contentType = self::contentTypes['updateChannelConnectionSettings'][0])
     {
-        $request = $this->update_0Request($app_id, $channel_connection_settings_patch_request, $contentType);
+        $request = $this->updateChannelConnectionSettingsRequest($app_id, $channel_connection_settings_patch_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3358,20 +3052,20 @@ class BasicApi
     }
 
     /**
-     * Operation update_0Async
+     * Operation updateChannelConnectionSettingsAsync
      *
      * Update the channel connection settings for a specific app.
      *
      * @param  int $app_id The unique identifier for the app whose channel connection settings are to be updated. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsPatchRequest $channel_connection_settings_patch_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateChannelConnectionSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function update_0Async($app_id, $channel_connection_settings_patch_request, string $contentType = self::contentTypes['update_0'][0])
+    public function updateChannelConnectionSettingsAsync($app_id, $channel_connection_settings_patch_request, string $contentType = self::contentTypes['updateChannelConnectionSettings'][0])
     {
-        return $this->update_0AsyncWithHttpInfo($app_id, $channel_connection_settings_patch_request, $contentType)
+        return $this->updateChannelConnectionSettingsAsyncWithHttpInfo($app_id, $channel_connection_settings_patch_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3380,21 +3074,21 @@ class BasicApi
     }
 
     /**
-     * Operation update_0AsyncWithHttpInfo
+     * Operation updateChannelConnectionSettingsAsyncWithHttpInfo
      *
      * Update the channel connection settings for a specific app.
      *
      * @param  int $app_id The unique identifier for the app whose channel connection settings are to be updated. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsPatchRequest $channel_connection_settings_patch_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateChannelConnectionSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function update_0AsyncWithHttpInfo($app_id, $channel_connection_settings_patch_request, string $contentType = self::contentTypes['update_0'][0])
+    public function updateChannelConnectionSettingsAsyncWithHttpInfo($app_id, $channel_connection_settings_patch_request, string $contentType = self::contentTypes['updateChannelConnectionSettings'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsResponse';
-        $request = $this->update_0Request($app_id, $channel_connection_settings_patch_request, $contentType);
+        $request = $this->updateChannelConnectionSettingsRequest($app_id, $channel_connection_settings_patch_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3433,29 +3127,29 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'update_0'
+     * Create request for operation 'updateChannelConnectionSettings'
      *
      * @param  int $app_id The unique identifier for the app whose channel connection settings are to be updated. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\ChannelConnectionSettingsPatchRequest $channel_connection_settings_patch_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateChannelConnectionSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function update_0Request($app_id, $channel_connection_settings_patch_request, string $contentType = self::contentTypes['update_0'][0])
+    public function updateChannelConnectionSettingsRequest($app_id, $channel_connection_settings_patch_request, string $contentType = self::contentTypes['updateChannelConnectionSettings'][0])
     {
 
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling update_0'
+                'Missing the required parameter $app_id when calling updateChannelConnectionSettings'
             );
         }
 
         // verify the required parameter 'channel_connection_settings_patch_request' is set
         if ($channel_connection_settings_patch_request === null || (is_array($channel_connection_settings_patch_request) && count($channel_connection_settings_patch_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $channel_connection_settings_patch_request when calling update_0'
+                'Missing the required parameter $channel_connection_settings_patch_request when calling updateChannelConnectionSettings'
             );
         }
 
@@ -3545,40 +3239,40 @@ class BasicApi
     }
 
     /**
-     * Operation update_1
+     * Operation updateRecordingSettings
      *
      * Update recording settings for an app.
      *
      * @param  int $app_id The unique identifier for the app whose recording settings are being updated. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsPatchRequest $recording_settings_patch_request recording_settings_patch_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update_1'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRecordingSettings'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
      */
-    public function update_1($app_id, $recording_settings_patch_request, string $contentType = self::contentTypes['update_1'][0])
+    public function updateRecordingSettings($app_id, $recording_settings_patch_request, string $contentType = self::contentTypes['updateRecordingSettings'][0])
     {
-        list($response) = $this->update_1WithHttpInfo($app_id, $recording_settings_patch_request, $contentType);
+        list($response) = $this->updateRecordingSettingsWithHttpInfo($app_id, $recording_settings_patch_request, $contentType);
         return $response;
     }
 
     /**
-     * Operation update_1WithHttpInfo
+     * Operation updateRecordingSettingsWithHttpInfo
      *
      * Update recording settings for an app.
      *
      * @param  int $app_id The unique identifier for the app whose recording settings are being updated. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsPatchRequest $recording_settings_patch_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update_1'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRecordingSettings'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function update_1WithHttpInfo($app_id, $recording_settings_patch_request, string $contentType = self::contentTypes['update_1'][0])
+    public function updateRecordingSettingsWithHttpInfo($app_id, $recording_settings_patch_request, string $contentType = self::contentTypes['updateRecordingSettings'][0])
     {
-        $request = $this->update_1Request($app_id, $recording_settings_patch_request, $contentType);
+        $request = $this->updateRecordingSettingsRequest($app_id, $recording_settings_patch_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3664,20 +3358,20 @@ class BasicApi
     }
 
     /**
-     * Operation update_1Async
+     * Operation updateRecordingSettingsAsync
      *
      * Update recording settings for an app.
      *
      * @param  int $app_id The unique identifier for the app whose recording settings are being updated. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsPatchRequest $recording_settings_patch_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update_1'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRecordingSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function update_1Async($app_id, $recording_settings_patch_request, string $contentType = self::contentTypes['update_1'][0])
+    public function updateRecordingSettingsAsync($app_id, $recording_settings_patch_request, string $contentType = self::contentTypes['updateRecordingSettings'][0])
     {
-        return $this->update_1AsyncWithHttpInfo($app_id, $recording_settings_patch_request, $contentType)
+        return $this->updateRecordingSettingsAsyncWithHttpInfo($app_id, $recording_settings_patch_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3686,21 +3380,21 @@ class BasicApi
     }
 
     /**
-     * Operation update_1AsyncWithHttpInfo
+     * Operation updateRecordingSettingsAsyncWithHttpInfo
      *
      * Update recording settings for an app.
      *
      * @param  int $app_id The unique identifier for the app whose recording settings are being updated. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsPatchRequest $recording_settings_patch_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update_1'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRecordingSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function update_1AsyncWithHttpInfo($app_id, $recording_settings_patch_request, string $contentType = self::contentTypes['update_1'][0])
+    public function updateRecordingSettingsAsyncWithHttpInfo($app_id, $recording_settings_patch_request, string $contentType = self::contentTypes['updateRecordingSettings'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsResponse';
-        $request = $this->update_1Request($app_id, $recording_settings_patch_request, $contentType);
+        $request = $this->updateRecordingSettingsRequest($app_id, $recording_settings_patch_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3739,29 +3433,29 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'update_1'
+     * Create request for operation 'updateRecordingSettings'
      *
      * @param  int $app_id The unique identifier for the app whose recording settings are being updated. (required)
      * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\RecordingSettingsPatchRequest $recording_settings_patch_request (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update_1'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateRecordingSettings'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function update_1Request($app_id, $recording_settings_patch_request, string $contentType = self::contentTypes['update_1'][0])
+    public function updateRecordingSettingsRequest($app_id, $recording_settings_patch_request, string $contentType = self::contentTypes['updateRecordingSettings'][0])
     {
 
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling update_1'
+                'Missing the required parameter $app_id when calling updateRecordingSettings'
             );
         }
 
         // verify the required parameter 'recording_settings_patch_request' is set
         if ($recording_settings_patch_request === null || (is_array($recording_settings_patch_request) && count($recording_settings_patch_request) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $recording_settings_patch_request when calling update_1'
+                'Missing the required parameter $recording_settings_patch_request when calling updateRecordingSettings'
             );
         }
 
@@ -3798,6 +3492,312 @@ class BasicApi
                 $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($recording_settings_patch_request), JSON_THROW_ON_ERROR);
             } else {
                 $httpBody = $recording_settings_patch_request;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('hapikey');
+        if ($apiKey !== null) {
+            $queryParams['hapikey'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateSettings
+     *
+     * Update the calling extension settings for a specific app.
+     *
+     * @param  int $app_id The unique identifier for the app whose calling extension settings are being updated. (required)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request settings_patch_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSettings'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error
+     */
+    public function updateSettings($app_id, $settings_patch_request, string $contentType = self::contentTypes['updateSettings'][0])
+    {
+        list($response) = $this->updateSettingsWithHttpInfo($app_id, $settings_patch_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateSettingsWithHttpInfo
+     *
+     * Update the calling extension settings for a specific app.
+     *
+     * @param  int $app_id The unique identifier for the app whose calling extension settings are being updated. (required)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSettings'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Extensions\Calling\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse|\HubSpot\Client\Crm\Extensions\Calling\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateSettingsWithHttpInfo($app_id, $settings_patch_request, string $contentType = self::contentTypes['updateSettings'][0])
+    {
+        $request = $this->updateSettingsRequest($app_id, $settings_patch_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Extensions\Calling\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Extensions\Calling\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateSettingsAsync
+     *
+     * Update the calling extension settings for a specific app.
+     *
+     * @param  int $app_id The unique identifier for the app whose calling extension settings are being updated. (required)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSettings'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateSettingsAsync($app_id, $settings_patch_request, string $contentType = self::contentTypes['updateSettings'][0])
+    {
+        return $this->updateSettingsAsyncWithHttpInfo($app_id, $settings_patch_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateSettingsAsyncWithHttpInfo
+     *
+     * Update the calling extension settings for a specific app.
+     *
+     * @param  int $app_id The unique identifier for the app whose calling extension settings are being updated. (required)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSettings'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateSettingsAsyncWithHttpInfo($app_id, $settings_patch_request, string $contentType = self::contentTypes['updateSettings'][0])
+    {
+        $returnType = '\HubSpot\Client\Crm\Extensions\Calling\Model\SettingsResponse';
+        $request = $this->updateSettingsRequest($app_id, $settings_patch_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateSettings'
+     *
+     * @param  int $app_id The unique identifier for the app whose calling extension settings are being updated. (required)
+     * @param  \HubSpot\Client\Crm\Extensions\Calling\Model\SettingsPatchRequest $settings_patch_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSettings'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateSettingsRequest($app_id, $settings_patch_request, string $contentType = self::contentTypes['updateSettings'][0])
+    {
+
+        // verify the required parameter 'app_id' is set
+        if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $app_id when calling updateSettings'
+            );
+        }
+
+        // verify the required parameter 'settings_patch_request' is set
+        if ($settings_patch_request === null || (is_array($settings_patch_request) && count($settings_patch_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $settings_patch_request when calling updateSettings'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/extensions/calling/{appId}/settings';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($app_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'appId' . '}',
+                ObjectSerializer::toPathValue($app_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($settings_patch_request)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = json_encode(ObjectSerializer::sanitizeForSerialization($settings_patch_request), JSON_THROW_ON_ERROR);
+            } else {
+                $httpBody = $settings_patch_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

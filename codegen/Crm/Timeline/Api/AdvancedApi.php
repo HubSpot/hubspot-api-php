@@ -73,10 +73,10 @@ class AdvancedApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'create' => [
+        'createEvent' => [
             'application/json',
         ],
-        'create_0' => [
+        'createToken' => [
             'application/json',
         ],
     ];
@@ -128,40 +128,40 @@ class AdvancedApi
     }
 
     /**
-     * Operation create
+     * Operation createEvent
      *
      * Send event data (single)
      *
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEvent $timeline_event timeline_event (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEvent'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventResponse|\HubSpot\Client\Crm\Timeline\Model\Error
      * @deprecated
      */
-    public function create($timeline_event, string $contentType = self::contentTypes['create'][0])
+    public function createEvent($timeline_event, string $contentType = self::contentTypes['createEvent'][0])
     {
-        list($response) = $this->createWithHttpInfo($timeline_event, $contentType);
+        list($response) = $this->createEventWithHttpInfo($timeline_event, $contentType);
         return $response;
     }
 
     /**
-     * Operation createWithHttpInfo
+     * Operation createEventWithHttpInfo
      *
      * Send event data (single)
      *
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEvent $timeline_event (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEvent'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Timeline\Model\TimelineEventResponse|\HubSpot\Client\Crm\Timeline\Model\Error, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
-    public function createWithHttpInfo($timeline_event, string $contentType = self::contentTypes['create'][0])
+    public function createEventWithHttpInfo($timeline_event, string $contentType = self::contentTypes['createEvent'][0])
     {
-        $request = $this->createRequest($timeline_event, $contentType);
+        $request = $this->createEventRequest($timeline_event, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -247,20 +247,20 @@ class AdvancedApi
     }
 
     /**
-     * Operation createAsync
+     * Operation createEventAsync
      *
      * Send event data (single)
      *
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEvent $timeline_event (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEvent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function createAsync($timeline_event, string $contentType = self::contentTypes['create'][0])
+    public function createEventAsync($timeline_event, string $contentType = self::contentTypes['createEvent'][0])
     {
-        return $this->createAsyncWithHttpInfo($timeline_event, $contentType)
+        return $this->createEventAsyncWithHttpInfo($timeline_event, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -269,21 +269,21 @@ class AdvancedApi
     }
 
     /**
-     * Operation createAsyncWithHttpInfo
+     * Operation createEventAsyncWithHttpInfo
      *
      * Send event data (single)
      *
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEvent $timeline_event (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEvent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function createAsyncWithHttpInfo($timeline_event, string $contentType = self::contentTypes['create'][0])
+    public function createEventAsyncWithHttpInfo($timeline_event, string $contentType = self::contentTypes['createEvent'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Timeline\Model\TimelineEventResponse';
-        $request = $this->createRequest($timeline_event, $contentType);
+        $request = $this->createEventRequest($timeline_event, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -322,22 +322,22 @@ class AdvancedApi
     }
 
     /**
-     * Create request for operation 'create'
+     * Create request for operation 'createEvent'
      *
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEvent $timeline_event (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createEvent'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      * @deprecated
      */
-    public function createRequest($timeline_event, string $contentType = self::contentTypes['create'][0])
+    public function createEventRequest($timeline_event, string $contentType = self::contentTypes['createEvent'][0])
     {
 
         // verify the required parameter 'timeline_event' is set
         if ($timeline_event === null || (is_array($timeline_event) && count($timeline_event) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $timeline_event when calling create'
+                'Missing the required parameter $timeline_event when calling createEvent'
             );
         }
 
@@ -418,44 +418,44 @@ class AdvancedApi
     }
 
     /**
-     * Operation create_0
+     * Operation createToken
      *
      * Add tokens to an existing template
      *
      * @param  string $event_template_id  (required)
      * @param  int $app_id  (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken $timeline_event_template_token timeline_event_template_token (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createToken'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken|\HubSpot\Client\Crm\Timeline\Model\Error
      * @deprecated
      */
-    public function create_0($event_template_id, $app_id, $timeline_event_template_token, string $contentType = self::contentTypes['create_0'][0])
+    public function createToken($event_template_id, $app_id, $timeline_event_template_token, string $contentType = self::contentTypes['createToken'][0])
     {
-        list($response) = $this->create_0WithHttpInfo($event_template_id, $app_id, $timeline_event_template_token, $contentType);
+        list($response) = $this->createTokenWithHttpInfo($event_template_id, $app_id, $timeline_event_template_token, $contentType);
         return $response;
     }
 
     /**
-     * Operation create_0WithHttpInfo
+     * Operation createTokenWithHttpInfo
      *
      * Add tokens to an existing template
      *
      * @param  string $event_template_id  (required)
      * @param  int $app_id  (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken $timeline_event_template_token (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createToken'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Timeline\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken|\HubSpot\Client\Crm\Timeline\Model\Error, HTTP status code, HTTP response headers (array of strings)
      * @deprecated
      */
-    public function create_0WithHttpInfo($event_template_id, $app_id, $timeline_event_template_token, string $contentType = self::contentTypes['create_0'][0])
+    public function createTokenWithHttpInfo($event_template_id, $app_id, $timeline_event_template_token, string $contentType = self::contentTypes['createToken'][0])
     {
-        $request = $this->create_0Request($event_template_id, $app_id, $timeline_event_template_token, $contentType);
+        $request = $this->createTokenRequest($event_template_id, $app_id, $timeline_event_template_token, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -541,22 +541,22 @@ class AdvancedApi
     }
 
     /**
-     * Operation create_0Async
+     * Operation createTokenAsync
      *
      * Add tokens to an existing template
      *
      * @param  string $event_template_id  (required)
      * @param  int $app_id  (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken $timeline_event_template_token (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function create_0Async($event_template_id, $app_id, $timeline_event_template_token, string $contentType = self::contentTypes['create_0'][0])
+    public function createTokenAsync($event_template_id, $app_id, $timeline_event_template_token, string $contentType = self::contentTypes['createToken'][0])
     {
-        return $this->create_0AsyncWithHttpInfo($event_template_id, $app_id, $timeline_event_template_token, $contentType)
+        return $this->createTokenAsyncWithHttpInfo($event_template_id, $app_id, $timeline_event_template_token, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -565,23 +565,23 @@ class AdvancedApi
     }
 
     /**
-     * Operation create_0AsyncWithHttpInfo
+     * Operation createTokenAsyncWithHttpInfo
      *
      * Add tokens to an existing template
      *
      * @param  string $event_template_id  (required)
      * @param  int $app_id  (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken $timeline_event_template_token (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      * @deprecated
      */
-    public function create_0AsyncWithHttpInfo($event_template_id, $app_id, $timeline_event_template_token, string $contentType = self::contentTypes['create_0'][0])
+    public function createTokenAsyncWithHttpInfo($event_template_id, $app_id, $timeline_event_template_token, string $contentType = self::contentTypes['createToken'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken';
-        $request = $this->create_0Request($event_template_id, $app_id, $timeline_event_template_token, $contentType);
+        $request = $this->createTokenRequest($event_template_id, $app_id, $timeline_event_template_token, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -620,38 +620,38 @@ class AdvancedApi
     }
 
     /**
-     * Create request for operation 'create_0'
+     * Create request for operation 'createToken'
      *
      * @param  string $event_template_id  (required)
      * @param  int $app_id  (required)
      * @param  \HubSpot\Client\Crm\Timeline\Model\TimelineEventTemplateToken $timeline_event_template_token (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      * @deprecated
      */
-    public function create_0Request($event_template_id, $app_id, $timeline_event_template_token, string $contentType = self::contentTypes['create_0'][0])
+    public function createTokenRequest($event_template_id, $app_id, $timeline_event_template_token, string $contentType = self::contentTypes['createToken'][0])
     {
 
         // verify the required parameter 'event_template_id' is set
         if ($event_template_id === null || (is_array($event_template_id) && count($event_template_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $event_template_id when calling create_0'
+                'Missing the required parameter $event_template_id when calling createToken'
             );
         }
 
         // verify the required parameter 'app_id' is set
         if ($app_id === null || (is_array($app_id) && count($app_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $app_id when calling create_0'
+                'Missing the required parameter $app_id when calling createToken'
             );
         }
 
         // verify the required parameter 'timeline_event_template_token' is set
         if ($timeline_event_template_token === null || (is_array($timeline_event_template_token) && count($timeline_event_template_token) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $timeline_event_template_token when calling create_0'
+                'Missing the required parameter $timeline_event_template_token when calling createToken'
             );
         }
 

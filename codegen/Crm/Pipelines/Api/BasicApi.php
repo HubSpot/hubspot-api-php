@@ -73,46 +73,46 @@ class BasicApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'archive' => [
+        'archivePipeline' => [
             'application/json',
         ],
-        'archive_0' => [
+        'archiveStage' => [
             'application/json',
         ],
-        'create' => [
+        'createPipeline' => [
             'application/json',
         ],
-        'create_0' => [
+        'createStage' => [
             'application/json',
         ],
-        'getAll' => [
+        'getAllPipelines' => [
             'application/json',
         ],
-        'getAll_0' => [
+        'getAllStages' => [
             'application/json',
         ],
-        'getAudit' => [
+        'getPipelineAudit' => [
             'application/json',
         ],
-        'getAudit_0' => [
+        'getPipelineById' => [
             'application/json',
         ],
-        'getById' => [
+        'getStageAudit' => [
             'application/json',
         ],
-        'getById_0' => [
+        'getStageById' => [
             'application/json',
         ],
-        'replace' => [
+        'replacePipeline' => [
             'application/json',
         ],
-        'replace_0' => [
+        'replaceStage' => [
             'application/json',
         ],
-        'update' => [
+        'updatePipeline' => [
             'application/json',
         ],
-        'update_0' => [
+        'updateStage' => [
             'application/json',
         ],
     ];
@@ -164,7 +164,7 @@ class BasicApi
     }
 
     /**
-     * Operation archive
+     * Operation archivePipeline
      *
      * Delete a pipeline
      *
@@ -172,19 +172,19 @@ class BasicApi
      * @param  string $pipeline_id  (required)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
      * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archivePipeline'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive($object_type, $pipeline_id, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['archive'][0])
+    public function archivePipeline($object_type, $pipeline_id, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['archivePipeline'][0])
     {
-        $this->archiveWithHttpInfo($object_type, $pipeline_id, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
+        $this->archivePipelineWithHttpInfo($object_type, $pipeline_id, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
     }
 
     /**
-     * Operation archiveWithHttpInfo
+     * Operation archivePipelineWithHttpInfo
      *
      * Delete a pipeline
      *
@@ -192,15 +192,15 @@ class BasicApi
      * @param  string $pipeline_id  (required)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
      * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archivePipeline'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archiveWithHttpInfo($object_type, $pipeline_id, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['archive'][0])
+    public function archivePipelineWithHttpInfo($object_type, $pipeline_id, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['archivePipeline'][0])
     {
-        $request = $this->archiveRequest($object_type, $pipeline_id, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
+        $request = $this->archivePipelineRequest($object_type, $pipeline_id, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -244,7 +244,7 @@ class BasicApi
     }
 
     /**
-     * Operation archiveAsync
+     * Operation archivePipelineAsync
      *
      * Delete a pipeline
      *
@@ -252,14 +252,14 @@ class BasicApi
      * @param  string $pipeline_id  (required)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
      * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archivePipeline'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsync($object_type, $pipeline_id, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['archive'][0])
+    public function archivePipelineAsync($object_type, $pipeline_id, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['archivePipeline'][0])
     {
-        return $this->archiveAsyncWithHttpInfo($object_type, $pipeline_id, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType)
+        return $this->archivePipelineAsyncWithHttpInfo($object_type, $pipeline_id, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -268,7 +268,7 @@ class BasicApi
     }
 
     /**
-     * Operation archiveAsyncWithHttpInfo
+     * Operation archivePipelineAsyncWithHttpInfo
      *
      * Delete a pipeline
      *
@@ -276,15 +276,15 @@ class BasicApi
      * @param  string $pipeline_id  (required)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
      * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archivePipeline'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archiveAsyncWithHttpInfo($object_type, $pipeline_id, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['archive'][0])
+    public function archivePipelineAsyncWithHttpInfo($object_type, $pipeline_id, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['archivePipeline'][0])
     {
         $returnType = '';
-        $request = $this->archiveRequest($object_type, $pipeline_id, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
+        $request = $this->archivePipelineRequest($object_type, $pipeline_id, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -310,31 +310,31 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'archive'
+     * Create request for operation 'archivePipeline'
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
      * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archivePipeline'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archiveRequest($object_type, $pipeline_id, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['archive'][0])
+    public function archivePipelineRequest($object_type, $pipeline_id, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['archivePipeline'][0])
     {
 
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling archive'
+                'Missing the required parameter $object_type when calling archivePipeline'
             );
         }
 
         // verify the required parameter 'pipeline_id' is set
         if ($pipeline_id === null || (is_array($pipeline_id) && count($pipeline_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pipeline_id when calling archive'
+                'Missing the required parameter $pipeline_id when calling archivePipeline'
             );
         }
 
@@ -444,7 +444,7 @@ class BasicApi
     }
 
     /**
-     * Operation archive_0
+     * Operation archiveStage
      *
      * Delete a pipeline stage
      *
@@ -452,19 +452,19 @@ class BasicApi
      * @param  string $pipeline_id  (required)
      * @param  string $stage_id  (required)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveStage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function archive_0($object_type, $pipeline_id, $stage_id, $validate_references_before_delete = false, string $contentType = self::contentTypes['archive_0'][0])
+    public function archiveStage($object_type, $pipeline_id, $stage_id, $validate_references_before_delete = false, string $contentType = self::contentTypes['archiveStage'][0])
     {
-        $this->archive_0WithHttpInfo($object_type, $pipeline_id, $stage_id, $validate_references_before_delete, $contentType);
+        $this->archiveStageWithHttpInfo($object_type, $pipeline_id, $stage_id, $validate_references_before_delete, $contentType);
     }
 
     /**
-     * Operation archive_0WithHttpInfo
+     * Operation archiveStageWithHttpInfo
      *
      * Delete a pipeline stage
      *
@@ -472,15 +472,15 @@ class BasicApi
      * @param  string $pipeline_id  (required)
      * @param  string $stage_id  (required)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveStage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function archive_0WithHttpInfo($object_type, $pipeline_id, $stage_id, $validate_references_before_delete = false, string $contentType = self::contentTypes['archive_0'][0])
+    public function archiveStageWithHttpInfo($object_type, $pipeline_id, $stage_id, $validate_references_before_delete = false, string $contentType = self::contentTypes['archiveStage'][0])
     {
-        $request = $this->archive_0Request($object_type, $pipeline_id, $stage_id, $validate_references_before_delete, $contentType);
+        $request = $this->archiveStageRequest($object_type, $pipeline_id, $stage_id, $validate_references_before_delete, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -524,7 +524,7 @@ class BasicApi
     }
 
     /**
-     * Operation archive_0Async
+     * Operation archiveStageAsync
      *
      * Delete a pipeline stage
      *
@@ -532,14 +532,14 @@ class BasicApi
      * @param  string $pipeline_id  (required)
      * @param  string $stage_id  (required)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveStage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archive_0Async($object_type, $pipeline_id, $stage_id, $validate_references_before_delete = false, string $contentType = self::contentTypes['archive_0'][0])
+    public function archiveStageAsync($object_type, $pipeline_id, $stage_id, $validate_references_before_delete = false, string $contentType = self::contentTypes['archiveStage'][0])
     {
-        return $this->archive_0AsyncWithHttpInfo($object_type, $pipeline_id, $stage_id, $validate_references_before_delete, $contentType)
+        return $this->archiveStageAsyncWithHttpInfo($object_type, $pipeline_id, $stage_id, $validate_references_before_delete, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -548,7 +548,7 @@ class BasicApi
     }
 
     /**
-     * Operation archive_0AsyncWithHttpInfo
+     * Operation archiveStageAsyncWithHttpInfo
      *
      * Delete a pipeline stage
      *
@@ -556,15 +556,15 @@ class BasicApi
      * @param  string $pipeline_id  (required)
      * @param  string $stage_id  (required)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveStage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function archive_0AsyncWithHttpInfo($object_type, $pipeline_id, $stage_id, $validate_references_before_delete = false, string $contentType = self::contentTypes['archive_0'][0])
+    public function archiveStageAsyncWithHttpInfo($object_type, $pipeline_id, $stage_id, $validate_references_before_delete = false, string $contentType = self::contentTypes['archiveStage'][0])
     {
         $returnType = '';
-        $request = $this->archive_0Request($object_type, $pipeline_id, $stage_id, $validate_references_before_delete, $contentType);
+        $request = $this->archiveStageRequest($object_type, $pipeline_id, $stage_id, $validate_references_before_delete, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -590,38 +590,38 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'archive_0'
+     * Create request for operation 'archiveStage'
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  string $stage_id  (required)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archive_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['archiveStage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function archive_0Request($object_type, $pipeline_id, $stage_id, $validate_references_before_delete = false, string $contentType = self::contentTypes['archive_0'][0])
+    public function archiveStageRequest($object_type, $pipeline_id, $stage_id, $validate_references_before_delete = false, string $contentType = self::contentTypes['archiveStage'][0])
     {
 
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling archive_0'
+                'Missing the required parameter $object_type when calling archiveStage'
             );
         }
 
         // verify the required parameter 'pipeline_id' is set
         if ($pipeline_id === null || (is_array($pipeline_id) && count($pipeline_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pipeline_id when calling archive_0'
+                'Missing the required parameter $pipeline_id when calling archiveStage'
             );
         }
 
         // verify the required parameter 'stage_id' is set
         if ($stage_id === null || (is_array($stage_id) && count($stage_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $stage_id when calling archive_0'
+                'Missing the required parameter $stage_id when calling archiveStage'
             );
         }
 
@@ -729,40 +729,40 @@ class BasicApi
     }
 
     /**
-     * Operation create
+     * Operation createPipeline
      *
      * Create a pipeline
      *
      * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineInput $pipeline_input pipeline_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPipeline'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Pipelines\Model\Pipeline|\HubSpot\Client\Crm\Pipelines\Model\Error
      */
-    public function create($object_type, $pipeline_input, string $contentType = self::contentTypes['create'][0])
+    public function createPipeline($object_type, $pipeline_input, string $contentType = self::contentTypes['createPipeline'][0])
     {
-        list($response) = $this->createWithHttpInfo($object_type, $pipeline_input, $contentType);
+        list($response) = $this->createPipelineWithHttpInfo($object_type, $pipeline_input, $contentType);
         return $response;
     }
 
     /**
-     * Operation createWithHttpInfo
+     * Operation createPipelineWithHttpInfo
      *
      * Create a pipeline
      *
      * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineInput $pipeline_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPipeline'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Pipelines\Model\Pipeline|\HubSpot\Client\Crm\Pipelines\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($object_type, $pipeline_input, string $contentType = self::contentTypes['create'][0])
+    public function createPipelineWithHttpInfo($object_type, $pipeline_input, string $contentType = self::contentTypes['createPipeline'][0])
     {
-        $request = $this->createRequest($object_type, $pipeline_input, $contentType);
+        $request = $this->createPipelineRequest($object_type, $pipeline_input, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -848,20 +848,20 @@ class BasicApi
     }
 
     /**
-     * Operation createAsync
+     * Operation createPipelineAsync
      *
      * Create a pipeline
      *
      * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineInput $pipeline_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPipeline'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($object_type, $pipeline_input, string $contentType = self::contentTypes['create'][0])
+    public function createPipelineAsync($object_type, $pipeline_input, string $contentType = self::contentTypes['createPipeline'][0])
     {
-        return $this->createAsyncWithHttpInfo($object_type, $pipeline_input, $contentType)
+        return $this->createPipelineAsyncWithHttpInfo($object_type, $pipeline_input, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -870,21 +870,21 @@ class BasicApi
     }
 
     /**
-     * Operation createAsyncWithHttpInfo
+     * Operation createPipelineAsyncWithHttpInfo
      *
      * Create a pipeline
      *
      * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineInput $pipeline_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPipeline'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($object_type, $pipeline_input, string $contentType = self::contentTypes['create'][0])
+    public function createPipelineAsyncWithHttpInfo($object_type, $pipeline_input, string $contentType = self::contentTypes['createPipeline'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Pipelines\Model\Pipeline';
-        $request = $this->createRequest($object_type, $pipeline_input, $contentType);
+        $request = $this->createPipelineRequest($object_type, $pipeline_input, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -923,29 +923,29 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'create'
+     * Create request for operation 'createPipeline'
      *
      * @param  string $object_type  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineInput $pipeline_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createPipeline'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createRequest($object_type, $pipeline_input, string $contentType = self::contentTypes['create'][0])
+    public function createPipelineRequest($object_type, $pipeline_input, string $contentType = self::contentTypes['createPipeline'][0])
     {
 
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling create'
+                'Missing the required parameter $object_type when calling createPipeline'
             );
         }
 
         // verify the required parameter 'pipeline_input' is set
         if ($pipeline_input === null || (is_array($pipeline_input) && count($pipeline_input) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pipeline_input when calling create'
+                'Missing the required parameter $pipeline_input when calling createPipeline'
             );
         }
 
@@ -1034,42 +1034,42 @@ class BasicApi
     }
 
     /**
-     * Operation create_0
+     * Operation createStage
      *
      * Create a pipeline stage
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineStageInput $pipeline_stage_input pipeline_stage_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createStage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Pipelines\Model\PipelineStage|\HubSpot\Client\Crm\Pipelines\Model\Error
      */
-    public function create_0($object_type, $pipeline_id, $pipeline_stage_input, string $contentType = self::contentTypes['create_0'][0])
+    public function createStage($object_type, $pipeline_id, $pipeline_stage_input, string $contentType = self::contentTypes['createStage'][0])
     {
-        list($response) = $this->create_0WithHttpInfo($object_type, $pipeline_id, $pipeline_stage_input, $contentType);
+        list($response) = $this->createStageWithHttpInfo($object_type, $pipeline_id, $pipeline_stage_input, $contentType);
         return $response;
     }
 
     /**
-     * Operation create_0WithHttpInfo
+     * Operation createStageWithHttpInfo
      *
      * Create a pipeline stage
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineStageInput $pipeline_stage_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createStage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Pipelines\Model\PipelineStage|\HubSpot\Client\Crm\Pipelines\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function create_0WithHttpInfo($object_type, $pipeline_id, $pipeline_stage_input, string $contentType = self::contentTypes['create_0'][0])
+    public function createStageWithHttpInfo($object_type, $pipeline_id, $pipeline_stage_input, string $contentType = self::contentTypes['createStage'][0])
     {
-        $request = $this->create_0Request($object_type, $pipeline_id, $pipeline_stage_input, $contentType);
+        $request = $this->createStageRequest($object_type, $pipeline_id, $pipeline_stage_input, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1155,21 +1155,21 @@ class BasicApi
     }
 
     /**
-     * Operation create_0Async
+     * Operation createStageAsync
      *
      * Create a pipeline stage
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineStageInput $pipeline_stage_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createStage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function create_0Async($object_type, $pipeline_id, $pipeline_stage_input, string $contentType = self::contentTypes['create_0'][0])
+    public function createStageAsync($object_type, $pipeline_id, $pipeline_stage_input, string $contentType = self::contentTypes['createStage'][0])
     {
-        return $this->create_0AsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_stage_input, $contentType)
+        return $this->createStageAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_stage_input, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1178,22 +1178,22 @@ class BasicApi
     }
 
     /**
-     * Operation create_0AsyncWithHttpInfo
+     * Operation createStageAsyncWithHttpInfo
      *
      * Create a pipeline stage
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineStageInput $pipeline_stage_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createStage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function create_0AsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_stage_input, string $contentType = self::contentTypes['create_0'][0])
+    public function createStageAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_stage_input, string $contentType = self::contentTypes['createStage'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Pipelines\Model\PipelineStage';
-        $request = $this->create_0Request($object_type, $pipeline_id, $pipeline_stage_input, $contentType);
+        $request = $this->createStageRequest($object_type, $pipeline_id, $pipeline_stage_input, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1232,37 +1232,37 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'create_0'
+     * Create request for operation 'createStage'
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineStageInput $pipeline_stage_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createStage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function create_0Request($object_type, $pipeline_id, $pipeline_stage_input, string $contentType = self::contentTypes['create_0'][0])
+    public function createStageRequest($object_type, $pipeline_id, $pipeline_stage_input, string $contentType = self::contentTypes['createStage'][0])
     {
 
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling create_0'
+                'Missing the required parameter $object_type when calling createStage'
             );
         }
 
         // verify the required parameter 'pipeline_id' is set
         if ($pipeline_id === null || (is_array($pipeline_id) && count($pipeline_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pipeline_id when calling create_0'
+                'Missing the required parameter $pipeline_id when calling createStage'
             );
         }
 
         // verify the required parameter 'pipeline_stage_input' is set
         if ($pipeline_stage_input === null || (is_array($pipeline_stage_input) && count($pipeline_stage_input) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pipeline_stage_input when calling create_0'
+                'Missing the required parameter $pipeline_stage_input when calling createStage'
             );
         }
 
@@ -1359,38 +1359,38 @@ class BasicApi
     }
 
     /**
-     * Operation getAll
+     * Operation getAllPipelines
      *
      * Retrieve all pipelines
      *
      * @param  string $object_type  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllPipelines'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Pipelines\Model\CollectionResponsePipelineNoPaging|\HubSpot\Client\Crm\Pipelines\Model\Error
      */
-    public function getAll($object_type, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllPipelines($object_type, string $contentType = self::contentTypes['getAllPipelines'][0])
     {
-        list($response) = $this->getAllWithHttpInfo($object_type, $contentType);
+        list($response) = $this->getAllPipelinesWithHttpInfo($object_type, $contentType);
         return $response;
     }
 
     /**
-     * Operation getAllWithHttpInfo
+     * Operation getAllPipelinesWithHttpInfo
      *
      * Retrieve all pipelines
      *
      * @param  string $object_type  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllPipelines'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Pipelines\Model\CollectionResponsePipelineNoPaging|\HubSpot\Client\Crm\Pipelines\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAllWithHttpInfo($object_type, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllPipelinesWithHttpInfo($object_type, string $contentType = self::contentTypes['getAllPipelines'][0])
     {
-        $request = $this->getAllRequest($object_type, $contentType);
+        $request = $this->getAllPipelinesRequest($object_type, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1476,19 +1476,19 @@ class BasicApi
     }
 
     /**
-     * Operation getAllAsync
+     * Operation getAllPipelinesAsync
      *
      * Retrieve all pipelines
      *
      * @param  string $object_type  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllPipelines'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsync($object_type, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllPipelinesAsync($object_type, string $contentType = self::contentTypes['getAllPipelines'][0])
     {
-        return $this->getAllAsyncWithHttpInfo($object_type, $contentType)
+        return $this->getAllPipelinesAsyncWithHttpInfo($object_type, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1497,20 +1497,20 @@ class BasicApi
     }
 
     /**
-     * Operation getAllAsyncWithHttpInfo
+     * Operation getAllPipelinesAsyncWithHttpInfo
      *
      * Retrieve all pipelines
      *
      * @param  string $object_type  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllPipelines'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAllAsyncWithHttpInfo($object_type, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllPipelinesAsyncWithHttpInfo($object_type, string $contentType = self::contentTypes['getAllPipelines'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Pipelines\Model\CollectionResponsePipelineNoPaging';
-        $request = $this->getAllRequest($object_type, $contentType);
+        $request = $this->getAllPipelinesRequest($object_type, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1549,21 +1549,21 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'getAll'
+     * Create request for operation 'getAllPipelines'
      *
      * @param  string $object_type  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllPipelines'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAllRequest($object_type, string $contentType = self::contentTypes['getAll'][0])
+    public function getAllPipelinesRequest($object_type, string $contentType = self::contentTypes['getAllPipelines'][0])
     {
 
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling getAll'
+                'Missing the required parameter $object_type when calling getAllPipelines'
             );
         }
 
@@ -1645,40 +1645,40 @@ class BasicApi
     }
 
     /**
-     * Operation getAll_0
+     * Operation getAllStages
      *
      * Return all stages of a pipeline
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllStages'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Pipelines\Model\CollectionResponsePipelineStageNoPaging|\HubSpot\Client\Crm\Pipelines\Model\Error
      */
-    public function getAll_0($object_type, $pipeline_id, string $contentType = self::contentTypes['getAll_0'][0])
+    public function getAllStages($object_type, $pipeline_id, string $contentType = self::contentTypes['getAllStages'][0])
     {
-        list($response) = $this->getAll_0WithHttpInfo($object_type, $pipeline_id, $contentType);
+        list($response) = $this->getAllStagesWithHttpInfo($object_type, $pipeline_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation getAll_0WithHttpInfo
+     * Operation getAllStagesWithHttpInfo
      *
      * Return all stages of a pipeline
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllStages'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Pipelines\Model\CollectionResponsePipelineStageNoPaging|\HubSpot\Client\Crm\Pipelines\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAll_0WithHttpInfo($object_type, $pipeline_id, string $contentType = self::contentTypes['getAll_0'][0])
+    public function getAllStagesWithHttpInfo($object_type, $pipeline_id, string $contentType = self::contentTypes['getAllStages'][0])
     {
-        $request = $this->getAll_0Request($object_type, $pipeline_id, $contentType);
+        $request = $this->getAllStagesRequest($object_type, $pipeline_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1764,20 +1764,20 @@ class BasicApi
     }
 
     /**
-     * Operation getAll_0Async
+     * Operation getAllStagesAsync
      *
      * Return all stages of a pipeline
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllStages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAll_0Async($object_type, $pipeline_id, string $contentType = self::contentTypes['getAll_0'][0])
+    public function getAllStagesAsync($object_type, $pipeline_id, string $contentType = self::contentTypes['getAllStages'][0])
     {
-        return $this->getAll_0AsyncWithHttpInfo($object_type, $pipeline_id, $contentType)
+        return $this->getAllStagesAsyncWithHttpInfo($object_type, $pipeline_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1786,21 +1786,21 @@ class BasicApi
     }
 
     /**
-     * Operation getAll_0AsyncWithHttpInfo
+     * Operation getAllStagesAsyncWithHttpInfo
      *
      * Return all stages of a pipeline
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllStages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAll_0AsyncWithHttpInfo($object_type, $pipeline_id, string $contentType = self::contentTypes['getAll_0'][0])
+    public function getAllStagesAsyncWithHttpInfo($object_type, $pipeline_id, string $contentType = self::contentTypes['getAllStages'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Pipelines\Model\CollectionResponsePipelineStageNoPaging';
-        $request = $this->getAll_0Request($object_type, $pipeline_id, $contentType);
+        $request = $this->getAllStagesRequest($object_type, $pipeline_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1839,29 +1839,29 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'getAll_0'
+     * Create request for operation 'getAllStages'
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAll_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAllStages'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAll_0Request($object_type, $pipeline_id, string $contentType = self::contentTypes['getAll_0'][0])
+    public function getAllStagesRequest($object_type, $pipeline_id, string $contentType = self::contentTypes['getAllStages'][0])
     {
 
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling getAll_0'
+                'Missing the required parameter $object_type when calling getAllStages'
             );
         }
 
         // verify the required parameter 'pipeline_id' is set
         if ($pipeline_id === null || (is_array($pipeline_id) && count($pipeline_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pipeline_id when calling getAll_0'
+                'Missing the required parameter $pipeline_id when calling getAllStages'
             );
         }
 
@@ -1951,40 +1951,40 @@ class BasicApi
     }
 
     /**
-     * Operation getAudit
+     * Operation getPipelineAudit
      *
      * Return an audit of all changes to the pipeline
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudit'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPipelineAudit'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Pipelines\Model\CollectionResponsePublicAuditInfoNoPaging|\HubSpot\Client\Crm\Pipelines\Model\Error
      */
-    public function getAudit($object_type, $pipeline_id, string $contentType = self::contentTypes['getAudit'][0])
+    public function getPipelineAudit($object_type, $pipeline_id, string $contentType = self::contentTypes['getPipelineAudit'][0])
     {
-        list($response) = $this->getAuditWithHttpInfo($object_type, $pipeline_id, $contentType);
+        list($response) = $this->getPipelineAuditWithHttpInfo($object_type, $pipeline_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation getAuditWithHttpInfo
+     * Operation getPipelineAuditWithHttpInfo
      *
      * Return an audit of all changes to the pipeline
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudit'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPipelineAudit'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Pipelines\Model\CollectionResponsePublicAuditInfoNoPaging|\HubSpot\Client\Crm\Pipelines\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAuditWithHttpInfo($object_type, $pipeline_id, string $contentType = self::contentTypes['getAudit'][0])
+    public function getPipelineAuditWithHttpInfo($object_type, $pipeline_id, string $contentType = self::contentTypes['getPipelineAudit'][0])
     {
-        $request = $this->getAuditRequest($object_type, $pipeline_id, $contentType);
+        $request = $this->getPipelineAuditRequest($object_type, $pipeline_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2070,20 +2070,20 @@ class BasicApi
     }
 
     /**
-     * Operation getAuditAsync
+     * Operation getPipelineAuditAsync
      *
      * Return an audit of all changes to the pipeline
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudit'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPipelineAudit'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAuditAsync($object_type, $pipeline_id, string $contentType = self::contentTypes['getAudit'][0])
+    public function getPipelineAuditAsync($object_type, $pipeline_id, string $contentType = self::contentTypes['getPipelineAudit'][0])
     {
-        return $this->getAuditAsyncWithHttpInfo($object_type, $pipeline_id, $contentType)
+        return $this->getPipelineAuditAsyncWithHttpInfo($object_type, $pipeline_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2092,21 +2092,21 @@ class BasicApi
     }
 
     /**
-     * Operation getAuditAsyncWithHttpInfo
+     * Operation getPipelineAuditAsyncWithHttpInfo
      *
      * Return an audit of all changes to the pipeline
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudit'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPipelineAudit'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAuditAsyncWithHttpInfo($object_type, $pipeline_id, string $contentType = self::contentTypes['getAudit'][0])
+    public function getPipelineAuditAsyncWithHttpInfo($object_type, $pipeline_id, string $contentType = self::contentTypes['getPipelineAudit'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Pipelines\Model\CollectionResponsePublicAuditInfoNoPaging';
-        $request = $this->getAuditRequest($object_type, $pipeline_id, $contentType);
+        $request = $this->getPipelineAuditRequest($object_type, $pipeline_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2145,29 +2145,29 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'getAudit'
+     * Create request for operation 'getPipelineAudit'
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudit'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPipelineAudit'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAuditRequest($object_type, $pipeline_id, string $contentType = self::contentTypes['getAudit'][0])
+    public function getPipelineAuditRequest($object_type, $pipeline_id, string $contentType = self::contentTypes['getPipelineAudit'][0])
     {
 
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling getAudit'
+                'Missing the required parameter $object_type when calling getPipelineAudit'
             );
         }
 
         // verify the required parameter 'pipeline_id' is set
         if ($pipeline_id === null || (is_array($pipeline_id) && count($pipeline_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pipeline_id when calling getAudit'
+                'Missing the required parameter $pipeline_id when calling getPipelineAudit'
             );
         }
 
@@ -2257,38 +2257,344 @@ class BasicApi
     }
 
     /**
-     * Operation getAudit_0
+     * Operation getPipelineById
+     *
+     * Return a pipeline by ID
+     *
+     * @param  string $object_type  (required)
+     * @param  string $pipeline_id  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPipelineById'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HubSpot\Client\Crm\Pipelines\Model\Pipeline|\HubSpot\Client\Crm\Pipelines\Model\Error
+     */
+    public function getPipelineById($object_type, $pipeline_id, string $contentType = self::contentTypes['getPipelineById'][0])
+    {
+        list($response) = $this->getPipelineByIdWithHttpInfo($object_type, $pipeline_id, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getPipelineByIdWithHttpInfo
+     *
+     * Return a pipeline by ID
+     *
+     * @param  string $object_type  (required)
+     * @param  string $pipeline_id  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPipelineById'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HubSpot\Client\Crm\Pipelines\Model\Pipeline|\HubSpot\Client\Crm\Pipelines\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getPipelineByIdWithHttpInfo($object_type, $pipeline_id, string $contentType = self::contentTypes['getPipelineById'][0])
+    {
+        $request = $this->getPipelineByIdRequest($object_type, $pipeline_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Pipelines\Model\Pipeline',
+                        $request,
+                        $response,
+                    );
+                default:
+                    return $this->handleResponseWithDataType(
+                        '\HubSpot\Client\Crm\Pipelines\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HubSpot\Client\Crm\Pipelines\Model\Pipeline',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Pipelines\Model\Pipeline',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Pipelines\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getPipelineByIdAsync
+     *
+     * Return a pipeline by ID
+     *
+     * @param  string $object_type  (required)
+     * @param  string $pipeline_id  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPipelineById'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPipelineByIdAsync($object_type, $pipeline_id, string $contentType = self::contentTypes['getPipelineById'][0])
+    {
+        return $this->getPipelineByIdAsyncWithHttpInfo($object_type, $pipeline_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getPipelineByIdAsyncWithHttpInfo
+     *
+     * Return a pipeline by ID
+     *
+     * @param  string $object_type  (required)
+     * @param  string $pipeline_id  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPipelineById'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getPipelineByIdAsyncWithHttpInfo($object_type, $pipeline_id, string $contentType = self::contentTypes['getPipelineById'][0])
+    {
+        $returnType = '\HubSpot\Client\Crm\Pipelines\Model\Pipeline';
+        $request = $this->getPipelineByIdRequest($object_type, $pipeline_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getPipelineById'
+     *
+     * @param  string $object_type  (required)
+     * @param  string $pipeline_id  (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPipelineById'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getPipelineByIdRequest($object_type, $pipeline_id, string $contentType = self::contentTypes['getPipelineById'][0])
+    {
+
+        // verify the required parameter 'object_type' is set
+        if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $object_type when calling getPipelineById'
+            );
+        }
+
+        // verify the required parameter 'pipeline_id' is set
+        if ($pipeline_id === null || (is_array($pipeline_id) && count($pipeline_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $pipeline_id when calling getPipelineById'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/pipelines/{objectType}/{pipelineId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($object_type !== null) {
+            $resourcePath = str_replace(
+                '{' . 'objectType' . '}',
+                ObjectSerializer::toPathValue($object_type),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($pipeline_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'pipelineId' . '}',
+                ObjectSerializer::toPathValue($pipeline_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', '*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getStageAudit
      *
      * @param  string $object_type  (required)
      * @param  string $stage_id  (required)
      * @param  string $pipeline_id pipeline_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudit_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStageAudit'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Pipelines\Model\CollectionResponsePublicAuditInfoNoPaging|\HubSpot\Client\Crm\Pipelines\Model\Error
      */
-    public function getAudit_0($object_type, $stage_id, $pipeline_id, string $contentType = self::contentTypes['getAudit_0'][0])
+    public function getStageAudit($object_type, $stage_id, $pipeline_id, string $contentType = self::contentTypes['getStageAudit'][0])
     {
-        list($response) = $this->getAudit_0WithHttpInfo($object_type, $stage_id, $pipeline_id, $contentType);
+        list($response) = $this->getStageAuditWithHttpInfo($object_type, $stage_id, $pipeline_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation getAudit_0WithHttpInfo
+     * Operation getStageAuditWithHttpInfo
      *
      * @param  string $object_type  (required)
      * @param  string $stage_id  (required)
      * @param  string $pipeline_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudit_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStageAudit'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Pipelines\Model\CollectionResponsePublicAuditInfoNoPaging|\HubSpot\Client\Crm\Pipelines\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAudit_0WithHttpInfo($object_type, $stage_id, $pipeline_id, string $contentType = self::contentTypes['getAudit_0'][0])
+    public function getStageAuditWithHttpInfo($object_type, $stage_id, $pipeline_id, string $contentType = self::contentTypes['getStageAudit'][0])
     {
-        $request = $this->getAudit_0Request($object_type, $stage_id, $pipeline_id, $contentType);
+        $request = $this->getStageAuditRequest($object_type, $stage_id, $pipeline_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2374,19 +2680,19 @@ class BasicApi
     }
 
     /**
-     * Operation getAudit_0Async
+     * Operation getStageAuditAsync
      *
      * @param  string $object_type  (required)
      * @param  string $stage_id  (required)
      * @param  string $pipeline_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudit_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStageAudit'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAudit_0Async($object_type, $stage_id, $pipeline_id, string $contentType = self::contentTypes['getAudit_0'][0])
+    public function getStageAuditAsync($object_type, $stage_id, $pipeline_id, string $contentType = self::contentTypes['getStageAudit'][0])
     {
-        return $this->getAudit_0AsyncWithHttpInfo($object_type, $stage_id, $pipeline_id, $contentType)
+        return $this->getStageAuditAsyncWithHttpInfo($object_type, $stage_id, $pipeline_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2395,20 +2701,20 @@ class BasicApi
     }
 
     /**
-     * Operation getAudit_0AsyncWithHttpInfo
+     * Operation getStageAuditAsyncWithHttpInfo
      *
      * @param  string $object_type  (required)
      * @param  string $stage_id  (required)
      * @param  string $pipeline_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudit_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStageAudit'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAudit_0AsyncWithHttpInfo($object_type, $stage_id, $pipeline_id, string $contentType = self::contentTypes['getAudit_0'][0])
+    public function getStageAuditAsyncWithHttpInfo($object_type, $stage_id, $pipeline_id, string $contentType = self::contentTypes['getStageAudit'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Pipelines\Model\CollectionResponsePublicAuditInfoNoPaging';
-        $request = $this->getAudit_0Request($object_type, $stage_id, $pipeline_id, $contentType);
+        $request = $this->getStageAuditRequest($object_type, $stage_id, $pipeline_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2447,41 +2753,41 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'getAudit_0'
+     * Create request for operation 'getStageAudit'
      *
      * @param  string $object_type  (required)
      * @param  string $stage_id  (required)
      * @param  string $pipeline_id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getAudit_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStageAudit'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAudit_0Request($object_type, $stage_id, $pipeline_id, string $contentType = self::contentTypes['getAudit_0'][0])
+    public function getStageAuditRequest($object_type, $stage_id, $pipeline_id, string $contentType = self::contentTypes['getStageAudit'][0])
     {
 
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling getAudit_0'
+                'Missing the required parameter $object_type when calling getStageAudit'
             );
         }
 
         // verify the required parameter 'stage_id' is set
         if ($stage_id === null || (is_array($stage_id) && count($stage_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $stage_id when calling getAudit_0'
+                'Missing the required parameter $stage_id when calling getStageAudit'
             );
         }
 
         // verify the required parameter 'pipeline_id' is set
         if ($pipeline_id === null || (is_array($pipeline_id) && count($pipeline_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pipeline_id when calling getAudit_0'
+                'Missing the required parameter $pipeline_id when calling getStageAudit'
             );
         }
         if (!preg_match("/.+/", $pipeline_id)) {
-            throw new \InvalidArgumentException("invalid value for \"pipeline_id\" when calling BasicApi.getAudit_0, must conform to the pattern /.+/.");
+            throw new \InvalidArgumentException("invalid value for \"pipeline_id\" when calling BasicApi.getStageAudit, must conform to the pattern /.+/.");
         }
         
 
@@ -2578,348 +2884,42 @@ class BasicApi
     }
 
     /**
-     * Operation getById
-     *
-     * Return a pipeline by ID
-     *
-     * @param  string $object_type  (required)
-     * @param  string $pipeline_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \HubSpot\Client\Crm\Pipelines\Model\Pipeline|\HubSpot\Client\Crm\Pipelines\Model\Error
-     */
-    public function getById($object_type, $pipeline_id, string $contentType = self::contentTypes['getById'][0])
-    {
-        list($response) = $this->getByIdWithHttpInfo($object_type, $pipeline_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation getByIdWithHttpInfo
-     *
-     * Return a pipeline by ID
-     *
-     * @param  string $object_type  (required)
-     * @param  string $pipeline_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \HubSpot\Client\Crm\Pipelines\Model\Pipeline|\HubSpot\Client\Crm\Pipelines\Model\Error, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getByIdWithHttpInfo($object_type, $pipeline_id, string $contentType = self::contentTypes['getById'][0])
-    {
-        $request = $this->getByIdRequest($object_type, $pipeline_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Pipelines\Model\Pipeline',
-                        $request,
-                        $response,
-                    );
-                default:
-                    return $this->handleResponseWithDataType(
-                        '\HubSpot\Client\Crm\Pipelines\Model\Error',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\HubSpot\Client\Crm\Pipelines\Model\Pipeline',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Pipelines\Model\Pipeline',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Pipelines\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getByIdAsync
-     *
-     * Return a pipeline by ID
-     *
-     * @param  string $object_type  (required)
-     * @param  string $pipeline_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getByIdAsync($object_type, $pipeline_id, string $contentType = self::contentTypes['getById'][0])
-    {
-        return $this->getByIdAsyncWithHttpInfo($object_type, $pipeline_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getByIdAsyncWithHttpInfo
-     *
-     * Return a pipeline by ID
-     *
-     * @param  string $object_type  (required)
-     * @param  string $pipeline_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getByIdAsyncWithHttpInfo($object_type, $pipeline_id, string $contentType = self::contentTypes['getById'][0])
-    {
-        $returnType = '\HubSpot\Client\Crm\Pipelines\Model\Pipeline';
-        $request = $this->getByIdRequest($object_type, $pipeline_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getById'
-     *
-     * @param  string $object_type  (required)
-     * @param  string $pipeline_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function getByIdRequest($object_type, $pipeline_id, string $contentType = self::contentTypes['getById'][0])
-    {
-
-        // verify the required parameter 'object_type' is set
-        if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling getById'
-            );
-        }
-
-        // verify the required parameter 'pipeline_id' is set
-        if ($pipeline_id === null || (is_array($pipeline_id) && count($pipeline_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $pipeline_id when calling getById'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/pipelines/{objectType}/{pipelineId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($object_type !== null) {
-            $resourcePath = str_replace(
-                '{' . 'objectType' . '}',
-                ObjectSerializer::toPathValue($object_type),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($pipeline_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'pipelineId' . '}',
-                ObjectSerializer::toPathValue($pipeline_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', '*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation getById_0
+     * Operation getStageById
      *
      * Return a pipeline stage by ID
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  string $stage_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStageById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Pipelines\Model\PipelineStage|\HubSpot\Client\Crm\Pipelines\Model\Error
      */
-    public function getById_0($object_type, $pipeline_id, $stage_id, string $contentType = self::contentTypes['getById_0'][0])
+    public function getStageById($object_type, $pipeline_id, $stage_id, string $contentType = self::contentTypes['getStageById'][0])
     {
-        list($response) = $this->getById_0WithHttpInfo($object_type, $pipeline_id, $stage_id, $contentType);
+        list($response) = $this->getStageByIdWithHttpInfo($object_type, $pipeline_id, $stage_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation getById_0WithHttpInfo
+     * Operation getStageByIdWithHttpInfo
      *
      * Return a pipeline stage by ID
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  string $stage_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStageById'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Pipelines\Model\PipelineStage|\HubSpot\Client\Crm\Pipelines\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getById_0WithHttpInfo($object_type, $pipeline_id, $stage_id, string $contentType = self::contentTypes['getById_0'][0])
+    public function getStageByIdWithHttpInfo($object_type, $pipeline_id, $stage_id, string $contentType = self::contentTypes['getStageById'][0])
     {
-        $request = $this->getById_0Request($object_type, $pipeline_id, $stage_id, $contentType);
+        $request = $this->getStageByIdRequest($object_type, $pipeline_id, $stage_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3005,21 +3005,21 @@ class BasicApi
     }
 
     /**
-     * Operation getById_0Async
+     * Operation getStageByIdAsync
      *
      * Return a pipeline stage by ID
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  string $stage_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStageById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getById_0Async($object_type, $pipeline_id, $stage_id, string $contentType = self::contentTypes['getById_0'][0])
+    public function getStageByIdAsync($object_type, $pipeline_id, $stage_id, string $contentType = self::contentTypes['getStageById'][0])
     {
-        return $this->getById_0AsyncWithHttpInfo($object_type, $pipeline_id, $stage_id, $contentType)
+        return $this->getStageByIdAsyncWithHttpInfo($object_type, $pipeline_id, $stage_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3028,22 +3028,22 @@ class BasicApi
     }
 
     /**
-     * Operation getById_0AsyncWithHttpInfo
+     * Operation getStageByIdAsyncWithHttpInfo
      *
      * Return a pipeline stage by ID
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  string $stage_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStageById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getById_0AsyncWithHttpInfo($object_type, $pipeline_id, $stage_id, string $contentType = self::contentTypes['getById_0'][0])
+    public function getStageByIdAsyncWithHttpInfo($object_type, $pipeline_id, $stage_id, string $contentType = self::contentTypes['getStageById'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Pipelines\Model\PipelineStage';
-        $request = $this->getById_0Request($object_type, $pipeline_id, $stage_id, $contentType);
+        $request = $this->getStageByIdRequest($object_type, $pipeline_id, $stage_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3082,37 +3082,37 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'getById_0'
+     * Create request for operation 'getStageById'
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  string $stage_id  (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getById_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getStageById'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getById_0Request($object_type, $pipeline_id, $stage_id, string $contentType = self::contentTypes['getById_0'][0])
+    public function getStageByIdRequest($object_type, $pipeline_id, $stage_id, string $contentType = self::contentTypes['getStageById'][0])
     {
 
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling getById_0'
+                'Missing the required parameter $object_type when calling getStageById'
             );
         }
 
         // verify the required parameter 'pipeline_id' is set
         if ($pipeline_id === null || (is_array($pipeline_id) && count($pipeline_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pipeline_id when calling getById_0'
+                'Missing the required parameter $pipeline_id when calling getStageById'
             );
         }
 
         // verify the required parameter 'stage_id' is set
         if ($stage_id === null || (is_array($stage_id) && count($stage_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $stage_id when calling getById_0'
+                'Missing the required parameter $stage_id when calling getStageById'
             );
         }
 
@@ -3210,7 +3210,7 @@ class BasicApi
     }
 
     /**
-     * Operation replace
+     * Operation replacePipeline
      *
      * Replace a pipeline
      *
@@ -3219,20 +3219,20 @@ class BasicApi
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineReplaceInput $pipeline_replace_input pipeline_replace_input (required)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
      * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replace'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replacePipeline'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Pipelines\Model\Pipeline|\HubSpot\Client\Crm\Pipelines\Model\Error
      */
-    public function replace($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['replace'][0])
+    public function replacePipeline($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['replacePipeline'][0])
     {
-        list($response) = $this->replaceWithHttpInfo($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
+        list($response) = $this->replacePipelineWithHttpInfo($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
         return $response;
     }
 
     /**
-     * Operation replaceWithHttpInfo
+     * Operation replacePipelineWithHttpInfo
      *
      * Replace a pipeline
      *
@@ -3241,15 +3241,15 @@ class BasicApi
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineReplaceInput $pipeline_replace_input (required)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
      * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replace'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replacePipeline'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Pipelines\Model\Pipeline|\HubSpot\Client\Crm\Pipelines\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function replaceWithHttpInfo($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['replace'][0])
+    public function replacePipelineWithHttpInfo($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['replacePipeline'][0])
     {
-        $request = $this->replaceRequest($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
+        $request = $this->replacePipelineRequest($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3335,7 +3335,7 @@ class BasicApi
     }
 
     /**
-     * Operation replaceAsync
+     * Operation replacePipelineAsync
      *
      * Replace a pipeline
      *
@@ -3344,14 +3344,14 @@ class BasicApi
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineReplaceInput $pipeline_replace_input (required)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
      * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replace'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replacePipeline'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function replaceAsync($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['replace'][0])
+    public function replacePipelineAsync($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['replacePipeline'][0])
     {
-        return $this->replaceAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType)
+        return $this->replacePipelineAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3360,7 +3360,7 @@ class BasicApi
     }
 
     /**
-     * Operation replaceAsyncWithHttpInfo
+     * Operation replacePipelineAsyncWithHttpInfo
      *
      * Replace a pipeline
      *
@@ -3369,15 +3369,15 @@ class BasicApi
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineReplaceInput $pipeline_replace_input (required)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
      * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replace'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replacePipeline'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function replaceAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['replace'][0])
+    public function replacePipelineAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['replacePipeline'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Pipelines\Model\Pipeline';
-        $request = $this->replaceRequest($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
+        $request = $this->replacePipelineRequest($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3416,39 +3416,39 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'replace'
+     * Create request for operation 'replacePipeline'
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineReplaceInput $pipeline_replace_input (required)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
      * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replace'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replacePipeline'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function replaceRequest($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['replace'][0])
+    public function replacePipelineRequest($object_type, $pipeline_id, $pipeline_replace_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['replacePipeline'][0])
     {
 
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling replace'
+                'Missing the required parameter $object_type when calling replacePipeline'
             );
         }
 
         // verify the required parameter 'pipeline_id' is set
         if ($pipeline_id === null || (is_array($pipeline_id) && count($pipeline_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pipeline_id when calling replace'
+                'Missing the required parameter $pipeline_id when calling replacePipeline'
             );
         }
 
         // verify the required parameter 'pipeline_replace_input' is set
         if ($pipeline_replace_input === null || (is_array($pipeline_replace_input) && count($pipeline_replace_input) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pipeline_replace_input when calling replace'
+                'Missing the required parameter $pipeline_replace_input when calling replacePipeline'
             );
         }
 
@@ -3565,7 +3565,7 @@ class BasicApi
     }
 
     /**
-     * Operation replace_0
+     * Operation replaceStage
      *
      * Replace a pipeline stage
      *
@@ -3573,20 +3573,20 @@ class BasicApi
      * @param  string $pipeline_id  (required)
      * @param  string $stage_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineStageReplaceInput $pipeline_stage_replace_input pipeline_stage_replace_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replace_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceStage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Pipelines\Model\PipelineStage|\HubSpot\Client\Crm\Pipelines\Model\Error
      */
-    public function replace_0($object_type, $pipeline_id, $stage_id, $pipeline_stage_replace_input, string $contentType = self::contentTypes['replace_0'][0])
+    public function replaceStage($object_type, $pipeline_id, $stage_id, $pipeline_stage_replace_input, string $contentType = self::contentTypes['replaceStage'][0])
     {
-        list($response) = $this->replace_0WithHttpInfo($object_type, $pipeline_id, $stage_id, $pipeline_stage_replace_input, $contentType);
+        list($response) = $this->replaceStageWithHttpInfo($object_type, $pipeline_id, $stage_id, $pipeline_stage_replace_input, $contentType);
         return $response;
     }
 
     /**
-     * Operation replace_0WithHttpInfo
+     * Operation replaceStageWithHttpInfo
      *
      * Replace a pipeline stage
      *
@@ -3594,15 +3594,15 @@ class BasicApi
      * @param  string $pipeline_id  (required)
      * @param  string $stage_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineStageReplaceInput $pipeline_stage_replace_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replace_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceStage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Pipelines\Model\PipelineStage|\HubSpot\Client\Crm\Pipelines\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function replace_0WithHttpInfo($object_type, $pipeline_id, $stage_id, $pipeline_stage_replace_input, string $contentType = self::contentTypes['replace_0'][0])
+    public function replaceStageWithHttpInfo($object_type, $pipeline_id, $stage_id, $pipeline_stage_replace_input, string $contentType = self::contentTypes['replaceStage'][0])
     {
-        $request = $this->replace_0Request($object_type, $pipeline_id, $stage_id, $pipeline_stage_replace_input, $contentType);
+        $request = $this->replaceStageRequest($object_type, $pipeline_id, $stage_id, $pipeline_stage_replace_input, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3688,7 +3688,7 @@ class BasicApi
     }
 
     /**
-     * Operation replace_0Async
+     * Operation replaceStageAsync
      *
      * Replace a pipeline stage
      *
@@ -3696,14 +3696,14 @@ class BasicApi
      * @param  string $pipeline_id  (required)
      * @param  string $stage_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineStageReplaceInput $pipeline_stage_replace_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replace_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceStage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function replace_0Async($object_type, $pipeline_id, $stage_id, $pipeline_stage_replace_input, string $contentType = self::contentTypes['replace_0'][0])
+    public function replaceStageAsync($object_type, $pipeline_id, $stage_id, $pipeline_stage_replace_input, string $contentType = self::contentTypes['replaceStage'][0])
     {
-        return $this->replace_0AsyncWithHttpInfo($object_type, $pipeline_id, $stage_id, $pipeline_stage_replace_input, $contentType)
+        return $this->replaceStageAsyncWithHttpInfo($object_type, $pipeline_id, $stage_id, $pipeline_stage_replace_input, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3712,7 +3712,7 @@ class BasicApi
     }
 
     /**
-     * Operation replace_0AsyncWithHttpInfo
+     * Operation replaceStageAsyncWithHttpInfo
      *
      * Replace a pipeline stage
      *
@@ -3720,15 +3720,15 @@ class BasicApi
      * @param  string $pipeline_id  (required)
      * @param  string $stage_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineStageReplaceInput $pipeline_stage_replace_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replace_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceStage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function replace_0AsyncWithHttpInfo($object_type, $pipeline_id, $stage_id, $pipeline_stage_replace_input, string $contentType = self::contentTypes['replace_0'][0])
+    public function replaceStageAsyncWithHttpInfo($object_type, $pipeline_id, $stage_id, $pipeline_stage_replace_input, string $contentType = self::contentTypes['replaceStage'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Pipelines\Model\PipelineStage';
-        $request = $this->replace_0Request($object_type, $pipeline_id, $stage_id, $pipeline_stage_replace_input, $contentType);
+        $request = $this->replaceStageRequest($object_type, $pipeline_id, $stage_id, $pipeline_stage_replace_input, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3767,45 +3767,45 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'replace_0'
+     * Create request for operation 'replaceStage'
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  string $stage_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineStageReplaceInput $pipeline_stage_replace_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replace_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['replaceStage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function replace_0Request($object_type, $pipeline_id, $stage_id, $pipeline_stage_replace_input, string $contentType = self::contentTypes['replace_0'][0])
+    public function replaceStageRequest($object_type, $pipeline_id, $stage_id, $pipeline_stage_replace_input, string $contentType = self::contentTypes['replaceStage'][0])
     {
 
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling replace_0'
+                'Missing the required parameter $object_type when calling replaceStage'
             );
         }
 
         // verify the required parameter 'pipeline_id' is set
         if ($pipeline_id === null || (is_array($pipeline_id) && count($pipeline_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pipeline_id when calling replace_0'
+                'Missing the required parameter $pipeline_id when calling replaceStage'
             );
         }
 
         // verify the required parameter 'stage_id' is set
         if ($stage_id === null || (is_array($stage_id) && count($stage_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $stage_id when calling replace_0'
+                'Missing the required parameter $stage_id when calling replaceStage'
             );
         }
 
         // verify the required parameter 'pipeline_stage_replace_input' is set
         if ($pipeline_stage_replace_input === null || (is_array($pipeline_stage_replace_input) && count($pipeline_stage_replace_input) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pipeline_stage_replace_input when calling replace_0'
+                'Missing the required parameter $pipeline_stage_replace_input when calling replaceStage'
             );
         }
 
@@ -3910,42 +3910,42 @@ class BasicApi
     }
 
     /**
-     * Operation update
+     * Operation updatePipeline
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelinePatchInput $pipeline_patch_input pipeline_patch_input (required)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
      * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePipeline'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Pipelines\Model\Pipeline|\HubSpot\Client\Crm\Pipelines\Model\Error
      */
-    public function update($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['update'][0])
+    public function updatePipeline($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['updatePipeline'][0])
     {
-        list($response) = $this->updateWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
+        list($response) = $this->updatePipelineWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
         return $response;
     }
 
     /**
-     * Operation updateWithHttpInfo
+     * Operation updatePipelineWithHttpInfo
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelinePatchInput $pipeline_patch_input (required)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
      * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePipeline'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Pipelines\Model\Pipeline|\HubSpot\Client\Crm\Pipelines\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['update'][0])
+    public function updatePipelineWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['updatePipeline'][0])
     {
-        $request = $this->updateRequest($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
+        $request = $this->updatePipelineRequest($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4031,21 +4031,21 @@ class BasicApi
     }
 
     /**
-     * Operation updateAsync
+     * Operation updatePipelineAsync
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelinePatchInput $pipeline_patch_input (required)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
      * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePipeline'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsync($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['update'][0])
+    public function updatePipelineAsync($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['updatePipeline'][0])
     {
-        return $this->updateAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType)
+        return $this->updatePipelineAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4054,22 +4054,22 @@ class BasicApi
     }
 
     /**
-     * Operation updateAsyncWithHttpInfo
+     * Operation updatePipelineAsyncWithHttpInfo
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelinePatchInput $pipeline_patch_input (required)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
      * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePipeline'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['update'][0])
+    public function updatePipelineAsyncWithHttpInfo($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['updatePipeline'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Pipelines\Model\Pipeline';
-        $request = $this->updateRequest($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
+        $request = $this->updatePipelineRequest($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete, $validate_deal_stage_usages_before_delete, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4108,39 +4108,39 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'update'
+     * Create request for operation 'updatePipeline'
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelinePatchInput $pipeline_patch_input (required)
      * @param  bool|null $validate_references_before_delete  (optional, default to false)
      * @param  bool|null $validate_deal_stage_usages_before_delete  (optional, default to false)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updatePipeline'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateRequest($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['update'][0])
+    public function updatePipelineRequest($object_type, $pipeline_id, $pipeline_patch_input, $validate_references_before_delete = false, $validate_deal_stage_usages_before_delete = false, string $contentType = self::contentTypes['updatePipeline'][0])
     {
 
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling update'
+                'Missing the required parameter $object_type when calling updatePipeline'
             );
         }
 
         // verify the required parameter 'pipeline_id' is set
         if ($pipeline_id === null || (is_array($pipeline_id) && count($pipeline_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pipeline_id when calling update'
+                'Missing the required parameter $pipeline_id when calling updatePipeline'
             );
         }
 
         // verify the required parameter 'pipeline_patch_input' is set
         if ($pipeline_patch_input === null || (is_array($pipeline_patch_input) && count($pipeline_patch_input) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pipeline_patch_input when calling update'
+                'Missing the required parameter $pipeline_patch_input when calling updatePipeline'
             );
         }
 
@@ -4257,40 +4257,40 @@ class BasicApi
     }
 
     /**
-     * Operation update_0
+     * Operation updateStage
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  string $stage_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineStagePatchInput $pipeline_stage_patch_input pipeline_stage_patch_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateStage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Pipelines\Model\PipelineStage|\HubSpot\Client\Crm\Pipelines\Model\Error
      */
-    public function update_0($object_type, $pipeline_id, $stage_id, $pipeline_stage_patch_input, string $contentType = self::contentTypes['update_0'][0])
+    public function updateStage($object_type, $pipeline_id, $stage_id, $pipeline_stage_patch_input, string $contentType = self::contentTypes['updateStage'][0])
     {
-        list($response) = $this->update_0WithHttpInfo($object_type, $pipeline_id, $stage_id, $pipeline_stage_patch_input, $contentType);
+        list($response) = $this->updateStageWithHttpInfo($object_type, $pipeline_id, $stage_id, $pipeline_stage_patch_input, $contentType);
         return $response;
     }
 
     /**
-     * Operation update_0WithHttpInfo
+     * Operation updateStageWithHttpInfo
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  string $stage_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineStagePatchInput $pipeline_stage_patch_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateStage'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Pipelines\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Pipelines\Model\PipelineStage|\HubSpot\Client\Crm\Pipelines\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function update_0WithHttpInfo($object_type, $pipeline_id, $stage_id, $pipeline_stage_patch_input, string $contentType = self::contentTypes['update_0'][0])
+    public function updateStageWithHttpInfo($object_type, $pipeline_id, $stage_id, $pipeline_stage_patch_input, string $contentType = self::contentTypes['updateStage'][0])
     {
-        $request = $this->update_0Request($object_type, $pipeline_id, $stage_id, $pipeline_stage_patch_input, $contentType);
+        $request = $this->updateStageRequest($object_type, $pipeline_id, $stage_id, $pipeline_stage_patch_input, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4376,20 +4376,20 @@ class BasicApi
     }
 
     /**
-     * Operation update_0Async
+     * Operation updateStageAsync
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  string $stage_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineStagePatchInput $pipeline_stage_patch_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateStage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function update_0Async($object_type, $pipeline_id, $stage_id, $pipeline_stage_patch_input, string $contentType = self::contentTypes['update_0'][0])
+    public function updateStageAsync($object_type, $pipeline_id, $stage_id, $pipeline_stage_patch_input, string $contentType = self::contentTypes['updateStage'][0])
     {
-        return $this->update_0AsyncWithHttpInfo($object_type, $pipeline_id, $stage_id, $pipeline_stage_patch_input, $contentType)
+        return $this->updateStageAsyncWithHttpInfo($object_type, $pipeline_id, $stage_id, $pipeline_stage_patch_input, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4398,21 +4398,21 @@ class BasicApi
     }
 
     /**
-     * Operation update_0AsyncWithHttpInfo
+     * Operation updateStageAsyncWithHttpInfo
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  string $stage_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineStagePatchInput $pipeline_stage_patch_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateStage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function update_0AsyncWithHttpInfo($object_type, $pipeline_id, $stage_id, $pipeline_stage_patch_input, string $contentType = self::contentTypes['update_0'][0])
+    public function updateStageAsyncWithHttpInfo($object_type, $pipeline_id, $stage_id, $pipeline_stage_patch_input, string $contentType = self::contentTypes['updateStage'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Pipelines\Model\PipelineStage';
-        $request = $this->update_0Request($object_type, $pipeline_id, $stage_id, $pipeline_stage_patch_input, $contentType);
+        $request = $this->updateStageRequest($object_type, $pipeline_id, $stage_id, $pipeline_stage_patch_input, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4451,45 +4451,45 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'update_0'
+     * Create request for operation 'updateStage'
      *
      * @param  string $object_type  (required)
      * @param  string $pipeline_id  (required)
      * @param  string $stage_id  (required)
      * @param  \HubSpot\Client\Crm\Pipelines\Model\PipelineStagePatchInput $pipeline_stage_patch_input (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update_0'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateStage'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function update_0Request($object_type, $pipeline_id, $stage_id, $pipeline_stage_patch_input, string $contentType = self::contentTypes['update_0'][0])
+    public function updateStageRequest($object_type, $pipeline_id, $stage_id, $pipeline_stage_patch_input, string $contentType = self::contentTypes['updateStage'][0])
     {
 
         // verify the required parameter 'object_type' is set
         if ($object_type === null || (is_array($object_type) && count($object_type) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_type when calling update_0'
+                'Missing the required parameter $object_type when calling updateStage'
             );
         }
 
         // verify the required parameter 'pipeline_id' is set
         if ($pipeline_id === null || (is_array($pipeline_id) && count($pipeline_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pipeline_id when calling update_0'
+                'Missing the required parameter $pipeline_id when calling updateStage'
             );
         }
 
         // verify the required parameter 'stage_id' is set
         if ($stage_id === null || (is_array($stage_id) && count($stage_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $stage_id when calling update_0'
+                'Missing the required parameter $stage_id when calling updateStage'
             );
         }
 
         // verify the required parameter 'pipeline_stage_patch_input' is set
         if ($pipeline_stage_patch_input === null || (is_array($pipeline_stage_patch_input) && count($pipeline_stage_patch_input) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $pipeline_stage_patch_input when calling update_0'
+                'Missing the required parameter $pipeline_stage_patch_input when calling updateStage'
             );
         }
 
