@@ -124,13 +124,13 @@ class BasicApi
         'moveList' => [
             'application/json',
         ],
-        'remove' => [
-            'application/json',
-        ],
         'removeAll' => [
             'application/json',
         ],
         'removeFolder' => [
+            'application/json',
+        ],
+        'removeList' => [
             'application/json',
         ],
         'removeMembers' => [
@@ -5146,236 +5146,6 @@ class BasicApi
     }
 
     /**
-     * Operation remove
-     *
-     * Delete a List
-     *
-     * @param  string $list_id The **ILS ID** of the list to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function remove($list_id, string $contentType = self::contentTypes['remove'][0])
-    {
-        $this->removeWithHttpInfo($list_id, $contentType);
-    }
-
-    /**
-     * Operation removeWithHttpInfo
-     *
-     * Delete a List
-     *
-     * @param  string $list_id The **ILS ID** of the list to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove'] to see the possible values for this operation
-     *
-     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function removeWithHttpInfo($list_id, string $contentType = self::contentTypes['remove'][0])
-    {
-        $request = $this->removeRequest($list_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
-                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            return [null, $statusCode, $response->getHeaders()];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\HubSpot\Client\Crm\Lists\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation removeAsync
-     *
-     * Delete a List
-     *
-     * @param  string $list_id The **ILS ID** of the list to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function removeAsync($list_id, string $contentType = self::contentTypes['remove'][0])
-    {
-        return $this->removeAsyncWithHttpInfo($list_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation removeAsyncWithHttpInfo
-     *
-     * Delete a List
-     *
-     * @param  string $list_id The **ILS ID** of the list to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function removeAsyncWithHttpInfo($list_id, string $contentType = self::contentTypes['remove'][0])
-    {
-        $returnType = '';
-        $request = $this->removeRequest($list_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
-                },
-                function ($exception) {
-                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
-                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response ? $response->getHeaders() : [],
-                        $response ? (string) $response->getBody() : ''
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'remove'
-     *
-     * @param  string $list_id The **ILS ID** of the list to delete. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['remove'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function removeRequest($list_id, string $contentType = self::contentTypes['remove'][0])
-    {
-
-        // verify the required parameter 'list_id' is set
-        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $list_id when calling remove'
-            );
-        }
-
-
-        $resourcePath = '/crm/v3/lists/{listId}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($list_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'listId' . '}',
-                ObjectSerializer::toPathValue($list_id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['*/*', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires OAuth (access token)
-        if (!empty($this->config->getAccessToken())) {
-            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'DELETE',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation removeAll
      *
      * Delete All Records from a List
@@ -5773,6 +5543,236 @@ class BasicApi
             $resourcePath = str_replace(
                 '{' . 'folderId' . '}',
                 ObjectSerializer::toPathValue($folder_id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['*/*', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = json_encode($formParams, JSON_THROW_ON_ERROR);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires OAuth (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'DELETE',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation removeList
+     *
+     * Delete a List
+     *
+     * @param  string $list_id The **ILS ID** of the list to delete. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeList'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function removeList($list_id, string $contentType = self::contentTypes['removeList'][0])
+    {
+        $this->removeListWithHttpInfo($list_id, $contentType);
+    }
+
+    /**
+     * Operation removeListWithHttpInfo
+     *
+     * Delete a List
+     *
+     * @param  string $list_id The **ILS ID** of the list to delete. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeList'] to see the possible values for this operation
+     *
+     * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function removeListWithHttpInfo($list_id, string $contentType = self::contentTypes['removeList'][0])
+    {
+        $request = $this->removeListRequest($list_id, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? $e->getResponse()->getHeaders() : null,
+                    (method_exists($e, 'getResponse') && $e->getResponse()) ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (\Psr\Http\Client\NetworkExceptionInterface $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HubSpot\Client\Crm\Lists\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation removeListAsync
+     *
+     * Delete a List
+     *
+     * @param  string $list_id The **ILS ID** of the list to delete. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeListAsync($list_id, string $contentType = self::contentTypes['removeList'][0])
+    {
+        return $this->removeListAsyncWithHttpInfo($list_id, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation removeListAsyncWithHttpInfo
+     *
+     * Delete a List
+     *
+     * @param  string $list_id The **ILS ID** of the list to delete. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function removeListAsyncWithHttpInfo($list_id, string $contentType = self::contentTypes['removeList'][0])
+    {
+        $returnType = '';
+        $request = $this->removeListRequest($list_id, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = method_exists($exception, 'getResponse') ? $exception->getResponse() : null;
+                    $statusCode = $response ? $response->getStatusCode() : $exception->getCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response ? $response->getHeaders() : [],
+                        $response ? (string) $response->getBody() : ''
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'removeList'
+     *
+     * @param  string $list_id The **ILS ID** of the list to delete. (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['removeList'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function removeListRequest($list_id, string $contentType = self::contentTypes['removeList'][0])
+    {
+
+        // verify the required parameter 'list_id' is set
+        if ($list_id === null || (is_array($list_id) && count($list_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_id when calling removeList'
+            );
+        }
+
+
+        $resourcePath = '/crm/v3/lists/{listId}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($list_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'listId' . '}',
+                ObjectSerializer::toPathValue($list_id),
                 $resourcePath
             );
         }

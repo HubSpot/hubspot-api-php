@@ -2,12 +2,14 @@
 
 namespace HubSpot\Discovery\Crm\Objects;
 
+use HubSpot\Client\Crm\Objects\Api\AdvancedApi;
 use HubSpot\Client\Crm\Objects\Api\BasicApi;
 use HubSpot\Client\Crm\Objects\Api\BatchApi;
 use HubSpot\Client\Crm\Objects\Api\SearchApi;
 use HubSpot\Discovery\DiscoveryBase;
 
 /**
+ * @method AdvancedApi                   advancedApi()
  * @method BasicApi                      basicApi()
  * @method BatchApi                      batchApi()
  * @method Calls\Discovery               calls()
