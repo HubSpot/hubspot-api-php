@@ -79,7 +79,7 @@ class FilesApi
         'checkImport' => [
             'application/json',
         ],
-        'create' => [
+        'createFolder' => [
             'application/json',
         ],
         'delete' => [
@@ -677,38 +677,38 @@ class FilesApi
     }
 
     /**
-     * Operation create
+     * Operation createFolder
      *
      * Create folder
      *
      * @param  \HubSpot\Client\Files\Model\FolderInput $folder_input Folder creation options (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolder'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Files\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Files\Model\Folder|\HubSpot\Client\Files\Model\Error
      */
-    public function create($folder_input, string $contentType = self::contentTypes['create'][0])
+    public function createFolder($folder_input, string $contentType = self::contentTypes['createFolder'][0])
     {
-        list($response) = $this->createWithHttpInfo($folder_input, $contentType);
+        list($response) = $this->createFolderWithHttpInfo($folder_input, $contentType);
         return $response;
     }
 
     /**
-     * Operation createWithHttpInfo
+     * Operation createFolderWithHttpInfo
      *
      * Create folder
      *
      * @param  \HubSpot\Client\Files\Model\FolderInput $folder_input Folder creation options (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolder'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Files\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Files\Model\Folder|\HubSpot\Client\Files\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createWithHttpInfo($folder_input, string $contentType = self::contentTypes['create'][0])
+    public function createFolderWithHttpInfo($folder_input, string $contentType = self::contentTypes['createFolder'][0])
     {
-        $request = $this->createRequest($folder_input, $contentType);
+        $request = $this->createFolderRequest($folder_input, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -794,19 +794,19 @@ class FilesApi
     }
 
     /**
-     * Operation createAsync
+     * Operation createFolderAsync
      *
      * Create folder
      *
      * @param  \HubSpot\Client\Files\Model\FolderInput $folder_input Folder creation options (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsync($folder_input, string $contentType = self::contentTypes['create'][0])
+    public function createFolderAsync($folder_input, string $contentType = self::contentTypes['createFolder'][0])
     {
-        return $this->createAsyncWithHttpInfo($folder_input, $contentType)
+        return $this->createFolderAsyncWithHttpInfo($folder_input, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -815,20 +815,20 @@ class FilesApi
     }
 
     /**
-     * Operation createAsyncWithHttpInfo
+     * Operation createFolderAsyncWithHttpInfo
      *
      * Create folder
      *
      * @param  \HubSpot\Client\Files\Model\FolderInput $folder_input Folder creation options (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAsyncWithHttpInfo($folder_input, string $contentType = self::contentTypes['create'][0])
+    public function createFolderAsyncWithHttpInfo($folder_input, string $contentType = self::contentTypes['createFolder'][0])
     {
         $returnType = '\HubSpot\Client\Files\Model\Folder';
-        $request = $this->createRequest($folder_input, $contentType);
+        $request = $this->createFolderRequest($folder_input, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -867,21 +867,21 @@ class FilesApi
     }
 
     /**
-     * Create request for operation 'create'
+     * Create request for operation 'createFolder'
      *
      * @param  \HubSpot\Client\Files\Model\FolderInput $folder_input Folder creation options (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['create'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createRequest($folder_input, string $contentType = self::contentTypes['create'][0])
+    public function createFolderRequest($folder_input, string $contentType = self::contentTypes['createFolder'][0])
     {
 
         // verify the required parameter 'folder_input' is set
         if ($folder_input === null || (is_array($folder_input) && count($folder_input) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $folder_input when calling create'
+                'Missing the required parameter $folder_input when calling createFolder'
             );
         }
 

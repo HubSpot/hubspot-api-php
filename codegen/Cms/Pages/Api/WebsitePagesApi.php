@@ -97,7 +97,7 @@ class WebsitePagesApi
         'schedule' => [
             'application/json',
         ],
-        'setLangPrimary' => [
+        'setLandingPageLangPrimary' => [
             'application/json',
         ],
         'update' => [
@@ -2462,37 +2462,37 @@ class WebsitePagesApi
     }
 
     /**
-     * Operation setLangPrimary
+     * Operation setLandingPageLangPrimary
      *
      * Set a new primary language
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next set_new_language_primary_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setLangPrimary'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setLandingPageLangPrimary'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function setLangPrimary($set_new_language_primary_request_v_next, string $contentType = self::contentTypes['setLangPrimary'][0])
+    public function setLandingPageLangPrimary($set_new_language_primary_request_v_next, string $contentType = self::contentTypes['setLandingPageLangPrimary'][0])
     {
-        $this->setLangPrimaryWithHttpInfo($set_new_language_primary_request_v_next, $contentType);
+        $this->setLandingPageLangPrimaryWithHttpInfo($set_new_language_primary_request_v_next, $contentType);
     }
 
     /**
-     * Operation setLangPrimaryWithHttpInfo
+     * Operation setLandingPageLangPrimaryWithHttpInfo
      *
      * Set a new primary language
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setLangPrimary'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setLandingPageLangPrimary'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function setLangPrimaryWithHttpInfo($set_new_language_primary_request_v_next, string $contentType = self::contentTypes['setLangPrimary'][0])
+    public function setLandingPageLangPrimaryWithHttpInfo($set_new_language_primary_request_v_next, string $contentType = self::contentTypes['setLandingPageLangPrimary'][0])
     {
-        $request = $this->setLangPrimaryRequest($set_new_language_primary_request_v_next, $contentType);
+        $request = $this->setLandingPageLangPrimaryRequest($set_new_language_primary_request_v_next, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2536,19 +2536,19 @@ class WebsitePagesApi
     }
 
     /**
-     * Operation setLangPrimaryAsync
+     * Operation setLandingPageLangPrimaryAsync
      *
      * Set a new primary language
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setLangPrimary'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setLandingPageLangPrimary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setLangPrimaryAsync($set_new_language_primary_request_v_next, string $contentType = self::contentTypes['setLangPrimary'][0])
+    public function setLandingPageLangPrimaryAsync($set_new_language_primary_request_v_next, string $contentType = self::contentTypes['setLandingPageLangPrimary'][0])
     {
-        return $this->setLangPrimaryAsyncWithHttpInfo($set_new_language_primary_request_v_next, $contentType)
+        return $this->setLandingPageLangPrimaryAsyncWithHttpInfo($set_new_language_primary_request_v_next, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2557,20 +2557,20 @@ class WebsitePagesApi
     }
 
     /**
-     * Operation setLangPrimaryAsyncWithHttpInfo
+     * Operation setLandingPageLangPrimaryAsyncWithHttpInfo
      *
      * Set a new primary language
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setLangPrimary'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setLandingPageLangPrimary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function setLangPrimaryAsyncWithHttpInfo($set_new_language_primary_request_v_next, string $contentType = self::contentTypes['setLangPrimary'][0])
+    public function setLandingPageLangPrimaryAsyncWithHttpInfo($set_new_language_primary_request_v_next, string $contentType = self::contentTypes['setLandingPageLangPrimary'][0])
     {
         $returnType = '';
-        $request = $this->setLangPrimaryRequest($set_new_language_primary_request_v_next, $contentType);
+        $request = $this->setLandingPageLangPrimaryRequest($set_new_language_primary_request_v_next, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2596,21 +2596,21 @@ class WebsitePagesApi
     }
 
     /**
-     * Create request for operation 'setLangPrimary'
+     * Create request for operation 'setLandingPageLangPrimary'
      *
      * @param  \HubSpot\Client\Cms\Pages\Model\SetNewLanguagePrimaryRequestVNext $set_new_language_primary_request_v_next (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setLangPrimary'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['setLandingPageLangPrimary'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function setLangPrimaryRequest($set_new_language_primary_request_v_next, string $contentType = self::contentTypes['setLangPrimary'][0])
+    public function setLandingPageLangPrimaryRequest($set_new_language_primary_request_v_next, string $contentType = self::contentTypes['setLandingPageLangPrimary'][0])
     {
 
         // verify the required parameter 'set_new_language_primary_request_v_next' is set
         if ($set_new_language_primary_request_v_next === null || (is_array($set_new_language_primary_request_v_next) && count($set_new_language_primary_request_v_next) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $set_new_language_primary_request_v_next when calling setLangPrimary'
+                'Missing the required parameter $set_new_language_primary_request_v_next when calling setLandingPageLangPrimary'
             );
         }
 

@@ -79,10 +79,10 @@ class BasicApi
         'getLandingPagesWithCursor' => [
             'application/json',
         ],
-        'getPreviousVersion' => [
+        'getSitePagePreviousVersion' => [
             'application/json',
         ],
-        'getPreviousVersions' => [
+        'getSitePagePreviousVersions' => [
             'application/json',
         ],
         'getSitePagesWithCursor' => [
@@ -97,10 +97,10 @@ class BasicApi
         'querySitePagesWithCursor' => [
             'application/json',
         ],
-        'resetDraft' => [
+        'resetSitePageDraft' => [
             'application/json',
         ],
-        'restorePreviousVersionToDraft' => [
+        'restoreSitePagePreviousVersionToDraft' => [
             'application/json',
         ],
     ];
@@ -998,40 +998,40 @@ class BasicApi
     }
 
     /**
-     * Operation getPreviousVersion
+     * Operation getSitePagePreviousVersion
      *
      * Retrieve a previous version of a website page
      *
      * @param  string $object_id The ID of the website page. (required)
      * @param  string $revision_id The ID of the specific version to retrieve. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersion'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSitePagePreviousVersion'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Pages\Model\PageVersion|\HubSpot\Client\Cms\Pages\Model\Error
      */
-    public function getPreviousVersion($object_id, $revision_id, string $contentType = self::contentTypes['getPreviousVersion'][0])
+    public function getSitePagePreviousVersion($object_id, $revision_id, string $contentType = self::contentTypes['getSitePagePreviousVersion'][0])
     {
-        list($response) = $this->getPreviousVersionWithHttpInfo($object_id, $revision_id, $contentType);
+        list($response) = $this->getSitePagePreviousVersionWithHttpInfo($object_id, $revision_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation getPreviousVersionWithHttpInfo
+     * Operation getSitePagePreviousVersionWithHttpInfo
      *
      * Retrieve a previous version of a website page
      *
      * @param  string $object_id The ID of the website page. (required)
      * @param  string $revision_id The ID of the specific version to retrieve. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersion'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSitePagePreviousVersion'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Pages\Model\PageVersion|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPreviousVersionWithHttpInfo($object_id, $revision_id, string $contentType = self::contentTypes['getPreviousVersion'][0])
+    public function getSitePagePreviousVersionWithHttpInfo($object_id, $revision_id, string $contentType = self::contentTypes['getSitePagePreviousVersion'][0])
     {
-        $request = $this->getPreviousVersionRequest($object_id, $revision_id, $contentType);
+        $request = $this->getSitePagePreviousVersionRequest($object_id, $revision_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1117,20 +1117,20 @@ class BasicApi
     }
 
     /**
-     * Operation getPreviousVersionAsync
+     * Operation getSitePagePreviousVersionAsync
      *
      * Retrieve a previous version of a website page
      *
      * @param  string $object_id The ID of the website page. (required)
      * @param  string $revision_id The ID of the specific version to retrieve. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersion'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSitePagePreviousVersion'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPreviousVersionAsync($object_id, $revision_id, string $contentType = self::contentTypes['getPreviousVersion'][0])
+    public function getSitePagePreviousVersionAsync($object_id, $revision_id, string $contentType = self::contentTypes['getSitePagePreviousVersion'][0])
     {
-        return $this->getPreviousVersionAsyncWithHttpInfo($object_id, $revision_id, $contentType)
+        return $this->getSitePagePreviousVersionAsyncWithHttpInfo($object_id, $revision_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1139,21 +1139,21 @@ class BasicApi
     }
 
     /**
-     * Operation getPreviousVersionAsyncWithHttpInfo
+     * Operation getSitePagePreviousVersionAsyncWithHttpInfo
      *
      * Retrieve a previous version of a website page
      *
      * @param  string $object_id The ID of the website page. (required)
      * @param  string $revision_id The ID of the specific version to retrieve. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersion'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSitePagePreviousVersion'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPreviousVersionAsyncWithHttpInfo($object_id, $revision_id, string $contentType = self::contentTypes['getPreviousVersion'][0])
+    public function getSitePagePreviousVersionAsyncWithHttpInfo($object_id, $revision_id, string $contentType = self::contentTypes['getSitePagePreviousVersion'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Pages\Model\PageVersion';
-        $request = $this->getPreviousVersionRequest($object_id, $revision_id, $contentType);
+        $request = $this->getSitePagePreviousVersionRequest($object_id, $revision_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1192,29 +1192,29 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'getPreviousVersion'
+     * Create request for operation 'getSitePagePreviousVersion'
      *
      * @param  string $object_id The ID of the website page. (required)
      * @param  string $revision_id The ID of the specific version to retrieve. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersion'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSitePagePreviousVersion'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPreviousVersionRequest($object_id, $revision_id, string $contentType = self::contentTypes['getPreviousVersion'][0])
+    public function getSitePagePreviousVersionRequest($object_id, $revision_id, string $contentType = self::contentTypes['getSitePagePreviousVersion'][0])
     {
 
         // verify the required parameter 'object_id' is set
         if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_id when calling getPreviousVersion'
+                'Missing the required parameter $object_id when calling getSitePagePreviousVersion'
             );
         }
 
         // verify the required parameter 'revision_id' is set
         if ($revision_id === null || (is_array($revision_id) && count($revision_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $revision_id when calling getPreviousVersion'
+                'Missing the required parameter $revision_id when calling getSitePagePreviousVersion'
             );
         }
 
@@ -1304,7 +1304,7 @@ class BasicApi
     }
 
     /**
-     * Operation getPreviousVersions
+     * Operation getSitePagePreviousVersions
      *
      * Retrieve all previous versions of a website page
      *
@@ -1312,20 +1312,20 @@ class BasicApi
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before The cursor token value to retrieve the set of results before the current page. (optional)
      * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersions'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSitePagePreviousVersions'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Pages\Model\CollectionResponseWithTotalPageVersion|\HubSpot\Client\Cms\Pages\Model\Error
      */
-    public function getPreviousVersions($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getPreviousVersions'][0])
+    public function getSitePagePreviousVersions($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getSitePagePreviousVersions'][0])
     {
-        list($response) = $this->getPreviousVersionsWithHttpInfo($object_id, $after, $before, $limit, $contentType);
+        list($response) = $this->getSitePagePreviousVersionsWithHttpInfo($object_id, $after, $before, $limit, $contentType);
         return $response;
     }
 
     /**
-     * Operation getPreviousVersionsWithHttpInfo
+     * Operation getSitePagePreviousVersionsWithHttpInfo
      *
      * Retrieve all previous versions of a website page
      *
@@ -1333,15 +1333,15 @@ class BasicApi
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before The cursor token value to retrieve the set of results before the current page. (optional)
      * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersions'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSitePagePreviousVersions'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Pages\Model\CollectionResponseWithTotalPageVersion|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPreviousVersionsWithHttpInfo($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getPreviousVersions'][0])
+    public function getSitePagePreviousVersionsWithHttpInfo($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getSitePagePreviousVersions'][0])
     {
-        $request = $this->getPreviousVersionsRequest($object_id, $after, $before, $limit, $contentType);
+        $request = $this->getSitePagePreviousVersionsRequest($object_id, $after, $before, $limit, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1427,7 +1427,7 @@ class BasicApi
     }
 
     /**
-     * Operation getPreviousVersionsAsync
+     * Operation getSitePagePreviousVersionsAsync
      *
      * Retrieve all previous versions of a website page
      *
@@ -1435,14 +1435,14 @@ class BasicApi
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before The cursor token value to retrieve the set of results before the current page. (optional)
      * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersions'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSitePagePreviousVersions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPreviousVersionsAsync($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getPreviousVersions'][0])
+    public function getSitePagePreviousVersionsAsync($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getSitePagePreviousVersions'][0])
     {
-        return $this->getPreviousVersionsAsyncWithHttpInfo($object_id, $after, $before, $limit, $contentType)
+        return $this->getSitePagePreviousVersionsAsyncWithHttpInfo($object_id, $after, $before, $limit, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1451,7 +1451,7 @@ class BasicApi
     }
 
     /**
-     * Operation getPreviousVersionsAsyncWithHttpInfo
+     * Operation getSitePagePreviousVersionsAsyncWithHttpInfo
      *
      * Retrieve all previous versions of a website page
      *
@@ -1459,15 +1459,15 @@ class BasicApi
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before The cursor token value to retrieve the set of results before the current page. (optional)
      * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersions'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSitePagePreviousVersions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getPreviousVersionsAsyncWithHttpInfo($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getPreviousVersions'][0])
+    public function getSitePagePreviousVersionsAsyncWithHttpInfo($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getSitePagePreviousVersions'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Pages\Model\CollectionResponseWithTotalPageVersion';
-        $request = $this->getPreviousVersionsRequest($object_id, $after, $before, $limit, $contentType);
+        $request = $this->getSitePagePreviousVersionsRequest($object_id, $after, $before, $limit, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1506,24 +1506,24 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'getPreviousVersions'
+     * Create request for operation 'getSitePagePreviousVersions'
      *
      * @param  string $object_id The ID of the website page. (required)
      * @param  string|null $after The paging cursor token of the last successfully read resource will be returned as the &#x60;paging.next.after&#x60; JSON property of a paged response containing more results. (optional)
      * @param  string|null $before The cursor token value to retrieve the set of results before the current page. (optional)
      * @param  int|null $limit The maximum number of results to return. Default is 100. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getPreviousVersions'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getSitePagePreviousVersions'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getPreviousVersionsRequest($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getPreviousVersions'][0])
+    public function getSitePagePreviousVersionsRequest($object_id, $after = null, $before = null, $limit = null, string $contentType = self::contentTypes['getSitePagePreviousVersions'][0])
     {
 
         // verify the required parameter 'object_id' is set
         if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_id when calling getPreviousVersions'
+                'Missing the required parameter $object_id when calling getSitePagePreviousVersions'
             );
         }
 
@@ -3327,37 +3327,37 @@ class BasicApi
     }
 
     /**
-     * Operation resetDraft
+     * Operation resetSitePageDraft
      *
      * Reset the draft of a website page
      *
      * @param  string $object_id The ID of the website page to restore. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetDraft'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetSitePageDraft'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function resetDraft($object_id, string $contentType = self::contentTypes['resetDraft'][0])
+    public function resetSitePageDraft($object_id, string $contentType = self::contentTypes['resetSitePageDraft'][0])
     {
-        $this->resetDraftWithHttpInfo($object_id, $contentType);
+        $this->resetSitePageDraftWithHttpInfo($object_id, $contentType);
     }
 
     /**
-     * Operation resetDraftWithHttpInfo
+     * Operation resetSitePageDraftWithHttpInfo
      *
      * Reset the draft of a website page
      *
      * @param  string $object_id The ID of the website page to restore. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetDraft'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetSitePageDraft'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function resetDraftWithHttpInfo($object_id, string $contentType = self::contentTypes['resetDraft'][0])
+    public function resetSitePageDraftWithHttpInfo($object_id, string $contentType = self::contentTypes['resetSitePageDraft'][0])
     {
-        $request = $this->resetDraftRequest($object_id, $contentType);
+        $request = $this->resetSitePageDraftRequest($object_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3401,19 +3401,19 @@ class BasicApi
     }
 
     /**
-     * Operation resetDraftAsync
+     * Operation resetSitePageDraftAsync
      *
      * Reset the draft of a website page
      *
      * @param  string $object_id The ID of the website page to restore. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetDraft'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetSitePageDraft'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function resetDraftAsync($object_id, string $contentType = self::contentTypes['resetDraft'][0])
+    public function resetSitePageDraftAsync($object_id, string $contentType = self::contentTypes['resetSitePageDraft'][0])
     {
-        return $this->resetDraftAsyncWithHttpInfo($object_id, $contentType)
+        return $this->resetSitePageDraftAsyncWithHttpInfo($object_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3422,20 +3422,20 @@ class BasicApi
     }
 
     /**
-     * Operation resetDraftAsyncWithHttpInfo
+     * Operation resetSitePageDraftAsyncWithHttpInfo
      *
      * Reset the draft of a website page
      *
      * @param  string $object_id The ID of the website page to restore. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetDraft'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetSitePageDraft'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function resetDraftAsyncWithHttpInfo($object_id, string $contentType = self::contentTypes['resetDraft'][0])
+    public function resetSitePageDraftAsyncWithHttpInfo($object_id, string $contentType = self::contentTypes['resetSitePageDraft'][0])
     {
         $returnType = '';
-        $request = $this->resetDraftRequest($object_id, $contentType);
+        $request = $this->resetSitePageDraftRequest($object_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3461,21 +3461,21 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'resetDraft'
+     * Create request for operation 'resetSitePageDraft'
      *
      * @param  string $object_id The ID of the website page to restore. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetDraft'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['resetSitePageDraft'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function resetDraftRequest($object_id, string $contentType = self::contentTypes['resetDraft'][0])
+    public function resetSitePageDraftRequest($object_id, string $contentType = self::contentTypes['resetSitePageDraft'][0])
     {
 
         // verify the required parameter 'object_id' is set
         if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_id when calling resetDraft'
+                'Missing the required parameter $object_id when calling resetSitePageDraft'
             );
         }
 
@@ -3557,40 +3557,40 @@ class BasicApi
     }
 
     /**
-     * Operation restorePreviousVersionToDraft
+     * Operation restoreSitePagePreviousVersionToDraft
      *
      * Restore a previous draft of a website page
      *
      * @param  string $object_id The ID of the website page. (required)
      * @param  int $revision_id The ID of the revision to restore. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restorePreviousVersionToDraft'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreSitePagePreviousVersionToDraft'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Cms\Pages\Model\Page|\HubSpot\Client\Cms\Pages\Model\Error
      */
-    public function restorePreviousVersionToDraft($object_id, $revision_id, string $contentType = self::contentTypes['restorePreviousVersionToDraft'][0])
+    public function restoreSitePagePreviousVersionToDraft($object_id, $revision_id, string $contentType = self::contentTypes['restoreSitePagePreviousVersionToDraft'][0])
     {
-        list($response) = $this->restorePreviousVersionToDraftWithHttpInfo($object_id, $revision_id, $contentType);
+        list($response) = $this->restoreSitePagePreviousVersionToDraftWithHttpInfo($object_id, $revision_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation restorePreviousVersionToDraftWithHttpInfo
+     * Operation restoreSitePagePreviousVersionToDraftWithHttpInfo
      *
      * Restore a previous draft of a website page
      *
      * @param  string $object_id The ID of the website page. (required)
      * @param  int $revision_id The ID of the revision to restore. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restorePreviousVersionToDraft'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreSitePagePreviousVersionToDraft'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Cms\Pages\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Cms\Pages\Model\Page|\HubSpot\Client\Cms\Pages\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function restorePreviousVersionToDraftWithHttpInfo($object_id, $revision_id, string $contentType = self::contentTypes['restorePreviousVersionToDraft'][0])
+    public function restoreSitePagePreviousVersionToDraftWithHttpInfo($object_id, $revision_id, string $contentType = self::contentTypes['restoreSitePagePreviousVersionToDraft'][0])
     {
-        $request = $this->restorePreviousVersionToDraftRequest($object_id, $revision_id, $contentType);
+        $request = $this->restoreSitePagePreviousVersionToDraftRequest($object_id, $revision_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3676,20 +3676,20 @@ class BasicApi
     }
 
     /**
-     * Operation restorePreviousVersionToDraftAsync
+     * Operation restoreSitePagePreviousVersionToDraftAsync
      *
      * Restore a previous draft of a website page
      *
      * @param  string $object_id The ID of the website page. (required)
      * @param  int $revision_id The ID of the revision to restore. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restorePreviousVersionToDraft'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreSitePagePreviousVersionToDraft'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function restorePreviousVersionToDraftAsync($object_id, $revision_id, string $contentType = self::contentTypes['restorePreviousVersionToDraft'][0])
+    public function restoreSitePagePreviousVersionToDraftAsync($object_id, $revision_id, string $contentType = self::contentTypes['restoreSitePagePreviousVersionToDraft'][0])
     {
-        return $this->restorePreviousVersionToDraftAsyncWithHttpInfo($object_id, $revision_id, $contentType)
+        return $this->restoreSitePagePreviousVersionToDraftAsyncWithHttpInfo($object_id, $revision_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3698,21 +3698,21 @@ class BasicApi
     }
 
     /**
-     * Operation restorePreviousVersionToDraftAsyncWithHttpInfo
+     * Operation restoreSitePagePreviousVersionToDraftAsyncWithHttpInfo
      *
      * Restore a previous draft of a website page
      *
      * @param  string $object_id The ID of the website page. (required)
      * @param  int $revision_id The ID of the revision to restore. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restorePreviousVersionToDraft'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreSitePagePreviousVersionToDraft'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function restorePreviousVersionToDraftAsyncWithHttpInfo($object_id, $revision_id, string $contentType = self::contentTypes['restorePreviousVersionToDraft'][0])
+    public function restoreSitePagePreviousVersionToDraftAsyncWithHttpInfo($object_id, $revision_id, string $contentType = self::contentTypes['restoreSitePagePreviousVersionToDraft'][0])
     {
         $returnType = '\HubSpot\Client\Cms\Pages\Model\Page';
-        $request = $this->restorePreviousVersionToDraftRequest($object_id, $revision_id, $contentType);
+        $request = $this->restoreSitePagePreviousVersionToDraftRequest($object_id, $revision_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3751,29 +3751,29 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'restorePreviousVersionToDraft'
+     * Create request for operation 'restoreSitePagePreviousVersionToDraft'
      *
      * @param  string $object_id The ID of the website page. (required)
      * @param  int $revision_id The ID of the revision to restore. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restorePreviousVersionToDraft'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['restoreSitePagePreviousVersionToDraft'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function restorePreviousVersionToDraftRequest($object_id, $revision_id, string $contentType = self::contentTypes['restorePreviousVersionToDraft'][0])
+    public function restoreSitePagePreviousVersionToDraftRequest($object_id, $revision_id, string $contentType = self::contentTypes['restoreSitePagePreviousVersionToDraft'][0])
     {
 
         // verify the required parameter 'object_id' is set
         if ($object_id === null || (is_array($object_id) && count($object_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $object_id when calling restorePreviousVersionToDraft'
+                'Missing the required parameter $object_id when calling restoreSitePagePreviousVersionToDraft'
             );
         }
 
         // verify the required parameter 'revision_id' is set
         if ($revision_id === null || (is_array($revision_id) && count($revision_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $revision_id when calling restorePreviousVersionToDraft'
+                'Missing the required parameter $revision_id when calling restoreSitePagePreviousVersionToDraft'
             );
         }
 

@@ -118,7 +118,7 @@ class BasicApi
         'getSizeAndEditsHistory' => [
             'application/json',
         ],
-        'move' => [
+        'moveFolder' => [
             'application/json',
         ],
         'moveList' => [
@@ -136,7 +136,7 @@ class BasicApi
         'removeMembers' => [
             'application/json',
         ],
-        'rename' => [
+        'renameFolder' => [
             'application/json',
         ],
         'restore' => [
@@ -4611,40 +4611,40 @@ class BasicApi
     }
 
     /**
-     * Operation move
+     * Operation moveFolder
      *
      * Moves a folder
      *
      * @param  string $folder_id The ID of the folder to move (required)
      * @param  string $new_parent_folder_id The ID for the target parent folder. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['move'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveFolder'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error
      */
-    public function move($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['move'][0])
+    public function moveFolder($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['moveFolder'][0])
     {
-        list($response) = $this->moveWithHttpInfo($folder_id, $new_parent_folder_id, $contentType);
+        list($response) = $this->moveFolderWithHttpInfo($folder_id, $new_parent_folder_id, $contentType);
         return $response;
     }
 
     /**
-     * Operation moveWithHttpInfo
+     * Operation moveFolderWithHttpInfo
      *
      * Moves a folder
      *
      * @param  string $folder_id The ID of the folder to move (required)
      * @param  string $new_parent_folder_id The ID for the target parent folder. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['move'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveFolder'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function moveWithHttpInfo($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['move'][0])
+    public function moveFolderWithHttpInfo($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['moveFolder'][0])
     {
-        $request = $this->moveRequest($folder_id, $new_parent_folder_id, $contentType);
+        $request = $this->moveFolderRequest($folder_id, $new_parent_folder_id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4730,20 +4730,20 @@ class BasicApi
     }
 
     /**
-     * Operation moveAsync
+     * Operation moveFolderAsync
      *
      * Moves a folder
      *
      * @param  string $folder_id The ID of the folder to move (required)
      * @param  string $new_parent_folder_id The ID for the target parent folder. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['move'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function moveAsync($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['move'][0])
+    public function moveFolderAsync($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['moveFolder'][0])
     {
-        return $this->moveAsyncWithHttpInfo($folder_id, $new_parent_folder_id, $contentType)
+        return $this->moveFolderAsyncWithHttpInfo($folder_id, $new_parent_folder_id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4752,21 +4752,21 @@ class BasicApi
     }
 
     /**
-     * Operation moveAsyncWithHttpInfo
+     * Operation moveFolderAsyncWithHttpInfo
      *
      * Moves a folder
      *
      * @param  string $folder_id The ID of the folder to move (required)
      * @param  string $new_parent_folder_id The ID for the target parent folder. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['move'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function moveAsyncWithHttpInfo($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['move'][0])
+    public function moveFolderAsyncWithHttpInfo($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['moveFolder'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse';
-        $request = $this->moveRequest($folder_id, $new_parent_folder_id, $contentType);
+        $request = $this->moveFolderRequest($folder_id, $new_parent_folder_id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4805,29 +4805,29 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'move'
+     * Create request for operation 'moveFolder'
      *
      * @param  string $folder_id The ID of the folder to move (required)
      * @param  string $new_parent_folder_id The ID for the target parent folder. (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['move'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['moveFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function moveRequest($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['move'][0])
+    public function moveFolderRequest($folder_id, $new_parent_folder_id, string $contentType = self::contentTypes['moveFolder'][0])
     {
 
         // verify the required parameter 'folder_id' is set
         if ($folder_id === null || (is_array($folder_id) && count($folder_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $folder_id when calling move'
+                'Missing the required parameter $folder_id when calling moveFolder'
             );
         }
 
         // verify the required parameter 'new_parent_folder_id' is set
         if ($new_parent_folder_id === null || (is_array($new_parent_folder_id) && count($new_parent_folder_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $new_parent_folder_id when calling move'
+                'Missing the required parameter $new_parent_folder_id when calling moveFolder'
             );
         }
 
@@ -6141,40 +6141,40 @@ class BasicApi
     }
 
     /**
-     * Operation rename
+     * Operation renameFolder
      *
      * Rename a folder
      *
      * @param  string $folder_id The ID of the folder to rename (required)
      * @param  string|null $new_folder_name The new name of the folder. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rename'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['renameFolder'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error
      */
-    public function rename($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['rename'][0])
+    public function renameFolder($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['renameFolder'][0])
     {
-        list($response) = $this->renameWithHttpInfo($folder_id, $new_folder_name, $contentType);
+        list($response) = $this->renameFolderWithHttpInfo($folder_id, $new_folder_name, $contentType);
         return $response;
     }
 
     /**
-     * Operation renameWithHttpInfo
+     * Operation renameFolderWithHttpInfo
      *
      * Rename a folder
      *
      * @param  string $folder_id The ID of the folder to rename (required)
      * @param  string|null $new_folder_name The new name of the folder. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rename'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['renameFolder'] to see the possible values for this operation
      *
      * @throws \HubSpot\Client\Crm\Lists\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse|\HubSpot\Client\Crm\Lists\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function renameWithHttpInfo($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['rename'][0])
+    public function renameFolderWithHttpInfo($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['renameFolder'][0])
     {
-        $request = $this->renameRequest($folder_id, $new_folder_name, $contentType);
+        $request = $this->renameFolderRequest($folder_id, $new_folder_name, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6260,20 +6260,20 @@ class BasicApi
     }
 
     /**
-     * Operation renameAsync
+     * Operation renameFolderAsync
      *
      * Rename a folder
      *
      * @param  string $folder_id The ID of the folder to rename (required)
      * @param  string|null $new_folder_name The new name of the folder. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rename'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['renameFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function renameAsync($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['rename'][0])
+    public function renameFolderAsync($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['renameFolder'][0])
     {
-        return $this->renameAsyncWithHttpInfo($folder_id, $new_folder_name, $contentType)
+        return $this->renameFolderAsyncWithHttpInfo($folder_id, $new_folder_name, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6282,21 +6282,21 @@ class BasicApi
     }
 
     /**
-     * Operation renameAsyncWithHttpInfo
+     * Operation renameFolderAsyncWithHttpInfo
      *
      * Rename a folder
      *
      * @param  string $folder_id The ID of the folder to rename (required)
      * @param  string|null $new_folder_name The new name of the folder. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rename'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['renameFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function renameAsyncWithHttpInfo($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['rename'][0])
+    public function renameFolderAsyncWithHttpInfo($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['renameFolder'][0])
     {
         $returnType = '\HubSpot\Client\Crm\Lists\Model\ListFolderFetchResponse';
-        $request = $this->renameRequest($folder_id, $new_folder_name, $contentType);
+        $request = $this->renameFolderRequest($folder_id, $new_folder_name, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6335,22 +6335,22 @@ class BasicApi
     }
 
     /**
-     * Create request for operation 'rename'
+     * Create request for operation 'renameFolder'
      *
      * @param  string $folder_id The ID of the folder to rename (required)
      * @param  string|null $new_folder_name The new name of the folder. (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['rename'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['renameFolder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function renameRequest($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['rename'][0])
+    public function renameFolderRequest($folder_id, $new_folder_name = null, string $contentType = self::contentTypes['renameFolder'][0])
     {
 
         // verify the required parameter 'folder_id' is set
         if ($folder_id === null || (is_array($folder_id) && count($folder_id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $folder_id when calling rename'
+                'Missing the required parameter $folder_id when calling renameFolder'
             );
         }
 

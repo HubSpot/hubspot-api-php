@@ -36,7 +36,7 @@ class GeneratedApiClientTest extends TestCase
         $api = new WebhooksBasicApi();
         $input = new SubscriptionCreateRequest();
         $input->setActive(true);
-        $request = $api->createRequest(123, $input);
+        $request = $api->createSubscriptionRequest(123, $input);
         $this->assertSame(['active' => true], json_decode((string) $request->getBody(), true));
     }
 
