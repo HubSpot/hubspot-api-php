@@ -5,7 +5,472 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/14.1.0...HEAD)
+## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/15.0.0...HEAD)
+
+## [15.0.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/15.0.0) - 2026-10-13
+
+### Breaking changes: generated API classes
+
+The generated clients were regenerated from the current HubSpot OpenAPI specs. Upstream regrouped many endpoints, so several API classes were merged, split or renamed, and their Discovery accessors changed with them (for example `crm()->pipelines()->pipelinesApi()` is now `crm()->pipelines()->basicApi()`). The tables below list every 14.1.0 method whose accessor or name changed; anything not listed is unchanged.
+
+- Where merged classes would have had two methods with the same name, the methods are named after the resource they act on (for example Pipelines `getAllPipelines()` / `getAllStages()`, CMS Pages `archiveLandingPagesBatch()` / `archiveSitePagesBatch()`, Lists `removeList()` / `removeMembers()`). A 14.x call that only has its accessor swapped fails with an undefined-method error rather than reaching a different endpoint.
+- Argument positions match 14.1.0, apart from:
+  - `crm()->imports()->basicApi()->getImportsPage($after, $limit)` (was `coreApi()->getPage($after, $before, $limit)`): upstream removed the `before` parameter.
+  - Pipelines `replacePipeline()` and `replaceStage()`: the body parameter is renamed (`$pipeline_input` → `$pipeline_replace_input`, `$pipeline_stage_input` → `$pipeline_stage_replace_input`). This only affects calls that use named arguments.
+  - New optional parameters were added after the existing ones on Pipelines `archiveStage()`, Schemas `getAll()`/`getById()`, Site Search `search()` and Events `getPage()`.
+- Removed upstream: Timeline `eventsApi()->getDetailById()` and `eventsApi()->getRenderById()`.
+- Some endpoints now use upstream's newer URL paths (for example DealSplits batch `read`/`upsert`, Users, URL redirects, Site Search, Audit Logs and Marketing Events). Method names and arguments are unchanged.
+
+### Added
+
+- Automation Actions: `definitionsApi()->getObjectRequirement()`, `setObjectRequirement()`.
+- CMS Pages: cursor-based listing in `basicApi()`: `getLandingPagesWithCursor()`, `getSitePagesWithCursor()`, `getLandingPageFoldersWithCursor()` and the matching `query*WithCursor()` methods.
+- CMS URL Redirects: `basicApi()->getUrlMappings()`.
+- CRM Calling: `advancedApi()->createInboundCall()`; connection statuses via `basicApi()->getPage()`, `basicApi()->getForCurrentUser()` and `batchApi()->read()`.
+- CRM Cards: `advancedApi()->migrateViews()`.
+- CRM Lists: `basicApi()->getSizeAndEditsHistory()`, `batchApi()->read()` (record memberships).
+- CRM Objects: `advancedApi()->merge()`.
+- CRM Schemas: `batchApi()->read()`.
+- Files: `basicApi()->download()`.
+
+### Migration from 14.x
+
+#### `$hubspot->cms()->auditLogs()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `auditLogsApi()->getPage()` | `basicApi()->getPage()` |
+
+#### `$hubspot->cms()->blogs()->authors()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `blogAuthorsApi()->archive()` | `basicApi()->archive()` |
+| `blogAuthorsApi()->archiveBatch()` | `batchApi()->archiveBatch()` |
+| `blogAuthorsApi()->attachToLangGroup()` | `multiLanguageApi()->attachToLangGroup()` |
+| `blogAuthorsApi()->create()` | `basicApi()->create()` |
+| `blogAuthorsApi()->createBatch()` | `batchApi()->createBatch()` |
+| `blogAuthorsApi()->createLangVariation()` | `multiLanguageApi()->createLangVariation()` |
+| `blogAuthorsApi()->detachFromLangGroup()` | `multiLanguageApi()->detachFromLangGroup()` |
+| `blogAuthorsApi()->getById()` | `basicApi()->getById()` |
+| `blogAuthorsApi()->getPage()` | `basicApi()->getPage()` |
+| `blogAuthorsApi()->readBatch()` | `batchApi()->readBatch()` |
+| `blogAuthorsApi()->setLangPrimary()` | `multiLanguageApi()->setLangPrimary()` |
+| `blogAuthorsApi()->update()` | `basicApi()->update()` |
+| `blogAuthorsApi()->updateBatch()` | `batchApi()->updateBatch()` |
+| `blogAuthorsApi()->updateLangs()` | `multiLanguageApi()->updateLangs()` |
+
+#### `$hubspot->cms()->blogs()->blogPosts()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `basicApi()->getPreviousVersion()` | `revisionsApi()->getPreviousVersion()` |
+| `basicApi()->getPreviousVersions()` | `revisionsApi()->getPreviousVersions()` |
+| `basicApi()->restorePreviousVersion()` | `revisionsApi()->restorePreviousVersion()` |
+| `basicApi()->restorePreviousVersionToDraft()` | `revisionsApi()->restorePreviousVersionToDraft()` |
+
+#### `$hubspot->cms()->blogs()->tags()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `blogTagsApi()->archive()` | `basicApi()->archive()` |
+| `blogTagsApi()->archiveBatch()` | `batchApi()->archiveBatch()` |
+| `blogTagsApi()->attachToLangGroup()` | `multiLanguageApi()->attachToLangGroup()` |
+| `blogTagsApi()->create()` | `basicApi()->create()` |
+| `blogTagsApi()->createBatch()` | `batchApi()->createBatch()` |
+| `blogTagsApi()->createLangVariation()` | `multiLanguageApi()->createLangVariation()` |
+| `blogTagsApi()->detachFromLangGroup()` | `multiLanguageApi()->detachFromLangGroup()` |
+| `blogTagsApi()->getById()` | `basicApi()->getById()` |
+| `blogTagsApi()->getPage()` | `basicApi()->getPage()` |
+| `blogTagsApi()->readBatch()` | `batchApi()->readBatch()` |
+| `blogTagsApi()->setLangPrimary()` | `multiLanguageApi()->setLangPrimary()` |
+| `blogTagsApi()->update()` | `basicApi()->update()` |
+| `blogTagsApi()->updateBatch()` | `batchApi()->updateBatch()` |
+| `blogTagsApi()->updateLangs()` | `multiLanguageApi()->updateLangs()` |
+
+#### `$hubspot->cms()->domains()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `domainsApi()->getById()` | `basicApi()->getById()` |
+| `domainsApi()->getPage()` | `basicApi()->getPage()` |
+
+#### `$hubspot->cms()->hubdb()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `rowsApi()->readDraftTableRows()` | `tablesApi()->getDraftTableRows()` |
+| `rowsBatchApi()->cloneDraftTableRows()` | `rowsApi()->cloneDraftTableRows()` |
+| `rowsBatchApi()->createDraftTableRows()` | `rowsApi()->createDraftTableRows()` |
+| `rowsBatchApi()->purgeDraftTableRows()` | `rowsApi()->purgeDraftTableRows()` |
+| `rowsBatchApi()->readDraftTableRows()` | `rowsApi()->batchReadDraftTableRows()` |
+| `rowsBatchApi()->readTableRows()` | `rowsApi()->batchReadTableRows()` |
+| `rowsBatchApi()->replaceDraftTableRows()` | `rowsApi()->replaceDraftTableRows()` |
+| `rowsBatchApi()->updateDraftTableRows()` | `rowsApi()->updateDraftTableRows()` |
+
+#### `$hubspot->cms()->pages()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `landingPagesApi()->archiveBatch()` | `batchApi()->archiveLandingPagesBatch()` |
+| `landingPagesApi()->archiveFolder()` | `foldersApi()->archiveFolder()` |
+| `landingPagesApi()->archiveFolders()` | `batchApi()->archiveFolders()` |
+| `landingPagesApi()->attachToLangGroup()` | `multiLanguageApi()->attachLandingPageToLangGroup()` |
+| `landingPagesApi()->createABTestVariation()` | `abTestsApi()->createLandingPageABTestVariation()` |
+| `landingPagesApi()->createBatch()` | `batchApi()->createLandingPagesBatch()` |
+| `landingPagesApi()->createFolder()` | `foldersApi()->createFolder()` |
+| `landingPagesApi()->createFolders()` | `batchApi()->createFolders()` |
+| `landingPagesApi()->createLangVariation()` | `multiLanguageApi()->createLandingPageLangVariation()` |
+| `landingPagesApi()->detachFromLangGroup()` | `multiLanguageApi()->detachLandingPageFromLangGroup()` |
+| `landingPagesApi()->endActiveABTest()` | `abTestsApi()->endActiveLandingPageABTest()` |
+| `landingPagesApi()->getFolderById()` | `foldersApi()->getFolderById()` |
+| `landingPagesApi()->getFolderPreviousVersion()` | `foldersApi()->getFolderPreviousVersion()` |
+| `landingPagesApi()->getFolderPreviousVersions()` | `foldersApi()->getFolderPreviousVersions()` |
+| `landingPagesApi()->getFoldersPage()` | `foldersApi()->getFoldersPage()` |
+| `landingPagesApi()->getPreviousVersion()` | `advancedApi()->getLandingPagePreviousVersion()` |
+| `landingPagesApi()->getPreviousVersions()` | `advancedApi()->getLandingPagePreviousVersions()` |
+| `landingPagesApi()->readBatch()` | `batchApi()->readLandingPagesBatch()` |
+| `landingPagesApi()->readFolders()` | `foldersApi()->readFolders()` |
+| `landingPagesApi()->rerunPreviousABTest()` | `abTestsApi()->rerunPreviousLandingPageABTest()` |
+| `landingPagesApi()->restoreFolderPreviousVersion()` | `foldersApi()->restoreFolderPreviousVersion()` |
+| `landingPagesApi()->restorePreviousVersion()` | `advancedApi()->restorePreviousLandingPageVersion()` |
+| `landingPagesApi()->restorePreviousVersionToDraft()` | `advancedApi()->restoreLandingPagePreviousVersionToDraft()` |
+| `landingPagesApi()->setLangPrimary()` | `websitePagesApi()->setLandingPageLangPrimary()` |
+| `landingPagesApi()->updateBatch()` | `batchApi()->updateLandingPagesBatch()` |
+| `landingPagesApi()->updateFolder()` | `foldersApi()->updateFolder()` |
+| `landingPagesApi()->updateFolders()` | `batchApi()->updateFolders()` |
+| `landingPagesApi()->updateLangs()` | `multiLanguageApi()->updateLandingPageLangs()` |
+| `sitePagesApi()->archive()` | `websitePagesApi()->archive()` |
+| `sitePagesApi()->archiveBatch()` | `batchApi()->archiveSitePagesBatch()` |
+| `sitePagesApi()->attachToLangGroup()` | `multiLanguageApi()->attachSitePageToLangGroup()` |
+| `sitePagesApi()->callClone()` | `websitePagesApi()->callClone()` |
+| `sitePagesApi()->create()` | `websitePagesApi()->create()` |
+| `sitePagesApi()->createABTestVariation()` | `abTestsApi()->createSitePageABTestVariation()` |
+| `sitePagesApi()->createBatch()` | `batchApi()->createSitePagesBatch()` |
+| `sitePagesApi()->createLangVariation()` | `multiLanguageApi()->createSitePageLangVariation()` |
+| `sitePagesApi()->detachFromLangGroup()` | `multiLanguageApi()->detachSitePageFromLangGroup()` |
+| `sitePagesApi()->endActiveABTest()` | `abTestsApi()->endActiveSitePageABTest()` |
+| `sitePagesApi()->getById()` | `websitePagesApi()->getById()` |
+| `sitePagesApi()->getDraftById()` | `websitePagesApi()->getDraftById()` |
+| `sitePagesApi()->getPage()` | `websitePagesApi()->getPage()` |
+| `sitePagesApi()->getPreviousVersion()` | `basicApi()->getSitePagePreviousVersion()` |
+| `sitePagesApi()->getPreviousVersions()` | `basicApi()->getSitePagePreviousVersions()` |
+| `sitePagesApi()->pushLive()` | `websitePagesApi()->pushLive()` |
+| `sitePagesApi()->readBatch()` | `batchApi()->readSitePagesBatch()` |
+| `sitePagesApi()->rerunPreviousABTest()` | `abTestsApi()->rerunPreviousSitePageABTest()` |
+| `sitePagesApi()->resetDraft()` | `basicApi()->resetSitePageDraft()` |
+| `sitePagesApi()->restorePreviousVersion()` | `advancedApi()->restorePreviousSitePageVersion()` |
+| `sitePagesApi()->restorePreviousVersionToDraft()` | `basicApi()->restoreSitePagePreviousVersionToDraft()` |
+| `sitePagesApi()->schedule()` | `websitePagesApi()->schedule()` |
+| `sitePagesApi()->setLangPrimary()` | `multiLanguageApi()->setSitePageLangPrimary()` |
+| `sitePagesApi()->update()` | `websitePagesApi()->update()` |
+| `sitePagesApi()->updateBatch()` | `batchApi()->updateSitePagesBatch()` |
+| `sitePagesApi()->updateDraft()` | `websitePagesApi()->updateDraft()` |
+| `sitePagesApi()->updateLangs()` | `multiLanguageApi()->updateSitePageLangs()` |
+
+#### `$hubspot->cms()->siteSearch()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `publicApi()->getById()` | `basicApi()->getById()` |
+| `publicApi()->search()` | `searchApi()->search()` |
+
+#### `$hubspot->cms()->sourceCode()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `metadataApi()->get()` | `basicApi()->get()` |
+| `extractApi()->doAsync()` | `advancedApi()->doAsync()` |
+| `extractApi()->getAsyncStatus()` | `advancedApi()->getAsyncStatus()` |
+| `validationApi()->doValidate()` | `advancedApi()->doValidate()` |
+| `contentApi()->archive()` | `basicApi()->archive()` |
+| `contentApi()->create()` | `advancedApi()->create()` |
+| `contentApi()->createOrUpdate()` | `advancedApi()->createOrUpdate()` |
+| `contentApi()->download()` | `basicApi()->download()` |
+
+#### `$hubspot->cms()->urlRedirects()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `redirectsApi()->archive()` | `basicApi()->archive()` |
+| `redirectsApi()->create()` | `basicApi()->create()` |
+| `redirectsApi()->getById()` | `basicApi()->getById()` |
+| `redirectsApi()->getPage()` | `basicApi()->getPage()` |
+| `redirectsApi()->update()` | `basicApi()->update()` |
+
+#### `$hubspot->communicationPreferences()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `definitionsApi()->getPage()` | `basicApi()->getPage()` |
+| `statusApi()->getEmailStatus()` | `basicApi()->getEmailStatus()` |
+| `statusApi()->subscribe()` | `advancedApi()->subscribe()` |
+| `statusApi()->unsubscribe()` | `advancedApi()->unsubscribe()` |
+
+#### `$hubspot->conversations()->visitorIdentification()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `generateApi()->generateToken()` | `basicApi()->generateToken()` |
+
+#### `$hubspot->crm()->associations()->schema()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `typesApi()->getAll()` | `basicApi()->getAll()` |
+
+#### `$hubspot->crm()->associations()->v4()->schema()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `definitionsApi()->create()` | `labelsApi()->create()` |
+| `definitionsApi()->getPage()` | `labelsApi()->getPage()` |
+| `definitionsApi()->remove()` | `labelsApi()->remove()` |
+| `definitionsApi()->update()` | `labelsApi()->update()` |
+| `definitionConfigurationsApi()->batchCreate()` | `limitsApi()->batchCreate()` |
+| `definitionConfigurationsApi()->batchRemove()` | `limitsApi()->batchRemove()` |
+| `definitionConfigurationsApi()->batchUpdate()` | `limitsApi()->batchUpdate()` |
+| `definitionConfigurationsApi()->getPage()` | `limitsApi()->getPage()` |
+| `definitionConfigurationsApi()->getPageBetweenTwoObjectTypes()` | `limitsApi()->getPageBetweenTwoObjectTypes()` |
+
+#### `$hubspot->crm()->companies()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `basicApi()->merge()` | `advancedApi()->merge()` |
+
+#### `$hubspot->crm()->contacts()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `basicApi()->merge()` | `advancedApi()->merge()` |
+| `basicApi()->purge()` | `advancedApi()->purge()` |
+
+#### `$hubspot->crm()->exports()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `publicExportsApi()->getById()` | `basicApi()->getById()` |
+| `publicExportsApi()->getStatus()` | `advancedApi()->getStatus()` |
+| `publicExportsApi()->start()` | `advancedApi()->start()` |
+
+#### `$hubspot->crm()->extensions()->calling()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `recordingSettingsApi()->create()` | `basicApi()->createRecordingSettings()` |
+| `recordingSettingsApi()->get()` | `basicApi()->getRecordingSettings()` |
+| `recordingSettingsApi()->markAsReady()` | `advancedApi()->markAsReady()` |
+| `recordingSettingsApi()->update()` | `basicApi()->updateRecordingSettings()` |
+| `settingsApi()->create()` | `basicApi()->createSettings()` |
+| `settingsApi()->get()` | `basicApi()->getSettings()` |
+| `settingsApi()->remove()` | `basicApi()->removeSettings()` |
+| `settingsApi()->update()` | `basicApi()->updateSettings()` |
+| `channelConnectionSettingsApi()->create()` | `basicApi()->createChannelConnectionSettings()` |
+| `channelConnectionSettingsApi()->get()` | `basicApi()->getChannelConnectionSettings()` |
+| `channelConnectionSettingsApi()->remove()` | `basicApi()->removeChannelConnectionSettings()` |
+| `channelConnectionSettingsApi()->update()` | `basicApi()->updateChannelConnectionSettings()` |
+
+#### `$hubspot->crm()->extensions()->cards()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `cardsApi()->archive()` | `basicApi()->archive()` |
+| `cardsApi()->create()` | `basicApi()->create()` |
+| `cardsApi()->getAll()` | `basicApi()->getAll()` |
+| `cardsApi()->getById()` | `basicApi()->getById()` |
+| `cardsApi()->update()` | `basicApi()->update()` |
+| `sampleResponseApi()->getCardsSampleResponse()` | `basicApi()->getCardsSampleResponse()` |
+
+#### `$hubspot->crm()->extensions()->videoconferencing()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `settingsApi()->archive()` | `basicApi()->archive()` |
+| `settingsApi()->getById()` | `basicApi()->getById()` |
+| `settingsApi()->replace()` | `basicApi()->replace()` |
+
+#### `$hubspot->crm()->imports()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `coreApi()->cancel()` | `advancedApi()->cancel()` |
+| `coreApi()->create()` | `advancedApi()->create()` |
+| `coreApi()->getById()` | `basicApi()->getById()` |
+| `coreApi()->getPage()` | `basicApi()->getImportsPage()` |
+| `publicImportsApi()->getErrors()` | `basicApi()->getErrors()` |
+
+#### `$hubspot->crm()->lists()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `listsApi()->create()` | `basicApi()->create()` |
+| `listsApi()->doSearch()` | `searchApi()->doSearch()` |
+| `listsApi()->getAll()` | `basicApi()->getAll()` |
+| `listsApi()->getById()` | `basicApi()->getById()` |
+| `listsApi()->getByName()` | `basicApi()->getByName()` |
+| `listsApi()->remove()` | `basicApi()->removeList()` |
+| `listsApi()->restore()` | `basicApi()->restore()` |
+| `listsApi()->updateListFilters()` | `basicApi()->updateListFilters()` |
+| `listsApi()->updateName()` | `basicApi()->updateName()` |
+| `membershipsApi()->add()` | `basicApi()->add()` |
+| `membershipsApi()->addAllFromList()` | `basicApi()->addAllFromList()` |
+| `membershipsApi()->addAndRemove()` | `basicApi()->addAndRemove()` |
+| `membershipsApi()->getLists()` | `basicApi()->getLists()` |
+| `membershipsApi()->getPage()` | `basicApi()->getPage()` |
+| `membershipsApi()->remove()` | `basicApi()->removeMembers()` |
+| `membershipsApi()->removeAll()` | `basicApi()->removeAll()` |
+| `idMappingApi()->translateLegacyListIdToListId()` | `basicApi()->translateLegacyListIdToListId()` |
+| `idMappingApi()->translateLegacyListIdToListIdBatch()` | `basicApi()->translateLegacyListIdToListIdBatch()` |
+| `listManagementApi()->cancelConversion()` | `basicApi()->cancelConversion()` |
+| `listManagementApi()->createFolder()` | `basicApi()->createFolder()` |
+| `listManagementApi()->getConversionDetails()` | `basicApi()->getConversionDetails()` |
+| `listManagementApi()->getFolder()` | `basicApi()->getAllFolders()` |
+| `listManagementApi()->moveFolder()` | `basicApi()->moveFolder()` |
+| `listManagementApi()->moveListToFolder()` | `basicApi()->moveList()` |
+| `listManagementApi()->removeFolder()` | `basicApi()->removeFolder()` |
+| `listManagementApi()->renameFolder()` | `basicApi()->renameFolder()` |
+| `listManagementApi()->scheduleOrUpdateConversion()` | `basicApi()->scheduleConversion()` |
+| `joinOrderApi()->getPageOrderedByAddedToListDate()` | `basicApi()->getPageOrderedByAddedToListDate()` |
+
+#### `$hubspot->crm()->owners()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `ownersApi()->getById()` | `basicApi()->getById()` |
+| `ownersApi()->getPage()` | `basicApi()->getPage()` |
+
+#### `$hubspot->crm()->pipelines()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `pipelineStageAuditsApi()->getAudit()` | `basicApi()->getStageAudit()` |
+| `pipelineStagesApi()->archive()` | `basicApi()->archiveStage()` |
+| `pipelineStagesApi()->create()` | `basicApi()->createStage()` |
+| `pipelineStagesApi()->getAll()` | `basicApi()->getAllStages()` |
+| `pipelineStagesApi()->getById()` | `basicApi()->getStageById()` |
+| `pipelineStagesApi()->replace()` | `basicApi()->replaceStage()` |
+| `pipelineStagesApi()->update()` | `basicApi()->updateStage()` |
+| `pipelineAuditsApi()->getAudit()` | `basicApi()->getPipelineAudit()` |
+| `pipelinesApi()->archive()` | `basicApi()->archivePipeline()` |
+| `pipelinesApi()->create()` | `basicApi()->createPipeline()` |
+| `pipelinesApi()->getAll()` | `basicApi()->getAllPipelines()` |
+| `pipelinesApi()->getById()` | `basicApi()->getPipelineById()` |
+| `pipelinesApi()->replace()` | `basicApi()->replacePipeline()` |
+| `pipelinesApi()->update()` | `basicApi()->updatePipeline()` |
+
+#### `$hubspot->crm()->properties()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `groupsApi()->archive()` | `basicApi()->archiveGroup()` |
+| `groupsApi()->create()` | `basicApi()->createGroup()` |
+| `groupsApi()->getAll()` | `basicApi()->getAllGroups()` |
+| `groupsApi()->getByName()` | `basicApi()->getGroupByName()` |
+| `groupsApi()->update()` | `basicApi()->updateGroup()` |
+
+#### `$hubspot->crm()->schemas()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `coreApi()->archive()` | `basicApi()->archive()` |
+| `coreApi()->archiveAssociation()` | `basicApi()->archiveAssociation()` |
+| `coreApi()->create()` | `basicApi()->create()` |
+| `coreApi()->createAssociation()` | `advancedApi()->createAssociation()` |
+| `coreApi()->getAll()` | `basicApi()->getAll()` |
+| `coreApi()->getById()` | `basicApi()->getById()` |
+| `coreApi()->update()` | `basicApi()->update()` |
+
+#### `$hubspot->crm()->tickets()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `basicApi()->merge()` | `advancedApi()->merge()` |
+
+#### `$hubspot->crm()->timeline()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `tokensApi()->archive()` | `basicApi()->archiveToken()` |
+| `tokensApi()->create()` | `advancedApi()->createToken()` |
+| `tokensApi()->update()` | `basicApi()->updateToken()` |
+| `eventsApi()->create()` | `advancedApi()->createEvent()` |
+| `eventsApi()->createBatch()` | `batchApi()->createBatch()` |
+| `eventsApi()->getById()` | `basicApi()->getEventById()` |
+| `eventsApi()->getDetailById()` | _removed upstream_ |
+| `eventsApi()->getRenderById()` | _removed upstream_ |
+| `templatesApi()->archive()` | `basicApi()->archiveTemplate()` |
+| `templatesApi()->create()` | `basicApi()->createTemplate()` |
+| `templatesApi()->getAll()` | `basicApi()->getAllTemplates()` |
+| `templatesApi()->getById()` | `basicApi()->getTemplateById()` |
+| `templatesApi()->update()` | `basicApi()->updateTemplate()` |
+
+#### `$hubspot->events()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `eventsApi()->getPage()` | `basicApi()->getPage()` |
+| `eventsApi()->getTypes()` | `basicApi()->getTypes()` |
+
+#### `$hubspot->files()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `foldersApi()->create()` | `filesApi()->createFolder()` |
+
+#### `$hubspot->marketing()->emails()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `statisticsApi()->getEmailsList()` | `basicApi()->getEmailsList()` |
+| `statisticsApi()->getHistogram()` | `basicApi()->getHistogram()` |
+| `emailsApi()->create()` | `basicApi()->create()` |
+| `emailsApi()->getPage()` | `basicApi()->getPage()` |
+
+#### `$hubspot->marketing()->events()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `basicApi()->getAll()` | `basicApi()->getPage()` |
+
+#### `$hubspot->marketing()->forms()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `formsApi()->archive()` | `basicApi()->archive()` |
+| `formsApi()->create()` | `basicApi()->create()` |
+| `formsApi()->getById()` | `basicApi()->getById()` |
+| `formsApi()->getPage()` | `basicApi()->getPage()` |
+| `formsApi()->replace()` | `basicApi()->replace()` |
+| `formsApi()->update()` | `basicApi()->update()` |
+
+#### `$hubspot->settings()->businessUnits()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `businessUnitsApi()->getByUserID()` | `basicApi()->getByUserID()` |
+
+#### `$hubspot->settings()->users()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `usersApi()->create()` | `basicApi()->create()` |
+| `usersApi()->getPage()` | `basicApi()->getPage()` |
+
+#### `$hubspot->webhooks()`
+
+| 14.1.0 | 15.0.0 |
+|---|---|
+| `subscriptionsApi()->archive()` | `basicApi()->archiveSubscription()` |
+| `subscriptionsApi()->create()` | `basicApi()->createSubscription()` |
+| `subscriptionsApi()->getAll()` | `basicApi()->getAllSubscriptions()` |
+| `subscriptionsApi()->getById()` | `basicApi()->getSubscriptionById()` |
+| `subscriptionsApi()->update()` | `basicApi()->updateSubscription()` |
+| `subscriptionsApi()->updateBatch()` | `batchApi()->updateBatch()` |
+| `settingsApi()->clear()` | `basicApi()->clear()` |
+| `settingsApi()->configure()` | `basicApi()->configure()` |
+| `settingsApi()->getAll()` | `basicApi()->getAllSettings()` |
+
 
 ### Guzzle 8 support
 
