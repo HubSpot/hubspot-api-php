@@ -60,7 +60,6 @@ class CallbackCompletionBatchRequest implements ModelInterface, ArrayAccess, \Js
         'callback_id' => 'string',
         'failure_reason_type' => 'string',
         'output_fields' => 'array<string,string>',
-        'request_context' => '\HubSpot\Client\Automation\Actions\Model\CallbackCompletionBatchRequestRequestContext',
         'typed_outputs' => 'object'
     ];
 
@@ -75,7 +74,6 @@ class CallbackCompletionBatchRequest implements ModelInterface, ArrayAccess, \Js
         'callback_id' => null,
         'failure_reason_type' => null,
         'output_fields' => null,
-        'request_context' => null,
         'typed_outputs' => null
     ];
 
@@ -88,7 +86,6 @@ class CallbackCompletionBatchRequest implements ModelInterface, ArrayAccess, \Js
         'callback_id' => false,
         'failure_reason_type' => false,
         'output_fields' => false,
-        'request_context' => false,
         'typed_outputs' => false
     ];
 
@@ -181,7 +178,6 @@ class CallbackCompletionBatchRequest implements ModelInterface, ArrayAccess, \Js
         'callback_id' => 'callbackId',
         'failure_reason_type' => 'failureReasonType',
         'output_fields' => 'outputFields',
-        'request_context' => 'requestContext',
         'typed_outputs' => 'typedOutputs'
     ];
 
@@ -194,7 +190,6 @@ class CallbackCompletionBatchRequest implements ModelInterface, ArrayAccess, \Js
         'callback_id' => 'setCallbackId',
         'failure_reason_type' => 'setFailureReasonType',
         'output_fields' => 'setOutputFields',
-        'request_context' => 'setRequestContext',
         'typed_outputs' => 'setTypedOutputs'
     ];
 
@@ -207,7 +202,6 @@ class CallbackCompletionBatchRequest implements ModelInterface, ArrayAccess, \Js
         'callback_id' => 'getCallbackId',
         'failure_reason_type' => 'getFailureReasonType',
         'output_fields' => 'getOutputFields',
-        'request_context' => 'getRequestContext',
         'typed_outputs' => 'getTypedOutputs'
     ];
 
@@ -271,7 +265,6 @@ class CallbackCompletionBatchRequest implements ModelInterface, ArrayAccess, \Js
         $this->setIfExists('callback_id', $data ?? [], null);
         $this->setIfExists('failure_reason_type', $data ?? [], null);
         $this->setIfExists('output_fields', $data ?? [], null);
-        $this->setIfExists('request_context', $data ?? [], null);
         $this->setIfExists('typed_outputs', $data ?? [], null);
     }
 
@@ -403,33 +396,6 @@ class CallbackCompletionBatchRequest implements ModelInterface, ArrayAccess, \Js
             throw new \InvalidArgumentException('non-nullable output_fields cannot be null');
         }
         $this->container['output_fields'] = $output_fields;
-
-        return $this;
-    }
-
-    /**
-     * Gets request_context
-     *
-     * @return \HubSpot\Client\Automation\Actions\Model\CallbackCompletionBatchRequestRequestContext|null
-     */
-    public function getRequestContext()
-    {
-        return $this->container['request_context'];
-    }
-
-    /**
-     * Sets request_context
-     *
-     * @param \HubSpot\Client\Automation\Actions\Model\CallbackCompletionBatchRequestRequestContext|null $request_context request_context
-     *
-     * @return self
-     */
-    public function setRequestContext($request_context)
-    {
-        if (is_null($request_context)) {
-            throw new \InvalidArgumentException('non-nullable request_context cannot be null');
-        }
-        $this->container['request_context'] = $request_context;
 
         return $this;
     }
