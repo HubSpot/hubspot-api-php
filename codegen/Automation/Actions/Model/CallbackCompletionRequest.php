@@ -59,7 +59,6 @@ class CallbackCompletionRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPITypes = [
         'failure_reason_type' => 'string',
         'output_fields' => 'array<string,string>',
-        'request_context' => '\HubSpot\Client\Automation\Actions\Model\CallbackCompletionRequestRequestContext',
         'typed_outputs' => 'object'
     ];
 
@@ -73,7 +72,6 @@ class CallbackCompletionRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static $openAPIFormats = [
         'failure_reason_type' => null,
         'output_fields' => null,
-        'request_context' => null,
         'typed_outputs' => null
     ];
 
@@ -85,7 +83,6 @@ class CallbackCompletionRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static array $openAPINullables = [
         'failure_reason_type' => false,
         'output_fields' => false,
-        'request_context' => false,
         'typed_outputs' => false
     ];
 
@@ -177,7 +174,6 @@ class CallbackCompletionRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static $attributeMap = [
         'failure_reason_type' => 'failureReasonType',
         'output_fields' => 'outputFields',
-        'request_context' => 'requestContext',
         'typed_outputs' => 'typedOutputs'
     ];
 
@@ -189,7 +185,6 @@ class CallbackCompletionRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static $setters = [
         'failure_reason_type' => 'setFailureReasonType',
         'output_fields' => 'setOutputFields',
-        'request_context' => 'setRequestContext',
         'typed_outputs' => 'setTypedOutputs'
     ];
 
@@ -201,7 +196,6 @@ class CallbackCompletionRequest implements ModelInterface, ArrayAccess, \JsonSer
     protected static $getters = [
         'failure_reason_type' => 'getFailureReasonType',
         'output_fields' => 'getOutputFields',
-        'request_context' => 'getRequestContext',
         'typed_outputs' => 'getTypedOutputs'
     ];
 
@@ -264,7 +258,6 @@ class CallbackCompletionRequest implements ModelInterface, ArrayAccess, \JsonSer
     {
         $this->setIfExists('failure_reason_type', $data ?? [], null);
         $this->setIfExists('output_fields', $data ?? [], null);
-        $this->setIfExists('request_context', $data ?? [], null);
         $this->setIfExists('typed_outputs', $data ?? [], null);
     }
 
@@ -366,33 +359,6 @@ class CallbackCompletionRequest implements ModelInterface, ArrayAccess, \JsonSer
             throw new \InvalidArgumentException('non-nullable output_fields cannot be null');
         }
         $this->container['output_fields'] = $output_fields;
-
-        return $this;
-    }
-
-    /**
-     * Gets request_context
-     *
-     * @return \HubSpot\Client\Automation\Actions\Model\CallbackCompletionRequestRequestContext|null
-     */
-    public function getRequestContext()
-    {
-        return $this->container['request_context'];
-    }
-
-    /**
-     * Sets request_context
-     *
-     * @param \HubSpot\Client\Automation\Actions\Model\CallbackCompletionRequestRequestContext|null $request_context request_context
-     *
-     * @return self
-     */
-    public function setRequestContext($request_context)
-    {
-        if (is_null($request_context)) {
-            throw new \InvalidArgumentException('non-nullable request_context cannot be null');
-        }
-        $this->container['request_context'] = $request_context;
 
         return $this;
     }
