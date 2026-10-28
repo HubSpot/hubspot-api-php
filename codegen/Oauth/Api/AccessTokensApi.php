@@ -44,6 +44,8 @@ use HubSpot\Client\Oauth\ObjectSerializer;
 /**
  * AccessTokensApi Class Doc Comment
  *
+ * @deprecated use \HubSpot\Client\Oauth\V3\Api\AdvancedApi instead
+ *
  * @category Class
  * @package  HubSpot\Client\Oauth
  * @author   OpenAPI Generator team
