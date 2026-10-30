@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased](https://github.com/HubSpot/hubspot-api-php/compare/15.1.0...HEAD)
 
-## [15.1.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/15.1.0) - 2026-10-28
+## [15.1.0](https://github.com/HubSpot/hubspot-api-php/releases/tag/15.1.0) - 2026-11-02
 
 ### Added
 
