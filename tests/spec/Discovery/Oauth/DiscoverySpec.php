@@ -8,6 +8,7 @@ use HubSpot\Client\Oauth\Api\RefreshTokensApi;
 use HubSpot\Client\Oauth\Api\TokensApi;
 use HubSpot\Config;
 use HubSpot\Discovery\Oauth\Discovery;
+use HubSpot\Discovery\Oauth\V3\Discovery as V3Discovery;
 use PhpSpec\ObjectBehavior;
 
 class DiscoverySpec extends ObjectBehavior
@@ -27,5 +28,6 @@ class DiscoverySpec extends ObjectBehavior
         $this->accessTokensApi()->shouldHaveType(AccessTokensApi::class);
         $this->refreshTokensApi()->shouldHaveType(RefreshTokensApi::class);
         $this->tokensApi()->shouldHaveType(TokensApi::class);
+        $this->v3()->shouldHaveType(V3Discovery::class);
     }
 }

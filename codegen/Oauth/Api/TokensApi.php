@@ -44,6 +44,8 @@ use HubSpot\Client\Oauth\ObjectSerializer;
 /**
  * TokensApi Class Doc Comment
  *
+ * @deprecated use \HubSpot\Client\Oauth\V3\Api\AdvancedApi instead
+ *
  * @category Class
  * @package  HubSpot\Client\Oauth
  * @author   OpenAPI Generator team
@@ -142,6 +144,7 @@ class TokensApi
      * @throws \HubSpot\Client\Oauth\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \HubSpot\Client\Oauth\Model\TokenResponseIF|\HubSpot\Client\Oauth\Model\Error
+     * @deprecated
      */
     public function create($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null, $code_verifier = null, $scope = null, string $contentType = self::contentTypes['create'][0])
     {
@@ -167,6 +170,7 @@ class TokensApi
      * @throws \HubSpot\Client\Oauth\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \HubSpot\Client\Oauth\Model\TokenResponseIF|\HubSpot\Client\Oauth\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function createWithHttpInfo($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null, $code_verifier = null, $scope = null, string $contentType = self::contentTypes['create'][0])
     {
@@ -272,6 +276,7 @@ class TokensApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createAsync($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null, $code_verifier = null, $scope = null, string $contentType = self::contentTypes['create'][0])
     {
@@ -300,6 +305,7 @@ class TokensApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function createAsyncWithHttpInfo($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null, $code_verifier = null, $scope = null, string $contentType = self::contentTypes['create'][0])
     {
@@ -357,6 +363,7 @@ class TokensApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function createRequest($grant_type = null, $code = null, $redirect_uri = null, $client_id = null, $client_secret = null, $refresh_token = null, $code_verifier = null, $scope = null, string $contentType = self::contentTypes['create'][0])
     {
