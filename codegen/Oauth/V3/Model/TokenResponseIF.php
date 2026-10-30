@@ -44,6 +44,11 @@ class TokenResponseIF implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = 'token_use';
 
+    public const DISCRIMINATOR_MAPPING = [
+        'access_token' => AccessTokenResponse::class,
+        'client_credentials' => ClientCredentialsTokenResponse::class,
+    ];
+
     /**
       * The original name of the model.
       *

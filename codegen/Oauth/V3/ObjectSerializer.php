@@ -504,7 +504,9 @@ class ObjectSerializer
             $discriminator = $class::DISCRIMINATOR;
             if (!empty($discriminator) && isset($data->{$discriminator}) && is_string($data->{$discriminator})) {
                 $subclass = '\HubSpot\Client\Oauth\V3\Model\\' . $data->{$discriminator};
-                if (is_subclass_of($subclass, $class)) {
+                if (defined($class . '::DISCRIMINATOR_MAPPING') && isset($class::DISCRIMINATOR_MAPPING[$data->{$discriminator}])) {
+                    $class = $class::DISCRIMINATOR_MAPPING[$data->{$discriminator}];
+                } elseif (is_subclass_of($subclass, $class)) {
                     $class = $subclass;
                 }
             }

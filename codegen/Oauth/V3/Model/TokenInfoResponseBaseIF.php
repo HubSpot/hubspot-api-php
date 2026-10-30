@@ -44,6 +44,11 @@ class TokenInfoResponseBaseIF implements ModelInterface, ArrayAccess, \JsonSeria
 {
     public const DISCRIMINATOR = 'token_use';
 
+    public const DISCRIMINATOR_MAPPING = [
+        'access_token' => PublicAccessTokenInfoResponse::class,
+        'refresh_token' => PublicRefreshTokenInfoResponse::class,
+    ];
+
     /**
       * The original name of the model.
       *
